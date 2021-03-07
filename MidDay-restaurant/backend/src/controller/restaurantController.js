@@ -22,33 +22,25 @@ const restaurantController = () => {
 
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
-
-    newRestaurant.save((error) => {
-      if (error) {
-        res.status(500);
-        res.send('Error');
-      } else {
-        res.json(newRestaurant);
-      }
-    });
+    newRestaurant.save(
+      res.json(newRestaurant),
+    );
   };
 
-  const updateRestaurant = (req, res) => {
+  const updateRestaurant = async (req, res) => {
     const { restaurantId } = req.params;
     const {
       capacity, phone,
     } = req.body;
-    Restaurant.findByIdAndUpdate({ _id: restaurantId },
-      {
-        capacity, phone,
-      }, { new: true }, (error, updated) => {
-        if (error) {
-          res.status(500);
-          res.send('Error');
-        } else {
-          res.json(updated);
-        }
-      });
+
+    try {
+      const updated = await Restaurant
+        .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true });
+      res.json(updated);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error updating');
+    }
   };
 
   const deleteRestaurant = (req, res) => {
