@@ -11,4 +11,4 @@ const restaurantSchema = new Schema({
   zip: Number,
 });
 
-module.exports = model('Restaurants', restaurantSchema);
+module.exports = model('Restaurant', restaurantSchema);
