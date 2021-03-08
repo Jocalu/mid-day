@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
 
-/**
- * @title Stepper with customized states
- */
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

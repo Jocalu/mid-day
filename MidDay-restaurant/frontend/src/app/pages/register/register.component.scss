@@ -1,0 +1,43 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+.register {
+  padding: 0 100px;
+  width: 60%;
+
+  .mat-step-header {
+    margin: 40px 0;
+    font-family: $font-primary;
+    letter-spacing: 1px;
+    font-size: 30px;
+  }
+
+  .mat-stepper-horizontal{
+  font-family: $font-primary;
+  }
+
+  .form {
+    @include flex(column, flex-start, flex-start);
+    width: 100%;
+
+    .input {
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0);
+      font-family: $font-primary;
+    }
+  }
+
+  .mat-stroked-button.mat-primary {
+    color: $color-primary;
+    border: 1px solid $color-primary;
+    margin-right: 20px;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+  .mat-form-field-flex {
+    width: 300px;
+  }
+}

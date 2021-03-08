@@ -1,0 +1,126 @@
+<mat-horizontal-stepper #stepper class="register">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel class="steplabel">Tu perfil</ng-template>
+      <div class="form">
+        <mat-form-field class="input">
+          <mat-label>Nombre usuario</mat-label>
+          <input
+            matInput
+            placeholder="Nombre usuario"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Dirección de email"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <mat-label>Contraseña</mat-label>
+          <input
+            matInput
+            placeholder="Contraseña"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <mat-label>Repetir contraseña</mat-label>
+          <input
+            matInput
+            placeholder="Repetir contraseña"
+            formControlName="firstCtrl"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-stroked-button matStepperNext color="primary">
+          SIGUIENTE
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Tu restaurante</ng-template>
+      <div class="form">
+        <mat-form-field class="input">
+          <mat-label>Nombre restaurante</mat-label>
+          <input
+            matInput
+            placeholder="Nombre restaurante"
+            formControlName="secondCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <mat-label>Dirección</mat-label>
+          <input
+            matInput
+            placeholder="Dirección"
+            formControlName="secondCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <mat-label>Número</mat-label>
+          <input
+            matInput
+            placeholder="Número"
+            formControlName="secondCtrl"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="input">
+          <mat-label>Ciudad</mat-label>
+          <input
+            matInput
+            placeholder="Ciudad"
+            formControlName="secondCtrl"
+            required
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-stroked-button matStepperPrevious color="primary">
+          VOLVER
+        </button>
+        <button mat-stroked-button matStepperNext color="primary">
+          SIGUIENTE
+        </button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Casi estamos</ng-template>
+    <div class="form">
+      <mat-form-field class="input">
+        <mat-label>Tipo restaurante</mat-label>
+        <input
+          matInput
+          placeholder="Tipo restaurante"
+          formControlName="secondCtrl"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <button mat-stroked-button matStepperPrevious color="primary">
+        VOLVER
+      </button>
+    </div>
+  </mat-step>
+  <div>
+    <button mat-stroked-button matStepperPrevious color="primary">
+      VOLVER
+    </button>
+    <button mat-stroked-button matStepperNext color="primary">SIGUIENTE</button>
+  </div>
+</mat-horizontal-stepper>
