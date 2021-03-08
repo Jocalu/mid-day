@@ -2,42 +2,62 @@
 @import "../../../styles/colors";
 @import "../../../styles/fonts";
 
-.register {
-  padding: 0 100px;
-  width: 60%;
+section {
+  @include flex(row, center, center);
+  padding-left: 100px;
 
-  .mat-step-header {
-    margin: 40px 0;
-    font-family: $font-primary;
-    letter-spacing: 1px;
-    font-size: 30px;
-  }
+  .register {
+    margin-top: 20px;
+    width: 50%;
+    height: 500px;
 
-  .mat-stepper-horizontal{
-  font-family: $font-primary;
-  }
-
-  .form {
-    @include flex(column, flex-start, flex-start);
-    width: 100%;
-
-    .input {
+    .form {
+      @include flex(column, flex-start, flex-start);
       width: 100%;
-      background-color: rgba(0, 0, 0, 0);
-      font-family: $font-primary;
+
+      .input {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        font-family: $font-primary;
+      }
+
+      .input__cont {
+        @include flex(row, flex-start, center);
+        background-color: rgba(0, 0, 0, 0);
+        font-family: $font-primary;
+        width: 100%;
+
+        .input--half {
+          width: 50%;
+        }
+      }
     }
-  }
 
-  .mat-stroked-button.mat-primary {
-    color: $color-primary;
-    border: 1px solid $color-primary;
-    margin-right: 20px;
-
-    &:hover {
+    .mat-stroked-button.mat-primary {
+      color: $color-primary;
       border: 1px solid $color-primary;
+      margin-right: 20px;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+    .mat-form-field-flex {
+      width: 300px;
     }
   }
-  .mat-form-field-flex {
-    width: 300px;
+
+  .image {
+    width: 50%;
+    height: 700px;
+    position: relative;
+    overflow: hidden;
+    img {
+      position: absolute;
+      width: 120%;
+      top: -150px;
+      right: -320px;
+      opacity: 0.6;
+    }
   }
 }
