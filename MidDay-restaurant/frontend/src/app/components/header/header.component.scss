@@ -1,0 +1,43 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+header {
+  nav {
+    @include flex(row, space-between, center);
+    width: 100vw;
+    height: 80px;
+    padding: 0 100px;
+    position: sticky;
+    background: $color-grey-soft;
+    border-bottom: $color-grey 1px solid;
+
+    img {
+      width: 180px;
+    }
+
+    div {
+      .mat-stroked-button.mat-primary {
+        margin: 20px;
+        color: $color-primary;
+        border: 1px solid $color-primary;
+
+        &:hover {
+          border: 1px solid $color-primary;
+        }
+      }
+      .mat-raised-button {
+        box-shadow: none;
+      }
+      .mat-raised-button.mat-primary {
+        color: white;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: $color-primary-hard;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
