@@ -1,0 +1,71 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+footer {
+  height: 300px;
+  width: 100vw;
+  background-color: $color-secondary;
+  font-family: $font-secondary-thin;
+
+  .footer {
+    @include flex(column, flex-start, flex-start);
+    padding: 30px 100px;
+    border-top: 2px solid $color-primary;
+
+    img {
+      width: 180px;
+    }
+
+    .hr {
+      background-color: $color-primary;
+      height: 1px;
+      width: 100%;
+      border: none;
+      margin-top: 20px;
+    }
+
+    .info {
+      @include flex(row, space-between, flex-start);
+      width: 100%;
+      color: $color-white;
+      font-size: 12px;
+
+      .column {
+        @include flex(column, flex-start, flex-start);
+
+        h6 {
+          font-size: 14px;
+          margin: 10px 0;
+          font-family: $font-secondary;
+        }
+        p {
+          cursor: pointer;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .subfooter {
+    @include flex(row, space-between, center);
+    width: 100vw;
+    height: 100px;
+    background-color: $color-black-soft;
+    color: $color-white;
+    font-size: 12px;
+    padding: 0 100px;
+
+    div {
+      @include flex(row, center, center);
+    }
+
+    p {
+      cursor: pointer;
+      margin-right: 30px;
+    }
+    .copyright {
+      margin-right: 0;
+    }
+  }
+}

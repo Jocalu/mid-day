@@ -1,0 +1,163 @@
+<section>
+  <div class="register">
+    <mat-horizontal-stepper [linear]="!isLinear" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Tu perfil</ng-template>
+          <div class="form">
+            <mat-form-field class="input">
+              <mat-label>Nombre usuario</mat-label>
+              <input
+                matInput
+                placeholder="Nombre usuario"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field class="input">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="Dirección de email"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field class="input">
+              <mat-label>Contraseña</mat-label>
+              <input
+                matInput
+                placeholder="Contraseña"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field class="input">
+              <mat-label>Repetir contraseña</mat-label>
+              <input
+                matInput
+                placeholder="Repetir contraseña"
+                formControlName="firstCtrl"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-stroked-button matStepperNext color="primary">
+              SIGUIENTE
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Tu restaurante</ng-template>
+          <div class="form">
+            <mat-form-field class="input">
+              <mat-label>Nombre restaurante</mat-label>
+              <input
+                matInput
+                placeholder="Nombre restaurante"
+                formControlName="secondCtrl"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field class="input">
+              <mat-label>Dirección</mat-label>
+              <input
+                matInput
+                placeholder="Dirección"
+                formControlName="secondCtrl"
+                required
+              />
+            </mat-form-field>
+            <div class="input__cont">
+              <mat-form-field class="input--half">
+                <mat-label>Número</mat-label>
+                <input
+                  matInput
+                  placeholder="Número"
+                  formControlName="secondCtrl"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field class="input--half">
+                <mat-label>Código postal</mat-label>
+                <input
+                  matInput
+                  placeholder="Código postal"
+                  formControlName="secondCtrl"
+                  required
+                />
+              </mat-form-field>
+            </div>
+            <mat-form-field class="input">
+              <mat-label>Ciudad</mat-label>
+              <input
+                matInput
+                placeholder="Ciudad"
+                formControlName="secondCtrl"
+                required
+              />
+            </mat-form-field>
+            <mat-form-field class="input">
+              <mat-label>Teléfono de contacto</mat-label>
+              <input
+                matInput
+                placeholder="Teléfono de contacto"
+                formControlName="secondCtrl"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-stroked-button matStepperPrevious color="primary">
+              VOLVER
+            </button>
+            <button mat-stroked-button matStepperNext color="primary">
+              SIGUIENTE
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Casi estamos</ng-template>
+          <div class="form">
+            <mat-form-field class="input">
+              <mat-label>Tipo de cocina</mat-label>
+              <mat-select>
+                <mat-option
+                  *ngFor="let option of options"
+                  value="{{ option.value }}"
+                  >{{ option.name }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="input">
+              <mat-label>Aforo</mat-label>
+              <input
+                matInput
+                placeholder="Aforo"
+                formControlName="secondCtrl"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-stroked-button matStepperPrevious color="primary">
+              VOLVER
+            </button>
+            <button mat-stroked-button color="primary">FINALIZAR</button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <div class="image">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fpexels-photo-1824353-removebg-preview.png?alt=media&token=9d27896b-b79e-412f-8857-9013388b406c"
+      alt="mediterranean food"
+    />
+  </div>
+</section>

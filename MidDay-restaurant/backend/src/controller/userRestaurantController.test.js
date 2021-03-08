@@ -1,24 +1,28 @@
 const {
-  getRestaurant, getAllRestaurants, createRestaurant, updateRestaurant, deleteRestaurant,
-} = require('./restaurantController');
-const Restaurant = require('../models/restaurantModel');
+  getUserRestaurant,
+  getAllUserRestaurants,
+  createUserRestaurant,
+  updateUserRestaurant,
+  deleteUserRestaurant,
+} = require('./userRestaurantController');
+const UserRestaurant = require('../models/userRestaurantModel');
 
-jest.mock('../models/restaurantModel');
+jest.mock('../models/userRestaurantModel');
 
-describe('Given a createRestaurant function', () => {
+describe('Given a createUserRestaurant function', () => {
   describe('When is invoked with body name', () => {
     test('Then should call json', () => {
-      const req = { body: { name: 'Tagliatella' } };
+      const req = { body: { name: 'Jose' } };
       const res = { json: jest.fn() };
 
-      createRestaurant(req, res);
+      createUserRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
   });
 });
 
-describe('Given a getAllRestaurants function', () => {
+describe('Given a getAllUserRestaurants function', () => {
   describe('When is invoked', () => {
     test('Then should call json', async () => {
       const res = {
@@ -28,9 +32,9 @@ describe('Given a getAllRestaurants function', () => {
       };
       const req = {};
 
-      Restaurant.find.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      UserRestaurant.find.mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await getAllRestaurants(req, res);
+      await getAllUserRestaurants(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -44,15 +48,15 @@ describe('Given a getAllRestaurants function', () => {
     };
     const req = {};
 
-    Restaurant.find.mockImplementationOnce(() => { throw new Error('Error'); });
+    UserRestaurant.find.mockImplementationOnce(() => { throw new Error('Error'); });
 
-    await getAllRestaurants(req, res);
+    await getAllUserRestaurants(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
   });
 });
 
-describe('Given a getRestaurant function', () => {
+describe('Given a getUserRestaurant function', () => {
   describe('When is invoked with a first argument truthy', () => {
     test('Then should call status', async () => {
       const res = {
@@ -62,14 +66,14 @@ describe('Given a getRestaurant function', () => {
       };
       const req = {
         params: {
-          restaurantParam: 1,
+          userParam: 1,
         },
       };
 
-      Restaurant.findById
+      UserRestaurant.findById
         .mockImplementationOnce((query, callback) => callback(true));
 
-      await getRestaurant(req, res);
+      await getUserRestaurant(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
     });
@@ -83,20 +87,20 @@ describe('Given a getRestaurant function', () => {
       };
       const req = {
         params: {
-          restaurantParam: 1,
+          userParam: 1,
         },
       };
 
-      Restaurant.findById.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      UserRestaurant.findById.mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await getRestaurant(req, res);
+      await getUserRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
   });
 });
 
-describe('Given a updateRestaurant function', () => {
+describe('Given a updateUserRestaurant function', () => {
   describe('When is invoked', () => {
     test('Then should call json with body', async () => {
       const res = {
@@ -106,16 +110,16 @@ describe('Given a updateRestaurant function', () => {
       };
       const req = {
         params: {
-          restaurantId: 1,
+          userId: 1,
         },
         body: {
-          capacity: 12,
+          password: 'newpassword',
         },
       };
 
-      Restaurant.findByIdAndUpdate.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      UserRestaurant.findByIdAndUpdate.mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await updateRestaurant(req, res);
+      await updateUserRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -128,23 +132,23 @@ describe('Given a updateRestaurant function', () => {
       };
       const req = {
         params: {
-          restaurantId: 1,
+          userId: 1,
         },
         body: {
-          capacity: 12,
+          password: 'newpassword',
         },
       };
 
-      Restaurant.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
+      UserRestaurant.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
 
-      await updateRestaurant(req, res);
+      await updateUserRestaurant(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
     });
   });
 });
 
-describe('Given a deleteRestaurant function', () => {
+describe('Given a deleteUserRestaurant function', () => {
   describe('When is invoked', () => {
     test('Then should call json', async () => {
       const res = {
@@ -154,14 +158,14 @@ describe('Given a deleteRestaurant function', () => {
       };
       const req = {
         params: {
-          restaurantParam: 1,
+          userId: 1,
         },
       };
 
-      Restaurant.findByIdAndDelete
+      UserRestaurant.findByIdAndDelete
         .mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await deleteRestaurant(req, res);
+      await deleteUserRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -175,14 +179,14 @@ describe('Given a deleteRestaurant function', () => {
       };
       const req = {
         params: {
-          restaurantParam: 1,
+          userId: 1,
         },
       };
 
-      Restaurant.findByIdAndDelete
+      UserRestaurant.findByIdAndDelete
         .mockImplementationOnce((query, callback) => callback(true));
 
-      await deleteRestaurant(req, res);
+      await deleteUserRestaurant(req, res);
 
       expect(res.send).toHaveBeenCalled();
     });
