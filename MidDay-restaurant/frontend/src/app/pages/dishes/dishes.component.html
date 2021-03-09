@@ -7,7 +7,7 @@
   </div>
   <form class="form">
     <div class="input">
-      <mat-form-field appearance="fill" class="example-full-width">
+      <mat-form-field appearance="fill" class="full-width">
         <mat-label>Tipo del plato</mat-label>
         <mat-select>
           <mat-option *ngFor="let type of types" value="{{ type.name }}">{{
@@ -16,24 +16,12 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="full-width">
         <mat-label>Nombre</mat-label>
         <input type="text" [formControl]="text" matInput placeholder="Nombre" />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Suplemento</mat-label>
-        <input
-          type="number"
-          [formControl]="text"
-          value="0"
-          min="0"
-          matInput
-          placeholder="0 €"
-        />
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
+      <mat-form-field class="full-width">
         <mat-label>Ingredientes</mat-label>
         <input
           type="text"
@@ -42,6 +30,19 @@
           placeholder="Ingredientes"
         />
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Suplemento</mat-label>
+        <input
+          type="number"
+          [formControl]="text"
+          value="0"
+          min="0"
+          matInput
+          placeholder="0"
+        /><mat-icon>euro</mat-icon>
+      </mat-form-field>
+
       <div class="btns">
         <button
           (click)="clickHandler(text.value)"
@@ -70,6 +71,7 @@
     <div *ngIf="dishes.length">
       <div class="dish-text" *ngFor="let dish of dishes">
         <span> <mat-icon>restaurant_menu</mat-icon> {{ dish.text }} </span>
+        <span> {{ dish.text }} </span>
 
         <button class="delete-btn" (click)="deleteButton(dish.id)">
           <mat-icon>delete</mat-icon>

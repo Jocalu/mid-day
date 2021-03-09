@@ -30,12 +30,19 @@
       margin-right: 0;
     }
 
-    .example-full-width {
+    .full-width {
       width: 500px;
     }
 
     .input {
-      @include flex(column, flex-start, center);
+      @include flex(column, flex-start, flex-start);
+
+      mat-icon {
+        position: absolute;
+        right: 5px;
+        font-size: 20px;
+        color: $color-primary;
+      }
 
       .btns {
         @include flex(row, space-between, center);
