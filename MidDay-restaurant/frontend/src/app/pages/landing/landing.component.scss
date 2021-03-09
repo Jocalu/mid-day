@@ -7,7 +7,6 @@
   font-family: $font-primary;
   padding: 0 100px;
   width: 100vw;
-  height: 100vh;
   letter-spacing: 0.5px;
 
   @media only screen and (max-width: 500px) {
@@ -42,6 +41,11 @@
 
       @media only screen and (max-width: 500px) {
         margin-right: 0;
+      }
+      &:last-of-type {
+        @media only screen and (max-width: 500px) {
+          margin-bottom: 50px;
+        }
       }
 
       h3 {
