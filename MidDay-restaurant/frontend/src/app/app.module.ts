@@ -14,13 +14,24 @@ import { MatInputModule } from '@angular/material/input'
 import { MatSelectModule } from '@angular/material/select'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatIconModule } from '@angular/material/icon'
+import { LandingComponent } from './pages/landing/landing.component'
+import { BookingsComponent } from './pages/bookings/bookings.component'
+import { RecipesComponent } from './pages/recipes/recipes.component'
+import { MenusComponent } from './pages/menus/menus.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './components/not-found/not-found.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
+    LandingComponent,
+    BookingsComponent,
+    RecipesComponent,
+    MenusComponent,
+    NotFoundComponent
   ],
   imports: [
     FormsModule,
@@ -33,7 +44,8 @@ import { MatIconModule } from '@angular/material/icon'
     MatInputModule,
     MatSelectModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ],
   providers: [
     {

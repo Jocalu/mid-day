@@ -37,8 +37,12 @@ header {
     }
 
     div {
+      .mat-button.mat-primary {
+        color: $color-primary;
+      }
+
       .mat-stroked-button.mat-primary {
-        margin: 20px;
+        margin-left: 10px;
         color: $color-primary;
         border: 1px solid $color-primary;
 
@@ -50,7 +54,8 @@ header {
         box-shadow: none;
       }
       .mat-raised-button.mat-primary {
-        color: white;
+        margin-left: 10px;
+        color: $color-white;
         background-color: $color-primary;
 
         &:hover {

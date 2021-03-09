@@ -2,7 +2,7 @@
 @import "../../../styles/colors";
 @import "../../../styles/fonts";
 
-section {
+.register-container {
   display: block;
   @include flex(row, center, flex-start);
   padding-left: 100px;
