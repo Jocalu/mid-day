@@ -46,9 +46,10 @@ footer {
       }
 
       .column {
-        @include flex(column, flex-start, center);
+        @include flex(column, flex-start, flex-start);
 
         @media only screen and (max-width: 500px) {
+          @include flex(column, flex-start, center);
           width: 100%;
         }
 

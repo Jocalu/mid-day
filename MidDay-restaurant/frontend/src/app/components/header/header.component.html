@@ -1,5 +1,24 @@
 <header>
   <nav>
+    <div class="mobile-menu">
+      <button class="btn-menu" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>event</mat-icon>
+          <span>Reservas</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>restaurant</mat-icon>
+          <span>Menús</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>menu_book</mat-icon>
+          <span>Recetas</span>
+        </button>
+      </mat-menu>
+    </div>
     <img
       src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Flogo_negro.png?alt=media&token=4dcb1501-4770-4b7d-b01c-d8528ff85556"
       alt="logo"
