@@ -32,6 +32,10 @@
 
     .full-width {
       width: 500px;
+
+      @media only screen and (max-width: 500px) {
+        width: 100%;
+      }
     }
 
     .input {
@@ -64,6 +68,12 @@
 
         .btn-right {
           margin-left: 200px;
+          @media only screen and (max-width: 500px) {
+            margin: 0 10px;
+          }
+        }
+        @media only screen and (max-width: 500px) {
+          margin-bottom: 20px;
         }
       }
     }
@@ -91,6 +101,12 @@
 
         &:focus {
           outline: none;
+        }
+      }
+
+      &:last-of-type {
+        @media only screen and (max-width: 500px) {
+          margin-bottom: 20px;
         }
       }
     }
