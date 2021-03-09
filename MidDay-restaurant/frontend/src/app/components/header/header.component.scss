@@ -12,6 +12,11 @@ header {
     background: $color-grey-soft;
     border-bottom: $color-grey 1px solid;
 
+    @media only screen and (max-width: 400px) {
+      margin: 0 auto;
+      width: 100%;
+    }
+
     img {
       width: 180px;
     }
@@ -37,6 +42,10 @@ header {
           background-color: $color-primary-hard;
           box-shadow: none;
         }
+      }
+
+      @media only screen and (max-width: 400px) {
+        display: none;
       }
     }
   }

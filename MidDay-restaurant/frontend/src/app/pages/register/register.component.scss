@@ -3,13 +3,30 @@
 @import "../../../styles/fonts";
 
 section {
-  @include flex(row, center, center);
+  display: block;
+  @include flex(row, center, flex-start);
   padding-left: 100px;
+
+  @media only screen and (max-width: 500px) {
+    @include flex(row, center, flex-start);
+    padding: 10px;
+    width: 100%;
+    height: 75vh;
+  }
 
   .register {
     margin-top: 20px;
     width: 50%;
-    height: 500px;
+
+    @media only screen and (max-width: 500px) {
+      margin-top: 0;
+      width: 100%;
+    }
+
+    .mat-horizontal-stepper-header-container {
+      display: block;
+      background-color: yellow;
+    }
 
     .form {
       @include flex(column, flex-start, flex-start);
@@ -49,9 +66,14 @@ section {
 
   .image {
     width: 50%;
-    height: 700px;
+    height: 500px;
     position: relative;
     overflow: hidden;
+
+    @media only screen and (max-width: 500px) {
+      display: none;
+    }
+
     img {
       position: absolute;
       width: 120%;
