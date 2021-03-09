@@ -1,0 +1,86 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+.recipes {
+  @include flex(row, center, flex-start);
+  width: 100vw;
+  padding: 0 100px;
+  font-family: $font-primary;
+  letter-spacing: 0;
+
+  @media only screen and (max-width: 500px) {
+    padding: 0 20px;
+  }
+
+  .image-left {
+    margin-right: 100px;
+
+    @media only screen and (max-width: 500px) {
+      display: none;
+    }
+  }
+
+  .form {
+    width: 100%;
+    margin-bottom: 100px;
+
+    @media only screen and (max-width: 500px) {
+      margin-right: 0;
+    }
+
+    .example-full-width {
+      width: 500px;
+    }
+
+    .input {
+      @include flex(row, flex-start, center);
+
+      .mat-raised-button {
+        box-shadow: none;
+        color: $color-white;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: $color-primary-hard;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .recipe-text {
+      @include flex(row, space-between, center);
+      background-color: $color-grey-soft;
+      margin: 5px;
+      border-radius: 4px;
+      color: $color-primary;
+
+      span {
+        @include flexcenter();
+      }
+
+      mat-icon {
+        color: $color-primary;
+        margin-right: 10px;
+      }
+
+      .delete-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .image-right {
+    margin-left: 100px;
+
+    @media only screen and (max-width: 500px) {
+      display: none;
+    }
+  }
+}

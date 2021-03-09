@@ -17,8 +17,8 @@ import { MatIconModule } from '@angular/material/icon'
 import { LandingComponent } from './pages/landing/landing.component'
 import { BookingsComponent } from './pages/bookings/bookings.component'
 import { RecipesComponent } from './pages/recipes/recipes.component'
-import { MenusComponent } from './pages/menus/menus.component';
-import { AppRoutingModule } from './app-routing.module';
+import { MenusComponent } from './pages/menus/menus.component'
+import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 
 @NgModule({

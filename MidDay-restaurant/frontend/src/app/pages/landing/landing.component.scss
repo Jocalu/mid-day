@@ -10,7 +10,7 @@
   height: 100vh;
   letter-spacing: 0.5px;
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 500px) {
     @include flex(row, center, flex-start);
     padding: 0 20px;
   }
@@ -18,7 +18,7 @@
   .info {
     width: 50%;
 
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 500px) {
       width: 100%;
     }
 
@@ -28,7 +28,7 @@
       font-weight: bold;
       color: $color-primary;
 
-      @media only screen and (max-width: 400px) {
+      @media only screen and (max-width: 500px) {
         text-align: center;
       }
     }
@@ -40,7 +40,7 @@
       margin-right: 30px;
       margin-bottom: 30px;
 
-      @media only screen and (max-width: 400px) {
+      @media only screen and (max-width: 500px) {
         margin-right: 0;
       }
 
@@ -77,7 +77,7 @@
   .image {
     width: 50%;
 
-    @media only screen and (max-width: 400px) {
+    @media only screen and (max-width: 500px) {
       display: none;
     }
 

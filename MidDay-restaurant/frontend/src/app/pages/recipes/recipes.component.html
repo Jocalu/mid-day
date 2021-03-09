@@ -1,1 +1,43 @@
-<p>recipes works!</p>
+<section class="recipes">
+  <div class="image-left">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fingredients-2-removebg-preview.png?alt=media&token=7f81b2be-fa3f-48b7-b3e7-893ec1562d8a"
+      alt="Ingredientes de cocina"
+    />
+  </div>
+  <form class="form">
+    <div class="input">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre del plato</mat-label>
+        <input
+          type="text"
+          [formControl]="text"
+          matInput
+          placeholder="Nombre del plato"
+        />
+      </mat-form-field>
+      <button
+        (click)="clickHandler(text.value)"
+        mat-raised-button
+        color="primary"
+      >
+        AÑADIR
+      </button>
+    </div>
+    <div *ngIf="recipes.length" >
+    <div class="recipe-text" *ngFor="let recipe of recipes">
+      <span> <mat-icon>restaurant_menu</mat-icon> {{ recipe.text }} </span>
+
+      <button class="delete-btn" (click)="deleteButton(recipe.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+    </div>
+  </form>
+  <div class="image-right">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fingredients-removebg-preview.png?alt=media&token=5c208f9c-1c20-4bd7-b4ef-291b9ddc7b3a"
+      alt="Ingredientes de cocina"
+    />
+  </div>
+</section>
