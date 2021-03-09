@@ -1,5 +1,5 @@
 
-export interface Recipe {
+export interface Dish {
   id: number,
   text: string
 }

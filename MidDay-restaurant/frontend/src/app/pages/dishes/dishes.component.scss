@@ -2,7 +2,7 @@
 @import "../../../styles/colors";
 @import "../../../styles/fonts";
 
-.recipes {
+.dishes {
   @include flex(row, center, flex-start);
   width: 100vw;
   padding: 0 100px;
@@ -15,6 +15,7 @@
 
   .image-left {
     margin-right: 100px;
+    opacity: 0.6;
 
     @media only screen and (max-width: 500px) {
       display: none;
@@ -23,7 +24,7 @@
 
   .form {
     width: 100%;
-    margin-bottom: 100px;
+    margin-top: 20px;
 
     @media only screen and (max-width: 500px) {
       margin-right: 0;
@@ -34,21 +35,33 @@
     }
 
     .input {
-      @include flex(row, flex-start, center);
+      @include flex(column, flex-start, center);
 
-      .mat-raised-button {
-        box-shadow: none;
-        color: $color-white;
-        background-color: $color-primary;
+      .btns {
+        @include flex(row, space-between, center);
+        width: 100%;
 
-        &:hover {
-          background-color: $color-primary-hard;
+        .mat-raised-button {
           box-shadow: none;
+          color: $color-white;
+          background-color: $color-primary;
+
+          &:hover {
+            background-color: $color-primary-hard;
+            box-shadow: none;
+          }
+          @media only screen and (max-width: 500px) {
+            width: 200px;
+          }
+        }
+
+        .btn-right {
+          margin-left: 200px;
         }
       }
     }
 
-    .recipe-text {
+    .dish-text {
       @include flex(row, space-between, center);
       background-color: $color-grey-soft;
       margin: 5px;
@@ -78,6 +91,7 @@
 
   .image-right {
     margin-left: 100px;
+    opacity: 0.6;
 
     @media only screen and (max-width: 500px) {
       display: none;

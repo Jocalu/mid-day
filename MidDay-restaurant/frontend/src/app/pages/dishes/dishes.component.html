@@ -1,0 +1,86 @@
+<section class="dishes">
+  <div class="image-left">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fingredients-2-removebg-preview.png?alt=media&token=7f81b2be-fa3f-48b7-b3e7-893ec1562d8a"
+      alt="Ingredientes de cocina"
+    />
+  </div>
+  <form class="form">
+    <div class="input">
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Tipo del plato</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let type of types" value="{{ type.name }}">{{
+            type.name
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input type="text" [formControl]="text" matInput placeholder="Nombre" />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Suplemento</mat-label>
+        <input
+          type="number"
+          [formControl]="text"
+          value="0"
+          min="0"
+          matInput
+          placeholder="0 €"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Ingredientes</mat-label>
+        <input
+          type="text"
+          [formControl]="text"
+          matInput
+          placeholder="Ingredientes"
+        />
+      </mat-form-field>
+      <div class="btns">
+        <button
+          (click)="clickHandler(text.value)"
+          mat-raised-button
+          color="primary"
+        >
+          BUSCAR
+        </button>
+        <button
+          class="btn-right"
+          (click)="clickHandler(text.value)"
+          mat-raised-button
+          color="primary"
+        >
+          MODIFICAR
+        </button>
+        <button
+          (click)="clickHandler(text.value)"
+          mat-raised-button
+          color="primary"
+        >
+          AÑADIR
+        </button>
+      </div>
+    </div>
+    <div *ngIf="dishes.length">
+      <div class="dish-text" *ngFor="let dish of dishes">
+        <span> <mat-icon>restaurant_menu</mat-icon> {{ dish.text }} </span>
+
+        <button class="delete-btn" (click)="deleteButton(dish.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="image-right">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fingredients-removebg-preview.png?alt=media&token=5c208f9c-1c20-4bd7-b4ef-291b9ddc7b3a"
+      alt="Ingredientes de cocina"
+    />
+  </div>
+</section>
