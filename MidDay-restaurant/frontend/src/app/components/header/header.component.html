@@ -5,17 +5,25 @@
         <mat-icon>menu</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button routerLink="/bookings" mat-menu-item>
           <mat-icon>event</mat-icon>
           <span>Reservas</span>
         </button>
-        <button mat-menu-item>
+        <button routerLink="/menus" mat-menu-item>
           <mat-icon>restaurant</mat-icon>
           <span>Menús</span>
         </button>
-        <button mat-menu-item>
+        <button routerLink="/recipes" mat-menu-item>
           <mat-icon>menu_book</mat-icon>
           <span>Recetas</span>
+        </button>
+        <button routerLink="/landing" mat-menu-item>
+          <mat-icon>undo</mat-icon>
+          <span>Inicio</span>
+        </button>
+        <button routerLink="/register" mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Salir</span>
         </button>
       </mat-menu>
     </div>
