@@ -13,8 +13,8 @@ const dishController = () => {
     try {
       const dish = await Dish
         .findById(dishId)
-        .populate('ingredient')
-        
+        .populate('ingredient');
+
       res.json(dish);
     } catch (error) {
       res.status(500);
@@ -25,7 +25,7 @@ const dishController = () => {
   const getAllDishes = async (req, res) => {
     try {
       const allDishes = await Dish
-        .find({}).populate('ingredient')
+        .find({}).populate('ingredient');
       res.json(allDishes);
     } catch (error) {
       res.status(500);
@@ -36,13 +36,13 @@ const dishController = () => {
   const updateDish = async (req, res) => {
     const { dishId } = req.params;
     const {
-      name, type, extra
+      name, type, extra,
     } = req.body;
     try {
       const updated = await Dish
         .findByIdAndUpdate(dishId, { name, type, extra }, { new: true })
-        .populate('ingredient')
-        
+        .populate('ingredient');
+
       res.json(updated);
     } catch (error) {
       res.status(500);
@@ -54,8 +54,7 @@ const dishController = () => {
     const { dishId } = req.params;
     try {
       const dish = await Dish
-        .findByIdAndDelete(dishId)
-        
+        .findByIdAndDelete(dishId);
 
       res.json(dish);
     } catch (error) {

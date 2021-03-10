@@ -13,8 +13,8 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId)
-        .populate('category')
-        
+        .populate('category');
+
       res.json(restaurant);
     } catch (error) {
       res.status(500);
@@ -25,7 +25,7 @@ const restaurantController = () => {
   const getAllRestaurants = async (req, res) => {
     try {
       const allRestaurants = await Restaurant
-        .find({}).populate('category')
+        .find({}).populate('category');
       res.json(allRestaurants);
     } catch (error) {
       res.status(500);
@@ -41,8 +41,8 @@ const restaurantController = () => {
     try {
       const updated = await Restaurant
         .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true })
-        .populate('category')
-        
+        .populate('category');
+
       res.json(updated);
     } catch (error) {
       res.status(500);
@@ -54,8 +54,7 @@ const restaurantController = () => {
     const { restaurantId } = req.params;
     try {
       const restaurant = await Restaurant
-        .findByIdAndDelete(restaurantId)
-        
+        .findByIdAndDelete(restaurantId);
 
       res.json(restaurant);
     } catch (error) {
