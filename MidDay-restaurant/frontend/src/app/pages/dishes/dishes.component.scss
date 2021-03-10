@@ -38,18 +38,13 @@
     }
 
     .switch {
-        @include flex(row, center, center);
-  color: $color-primary;
-            .mat-stroked-button.mat-primary {
+      @include flex(row, center, center);
       color: $color-primary;
-      border: none;
-  
 
-
-      &:hover {
-   
+      .mat-stroked-button.mat-primary {
+        color: $color-primary;
+        border: none;
       }
-    }
     }
   }
 

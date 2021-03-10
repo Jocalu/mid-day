@@ -14,6 +14,10 @@ export class StoreService {
     this.DishService.getDishesService().subscribe((element) => this.dishesAPI$.next(element))
   }
 
+  postDish (dish) {
+    this.DishService.postDishService(dish).subscribe((element) => this.dishesAPI$.next(element))
+  }
+
   constructor (
     private DishService : DishService) {
 

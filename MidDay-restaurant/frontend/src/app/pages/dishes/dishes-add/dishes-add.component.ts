@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { FormControl } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
+import { StoreService } from '../../../core/services/store.service'
 
 @Component({
   selector: 'app-dishes-add',
@@ -7,16 +8,19 @@ import { FormControl } from '@angular/forms'
   styleUrls: ['./dishes-add.component.scss']
 })
 export class DishesAddComponent implements OnInit {
-  constructor () { }
-    types:any=[
-      { name: 'ENTRANTES' },
-      { name: 'ENSALADAS' },
-      { name: 'SOPAS' },
-      { name: 'SEGUNDOS' },
-      { name: 'POSTRES' }
-    ];
+  constructor (
+    private StoreService: StoreService,
+    private fb: FormBuilder
+  ) { }
 
-  ingredients = new FormControl();
+  categories:any=[
+    { name: 'ENTRANTES' },
+    { name: 'ENSALADAS' },
+    { name: 'SOPAS' },
+    { name: 'SEGUNDOS' },
+    { name: 'POSTRES' }
+  ];
+
   ingredientsList: any = [
     { name: 'ternera', category: 'carne' },
     { name: 'parmesano', category: 'lácteos' },
@@ -31,10 +35,21 @@ export class DishesAddComponent implements OnInit {
     { name: 'huevos', category: 'huevos' },
     { name: 'garbanzos', category: 'legumbres' },
     { name: 'espinacas', category: 'hortalizas' }
-
   ];
 
-  text = new FormControl(null)
+  dish = this.fb.group({
+    type: '',
+    name: '',
+    extra: 0,
+    ingredients: ''
+  })
+
+  postClick () {
+    console.log(this.dish.value)
+    this.StoreService.postDish(this.dish.value)
+  }
+
   ngOnInit (): void {
+
   }
 }

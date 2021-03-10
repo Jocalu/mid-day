@@ -9,13 +9,15 @@ import { Dish } from '../model/Dish'
 export class DishService {
   dishesURL = 'http://localhost:5000/api/v1/midday/dishes'
 
-  constructor (private httpClient: HttpClient) { }
+  constructor (
+    private httpClient: HttpClient
+  ) { }
 
   getDishesService (): Observable<Dish[]> {
     return this.httpClient.get<Dish[]>(this.dishesURL)
   }
 
-/*   postDishService (): Observable<Dish[]> {
-    return this.httpClient.post<Dish[]>(this.dishesURL)
-  } */
+  postDishService (dish): Observable<Dish[]> {
+    return this.httpClient.post<Dish[]>(this.dishesURL, dish)
+  }
 }

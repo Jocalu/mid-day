@@ -9,6 +9,8 @@ import { FormControl } from '@angular/forms'
 })
 
 export class DishesComponent implements OnInit {
+  switch: boolean = false
+
     types:any=[
       { name: 'ENTRANTES' },
       { name: 'ENSALADAS' },
@@ -37,15 +39,10 @@ export class DishesComponent implements OnInit {
 
   text = new FormControl(null)
   constructor (private StoreService: StoreService) {}
-  switch: string
 
   dishes$ = this.StoreService.dishesAPI$
 
   ngOnInit (): void {
     this.StoreService.getDishes()
   }
-/*
-  clickHandler (inputData:string) {
-    this.dishesStore.addDish(inputData)
-  } */
 }

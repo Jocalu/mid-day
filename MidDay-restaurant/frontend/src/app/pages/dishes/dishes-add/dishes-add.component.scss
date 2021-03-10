@@ -13,7 +13,6 @@ form {
 
   .input {
     @include flex(column, flex-start, flex-start);
-
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
@@ -32,7 +31,7 @@ form {
     }
 
     .btns {
-      @include flex(row, space-between, center);
+      @include flex(row, flex-end, center);
       width: 100%;
 
       .mat-raised-button {
@@ -49,12 +48,6 @@ form {
         }
       }
 
-      .btn-right {
-        margin-left: 200px;
-        @media only screen and (max-width: 500px) {
-          margin: 0 10px;
-        }
-      }
       @media only screen and (max-width: 500px) {
         margin-bottom: 20px;
       }

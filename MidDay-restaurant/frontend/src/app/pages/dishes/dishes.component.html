@@ -5,29 +5,31 @@
       alt="Ingredientes de cocina"
     />
   </div>
+
   <div class="components">
     <div class="switch">
-          <button
-              mat-stroked-button
-  
-              type="button"
-              color="primary"
-            >
-              AÑADIR
-            </button>
+      <button
+        (click)="switch = false"
+        mat-stroked-button
+        type="button"
+        color="primary"
+      >
+        AÑADIR
+      </button>
       /
-         <button
-              mat-stroked-button
-           
-              type="button"
-              color="primary"
-            >
-              BUSCAR
-            </button>
+      <button
+        (click)="switch = true"
+        mat-stroked-button
+        type="button"
+        color="primary"
+      >
+        BUSCAR
+      </button>
     </div>
-    <app-dishes-add></app-dishes-add>
-    <app-dishes-search></app-dishes-search>
+    <app-dishes-add *ngIf="!switch"></app-dishes-add>
+    <app-dishes-search *ngIf="switch"></app-dishes-search>
   </div>
+
   <div class="image-right">
     <img
       src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fingredients-removebg-preview.png?alt=media&token=5c208f9c-1c20-4bd7-b4ef-291b9ddc7b3a"
