@@ -1,1 +1,65 @@
-<p>dishes-add works!</p>
+<form>
+  <div class="input">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo del plato</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let type of types" value="{{ type.name }}">{{
+          type.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input type="text" [formControl]="text" matInput placeholder="Nombre" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ingredientes</mat-label>
+      <mat-select [formControl]="ingredients" multiple>
+        <mat-option
+          *ngFor="let ingredient of ingredientsList"
+          [value]="ingredient.name"
+          >{{ ingredient.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Suplemento</mat-label>
+      <input
+        type="number"
+        [formControl]="text"
+        value="0"
+        min="0"
+        matInput
+        placeholder="0"
+      /><mat-icon>euro</mat-icon>
+    </mat-form-field>
+
+    <!--    <div class="btns">
+        <button
+          (click)="clickHandler(text.value)"
+          mat-raised-button
+          color="primary"
+        >
+          BUSCAR
+        </button>
+        <button
+          class="btn-right"
+          (click)="clickHandler(text.value)"
+          mat-raised-button
+          color="primary"
+        >
+          MODIFICAR
+        </button>
+        <button
+          (click)="clickHandler(text.value)"
+          mat-raised-button
+          color="primary"
+        >
+          AÑADIR
+        </button>
+      </div> -->
+  </div>
+</form>

@@ -1,0 +1,35 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/colors";
+@import "../../../../styles/fonts";
+
+.dish-text {
+      @include flex(column, center, flex-start);
+      background-color: $color-grey-soft;
+      margin: 5px;
+      border-radius: 4px;
+      color: $color-primary;
+
+      span {
+        @include flexcenter();
+      }
+
+      mat-icon {
+        color: $color-primary;
+        margin-right: 10px;
+      }
+
+      .delete-btn {
+        cursor: pointer;
+        background: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &:last-of-type {
+        @media only screen and (max-width: 500px) {
+          margin-bottom: 20px;
+        }
+      }}

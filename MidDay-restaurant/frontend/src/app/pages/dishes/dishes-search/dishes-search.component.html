@@ -1,1 +1,11 @@
-<p>dishes-search works!</p>
+<div *ngIf="dishes$ | async as dishes">
+  <div class="dish-text" *ngFor="let dish of dishes">
+    <span> <mat-icon>restaurant_menu</mat-icon> {{ dish.type }} </span>
+    <span> {{ dish.name }} </span>
+    <span> {{ dish.ingredients }} </span>
+    <span> {{ dish.extra }} </span>
+    <button class="delete-btn" (click)="deleteButton(dish.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

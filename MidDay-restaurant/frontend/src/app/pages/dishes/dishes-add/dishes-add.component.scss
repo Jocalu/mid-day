@@ -1,0 +1,63 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/colors";
+@import "../../../../styles/fonts";
+
+form {
+  .full-width {
+    width: 500px;
+
+    @media only screen and (max-width: 500px) {
+      width: 100%;
+    }
+  }
+
+  .input {
+    @include flex(column, flex-start, flex-start);
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+
+    mat-icon {
+      position: absolute;
+      right: 5px;
+      font-size: 20px;
+      color: $color-primary;
+    }
+
+    .btns {
+      @include flex(row, space-between, center);
+      width: 100%;
+
+      .mat-raised-button {
+        box-shadow: none;
+        color: $color-white;
+        background-color: $color-primary;
+
+        &:hover {
+          background-color: $color-primary-hard;
+          box-shadow: none;
+        }
+        @media only screen and (max-width: 500px) {
+          width: 200px;
+        }
+      }
+
+      .btn-right {
+        margin-left: 200px;
+        @media only screen and (max-width: 500px) {
+          margin: 0 10px;
+        }
+      }
+      @media only screen and (max-width: 500px) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
