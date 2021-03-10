@@ -22,8 +22,8 @@ import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 import { MatTreeModule } from '@angular/material/tree'
 import { HttpClientModule } from '@angular/common/http'
-import { DishesListComponent } from './pages/dishes/dishes-list/dishes-list.component'
-import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-search.component'
+import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-search.component';
+import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.component'
 
 @NgModule({
   declarations: [
@@ -36,8 +36,8 @@ import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-searc
     DishesComponent,
     MenusComponent,
     NotFoundComponent,
-    DishesListComponent,
-    DishesSearchComponent
+    DishesSearchComponent,
+    DishesAddComponent
   ],
   imports: [
     FormsModule,

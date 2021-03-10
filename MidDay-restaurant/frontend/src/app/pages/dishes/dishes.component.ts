@@ -35,6 +35,8 @@ export class DishesComponent implements OnInit {
 
   ];
 
+  switch: string
+
   text = new FormControl(null)
   constructor (private StoreService: StoreService) {}
 
