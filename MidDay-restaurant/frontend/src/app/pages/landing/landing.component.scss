@@ -32,6 +32,10 @@
       }
     }
 
+    .paragraph {
+      margin-bottom: 30px;
+    }
+
     .target {
       @include flex(column, flex-start, flex-start);
       border: 2px solid $color-primary;
