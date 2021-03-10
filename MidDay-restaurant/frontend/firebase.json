@@ -3,7 +3,7 @@
     "rules": "storage.rules"
   },
   "hosting": {
-    "public": "public",
+    "public": "dist/MidDay-restaurant",
     "ignore": [
       "firebase.json",
       "**/.*",

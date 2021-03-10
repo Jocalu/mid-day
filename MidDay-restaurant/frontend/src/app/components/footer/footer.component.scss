@@ -3,22 +3,31 @@
 @import "../../../styles/fonts";
 
 footer {
-  height: 300px;
   width: 100vw;
-  background-color: $color-secondary;
   font-family: $font-secondary-thin;
 
   .footer {
     @include flex(column, flex-start, flex-start);
     padding: 30px 100px;
-    border-top: 2px solid $color-primary;
+    border-top: 2px solid $color-grey-soft;
+    background-color: $color-grey;
+
+    @media only screen and (max-width: 500px) {
+      padding: 0 30px;
+      height: 340px;
+    }
 
     img {
       width: 180px;
+
+      @media only screen and (max-width: 500px) {
+        margin: 0 auto;
+        margin-top: 20px;
+      }
     }
 
     .hr {
-      background-color: $color-primary;
+      background-color: $color-black-soft;
       height: 1px;
       width: 100%;
       border: none;
@@ -28,11 +37,20 @@ footer {
     .info {
       @include flex(row, space-between, flex-start);
       width: 100%;
-      color: $color-white;
+      color: $color-black-soft;
       font-size: 12px;
+
+      @media only screen and (max-width: 500px) {
+        @include flex(column, center, center);
+      }
 
       .column {
         @include flex(column, flex-start, flex-start);
+
+        @media only screen and (max-width: 500px) {
+          @include flex(column, flex-start, center);
+          width: 100%;
+        }
 
         h6 {
           font-size: 14px;
@@ -42,6 +60,10 @@ footer {
         p {
           cursor: pointer;
           line-height: 1.5;
+
+          @media only screen and (max-width: 500px) {
+            line-height: 0.8;
+          }
         }
       }
     }
@@ -56,13 +78,28 @@ footer {
     font-size: 12px;
     padding: 0 100px;
 
+    @media only screen and (max-width: 500px) {
+      @include flex(column, center, center);
+      font-size: 12px;
+      height: 170px;
+      padding: 0 30px;
+    }
+
     div {
       @include flex(row, center, center);
+
+      @media only screen and (max-width: 500px) {
+        @include flex(column, center, center);
+      }
     }
 
     p {
       cursor: pointer;
       margin-right: 30px;
+
+      @media only screen and (max-width: 500px) {
+        margin: 5px 0;
+      }
     }
     .copyright {
       margin-right: 0;

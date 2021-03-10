@@ -1,9 +1,36 @@
+@import "../../frontend/src/styles/colors";
+
 *,
 *:before,
 *:after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+
+  &:horizontal{
+ display:none
+  }
+}
+
+*::-webkit-scrollbar-thumb {
+  background: $color-primary;
+  border-radius: 8px;
+
+  &:hover {
+    background: $color-primary-hard;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  *::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 // Custom Theming for Angular Material

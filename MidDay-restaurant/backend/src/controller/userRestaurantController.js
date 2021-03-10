@@ -14,7 +14,8 @@ const userRestaurantController = () => {
     try {
       const user = await UserRestaurant
         .findById(userId)
-        .populate('restaurant');
+        .populate('restaurant')
+        
       res.json(user);
     } catch (error) {
       res.status(500);
@@ -25,7 +26,9 @@ const userRestaurantController = () => {
   const getAllUserRestaurants = async (req, res) => {
     try {
       const allUsers = await UserRestaurant
-        .find({}).populate('restaurant');
+        .find({})
+        .populate('restaurant')
+        
       res.json(allUsers);
     } catch (error) {
       res.status(500);
@@ -42,7 +45,8 @@ const userRestaurantController = () => {
     try {
       const updated = await UserRestaurant
         .findByIdAndUpdate({ _id: userId }, { name, password }, { new: true })
-        .populate('restaurant');
+        .populate('restaurant')
+        
       res.json(updated);
     } catch (error) {
       res.status(500);
@@ -55,7 +59,8 @@ const userRestaurantController = () => {
 
     try {
       const user = await UserRestaurant
-        .findByIdAndDelete({ _id: userId });
+        .findByIdAndDelete({ _id: userId })
+        
 
       res.json(user);
     } catch (error) {

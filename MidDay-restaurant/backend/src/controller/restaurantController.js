@@ -14,6 +14,7 @@ const restaurantController = () => {
       const restaurant = await Restaurant
         .findById(restaurantId)
         .populate('category');
+
       res.json(restaurant);
     } catch (error) {
       res.status(500);
@@ -41,6 +42,7 @@ const restaurantController = () => {
       const updated = await Restaurant
         .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true })
         .populate('category');
+
       res.json(updated);
     } catch (error) {
       res.status(500);

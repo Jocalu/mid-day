@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -29,7 +28,8 @@ export class RegisterComponent implements OnInit {
     { name: 'Griega', value: 10 }
   ]
 
-  // eslint-disable-next-line no-useless-constructor
+  hide = true;
+
   constructor (private _formBuilder: FormBuilder) {}
 
   ngOnInit () {

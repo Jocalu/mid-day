@@ -12,13 +12,41 @@ header {
     background: $color-grey-soft;
     border-bottom: $color-grey 1px solid;
 
+    @media only screen and (max-width: 500px) {
+      width: 100%;
+      padding: 0 20px;
+      @include flex(row, flex-start, center);
+    }
+
+    .mobile-menu {
+      display: none;
+
+      .mat-icon {
+        font-size: 36px;
+        color: $color-primary;
+        margin-right: 20px;
+      }
+
+      @media only screen and (max-width: 500px) {
+        display: block;
+      }
+    }
+
     img {
       width: 180px;
+
+      @media only screen and (max-width: 500px) {
+        margin-left: 30px;
+      }
     }
 
     div {
+      .mat-button.mat-primary {
+        color: $color-primary;
+      }
+
       .mat-stroked-button.mat-primary {
-        margin: 20px;
+        margin-left: 10px;
         color: $color-primary;
         border: 1px solid $color-primary;
 
@@ -30,13 +58,18 @@ header {
         box-shadow: none;
       }
       .mat-raised-button.mat-primary {
-        color: white;
+        margin-left: 10px;
+        color: $color-white;
         background-color: $color-primary;
 
         &:hover {
           background-color: $color-primary-hard;
           box-shadow: none;
         }
+      }
+
+      @media only screen and (max-width: 500px) {
+        display: none;
       }
     }
   }

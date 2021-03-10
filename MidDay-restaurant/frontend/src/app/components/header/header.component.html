@@ -1,12 +1,50 @@
 <header>
   <nav>
+    <div class="mobile-menu">
+      <button class="btn-menu" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button routerLink="/bookings" mat-menu-item>
+          <mat-icon>event</mat-icon>
+          <span>Reservas</span>
+        </button>
+        <button routerLink="/menus" mat-menu-item>
+          <mat-icon>restaurant</mat-icon>
+          <span>Menús</span>
+        </button>
+        <button routerLink="/dishes" mat-menu-item>
+          <mat-icon>menu_book</mat-icon>
+          <span>Platos</span>
+        </button>
+        <button routerLink="/landing" mat-menu-item>
+          <mat-icon>undo</mat-icon>
+          <span>Inicio</span>
+        </button>
+        <button routerLink="/register" mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Salir</span>
+        </button>
+      </mat-menu>
+    </div>
     <img
       src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Flogo_negro.png?alt=media&token=4dcb1501-4770-4b7d-b01c-d8528ff85556"
       alt="logo"
     />
     <div>
-      <button mat-raised-button color="primary">ENTRAR</button>
-      <button mat-stroked-button color="primary">REGISTRAR</button>
+      <button routerLink="/menus" mat-button color="primary">
+        MENUS<a></a>
+      </button>
+      <button routerLink="/dishes" mat-button color="primary">PLATOS</button>
+      <button routerLink="/bookings" mat-button color="primary">
+        RESERVAS
+      </button>
+      <button routerLink="/landing" mat-raised-button color="primary">
+        ENTRAR
+      </button>
+      <button routerLink="/register" mat-stroked-button color="primary">
+        REGISTRAR
+      </button>
     </div>
   </nav>
 </header>
