@@ -15,11 +15,12 @@
 
   .image-left {
     opacity: 0.6;
-   
+    width: 100px;
+    height: 100vh;
 
-    img{
- left: -50px;
-    position: absolute;
+    img {
+      left: -50px;
+      position: absolute;
     }
 
     @media only screen and (max-width: 500px) {
@@ -35,15 +36,31 @@
     @media only screen and (max-width: 500px) {
       margin-right: 0;
     }
+
+    .switch {
+        @include flex(row, center, center);
+  color: $color-primary;
+            .mat-stroked-button.mat-primary {
+      color: $color-primary;
+      border: none;
+  
+
+
+      &:hover {
+   
+      }
+    }
+    }
   }
 
   .image-right {
     opacity: 0.6;
+    width: 100px;
+    height: 100vh;
 
-
-    img{
-         position: absolute;
-    right: -50px;
+    img {
+      position: absolute;
+      right: -50px;
     }
 
     @media only screen and (max-width: 500px) {
