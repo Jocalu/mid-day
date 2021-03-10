@@ -4,15 +4,22 @@
 
 form {
   .full-width {
-    width: 500px;
-
-    @media only screen and (max-width: 500px) {
-      width: 100%;
-    }
+    width: 550px;
+  }
+  @media only screen and (max-width: 500px) {
+    width: 100vw;
+    padding: 0 20px;
   }
 
   .input {
     @include flex(column, flex-start, flex-start);
+
+    @media only screen and (max-width: 500px) {
+      mat-form-field {
+        width: 100%;
+      }
+    }
+
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: none;

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { StoreService } from '../../../core/services/store.service'
 import { FormControl } from '@angular/forms'
+import { debounce, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators'
+import { of, Subject } from 'rxjs'
+
 @Component({
   selector: 'app-dishes-search',
   templateUrl: './dishes-search.component.html',
@@ -18,6 +21,7 @@ export class DishesSearchComponent implements OnInit {
       ];
 
   ingredients = new FormControl();
+
   ingredientsList: any = [
     { name: 'ternera', category: 'carne' },
     { name: 'parmesano', category: 'lácteos' },
@@ -32,13 +36,25 @@ export class DishesSearchComponent implements OnInit {
     { name: 'huevos', category: 'huevos' },
     { name: 'garbanzos', category: 'legumbres' },
     { name: 'espinacas', category: 'hortalizas' }
-
   ];
 
-    text = new FormControl(null)
+  text = new FormControl(null)
+
   dishes$ = this.StoreService.dishesAPI$
+
+  searchTerms: Subject<string> = new Subject()
 
   ngOnInit (): void {
     this.StoreService.getDishes()
+    /*     this.dishes$ = this.searchTerms
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap(term => this.StoreService.searchDish(term))
+      ) */
+  }
+
+  search (searchValue: string) {
+    this.searchTerms.next(searchValue)
   }
 }

@@ -37,7 +37,7 @@ export class DishesComponent implements OnInit {
 
   ];
 
-  text = new FormControl(null)
+
   constructor (private StoreService: StoreService) {}
 
   dishes$ = this.StoreService.dishesAPI$

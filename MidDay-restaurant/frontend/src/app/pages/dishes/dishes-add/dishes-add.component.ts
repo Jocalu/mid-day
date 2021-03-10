@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
+import { FormBuilder } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
 
 @Component({
@@ -45,7 +45,6 @@ export class DishesAddComponent implements OnInit {
   })
 
   postClick () {
-    console.log(this.dish.value)
     this.StoreService.postDish(this.dish.value)
   }
 

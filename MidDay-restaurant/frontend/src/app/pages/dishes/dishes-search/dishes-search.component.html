@@ -1,37 +1,39 @@
 <form>
   <div class="input">
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Tipo del plato</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let type of types" value="{{ type.name }}">{{
-          type.name
-        }}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
     <mat-form-field class="full-width">
       <mat-label>Nombre</mat-label>
-      <input type="text" [formControl]="text" matInput placeholder="Nombre" />
-    </mat-form-field>
-
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Ingredientes</mat-label>
-      <mat-select [formControl]="ingredients" multiple>
-        <mat-option
-          *ngFor="let ingredient of ingredientsList"
-          [value]="ingredient.name"
-          >{{ ingredient.name }}</mat-option
-        >
-      </mat-select>
+      <input 
+      type="text" 
+      [formControl]="text" 
+      matInput 
+      placeholder="Nombre" />
     </mat-form-field>
   </div>
 </form>
 
 <div *ngIf="dishes$ | async as dishes">
   <div class="dish-text" *ngFor="let dish of dishes">
-    <span> <mat-icon>restaurant_menu</mat-icon> {{ dish.type }} </span>
-    <span> {{ dish.name }} </span>
-    <span> {{ dish.name }} </span>
-    <span> {{ dish.extra }} </span>
+    <span class="category">
+      <mat-icon>restaurant_menu</mat-icon>
+      <h3>{{ dish.type }}</h3>
+      <button class="delete-btn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
+
+    <span>
+      <p>Nombre:</p>
+      <p>{{ dish.name }}</p></span
+    >
+
+    <span>
+      <p>Ingredientes:</p>
+      <p>{{ dish.ingredients }}</p></span
+    >
+
+    <span>
+      <p>Suplemento:</p>
+      <p>{{ dish.extra }}€</p>
+    </span>
   </div>
 </div>

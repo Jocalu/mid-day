@@ -4,10 +4,11 @@
 
 form {
   .full-width {
-    width: 500px;
+    width: 550px;
 
     @media only screen and (max-width: 500px) {
-      width: 100%;
+      width: 100vw;
+      padding: 0 20px;
     }
   }
 
@@ -63,13 +64,42 @@ form {
 }
 .dish-text {
   @include flex(column, center, flex-start);
-  background-color: $color-grey-soft;
-  margin: 5px;
-  border-radius: 4px;
   color: $color-primary;
+  border: 2px solid $color-primary;
+  border-radius: 6px;
+  margin-bottom: 5px;
+      background-color: $color-grey-soft;
+
+  @media only screen and (max-width: 500px) {
+     margin: 0 20px;
+       margin-bottom: 10px;
+  }
+
+  .category {
+    @include flex(row, center, flex-start);
+    border-bottom: 1px solid $color-primary;
+    width: 100%;
+
+       border-radius: 6px;
+
+    h3 {
+      letter-spacing: 0.5px;
+      color: $color-primary;
+      width: 100%;
+      text-indent: 10px;
+      background-color: $color-grey-soft;
+      border-radius: 6px;
+      margin: 0px;
+    }
+  }
 
   span {
     @include flexcenter();
+
+    p {
+      margin-top: 5px;
+      text-indent: 10px;
+    }
   }
 
   mat-icon {

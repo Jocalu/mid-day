@@ -16,11 +16,13 @@
   .image-left {
     opacity: 0.6;
     width: 100px;
-    height: 100vh;
+    height: 550px;
+
 
     img {
       left: -50px;
       position: absolute;
+      z-index: -1;
     }
 
     @media only screen and (max-width: 500px) {
@@ -40,6 +42,11 @@
     .switch {
       @include flex(row, center, center);
       color: $color-primary;
+      margin-left: -10px;
+
+      @media only screen and (max-width: 500px) {
+        padding: 0 20px;
+      }
 
       .mat-stroked-button.mat-primary {
         color: $color-primary;
@@ -51,11 +58,12 @@
   .image-right {
     opacity: 0.6;
     width: 100px;
-    height: 100vh;
+    height: 550px;
 
     img {
       position: absolute;
       right: -50px;
+        z-index: -1;
     }
 
     @media only screen and (max-width: 500px) {
