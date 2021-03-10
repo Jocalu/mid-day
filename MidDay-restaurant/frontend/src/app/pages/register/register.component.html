@@ -5,15 +5,23 @@
         <form [formGroup]="firstFormGroup">
           <ng-template matStepLabel>Tu perfil</ng-template>
           <div class="form">
-            <mat-form-field class="input">
+            <mat-form-field
+              hintLabel="Max 10 carácteres"
+              appearance="fill"
+              class="input"
+            >
               <mat-label>Nombre usuario</mat-label>
               <input
                 matInput
+                #input
+                maxlength="10"
                 placeholder="Nombre usuario"
                 formControlName="firstCtrl"
                 required
               />
+              <mat-hint align="end">{{ input.value?.length || 0 }}/10</mat-hint>
             </mat-form-field>
+
             <mat-form-field class="input">
               <mat-label>Email</mat-label>
               <input
@@ -23,23 +31,38 @@
                 required
               />
             </mat-form-field>
+
             <mat-form-field class="input">
               <mat-label>Contraseña</mat-label>
               <input
+                [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Contraseña"
                 formControlName="firstCtrl"
                 required
               />
             </mat-form-field>
+
             <mat-form-field class="input">
               <mat-label>Repetir contraseña</mat-label>
               <input
+                [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Repetir contraseña"
                 formControlName="firstCtrl"
                 required
               />
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>{{
+                  hide ? "visibility_off" : "visibility"
+                }}</mat-icon>
+              </button>
             </mat-form-field>
           </div>
           <div>

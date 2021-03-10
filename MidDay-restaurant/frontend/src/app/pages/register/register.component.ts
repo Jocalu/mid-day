@@ -28,7 +28,8 @@ export class RegisterComponent implements OnInit {
     { name: 'Griega', value: 10 }
   ]
 
-  // eslint-disable-next-line no-useless-constructor
+  hide = true;
+
   constructor (private _formBuilder: FormBuilder) {}
 
   ngOnInit () {

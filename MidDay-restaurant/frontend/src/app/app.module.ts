@@ -20,6 +20,7 @@ import { DishesComponent } from './pages/dishes/dishes.component'
 import { MenusComponent } from './pages/menus/menus.component'
 import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
+import { MatTreeModule } from '@angular/material/tree'
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component'
     MatSelectModule,
     MatMenuModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatTreeModule
   ],
   providers: [
     {

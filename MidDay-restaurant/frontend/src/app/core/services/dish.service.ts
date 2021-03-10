@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
-import { Dish } from '../../model/Dish'
+import { Dish } from '../model/Dish'
 
 @Injectable({
   providedIn: 'root'

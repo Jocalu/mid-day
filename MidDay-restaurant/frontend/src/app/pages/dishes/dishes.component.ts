@@ -17,18 +17,28 @@ export class DishesComponent implements OnInit {
       { name: 'POSTRES' }
     ];
 
-       ingredients:any=[
-         { name: 'Setas' },
-         { name: 'Carnes' },
-         { name: 'SOPAS' },
-         { name: 'SEGUNDOS' },
-         { name: 'POSTRES' }
-       ]
+  ingredients = new FormControl();
+  ingredientsList: any = [
+    { name: 'ternera', category: 'carne' },
+    { name: 'parmesano', category: 'lácteos' },
+    { name: 'aceite de oliva', category: 'aceites' },
+    { name: 'comino', category: 'especias' },
+    { name: 'tomate', category: 'hortalizas' },
+    { name: 'piñones', category: 'frutos secos' },
+    { name: 'cebolla', category: 'hortalizas' },
+    { name: 'salmón', category: 'pescados' },
+    { name: 'calabacín', category: 'hortalizas' },
+    { name: 'sandía', category: 'frutas' },
+    { name: 'huevos', category: 'huevos' },
+    { name: 'garbanzos', category: 'legumbres' },
+    { name: 'espinacas', category: 'hortalizas' }
 
-       constructor (private dishesStore: DishStoreService) {}
+  ];
 
-       ngOnInit (): void {
-       }
+  constructor (private dishesStore: DishStoreService) {}
+
+  ngOnInit (): void {
+  }
 
   text = new FormControl(null)
 
