@@ -41,6 +41,16 @@
     .input {
       @include flex(column, flex-start, flex-start);
 
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
       mat-icon {
         position: absolute;
         right: 5px;
@@ -79,7 +89,7 @@
     }
 
     .dish-text {
-      @include flex(row, space-between, center);
+      @include flex(column, center, flex-start);
       background-color: $color-grey-soft;
       margin: 5px;
       border-radius: 4px;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { DishStoreService } from '../../core/services/dish.service'
+import { StoreService } from '../../core/services/store.service'
 import { FormControl } from '@angular/forms'
 
 @Component({
@@ -35,20 +35,16 @@ export class DishesComponent implements OnInit {
 
   ];
 
-  constructor (private dishesStore: DishStoreService) {}
+  text = new FormControl(null)
+  constructor (private StoreService: StoreService) {}
+
+  dishes$ = this.StoreService.dishesAPI$
 
   ngOnInit (): void {
+    this.StoreService.getDishes()
   }
-
-  text = new FormControl(null)
-
-  dishes: any = this.dishesStore.dish$.subscribe(dish => { this.dishes = dish })
-
+/*
   clickHandler (inputData:string) {
     this.dishesStore.addDish(inputData)
-  }
-
-  deleteButton (id:number) {
-    this.dishesStore.removeDish(id)
-  }
+  } */
 }

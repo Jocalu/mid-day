@@ -21,6 +21,9 @@ import { MenusComponent } from './pages/menus/menus.component'
 import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 import { MatTreeModule } from '@angular/material/tree'
+import { HttpClientModule } from '@angular/common/http'
+import { DishesListComponent } from './pages/dishes/dishes-list/dishes-list.component'
+import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-search.component'
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { MatTreeModule } from '@angular/material/tree'
     BookingsComponent,
     DishesComponent,
     MenusComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DishesListComponent,
+    DishesSearchComponent
   ],
   imports: [
     FormsModule,
@@ -47,7 +52,8 @@ import { MatTreeModule } from '@angular/material/tree'
     MatMenuModule,
     MatIconModule,
     AppRoutingModule,
-    MatTreeModule
+    MatTreeModule,
+    HttpClientModule
   ],
   providers: [
     {

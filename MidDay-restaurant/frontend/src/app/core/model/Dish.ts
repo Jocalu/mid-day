@@ -1,5 +1,6 @@
-
 export interface Dish {
-  id: number,
-  text: string
+   type: String,
+   name: String,
+   category: String,
+        extra: Number
 }

@@ -3,7 +3,7 @@ const { model, Schema } = require('mongoose');
 const dishSchema = new Schema({
   type: String,
   name: String,
-  ingredients: { type: Schema.Types.ObjectId, ref: 'Ingredient' },
+  ingredients: Array,
   extra: Number,
 });
 

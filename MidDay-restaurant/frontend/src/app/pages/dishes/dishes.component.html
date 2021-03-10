@@ -44,7 +44,7 @@
         /><mat-icon>euro</mat-icon>
       </mat-form-field>
 
-      <div class="btns">
+      <!--    <div class="btns">
         <button
           (click)="clickHandler(text.value)"
           mat-raised-button
@@ -67,13 +67,14 @@
         >
           AÑADIR
         </button>
-      </div>
+      </div> -->
     </div>
-    <div *ngIf="dishes.length">
+    <div *ngIf="dishes$ | async as dishes">
       <div class="dish-text" *ngFor="let dish of dishes">
-        <span> <mat-icon>restaurant_menu</mat-icon> {{ dish.text }} </span>
-        <span> {{ dish.text }} </span>
-
+        <span> <mat-icon>restaurant_menu</mat-icon> {{ dish.type }} </span>
+        <span> {{ dish.name }} </span>
+        <span> {{ dish.ingredients }} </span>
+        <span> {{ dish.extra }} </span>
         <button class="delete-btn" (click)="deleteButton(dish.id)">
           <mat-icon>delete</mat-icon>
         </button>
