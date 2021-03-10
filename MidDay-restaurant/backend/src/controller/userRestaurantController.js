@@ -15,7 +15,7 @@ const userRestaurantController = () => {
       const user = await UserRestaurant
         .findById(userId)
         .populate('restaurant')
-        .exec();
+        
       res.json(user);
     } catch (error) {
       res.status(500);
@@ -28,7 +28,7 @@ const userRestaurantController = () => {
       const allUsers = await UserRestaurant
         .find({})
         .populate('restaurant')
-        .exec();
+        
       res.json(allUsers);
     } catch (error) {
       res.status(500);
@@ -46,7 +46,7 @@ const userRestaurantController = () => {
       const updated = await UserRestaurant
         .findByIdAndUpdate({ _id: userId }, { name, password }, { new: true })
         .populate('restaurant')
-        .exec();
+        
       res.json(updated);
     } catch (error) {
       res.status(500);
@@ -60,7 +60,7 @@ const userRestaurantController = () => {
     try {
       const user = await UserRestaurant
         .findByIdAndDelete({ _id: userId })
-        .exec();
+        
 
       res.json(user);
     } catch (error) {
