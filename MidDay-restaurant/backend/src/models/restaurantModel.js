@@ -9,7 +9,9 @@ const restaurantSchema = new Schema({
   street: String,
   number: Number,
   city: String,
-  zip: Number,
+  zip: String,
+  image: String,
+  menuprice: Number,
 });
 
 module.exports = model('Restaurant', restaurantSchema);

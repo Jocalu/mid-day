@@ -2,7 +2,7 @@ const { model, Schema } = require('mongoose');
 
 const categorySchema = new Schema({
   name: String,
-  photo: String,
+  image: String,
 });
 
 module.exports = model('Category', categorySchema);
