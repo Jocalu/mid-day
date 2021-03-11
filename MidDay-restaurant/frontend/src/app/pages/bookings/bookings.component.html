@@ -1,18 +1,12 @@
 <main>
   <mat-form-field appearance="fill" class="date">
     <mat-label>Elige una fecha</mat-label>
-    <input
-      #date
-      [formControl]="datepicker"
-      matInput
-      [matDatepicker]="picker"
-      (input)="changeFormat(date.value)"
-    />
+    <input [formControl]="datepicker" matInput [matDatepicker]="picker" />
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <h3>{{ formatDate }}</h3>
+  <h3>{{ datepicker.value }}</h3>
   <section class="bookings__container">
     <div class="hours">
       <h4>Horas</h4>
@@ -63,7 +57,7 @@
 
     <div class="detail">
       <h4>Detalle</h4>
-      <div>
+      <div class="bookings__data">
         <p>Gerard</p>
         <p>4 pax</p>
         <p>35355152121</p>

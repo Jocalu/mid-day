@@ -70,6 +70,12 @@ main {
       height: 100%;
       width: 500px;
 
+      .bookings__data{
+        @include flex(row, space-between, center);
+      width: 480px;
+      
+      }
+
       p {
         cursor: pointer;
         @include flex(row, center, center);
