@@ -5,23 +5,23 @@
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
-
   <h3>{{ datepicker.value }}</h3>
+
   <section class="bookings__container">
     <div class="hours">
       <h4>Horas</h4>
-      <span *ngFor="let hour of hours">
+      <button *ngFor="let hour of hours">
         {{ hour.hour }}
         <p>{{ reservedCapacity }}/{{ maxCapacity }}</p>
-      </span>
+      </button>
     </div>
 
     <div class="bookings">
       <h4>Reservas</h4>
-      <span *ngFor="let booking of bookings">
+      <button *ngFor="let booking of bookings">
         {{ booking.pax }}pax
         <p>{{ booking.bookingName }}</p>
-      </span>
+      </button>
     </div>
 
     <div class="detail">

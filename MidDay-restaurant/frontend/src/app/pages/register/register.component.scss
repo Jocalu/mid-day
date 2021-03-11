@@ -54,13 +54,7 @@
     }
 
     .mat-stroked-button.mat-primary {
-      color: $color-primary;
-      border: 1px solid $color-primary;
       margin-right: 20px;
-
-      &:hover {
-        border: 1px solid $color-primary;
-      }
     }
     .mat-form-field-flex {
       width: 300px;

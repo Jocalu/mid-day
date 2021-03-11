@@ -5,13 +5,22 @@
 main {
   @include flex(column, center, center);
   width: 100vw;
-  padding: 0 100px;
+  padding: 0 300px;
   margin: 20px 0;
   font-family: $font-primary;
 
+  .date {
+    align-self: flex-start;
+  }
+
   h3 {
+    align-self: flex-start;
     font-family: $font-primary;
     font-weight: bold;
+  }
+  h4 {
+    background-color: $color-primary;
+    color: $color-white;
   }
 
   .bookings__container {
@@ -19,7 +28,7 @@ main {
     background-color: $color-grey-soft;
     border-radius: 6px;
     border: 2px solid $color-primary;
-    width: 800px;
+    width: 850px;
     align-items: stretch;
 
     h4 {
@@ -33,13 +42,17 @@ main {
       width: 150px;
       border-right: 1px solid $color-primary;
 
-      span {
+      button {
         cursor: pointer;
-        @include flex(row, center, center);
+        outline: none;
+        border: none;
+        height: 30px;
+        @include flex(row, space-between, center);
         background-color: $color-primary-soft;
         width: 130px;
         border-radius: 6px;
         margin-bottom: 10px;
+        padding: 10px;
 
         p {
           margin-left: 10px;
@@ -51,14 +64,17 @@ main {
       width: 150px;
       border-right: 1px solid $color-primary;
 
-      span {
+      button {
         cursor: pointer;
-        @include flex(row, flex-start, center);
+        outline: none;
+        border: none;
+        height: 30px;
+        @include flex(row, space-between, center);
         background-color: $color-primary-soft;
         width: 130px;
         border-radius: 6px;
         margin-bottom: 10px;
-        text-indent: 10px;
+        padding: 10px;
 
         p {
           margin-left: 10px;
@@ -67,13 +83,13 @@ main {
     }
     .detail {
       @include flex(column, flex-start, flex-start);
-      width: 500px;
+      width: 550px;
 
       .booking-data {
         @include flex(column, flex-start, flex-start);
         margin-left: 10px;
         background-color: $color-primary-soft;
-        width: 470px;
+        width: 525px;
         border-radius: 6px;
         margin-bottom: 10px;
 

@@ -27,7 +27,7 @@ import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.compone
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatDatepickerModule } from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core'
-
+import * as moment from 'moment'
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +65,7 @@ import { MatNativeDateModule } from '@angular/material/core'
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' }
-    }
+    }, { provide: 'moment', useValue: moment }
   ],
   bootstrap: [AppComponent]
 })

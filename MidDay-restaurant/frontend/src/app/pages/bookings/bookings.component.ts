@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
-
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
-  constructor () { }
+  constructor () {
+
+  }
 
   hours:any[]=[
     { hour: '12:00' },
@@ -26,6 +27,7 @@ export class BookingsComponent implements OnInit {
       date: '02/04/2020',
       hour: '12:30',
       bookingName: 'Gerard',
+      phone: 666123123,
       pax: 3,
       people: [{
         name: 'Gerard',
@@ -59,6 +61,7 @@ export class BookingsComponent implements OnInit {
       date: '02/04/2020',
       hour: '12:30',
       bookingName: 'Jose',
+      phone: 666123123,
       pax: 1,
       people: [{
         name: 'Jose',
@@ -76,7 +79,7 @@ export class BookingsComponent implements OnInit {
 
   maxCapacity:number = 100
 
-  datepicker = new FormControl('')
+  datepicker = new FormControl('');
 
   ngOnInit (): void {
 
