@@ -10,88 +10,35 @@
   <section class="bookings__container">
     <div class="hours">
       <h4>Horas</h4>
-      <span
-        >12:00
-        <p>56/100</p></span
-      >
-      <span
-        >12:30
-        <p>56/100</p></span
-      >
-      <span
-        >13:00
-        <p>56/100</p></span
-      >
-      <span
-        >13:30
-        <p>56/100</p></span
-      >
-      <span
-        >14:00
-        <p>56/100</p></span
-      >
-      <span
-        >14:30
-        <p>56/100</p></span
-      >
-      <span
-        >15:00
-        <p>56/100</p></span
-      >
-      <span
-        >15:30
-        <p>56/100</p></span
-      >
-      <span
-        >16:00
-        <p>56/100</p></span
-      >
+      <span *ngFor="let hour of hours">
+        {{ hour.hour }}
+        <p>{{ reservedCapacity }}/{{ maxCapacity }}</p>
+      </span>
     </div>
 
     <div class="bookings">
       <h4>Reservas</h4>
-      <span
-        >4 pax
-        <p>Nombre</p></span
-      >
+      <span *ngFor="let booking of bookings">
+        {{ booking.pax }}pax
+        <p>{{ booking.bookingName }}</p>
+      </span>
     </div>
 
     <div class="detail">
       <h4>Teléfono de contacto: 666 123 123</h4>
 
-      <div class="booking-data">
-        <p>Nombre: Gerard</p>
-        <p>Alergias: altramuces, frutos secos</p>
-        <div class="menu-details">
-          <p>Elecciones:</p>
-          <div class="menu-selection">
-            <p>Primero</p>
-            <p>Segundo</p>
-            <p>Tercero</p>
-          </div>
-        </div>
-      </div>
-      <div class="booking-data">
-        <p>Nombre: Gerard</p>
-        <p>Alergias: altramuces, frutos secos</p>
-        <div class="menu-details">
-          <p>Elecciones:</p>
-          <div class="menu-selection">
-            <p>Primero</p>
-            <p>Segundo</p>
-            <p>Tercero</p>
-          </div>
-        </div>
-      </div>
-      <div class="booking-data">
-        <p>Nombre: Gerard</p>
-        <p>Alergias: altramuces, frutos secos</p>
-        <div class="menu-details">
-          <p>Elecciones:</p>
-          <div class="menu-selection">
-            <p>Primero</p>
-            <p>Segundo</p>
-            <p>Tercero</p>
+      <div *ngFor="let booking of bookings">
+        <div class="booking-data" *ngFor="let person of booking.people">
+          <p>Nombre: {{ person.name }}</p>
+          <p>Alergias: {{ person.allergies }}</p>
+
+          <div class="menu-details">
+            <p>Elecciones:</p>
+            <div class="menu-selection">
+              <p>{{ person.selections.first }}</p>
+              <p>{{ person.selections.second }}</p>
+              <p>{{ person.selections.dessert }}</p>
+            </div>
           </div>
         </div>
       </div>

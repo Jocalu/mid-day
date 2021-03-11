@@ -53,11 +53,12 @@ main {
 
       span {
         cursor: pointer;
-        @include flex(row, center, center);
+        @include flex(row, flex-start, center);
         background-color: $color-primary-soft;
         width: 130px;
         border-radius: 6px;
         margin-bottom: 10px;
+        text-indent: 10px;
 
         p {
           margin-left: 10px;
