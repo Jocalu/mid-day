@@ -1,1 +1,84 @@
-<p>bookings works!</p>
+<main>
+  <mat-form-field appearance="fill" class="date">
+    <mat-label>Elige una fecha</mat-label>
+    <input
+      #date
+      [formControl]="datepicker"
+      matInput
+      [matDatepicker]="picker"
+      (input)="changeFormat(date.value)"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <h3>{{ formatDate }}</h3>
+  <section class="bookings__container">
+    <div class="hours">
+      <h4>Horas</h4>
+      <span
+        >12:00
+        <p>56/100</p></span
+      >
+      <span
+        >12:30
+        <p>56/100</p></span
+      >
+      <span
+        >13:00
+        <p>56/100</p></span
+      >
+      <span
+        >13:30
+        <p>56/100</p></span
+      >
+      <span
+        >14:00
+        <p>56/100</p></span
+      >
+      <span
+        >14:30
+        <p>56/100</p></span
+      >
+      <span
+        >15:00
+        <p>56/100</p></span
+      >
+      <span
+        >15:30
+        <p>56/100</p></span
+      >
+      <span
+        >16:00
+        <p>56/100</p></span
+      >
+    </div>
+    <div class="bookings">
+      <h4>Reservas</h4>
+      <span
+        >4 pax
+        <p>Nombre</p></span
+      >
+    </div>
+
+    <div class="detail">
+      <h4>Detalle</h4>
+      <div>
+        <p>Gerard</p>
+        <p>4 pax</p>
+        <p>35355152121</p>
+      </div>
+      <div>
+        <span
+          ><p>Nombre</p>
+          <p>Alergias</p></span
+        >
+        <span
+          ><p>Primero</p>
+          <p>Segundo</p>
+          <p>Tercero</p></span
+        >
+      </div>
+    </div>
+  </section>
+</main>
