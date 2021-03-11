@@ -22,8 +22,9 @@ import { AppRoutingModule } from './app-routing.module'
 import { NotFoundComponent } from './components/not-found/not-found.component'
 import { MatTreeModule } from '@angular/material/tree'
 import { HttpClientModule } from '@angular/common/http'
-import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-search.component';
+import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-search.component'
 import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.component'
+import { MatDialogModule } from '@angular/material/dialog'
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.compone
     MatIconModule,
     AppRoutingModule,
     MatTreeModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [
     {

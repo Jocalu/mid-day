@@ -25,11 +25,17 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Ingredientes</mat-label>
       <mat-select formControlName="ingredients" multiple>
-        <mat-option
-          *ngFor="let ingredient of ingredientsList"
-          [value]="ingredient.name"
-          >{{ ingredient.name }}</mat-option
+        <mat-optgroup
+          *ngFor="let group of ingredientsList"
+          [label]="group.category"
+          [disabled]="group.disabled"
         >
+          <mat-option
+            *ngFor="let ingredient of group.ingredient"
+            [value]="ingredient.name"
+            >{{ ingredient.name }}</mat-option
+          >
+        </mat-optgroup>
       </mat-select>
     </mat-form-field>
 

@@ -37,7 +37,6 @@ export class DishesComponent implements OnInit {
 
   ];
 
-
   constructor (private StoreService: StoreService) {}
 
   dishes$ = this.StoreService.dishesAPI$
