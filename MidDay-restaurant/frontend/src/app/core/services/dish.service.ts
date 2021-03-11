@@ -1,32 +1,23 @@
-
+import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
+import { Observable } from 'rxjs'
 import { Dish } from '../model/Dish'
 
 @Injectable({
   providedIn: 'root'
 })
-export class DishStoreService {
-  dish$ = new BehaviorSubject<Dish[]>([])
+export class DishService {
+  dishesURL = 'http://localhost:5000/api/v1/midday/dishes'
 
-  getDishes (): Dish[] {
-    return this.dish$.getValue()
+  constructor (
+    private httpClient: HttpClient
+  ) { }
+
+  getDishesService (): Observable<Dish[]> {
+    return this.httpClient.get<Dish[]>(this.dishesURL)
   }
 
-  setDishes (dish: Dish[]):void {
-    this.dish$.next(dish)
-  }
-
-  addDish (text: string) {
-    const dish = [
-      ...this.getDishes(),
-      { id: this.getDishes().length + 1, text }
-    ]
-    this.setDishes(dish)
-  }
-
-  removeDish (id: number) {
-    const dishes = this.getDishes().filter(dish => dish.id !== id)
-    this.setDishes(dishes)
+  postDishService (dish): Observable<Dish[]> {
+    return this.httpClient.post<Dish[]>(this.dishesURL, dish)
   }
 }

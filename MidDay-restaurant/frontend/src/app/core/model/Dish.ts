@@ -1,5 +1,6 @@
-
 export interface Dish {
-  id: number,
-  text: string
+   type: string,
+   name: string,
+   ingredients: string[],
+   extra: number
 }

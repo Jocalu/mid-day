@@ -1,0 +1,60 @@
+<form [formGroup]="dish">
+  <div class="input">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Tipo del plato</mat-label>
+      <mat-select formControlName="type">
+        <mat-option
+          *ngFor="let category of categories"
+          value="{{ category.name }}"
+          >{{ category.name }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <mat-label for="dish-name">Nombre</mat-label>
+      <input
+        formControlName="name"
+        id="dish-name"
+        type="text"
+        matInput
+        placeholder="Nombre"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Ingredientes</mat-label>
+      <mat-select formControlName="ingredients" multiple>
+        <mat-optgroup
+          *ngFor="let group of ingredientsList"
+          [label]="group.category"
+          [disabled]="group.disabled"
+        >
+          <mat-option
+            *ngFor="let ingredient of group.ingredient"
+            [value]="ingredient.name"
+            >{{ ingredient.name }}</mat-option
+          >
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Suplemento</mat-label>
+      <input
+        formControlName="extra"
+        type="number"
+        value="0"
+        min="0"
+        matInput
+        placeholder="0"
+      /><mat-icon>euro</mat-icon>
+    </mat-form-field>
+
+    <div class="btns">
+      <button (click)="postClick()" mat-raised-button color="primary">
+        AÑADIR
+      </button>
+    </div>
+  </div>
+</form>

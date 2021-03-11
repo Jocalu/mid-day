@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { DishStoreService } from '../../core/services/dish.service'
+import { StoreService } from '../../core/services/store.service'
 import { FormControl } from '@angular/forms'
 
 @Component({
@@ -9,6 +9,8 @@ import { FormControl } from '@angular/forms'
 })
 
 export class DishesComponent implements OnInit {
+  switch: boolean = false
+
     types:any=[
       { name: 'ENTRANTES' },
       { name: 'ENSALADAS' },
@@ -35,20 +37,11 @@ export class DishesComponent implements OnInit {
 
   ];
 
-  constructor (private dishesStore: DishStoreService) {}
+  constructor (private StoreService: StoreService) {}
+
+  dishes$ = this.StoreService.dishesAPI$
 
   ngOnInit (): void {
-  }
-
-  text = new FormControl(null)
-
-  dishes: any = this.dishesStore.dish$.subscribe(dish => { this.dishes = dish })
-
-  clickHandler (inputData:string) {
-    this.dishesStore.addDish(inputData)
-  }
-
-  deleteButton (id:number) {
-    this.dishesStore.removeDish(id)
+    this.StoreService.getDishes()
   }
 }
