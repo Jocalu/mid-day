@@ -3,23 +3,24 @@
 @import "../../../styles/fonts";
 
 main {
-  h3 {
-    font-family: $font-primary;
-    font-weight: bold;
-  }
+  @include flex(column, center, center);
   width: 100vw;
   padding: 0 100px;
   margin: 20px 0;
   font-family: $font-primary;
-  height: 500px;
-  @include flex(column, center, center);
+
+  h3 {
+    font-family: $font-primary;
+    font-weight: bold;
+  }
 
   .bookings__container {
-    @include flex(row, flex-start, center);
+    @include flex(row, flex-start, flex-start);
     background-color: $color-grey-soft;
     border-radius: 6px;
     border: 2px solid $color-primary;
     width: 800px;
+    align-items: stretch;
 
     h4 {
       border-bottom: 1px solid $color-primary;
@@ -29,7 +30,6 @@ main {
 
     .hours {
       @include flex(column, flex-start, center);
-      height: 100%;
       width: 150px;
       border-right: 1px solid $color-primary;
 
@@ -48,7 +48,6 @@ main {
     }
     .bookings {
       @include flex(column, flex-start, center);
-      height: 100%;
       width: 150px;
       border-right: 1px solid $color-primary;
 
@@ -67,26 +66,23 @@ main {
     }
     .detail {
       @include flex(column, flex-start, flex-start);
-      height: 100%;
       width: 500px;
 
-      .bookings__data{
-        @include flex(row, space-between, center);
-      width: 480px;
-      
-      }
-
-      p {
-        cursor: pointer;
-        @include flex(row, center, center);
+      .booking-data {
+        @include flex(column, flex-start, flex-start);
+        margin-left: 10px;
         background-color: $color-primary-soft;
-        width: 130px;
+        width: 470px;
         border-radius: 6px;
         margin-bottom: 10px;
-      }
 
-      div {
-        margin-left: 10px;
+        p {
+          margin: 5px;
+        }
+
+        .menu-details {
+          @include flex(row, flex-start, flex-start);
+        }
       }
     }
   }
