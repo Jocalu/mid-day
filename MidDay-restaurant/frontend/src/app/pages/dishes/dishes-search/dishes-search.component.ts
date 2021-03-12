@@ -3,6 +3,7 @@ import { StoreService } from '../../../core/services/store.service'
 import { FormControl } from '@angular/forms'
 import { debounce, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators'
 import { of, Subject } from 'rxjs'
+import { categories, ingredientsList } from '../../../constants/index'
 
 @Component({
   selector: 'app-dishes-search',
@@ -12,31 +13,11 @@ import { of, Subject } from 'rxjs'
 export class DishesSearchComponent implements OnInit {
   constructor (private StoreService: StoreService) {}
 
-      types:any=[
-        { name: 'ENTRANTES' },
-        { name: 'ENSALADAS' },
-        { name: 'SOPAS' },
-        { name: 'SEGUNDOS' },
-        { name: 'POSTRES' }
-      ];
+  categories = categories
 
   ingredients = new FormControl();
 
-  ingredientsList: any = [
-    { name: 'ternera', category: 'carne' },
-    { name: 'parmesano', category: 'lácteos' },
-    { name: 'aceite de oliva', category: 'aceites' },
-    { name: 'comino', category: 'especias' },
-    { name: 'tomate', category: 'hortalizas' },
-    { name: 'piñones', category: 'frutos secos' },
-    { name: 'cebolla', category: 'hortalizas' },
-    { name: 'salmón', category: 'pescados' },
-    { name: 'calabacín', category: 'hortalizas' },
-    { name: 'sandía', category: 'frutas' },
-    { name: 'huevos', category: 'huevos' },
-    { name: 'garbanzos', category: 'legumbres' },
-    { name: 'espinacas', category: 'hortalizas' }
-  ];
+  ingredientsList = ingredientsList;
 
   text = new FormControl(null)
 
