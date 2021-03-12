@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { StoreService } from '../../../core/services/store.service'
-import { FormControl } from '@angular/forms'
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { Subject } from 'rxjs'
-import { categories, ingredientsList } from '../../../constants/index'
 
 @Component({
   selector: 'app-dishes-search',
@@ -13,13 +11,7 @@ import { categories, ingredientsList } from '../../../constants/index'
 export class DishesSearchComponent implements OnInit {
   constructor (private StoreService: StoreService) {}
 
-  categories = categories
-
-  ingredients = new FormControl();
-
-  ingredientsList = ingredientsList;
-
-  dishes$
+  dishes$: any
 
   searchTerms: Subject<string> = new Subject()
 
@@ -32,11 +24,13 @@ export class DishesSearchComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(term => this.StoreService.searchDish(term))
       )
-    console.log(this.dishes$)
+  }
+
+  deleteClick (id) {
+    this.StoreService.deleteDish(id)
   }
 
   search (searchValue: string) {
-    console.log(searchValue)
     this.searchTerms.next(searchValue)
   }
 }

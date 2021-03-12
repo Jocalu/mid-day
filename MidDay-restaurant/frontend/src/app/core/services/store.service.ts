@@ -18,6 +18,10 @@ export class StoreService {
     this.DishService.postDishService(dish).subscribe((element) => this.dishesAPI$.next(element))
   }
 
+  deleteDish (id) {
+    this.DishService.deleteDishService(id).subscribe()
+  }
+
   searchDish (term) {
     return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
   }

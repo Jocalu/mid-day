@@ -16,15 +16,14 @@
 <div class="dish-text" *ngFor="let dish of dishes$ | async">
   <span class="category">
     <mat-icon>restaurant_menu</mat-icon>
-    <h3>{{ dish.type }}</h3>
-    <button class="delete-btn">
+    <h3>{{ dish.name }}</h3>
+    <button class="delete-btn" (click)="deleteClick(dish._id)">
       <mat-icon>delete</mat-icon>
     </button>
   </span>
 
   <span>
-    <p>Nombre:</p>
-    <p>{{ dish.name }}</p></span
+    <p>{{ dish.type }}</p></span
   >
 
   <span>

@@ -9,7 +9,7 @@
   <div class="components">
     <div class="switch">
       <button
-        (click)="switch = false"
+        (click)="deleteClass(); switch = true"
         mat-stroked-button
         type="button"
         color="primary"
@@ -18,16 +18,17 @@
       </button>
       /
       <button
-        (click)="switch = true"
+        class="delete"
+        (click)="switch = false"
         mat-stroked-button
         type="button"
         color="primary"
       >
-        BUSCAR
+        BORRAR
       </button>
     </div>
-    <app-dishes-add *ngIf="!switch"></app-dishes-add>
-    <app-dishes-search *ngIf="switch"></app-dishes-search>
+    <app-dishes-add *ngIf="switch"></app-dishes-add>
+    <app-dishes-search *ngIf="!switch"></app-dishes-search>
   </div>
 
   <div class="image-right">

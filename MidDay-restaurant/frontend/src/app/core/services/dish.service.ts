@@ -20,4 +20,8 @@ export class DishService {
   postDishService (dish): Observable<Dish[]> {
     return this.httpClient.post<Dish[]>(this.dishesURL, dish)
   }
+
+  deleteDishService (id): Observable<Dish[]> {
+    return this.httpClient.delete<Dish[]>(`${this.dishesURL}/${id}`)
+  }
 }
