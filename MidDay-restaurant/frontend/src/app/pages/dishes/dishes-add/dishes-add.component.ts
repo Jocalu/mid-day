@@ -27,12 +27,7 @@ export class DishesAddComponent implements OnInit {
 
   postClick () {
     this.StoreService.postDish(this.dish.value)
-    this.dish.patchValue({
-      type: '',
-      name: '',
-      extra: 0,
-      ingredients: ''
-    })
+    this.dish.reset()
   }
 
   ngOnInit (): void {

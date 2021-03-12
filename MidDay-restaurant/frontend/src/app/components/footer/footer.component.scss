@@ -11,6 +11,7 @@ footer {
     padding: 30px 100px;
     border-top: 2px solid $color-grey-soft;
     background-color: $color-grey;
+    align-items: stretch;
 
     @media only screen and (max-width: 500px) {
       padding: 0 30px;

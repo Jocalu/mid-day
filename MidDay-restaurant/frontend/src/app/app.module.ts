@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, LOCALE_ID } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { AppComponent } from './app.component'
@@ -65,7 +65,7 @@ import * as moment from 'moment'
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' }
-    }, { provide: 'moment', useValue: moment }
+    }, { provide: 'moment', useValue: moment }, { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
   bootstrap: [AppComponent]
 })

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject } from 'rxjs'
+import { BehaviorSubject, of } from 'rxjs'
 import { Dish } from '../model/Dish'
 import { DishService } from '../services/dish.service'
 
@@ -16,6 +16,10 @@ export class StoreService {
 
   postDish (dish) {
     this.DishService.postDishService(dish).subscribe((element) => this.dishesAPI$.next(element))
+  }
+
+  searchDish (term) {
+    return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
   }
 
   constructor (

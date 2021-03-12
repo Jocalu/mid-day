@@ -1,75 +1,3 @@
-export const hours:any[] = [
-  { hour: '12:00' },
-  { hour: '12:30' },
-  { hour: '13:00' },
-  { hour: '13:30' },
-  { hour: '14:00' },
-  { hour: '14:30' },
-  { hour: '15:00' },
-  { hour: '15:30' },
-  { hour: '16:00' }
-]
-
-export const bookings:any[] = [
-  {
-    date: '02/04/2020',
-    hour: '12:30',
-    bookingName: 'Gerard',
-    phone: 666123123,
-    pax: 3,
-    people: [{
-      name: 'Gerard',
-      allergies: 'altramuces, frutos secos',
-      selections: {
-        first: 'sopa',
-        second: 'carne',
-        dessert: 'yogurt'
-      }
-    },
-    {
-      name: 'Nil',
-      allergies: 'altramuces, frutos secos',
-      selections: {
-        first: 'ensalada',
-        second: 'pato',
-        dessert: 'crema'
-      }
-    },
-    {
-      name: 'Ignasi',
-      allergies: 'altramuces, frutos secos',
-      selections: {
-        first: 'ensalada',
-        second: 'pato',
-        dessert: 'crema'
-      }
-    }]
-  },
-  {
-    date: '02/04/2020',
-    hour: '12:30',
-    bookingName: 'Jose',
-    phone: 666123123,
-    pax: 1,
-    people: [{
-      name: 'Jose',
-      allergies: 'altramuces, frutos secos',
-      selections: {
-        first: 'sopa',
-        second: 'carne',
-        dessert: 'yogurt'
-      }
-    }]
-  }
-]
-
-export const categories:any = [
-  { name: 'ENTRANTES' },
-  { name: 'ENSALADAS' },
-  { name: 'SOPAS' },
-  { name: 'SEGUNDOS' },
-  { name: 'POSTRES' }]
-
 interface Ingredient {
   name: string;
 }
@@ -141,5 +69,117 @@ export const ingredientsList:IngredientList[] = [
       { name: 'lentejas' },
       { name: 'judías' }
     ]
+  }
+]
+
+interface Hours{
+  hour: string,
+  numOfbookings: string
+}
+export const hours:Hours[] = [
+  { hour: '12:00', numOfbookings: '' },
+  { hour: '12:30', numOfbookings: '' },
+  { hour: '13:00', numOfbookings: '' },
+  { hour: '13:30', numOfbookings: '' },
+  { hour: '14:00', numOfbookings: '' },
+  { hour: '14:30', numOfbookings: '' },
+  { hour: '15:00', numOfbookings: '' },
+  { hour: '15:30', numOfbookings: '' },
+  { hour: '16:00', numOfbookings: '' }
+]
+interface Categories{
+  name: string
+}
+export const categories:Categories[] = [
+  { name: 'ENTRANTES' },
+  { name: 'ENSALADAS' },
+  { name: 'SOPAS' },
+  { name: 'SEGUNDOS' },
+  { name: 'POSTRES' }]
+
+export const bookings:any[] = [
+  {
+    date: '12-03-2021',
+    hour: '12:30',
+    bookingName: 'Gerard',
+    phone: 666123123,
+    pax: 3,
+    people: [{
+      name: 'Gerard',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'sopa',
+        second: 'carne',
+        dessert: 'yogurt'
+      }
+    },
+    {
+      name: 'Nil',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'ensalada',
+        second: 'pato',
+        dessert: 'crema'
+      }
+    },
+    {
+      name: 'Ignasi',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'ensalada',
+        second: 'pato',
+        dessert: 'crema'
+      }
+    }]
+  },
+  {
+    date: '12-03-2021',
+    hour: '12:30',
+    bookingName: 'Andrea',
+    phone: 611123123,
+    pax: 3,
+    people: [{
+      name: 'Andrea',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'sopa',
+        second: 'carne',
+        dessert: 'yogurt'
+      }
+    },
+    {
+      name: 'Paula',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'ensalada',
+        second: 'pato',
+        dessert: 'crema'
+      }
+    },
+    {
+      name: 'Maria',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'ensalada',
+        second: 'pato',
+        dessert: 'crema'
+      }
+    }]
+  },
+  {
+    date: '13-03-2021',
+    hour: '12:30',
+    bookingName: 'Jose',
+    phone: 622123123,
+    pax: 1,
+    people: [{
+      name: 'Jose',
+      allergies: 'altramuces, frutos secos',
+      selections: {
+        first: 'sopa',
+        second: 'carne',
+        dessert: 'yogurt'
+      }
+    }]
   }
 ]
