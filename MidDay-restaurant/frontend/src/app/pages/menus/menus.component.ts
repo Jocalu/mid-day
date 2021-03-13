@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { dishesList } from '../../constants/index'
+import { FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-menus',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menus.component.scss']
 })
 export class MenusComponent implements OnInit {
+  constructor (
+private fb: FormBuilder
+  ) { }
 
-  constructor() { }
+  dishesList=dishesList
 
-  ngOnInit(): void {
-  }
+    menu = this.fb.group({
+      first: '',
+      second: '',
+      dessert: ''
+    })
 
+    ngOnInit (): void {
+    }
 }

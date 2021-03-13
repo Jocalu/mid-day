@@ -3,11 +3,6 @@ import { StoreService } from '../../../core/services/store.service'
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { Subject } from 'rxjs'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
-
-export interface DialogData {
-  menssage: 'message';
-}
-
 @Component({
   selector: 'app-dishes-search',
   templateUrl: './dishes-search.component.html',
@@ -46,6 +41,9 @@ export class DishesSearchComponent implements OnInit {
   }
 }
 
+export interface DialogData {
+  menssage: 'message';
+}
 @Component({
   selector: 'popup',
   templateUrl: 'popup.html'

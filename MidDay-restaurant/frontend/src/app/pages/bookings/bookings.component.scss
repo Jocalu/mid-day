@@ -53,7 +53,7 @@ main {
         padding: 10px;
         &:focus {
           background-color: black;
-          color: white;
+          color: $color-white;
         }
         p {
           margin-left: 10px;
