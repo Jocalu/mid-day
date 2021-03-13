@@ -11,7 +11,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
 export class DishesSearchComponent implements OnInit {
   constructor (
     private StoreService: StoreService,
-    private dialog: MatDialog) {}
+    private dialog: MatDialog
+  ) {}
 
   openPopUp () {
     this.dialog.open(Popup, {})

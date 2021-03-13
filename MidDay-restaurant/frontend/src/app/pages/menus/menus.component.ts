@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core'
 import { dishesList } from '../../constants/index'
 import { FormBuilder } from '@angular/forms'
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-menus',
@@ -9,8 +10,13 @@ import { FormBuilder } from '@angular/forms'
 })
 export class MenusComponent implements OnInit {
   constructor (
-private fb: FormBuilder
+private fb: FormBuilder,
+    private dialog: MatDialog
   ) { }
+
+  openPopUp () {
+    this.dialog.open(Popup, {})
+  }
 
   dishesList=dishesList
 
@@ -22,4 +28,15 @@ private fb: FormBuilder
 
     ngOnInit (): void {
     }
+}
+
+export interface DialogData {
+  menssage: 'message';
+}
+@Component({
+  selector: 'popup',
+  templateUrl: 'popup.html'
+})
+export class Popup {
+  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }
