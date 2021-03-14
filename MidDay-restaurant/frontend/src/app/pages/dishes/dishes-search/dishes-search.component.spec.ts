@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishesSearchComponent } from './dishes-search.component'
 import { MatDialogModule } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { FormBuilder } from '@angular/forms'
 
 describe('DishesSearchComponent', () => {
   let component: DishesSearchComponent
@@ -11,7 +12,8 @@ describe('DishesSearchComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DishesSearchComponent],
-      imports: [HttpClientTestingModule, MatDialogModule, BrowserAnimationsModule]
+      imports: [HttpClientTestingModule, MatDialogModule, BrowserAnimationsModule],
+      providers: [FormBuilder]
 
     })
       .compileComponents()
@@ -29,7 +31,7 @@ describe('DishesSearchComponent', () => {
 
   it('call deleteClick method', () => {
     const deleteDish = spyOn(component.StoreService, 'deleteDish')
-    const id = 1
+    const id = '1'
 
     component.deleteClick(id)
 
@@ -49,9 +51,9 @@ describe('DishesSearchComponent', () => {
   it('openPoPup', () => {
     const matDialog = new MatDialogMock()
 
-    spyOn(matDialog, 'open')
+    const openModal = spyOn(matDialog, 'open')
     component.openPopUp()
-    expect(spyOn).toHaveBeenCalled()
+    expect(openModal).toHaveBeenCalled()
   })
 })
 

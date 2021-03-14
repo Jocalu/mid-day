@@ -52,7 +52,7 @@ export class DishesSearchComponent implements OnInit {
 }
 
 export interface DialogData {
-  menssage: 'message';
+  message: 'message';
 }
 @Component({
   selector: 'popup',

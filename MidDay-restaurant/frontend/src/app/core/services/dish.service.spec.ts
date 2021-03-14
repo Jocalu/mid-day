@@ -45,7 +45,7 @@ describe('Given a postDish function', () => {
         expect(dishData[0].name).toEqual('Paella')
       })
 
-    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/dishes')
+    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/courses')
 
     expect(req.request.method).toEqual('POST')
 

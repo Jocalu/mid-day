@@ -2,7 +2,6 @@ interface Ingredient {
   name: string;
 }
 interface IngredientList {
-  disabled?: boolean;
   category: string;
   ingredient: Ingredient[];
 }

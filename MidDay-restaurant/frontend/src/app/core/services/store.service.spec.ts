@@ -18,6 +18,7 @@ describe('StoreService', () => {
 
   it('When getDishes is called, next method on dishesAPI$ to have been called', () => {
     const response: Dish[] = [{
+      _id: '',
       type: '',
       name: '',
       ingredients: [''],
@@ -34,6 +35,7 @@ describe('StoreService', () => {
 
   it('When postDish is called, next method on dishesAPI$ to have been called', () => {
     const response: Dish[] = [{
+      _id: '',
       type: '',
       name: '',
       ingredients: [''],
@@ -49,12 +51,13 @@ describe('StoreService', () => {
   })
 
   it('When deleteDish is called, next method on dishesAPI$ to have been called', () => {
-    const response: Dish[] = [{
+    const response: Dish = {
+      _id: '',
       type: '',
       name: '',
       ingredients: [''],
       extra: 2
-    }]
+    }
 
     spyOn(service.DishService, 'deleteDishService').and.returnValue(of(response))
 
@@ -62,22 +65,5 @@ describe('StoreService', () => {
     service.deleteDish(response)
 
     expect(spynext).toHaveBeenCalled()
-  })
-
-  it('When searchDish is called, next method on dishesAPI$ to have been called', () => {
-    const response: Dish[] = [{
-      type: '',
-      name: '',
-      ingredients: [''],
-      extra: 2
-    }]
-
-    spyOn(service.DishService, 'deleteDishService').and.returnValue(of(response))
-
-    const spyGetValue = spyOn(service.dishesAPI$, 'getValue')
-
-    service.searchDish(response)
-
-    expect(spyGetValue).toHaveBeenCalled()
   })
 })

@@ -35,9 +35,9 @@ describe('MenusComponent', () => {
   it('openPoPup', () => {
     const matDialog = new MatDialogMock()
 
-    spyOn(matDialog, 'open')
+    const openModal = spyOn(matDialog, 'open')
     component.openPopUp()
-    expect(spyOn).toHaveBeenCalled()
+    expect(openModal).toHaveBeenCalled()
   })
 })
 
