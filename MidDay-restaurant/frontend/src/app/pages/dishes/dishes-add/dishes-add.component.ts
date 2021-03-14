@@ -10,7 +10,7 @@ import { categories, ingredientsList } from '../../../constants/index'
 })
 export class DishesAddComponent implements OnInit {
   constructor (
-    private StoreService: StoreService,
+    public StoreService: StoreService,
     private fb: FormBuilder
   ) { }
 

@@ -19,7 +19,9 @@ export class StoreService {
   }
 
   deleteDish (id) {
-    this.DishService.deleteDishService(id).subscribe()
+    this.DishService
+      .deleteDishService(id)
+      .subscribe((element) => this.dishesAPI$.next(this.dishesAPI$.getValue().filter((dish) => dish._id !== element._id)))
   }
 
   searchDish (term) {
@@ -27,7 +29,7 @@ export class StoreService {
   }
 
   constructor (
-    private DishService : DishService) {
+    public DishService : DishService) {
 
   }
 }

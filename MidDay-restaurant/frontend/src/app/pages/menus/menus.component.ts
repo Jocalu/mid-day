@@ -15,7 +15,7 @@ private fb: FormBuilder,
   ) { }
 
   openPopUp () {
-    this.dialog.open(Popup, {})
+    this.dialog.open(PopUp, {})
   }
 
   dishesList=dishesList
@@ -37,6 +37,6 @@ export interface DialogData {
   selector: 'popup',
   templateUrl: 'popup.html'
 })
-export class Popup {
+export class PopUp {
   constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }

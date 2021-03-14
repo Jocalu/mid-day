@@ -21,7 +21,7 @@ export class DishService {
     return this.httpClient.post<Dish[]>(this.dishesURL, dish)
   }
 
-  deleteDishService (id): Observable<Dish[]> {
-    return this.httpClient.delete<Dish[]>(`${this.dishesURL}/${id}`)
+  deleteDishService (id): Observable<Dish> {
+    return this.httpClient.delete<Dish>(`${this.dishesURL}/${id}`)
   }
 }

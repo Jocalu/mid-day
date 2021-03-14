@@ -217,3 +217,16 @@ export const dishesList:DishesList[] = [
       { name: 'Fresas, bizcocho de pistacho y cremoso de mandarina' }
     ]
   }]
+
+export const options:any = [
+  { name: 'Mediterránea', value: 1 },
+  { name: 'Asiática', value: 2 },
+  { name: 'Mexicana', value: 3 },
+  { name: 'Japonesa', value: 4 },
+  { name: 'Italiana', value: 5 },
+  { name: 'Peruana', value: 6 },
+  { name: 'Poke-bowls', value: 7 },
+  { name: 'Veggie', value: 8 },
+  { name: 'Vietnamita', value: 9 },
+  { name: 'Griega', value: 10 }
+]

@@ -3,6 +3,8 @@ import { StoreService } from '../../../core/services/store.service'
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { Subject } from 'rxjs'
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { FormBuilder } from '@angular/forms'
+
 @Component({
   selector: 'app-dishes-search',
   templateUrl: './dishes-search.component.html',
@@ -10,13 +12,18 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
 })
 export class DishesSearchComponent implements OnInit {
   constructor (
-    private StoreService: StoreService,
-    private dialog: MatDialog
+    public StoreService: StoreService,
+    private dialog: MatDialog,
+    private fb: FormBuilder
   ) {}
 
   openPopUp () {
     this.dialog.open(Popup, {})
   }
+
+  searchDishes = this.fb.group({
+    searchDish: ''
+  })
 
   dishes$: any
 
@@ -33,8 +40,10 @@ export class DishesSearchComponent implements OnInit {
       )
   }
 
-  deleteClick (id) {
+  deleteClick (id: string) {
     this.StoreService.deleteDish(id)
+    this.searchDishes.patchValue({ searchDish: '' })
+    this.search('')
   }
 
   search (searchValue: string) {

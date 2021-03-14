@@ -1,4 +1,4 @@
-import { NgModule, LOCALE_ID } from '@angular/core'
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { AppComponent } from './app.component'
@@ -68,6 +68,8 @@ import { MatNativeDateModule } from '@angular/material/core'
       useValue: { appearance: 'fill' }
     }, { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }

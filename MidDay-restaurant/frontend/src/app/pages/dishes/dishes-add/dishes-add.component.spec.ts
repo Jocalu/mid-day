@@ -1,25 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { DishesAddComponent } from './dishes-add.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { DishesAddComponent } from './dishes-add.component'
+import { FormBuilder } from '@angular/forms'
 
 describe('DishesAddComponent', () => {
-  let component: DishesAddComponent;
-  let fixture: ComponentFixture<DishesAddComponent>;
+  let component: DishesAddComponent
+  let fixture: ComponentFixture<DishesAddComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DishesAddComponent ]
+      imports: [HttpClientTestingModule],
+      declarations: [DishesAddComponent],
+      providers: [FormBuilder]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DishesAddComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(DishesAddComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+
+  it('call postClick method', () => {
+    const post = spyOn(component.StoreService, 'postDish')
+
+    component.postClick()
+
+    expect(post).toHaveBeenCalled()
+  })
+})

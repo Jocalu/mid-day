@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishesComponent } from './dishes.component'
+import { FormBuilder } from '@angular/forms'
 
 describe('DishesComponent', () => {
   let component: DishesComponent
@@ -8,7 +9,9 @@ describe('DishesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DishesComponent]
+      declarations: [DishesComponent],
+      imports: [HttpClientTestingModule],
+      providers: [FormBuilder]
     })
       .compileComponents()
   })
@@ -21,5 +24,13 @@ describe('DishesComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
+  })
+
+  it('should remove class', () => {
+    const deleteClassSpy = spyOn(component.buttonDelete.classList, 'remove')
+
+    component.deleteClass()
+
+    expect(deleteClassSpy).toHaveBeenCalled()
   })
 })
