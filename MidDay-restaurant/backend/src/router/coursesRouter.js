@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const dishController = require('../controller/dishController');
+const dishController = require('../controller/courseController');
 
 function DishRouter() {
   const router = Router();
@@ -10,7 +10,7 @@ function DishRouter() {
     .post(dishController.createDish);
 
   router
-    .route('/:dishId')
+    .route('/:courseId')
     .get(dishController.getDish)
     .delete(dishController.deleteDish)
     .put(dishController.updateDish);

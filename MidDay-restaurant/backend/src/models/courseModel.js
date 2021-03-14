@@ -1,10 +1,10 @@
 const { model, Schema } = require('mongoose');
 
-const dishSchema = new Schema({
+const courseSchema = new Schema({
   type: String,
   name: String,
   ingredients: Array,
   extra: Number,
 });
 
-module.exports = model('Dish', dishSchema);
+module.exports = model('Course', courseSchema);

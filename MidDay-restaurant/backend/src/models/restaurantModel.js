@@ -12,6 +12,8 @@ const restaurantSchema = new Schema({
   zip: String,
   image: String,
   menuprice: Number,
+  bookings: Array,
+  menu: { type: Schema.Types.ObjectId, ref: 'Menu' },
 });
 
 module.exports = model('Restaurant', restaurantSchema);

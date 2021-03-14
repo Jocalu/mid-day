@@ -1,24 +1,24 @@
 const {
-  getDish, getAllDishes, createDish, updateDish, deleteDish,
-} = require('./dishController');
-const Dish = require('../models/dishModel');
+  getCourse, getAllCourses, createCourse, updateCourse, deleteCourse,
+} = require('./courseController');
+const Course = require('../models/courseModel');
 
-jest.mock('../models/dishModel');
+jest.mock('../models/courseModel');
 
-describe('Given a createDish function', () => {
+describe('Given a createCourse function', () => {
   describe('When is invoked with body name', () => {
     test('Then should call json', () => {
       const req = { body: { name: 'Canelón de carne' } };
       const res = { json: jest.fn() };
 
-      createDish(req, res);
+      createCourse(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
   });
 });
 
-describe('Given a getAllDishes function', () => {
+describe('Given a getAllCourses function', () => {
   describe('When is invoked', () => {
     test('Then should call json', async () => {
       const res = {
@@ -28,9 +28,9 @@ describe('Given a getAllDishes function', () => {
       };
       const req = {};
 
-      Dish.find.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Course.find.mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await getAllDishes(req, res);
+      await getAllCourses(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -44,15 +44,15 @@ describe('Given a getAllDishes function', () => {
     };
     const req = {};
 
-    Dish.find.mockImplementationOnce(() => { throw new Error('Error'); });
+    Course.find.mockImplementationOnce(() => { throw new Error('Error'); });
 
-    await getAllDishes(req, res);
+    await getAllCourses(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
   });
 });
 
-describe('Given a getDish function', () => {
+describe('Given a getCourse function', () => {
   describe('When is invoked with a first argument truthy', () => {
     test('Then should call status', async () => {
       const res = {
@@ -66,10 +66,10 @@ describe('Given a getDish function', () => {
         },
       };
 
-      Dish.findById
+      Course.findById
         .mockImplementationOnce((query, callback) => callback(true));
 
-      await getDish(req, res);
+      await getCourse(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
     });
@@ -87,16 +87,16 @@ describe('Given a getDish function', () => {
         },
       };
 
-      Dish.findById.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Course.findById.mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await getDish(req, res);
+      await getCourse(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
   });
 });
 
-describe('Given a updateDish function', () => {
+describe('Given a updateCourse function', () => {
   describe('When is invoked', () => {
     test('Then should call json with body', async () => {
       const res = {
@@ -113,9 +113,9 @@ describe('Given a updateDish function', () => {
         },
       };
 
-      Dish.findByIdAndUpdate.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Course.findByIdAndUpdate.mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await updateDish(req, res);
+      await updateCourse(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -127,7 +127,7 @@ describe('Given a updateDish function', () => {
         status: jest.fn(),
       };
       const req = {
-      params: {
+        params: {
           id: 1,
         },
         body: {
@@ -135,16 +135,16 @@ describe('Given a updateDish function', () => {
         },
       };
 
-      Dish.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
+      Course.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
 
-      await updateDish(req, res);
+      await updateCourse(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
     });
   });
 });
 
-describe('Given a deleteDish function', () => {
+describe('Given a deleteCourse function', () => {
   describe('When is invoked', () => {
     test('Then should call json', async () => {
       const res = {
@@ -158,10 +158,10 @@ describe('Given a deleteDish function', () => {
         },
       };
 
-      Dish.findByIdAndDelete
+      Course.findByIdAndDelete
         .mockImplementationOnce(() => ({ populate: jest.fn() }));
 
-      await deleteDish(req, res);
+      await deleteCourse(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -179,10 +179,10 @@ describe('Given a deleteDish function', () => {
         },
       };
 
-      Dish.findByIdAndDelete
+      Course.findByIdAndDelete
         .mockImplementationOnce((query, callback) => callback(true));
 
-      await deleteDish(req, res);
+      await deleteCourse(req, res);
 
       expect(res.send).toHaveBeenCalled();
     });

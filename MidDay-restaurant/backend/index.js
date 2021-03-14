@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const restaurantRouter = require('./src/router/restaurantRouter');
 const userRestaurantRouter = require('./src/router/userRestaurantRouter');
-const dishesRouter = require('./src/router/dishesRouter');
+const coursesRouter = require('./src/router/coursesRouter');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -22,7 +22,7 @@ connect(process.env.DDBB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
 app.use('/api/v1/midday/restaurant', restaurantRouter);
 app.use('/api/v1/midday/user-restaurant', userRestaurantRouter);
-app.use('/api/v1/midday/dishes', dishesRouter);
+app.use('/api/v1/midday/courses', coursesRouter);
 
 app.listen(port, () => {
   debug(`${chalk.italic.bgBlue('Server running in')} ${chalk.yellow(`http://localhost:${port}`)}`);
