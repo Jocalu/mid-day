@@ -31,6 +31,7 @@ const restaurantController = () => {
         .populate('userRestaurant')
         .populate('category')
         .populate('menu');
+
       res.json(allRestaurants);
     } catch (error) {
       res.status(500);
