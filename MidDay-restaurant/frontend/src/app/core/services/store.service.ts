@@ -15,11 +15,7 @@ export class StoreService {
   menuAPI$ = new BehaviorSubject<Menu[]>([])
 
   getDishes () {
-    this.DishService.getDishesService()
-      .pipe(
-        take(1),
-        tap((element) => this.dishesAPI$.next(element)))
-      .subscribe()
+    return this.DishService.getDishesService()
   }
 
   postDish (dish: Dish) {

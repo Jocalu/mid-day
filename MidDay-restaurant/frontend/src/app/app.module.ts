@@ -26,7 +26,9 @@ import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-searc
 import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.component'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatNativeDateModule } from '@angular/material/core'
+import { MatNativeDateModule } from '@angular/material/core';
+import { MenusAddComponent } from './pages/menus/menus-add/menus-add.component';
+import { MenusDeleteComponent } from './pages/menus/menus-delete/menus-delete.component'
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { MatNativeDateModule } from '@angular/material/core'
     MenusComponent,
     NotFoundComponent,
     DishesSearchComponent,
-    DishesAddComponent
+    DishesAddComponent,
+    MenusAddComponent,
+    MenusDeleteComponent
   ],
   imports: [
     FormsModule,

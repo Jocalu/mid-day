@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
-import { categories, ingredientsList } from '../../../constants/index'
+import { categories } from '../../../constants/categories'
+import { ingredientsList } from '../../../constants/ingredients'
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-dishes-add',
@@ -11,10 +13,15 @@ import { categories, ingredientsList } from '../../../constants/index'
 export class DishesAddComponent implements OnInit {
   constructor (
     public StoreService: StoreService,
+        private dialog: MatDialog,
     private fb: FormBuilder
   ) { }
 
   categories = categories
+
+  openPopUp () {
+    this.dialog.open(PopUp, {})
+  }
 
   ingredientsList=ingredientsList
 
@@ -33,4 +40,15 @@ export class DishesAddComponent implements OnInit {
   ngOnInit (): void {
 
   }
+}
+
+export interface DialogData {
+  menssage: 'message';
+}
+@Component({
+  selector: 'popup',
+  templateUrl: 'popup.html'
+})
+export class PopUp {
+  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }

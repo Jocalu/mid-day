@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import * as moment from 'moment'
-import { hours, bookings } from '../../constants/index'
+import { bookings } from '../../constants/bookings'
+import { hours } from '../../constants/hours'
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',

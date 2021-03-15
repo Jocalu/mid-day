@@ -1,8 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core'
-import { dishesList } from '../../constants/index'
-import { FormBuilder } from '@angular/forms'
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
-import { StoreService } from '../../core/services/store.service'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-menus',
@@ -10,40 +6,20 @@ import { StoreService } from '../../core/services/store.service'
   styleUrls: ['./menus.component.scss']
 })
 export class MenusComponent implements OnInit {
-  constructor (
-    private fb: FormBuilder,
-    private dialog: MatDialog,
-    public StoreService: StoreService
-  ) { }
+    switch: boolean = true
+    constructor (
 
-  openPopUp () {
-    this.dialog.open(PopUp, {})
-  }
+    ) { }
 
-  dishesList=dishesList
+     buttonAdd: any
 
-    menu = this.fb.group({
-      firstCourse: '',
-      secondCourse: '',
-      dessert: ''
-    })
+     deleteClass () {
+       this.buttonAdd = document.querySelector('.add')
+       this.buttonAdd.classList.remove('btn--active')
+     }
 
-    ngOnInit (): void {
-    }
-
-    postClick () {
-      this.StoreService.postMenu(this.menu.value)
-      this.menu.reset()
-    }
-}
-
-export interface DialogData {
-  menssage: 'message';
-}
-@Component({
-  selector: 'popup',
-  templateUrl: 'popup.html'
-})
-export class PopUp {
-  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
+     ngOnInit (): void {
+       this.buttonAdd = document.querySelector('.add')
+       this.buttonAdd.classList.add('btn--active')
+     }
 }
