@@ -6,12 +6,12 @@ function MenuRouter() {
 
   router
     .route('/')
-    .post(menuController.createMenu);
+    .post(menuController.createMenu)
+    .get(menuController.getMenu);
 
   router
     .route('/:menuId')
-    .delete(menuController.createMenu)
-    .get(menuController.getMenu);
+    .delete(menuController.deleteMenu);
 
   return router;
 }

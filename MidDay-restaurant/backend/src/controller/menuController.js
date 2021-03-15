@@ -1,4 +1,5 @@
 const Menu = require('../models/menuModel.js');
+require('../models/dishModel.js');
 
 const menuController = () => {
   const createMenu = (req, res) => {
@@ -8,13 +9,14 @@ const menuController = () => {
   };
 
   const getMenu = async (req, res) => {
-    const { menuId } = req.params;
     try {
-      const menu = await Menu
-        .findById(menuId)
-        .populate('ingredient');
+      const menus = await Menu
+        .find({})
+        .populate('firstCourse')
+        .populate('secondCourse')
+        .populate('dessert');
 
-      res.json(menu);
+      res.json(menus);
     } catch (error) {
       res.status(500);
       res.send('There was an error searching');
