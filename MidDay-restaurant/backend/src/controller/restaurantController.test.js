@@ -1,5 +1,9 @@
 const {
-  getRestaurant, getAllRestaurants, createRestaurant, updateRestaurant, deleteRestaurant,
+  getRestaurant,
+  getAllRestaurants,
+  createRestaurant,
+  updateRestaurant,
+  deleteRestaurant,
 } = require('./restaurantController');
 const Restaurant = require('../models/restaurantModel');
 

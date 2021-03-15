@@ -22,14 +22,26 @@
               <mat-hint align="end">{{ input.value?.length || 0 }}/10</mat-hint>
             </mat-form-field>
 
-            <mat-form-field class="input">
+            <mat-form-field class="input" appearance="fill">
               <mat-label>Email</mat-label>
               <input
                 matInput
                 placeholder="Dirección de email"
                 formControlName="firstCtrl"
+                [formControl]="emailFormControl"
                 required
               />
+              <mat-error
+                *ngIf="
+                  emailFormControl.hasError('email') &&
+                  !emailFormControl.hasError('required')
+                "
+              >
+                Introduce una dirección de email válida porfavor
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                El email es <strong>requerido</strong>
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="input">

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, of } from 'rxjs'
+import { take, tap } from 'rxjs/operators'
 import { Dish } from '../model/Dish'
+import { Menu } from '../model/Menu'
 import { DishService } from '../services/dish.service'
+import { MenuService } from '../services/menu.service'
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +12,19 @@ import { DishService } from '../services/dish.service'
 
 export class StoreService {
   dishesAPI$ = new BehaviorSubject<Dish[]>([])
+  menuAPI$ = new BehaviorSubject<Menu[]>([])
 
   getDishes () {
-    this.DishService.getDishesService().subscribe((element) => this.dishesAPI$.next(element))
+    this.DishService.getDishesService()
+      .pipe(
+        take(1),
+        tap((element) => this.dishesAPI$.next(element)))
+      .subscribe()
   }
 
-  postDish (dish) {
-    this.DishService.postDishService(dish).subscribe((element) => this.dishesAPI$.next(element))
+  postDish (dish: Dish) {
+    this.DishService.postDishService(dish)
+      .subscribe((element) => this.dishesAPI$.next(element))
   }
 
   deleteDish (id) {
@@ -28,8 +37,23 @@ export class StoreService {
     return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
   }
 
+  getMenu () {
+    this.MenuService.getMenuService().subscribe((element) => this.menuAPI$.next(element))
+  }
+
+  postMenu (menu) {
+    this.MenuService.postMenuService(menu).subscribe((element) => this.menuAPI$.next(element))
+  }
+
+  deleteMenu (id) {
+    this.MenuService
+      .deleteMenuService(id)
+      .subscribe((element) => this.menuAPI$.next(this.menuAPI$.getValue()))
+  }
+
   constructor (
-    public DishService : DishService) {
+    public DishService : DishService,
+     public MenuService : MenuService) {
 
   }
 }

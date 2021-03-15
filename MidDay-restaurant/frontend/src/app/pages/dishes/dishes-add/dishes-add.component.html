@@ -28,7 +28,6 @@
         <mat-optgroup
           *ngFor="let group of ingredientsList"
           [label]="group.category | titlecase"
-          [disabled]="group.disabled"
         >
           <mat-option
             *ngFor="let ingredient of group.ingredient"
@@ -48,7 +47,9 @@
         min="0"
         matInput
         placeholder="0"
-      /><mat-icon>euro</mat-icon>
+      />
+
+      <mat-icon matSuffix>euro</mat-icon>
     </mat-form-field>
 
     <div class="btns">

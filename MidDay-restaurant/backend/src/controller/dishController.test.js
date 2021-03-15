@@ -1,7 +1,11 @@
 const {
-  getDish, getAllDishes, createDish, updateDish,, deleteDish,,
+  getDish,
+  getAllDishes,
+  createDish,
+  updateDish,
+  deleteDish,
 } = require('./dishController');
-const Dish, = require('../models/dishModel');
+const Dish = require('../models/dishModel');
 
 jest.mock('../models/dishModel');
 
@@ -135,7 +139,7 @@ describe('Given a updateDish function', () => {
         },
       };
 
-     Dish.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
+      Dish.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
 
       await updateDish(req, res);
 

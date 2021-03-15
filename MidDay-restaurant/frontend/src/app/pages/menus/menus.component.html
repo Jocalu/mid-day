@@ -11,7 +11,7 @@
     <form [formGroup]="menu">
       <mat-form-field appearance="fill" class="full-width">
         <mat-label> Primeros platos</mat-label>
-        <mat-select formControlName="first" multiple>
+        <mat-select formControlName="firstCourse" multiple>
           <mat-optgroup
             *ngFor="let group of dishesList"
             [label]="group.category"
@@ -26,7 +26,7 @@
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Segundos platos</mat-label>
-        <mat-select formControlName="second" multiple>
+        <mat-select formControlName="secondCourse" multiple>
           <mat-optgroup
             *ngFor="let group of dishesList"
             [label]="group.category"
@@ -55,7 +55,11 @@
       </mat-form-field>
 
       <div class="btns">
-        <button mat-raised-button color="primary" (click)="openPopUp()">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="openPopUp(); postClick()"
+        >
           AÑADIR
         </button>
       </div>

@@ -1,5 +1,7 @@
 const Restaurant = require('../models/restaurantModel.js');
 require('../models/categoryModel');
+require('../models/menuModel');
+require('../models/userRestaurantModel');
 
 const restaurantController = () => {
   const createRestaurant = (req, res) => {
