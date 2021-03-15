@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject, of } from 'rxjs'
-import { take, tap } from 'rxjs/operators'
 import { Dish } from '../model/Dish'
 import { Menu } from '../model/Menu'
 import { DishService } from '../services/dish.service'
@@ -34,7 +33,7 @@ export class StoreService {
   }
 
   getMenu () {
-    this.MenuService.getMenuService().subscribe((element) => this.menuAPI$.next(element))
+    return this.MenuService.getMenuService()
   }
 
   postMenu (menu) {
@@ -49,7 +48,8 @@ export class StoreService {
 
   constructor (
     public DishService : DishService,
-     public MenuService : MenuService) {
+     public MenuService : MenuService
+  ) {
 
   }
 }

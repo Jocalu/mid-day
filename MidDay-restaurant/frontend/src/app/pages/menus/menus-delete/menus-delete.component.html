@@ -1,1 +1,28 @@
-<p>menus-delete works!</p>
+<div class="menu-text" *ngFor="let menu of menu$ | async">
+  <span class="category">
+    <mat-icon>restaurant_menu</mat-icon>
+    <h3>Menú del día</h3>
+    <button class="delete-btn" (click)="openPopUp(); deleteClick(menu._id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
+
+  <span
+    >Primeros:
+    <p *ngFor="let dish of menu.firstCourse">{{ dish.name }}</p>
+  </span>
+
+  <span
+    >Segundos:
+    <p *ngFor="let dish of menu.secondCourse">{{ dish.name }}</p></span
+  >
+
+  <span>
+    Postres:
+    <p *ngFor="let dish of menu.dessert">{{ dish.name }}</p>
+  </span>
+
+  <span>
+    <p>Precio:{{ menu.price }} €</p>
+  </span>
+</div>
