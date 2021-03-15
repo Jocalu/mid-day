@@ -6,8 +6,7 @@ function UserRestaurantRouter() {
 
   router
     .route('/')
-    .get(userRestaurantController.getAllUserRestaurants)
-    .post(userRestaurantController.createUserRestaurant);
+    .get(userRestaurantController.getAllUserRestaurants);
 
   router
     .route('/:userId')

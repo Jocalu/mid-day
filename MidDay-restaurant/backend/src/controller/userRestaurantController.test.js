@@ -1,26 +1,13 @@
 const {
   getUserRestaurant,
   getAllUserRestaurants,
-  createUserRestaurant,
+
   updateUserRestaurant,
   deleteUserRestaurant,
 } = require('./userRestaurantController');
 const UserRestaurant = require('../models/userRestaurantModel');
 
 jest.mock('../models/userRestaurantModel');
-
-describe('Given a createUserRestaurant function', () => {
-  describe('When is invoked with body name', () => {
-    test('Then should call json', () => {
-      const req = { body: { name: 'Jose' } };
-      const res = { json: jest.fn() };
-
-      createUserRestaurant(req, res);
-
-      expect(res.json).toHaveBeenCalled();
-    });
-  });
-});
 
 describe('Given a getAllUserRestaurants function', () => {
   describe('When is invoked', () => {

@@ -2,13 +2,6 @@ const UserRestaurant = require('../models/userRestaurantModel');
 require('../models/restaurantModel');
 
 const userRestaurantController = () => {
-  const createUserRestaurant = (req, res) => {
-    const newUser = new UserRestaurant(req.body);
-    newUser.save(
-      res.json(newUser),
-    );
-  };
-
   const getUserRestaurant = async (req, res) => {
     const { userId } = req.params;
     try {
@@ -39,12 +32,12 @@ const userRestaurantController = () => {
   const updateUserRestaurant = async (req, res) => {
     const { userId } = req.params;
     const {
-      name, password,
+      name, password, email,
     } = req.body;
 
     try {
       const updated = await UserRestaurant
-        .findByIdAndUpdate({ _id: userId }, { name, password }, { new: true })
+        .findByIdAndUpdate({ _id: userId }, { name, password, email }, { new: true })
         .populate('restaurant');
 
       res.json(updated);
@@ -71,7 +64,6 @@ const userRestaurantController = () => {
   return {
     getUserRestaurant,
     getAllUserRestaurants,
-    createUserRestaurant,
     updateUserRestaurant,
     deleteUserRestaurant,
   };
