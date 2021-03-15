@@ -7,7 +7,7 @@ import { Dish } from '../model/Dish'
   providedIn: 'root'
 })
 export class DishService {
-  dishesURL = 'http://localhost:5000/api/v1/midday/dishes'
+  dishesURL = 'http://localhost:5000/api/v1/midday/dish'
 
   constructor (
     private httpClient: HttpClient
@@ -19,5 +19,9 @@ export class DishService {
 
   postDishService (dish): Observable<Dish[]> {
     return this.httpClient.post<Dish[]>(this.dishesURL, dish)
+  }
+
+  deleteDishService (id): Observable<Dish> {
+    return this.httpClient.delete<Dish>(`${this.dishesURL}/${id}`)
   }
 }

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-
+import { MatMenuModule } from '@angular/material/menu'
 import { HeaderComponent } from './header.component'
 
 describe('HeaderComponent', () => {
@@ -9,7 +9,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      declarations: [HeaderComponent], imports: [MatMenuModule]
     })
       .compileComponents()
   })
@@ -24,8 +24,8 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should return a button with', () => {
+  it('should return a button with text menu', () => {
     button = fixture.nativeElement.querySelectorAll('button')[0]
-    expect(button.textContent).toEqual('ENTRAR')
+    expect(button.textContent).toEqual('menu')
   })
 })

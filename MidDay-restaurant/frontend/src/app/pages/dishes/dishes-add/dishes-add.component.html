@@ -6,7 +6,7 @@
         <mat-option
           *ngFor="let category of categories"
           value="{{ category.name }}"
-          >{{ category.name }}</mat-option
+          >{{ category.name | titlecase }}</mat-option
         >
       </mat-select>
     </mat-form-field>
@@ -27,13 +27,13 @@
       <mat-select formControlName="ingredients" multiple>
         <mat-optgroup
           *ngFor="let group of ingredientsList"
-          [label]="group.category"
+          [label]="group.category | titlecase"
           [disabled]="group.disabled"
         >
           <mat-option
             *ngFor="let ingredient of group.ingredient"
             [value]="ingredient.name"
-            >{{ ingredient.name }}</mat-option
+            >{{ ingredient.name | titlecase }}</mat-option
           >
         </mat-optgroup>
       </mat-select>

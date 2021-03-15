@@ -1,0 +1,115 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+main {
+  @include flex(column, flex-start, center);
+  width: 100vw;
+  padding: 0 300px;
+  margin: 20px 0;
+  font-family: $font-primary;
+  min-height: 500px;
+
+  h3 {
+    align-self: flex-start;
+    font-family: $font-primary;
+    font-weight: bold;
+  }
+
+  h4 {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  .bookings__container {
+    @include flex(row, flex-start, flex-start);
+    background-color: $color-grey-soft;
+    border-radius: 6px;
+    border: 2px solid $color-primary;
+    width: 850px;
+    align-items: stretch;
+
+    h4 {
+      border-bottom: 1px solid $color-primary;
+      width: 100%;
+      text-indent: 20px;
+    }
+
+    .hours {
+      @include flex(column, flex-start, center);
+      width: 150px;
+      border-right: 1px solid $color-primary;
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        height: 30px;
+        @include flex(row, space-between, center);
+        background-color: $color-primary-soft;
+        width: 130px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        padding: 10px;
+        &:focus {
+          background-color: black;
+          color: $color-white;
+        }
+        p {
+          margin-left: 10px;
+        }
+      }
+    }
+    .bookings {
+      @include flex(column, flex-start, center);
+      width: 150px;
+      border-right: 1px solid $color-primary;
+
+      button {
+        cursor: pointer;
+        outline: none;
+        border: none;
+        height: 30px;
+        @include flex(row, space-between, center);
+        background-color: $color-primary-soft;
+        width: 130px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        padding: 10px;
+        &:focus {
+          background-color: black;
+          color: white;
+        }
+
+        p {
+          margin-left: 10px;
+        }
+      }
+    }
+    .detail {
+      @include flex(column, flex-start, flex-start);
+      width: 550px;
+
+      h4 {
+        width: 550px;
+      }
+
+      .booking-data {
+        @include flex(column, flex-start, flex-start);
+        margin-left: 10px;
+        background-color: $color-primary-soft;
+        width: 525px;
+        border-radius: 6px;
+        margin-bottom: 10px;
+
+        p {
+          margin: 5px;
+        }
+
+        .menu-details {
+          @include flex(row, flex-start, flex-start);
+        }
+      }
+    }
+  }
+}

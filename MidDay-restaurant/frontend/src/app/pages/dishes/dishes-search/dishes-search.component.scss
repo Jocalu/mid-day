@@ -64,15 +64,15 @@ form {
 }
 .dish-text {
   @include flex(column, center, flex-start);
-  color: $color-primary;
-  border: 2px solid $color-primary;
+  background-color: $color-grey-soft;
   border-radius: 6px;
+  border: 2px solid $color-primary;
+  color: $color-primary;
   margin-bottom: 5px;
-      background-color: $color-grey-soft;
 
   @media only screen and (max-width: 500px) {
-     margin: 0 20px;
-       margin-bottom: 10px;
+    margin-bottom: 10px;
+    margin: 0 20px;
   }
 
   .category {
@@ -80,16 +80,16 @@ form {
     border-bottom: 1px solid $color-primary;
     width: 100%;
 
-       border-radius: 6px;
+    border-radius: 6px;
 
     h3 {
-      letter-spacing: 0.5px;
-      color: $color-primary;
-      width: 100%;
-      text-indent: 10px;
       background-color: $color-grey-soft;
       border-radius: 6px;
+      color: $color-primary;
+      letter-spacing: 0.5px;
       margin: 0px;
+      text-indent: 10px;
+      width: 100%;
     }
   }
 
@@ -100,6 +100,10 @@ form {
       margin-top: 5px;
       text-indent: 10px;
     }
+
+    &:last-of-type {
+      margin-bottom: 10px;
+    }
   }
 
   mat-icon {
@@ -108,9 +112,9 @@ form {
   }
 
   .delete-btn {
-    cursor: pointer;
     background: none;
     border: none;
+    cursor: pointer;
 
     &:focus {
       outline: none;

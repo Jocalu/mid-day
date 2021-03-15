@@ -28,7 +28,14 @@ describe('Given a getAllRestaurants function', () => {
       };
       const req = {};
 
-      Restaurant.find.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Restaurant.find
+        .mockImplementationOnce(() => ({
+          populate: jest.fn()
+            .mockImplementationOnce(() => ({
+              populate: jest.fn()
+                .mockImplementationOnce(() => ({ populate: jest.fn() })),
+            })),
+        }));
 
       await getAllRestaurants(req, res);
 
@@ -87,7 +94,14 @@ describe('Given a getRestaurant function', () => {
         },
       };
 
-      Restaurant.findById.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Restaurant.findById
+        .mockImplementationOnce(() => ({
+          populate: jest.fn()
+            .mockImplementationOnce(() => ({
+              populate: jest.fn()
+                .mockImplementationOnce(() => ({ populate: jest.fn() })),
+            })),
+        }));
 
       await getRestaurant(req, res);
 
@@ -113,7 +127,14 @@ describe('Given a updateRestaurant function', () => {
         },
       };
 
-      Restaurant.findByIdAndUpdate.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Restaurant.findByIdAndUpdate
+        .mockImplementationOnce(() => ({
+          populate: jest.fn()
+            .mockImplementationOnce(() => ({
+              populate: jest.fn()
+                .mockImplementationOnce(() => ({ populate: jest.fn() })),
+            })),
+        }));
 
       await updateRestaurant(req, res);
 

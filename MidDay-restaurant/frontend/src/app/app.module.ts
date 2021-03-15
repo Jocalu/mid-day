@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core'
+import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 
 import { AppComponent } from './app.component'
@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-search.component'
 import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.component'
 import { MatDialogModule } from '@angular/material/dialog'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [
@@ -55,14 +57,19 @@ import { MatDialogModule } from '@angular/material/dialog'
     AppRoutingModule,
     MatTreeModule,
     HttpClientModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatDialogModule
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' }
-    }
+    }, { provide: LOCALE_ID, useValue: 'es-ES' }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class AppModule { }

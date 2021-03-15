@@ -1,39 +1,39 @@
-<form>
+<form [formGroup]="searchDishes">
   <div class="input">
     <mat-form-field class="full-width">
       <mat-label>Nombre</mat-label>
-      <input 
-      type="text" 
-      [formControl]="text" 
-      matInput 
-      placeholder="Nombre" />
+      <input
+        #searchBox
+        type="text"
+        matInput
+        placeholder="Nombre"
+        (input)="search(searchBox.value)"
+        formControlName="searchDish"
+      />
     </mat-form-field>
   </div>
 </form>
 
-<div *ngIf="dishes$ | async as dishes">
-  <div class="dish-text" *ngFor="let dish of dishes">
-    <span class="category">
-      <mat-icon>restaurant_menu</mat-icon>
-      <h3>{{ dish.type }}</h3>
-      <button class="delete-btn">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </span>
+<div class="dish-text" *ngFor="let dish of dishes$ | async">
+  <span class="category">
+    <mat-icon>restaurant_menu</mat-icon>
+    <h3>{{ dish.name }}</h3>
+    <button class="delete-btn" (click)="openPopUp(); deleteClick(dish._id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </span>
 
-    <span>
-      <p>Nombre:</p>
-      <p>{{ dish.name }}</p></span
-    >
+  <span>
+    <p>{{ dish.type }}</p></span
+  >
 
-    <span>
-      <p>Ingredientes:</p>
-      <p>{{ dish.ingredients }}</p></span
-    >
+  <span>
+    <p>Ingredientes:</p>
+    <p>{{ dish.ingredients }}</p></span
+  >
 
-    <span>
-      <p>Suplemento:</p>
-      <p>{{ dish.extra }}€</p>
-    </span>
-  </div>
+  <span>
+    <p>Suplemento:</p>
+    <p>{{ dish.extra }}€</p>
+  </span>
 </div>

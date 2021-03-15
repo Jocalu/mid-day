@@ -1,1 +1,59 @@
-<p>bookings works!</p>
+<main>
+  <mat-form-field appearance="fill">
+    <mat-label>Elige una fecha</mat-label>
+    <input
+      [formControl]="datepicker"
+      matInput
+      [matDatepicker]="picker"
+      (dateInput)="searchBookingsOfTheDay(datepicker.value); searchCapacity()"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div>
+    <section class="bookings__container">
+      <div class="hours">
+        <h4>Horas</h4>
+        <button
+          *ngFor="let hour of hours"
+          (click)="searchBookingsOfTheHour(hour.hour)"
+        >
+          {{ hour.hour }}
+          <p>{{ hour.numOfbookings }}/{{ maxCapacity }}</p>
+        </button>
+      </div>
+
+      <div class="bookings">
+        <h4>Reservas</h4>
+        <button
+          *ngFor="let booking of bookingsOfTheHour"
+          (click)="showDetailsOfTheBooking(booking.bookingName)"
+        >
+          {{ booking.pax }}pax
+          <p>{{ booking.bookingName }}</p>
+        </button>
+      </div>
+
+      <div class="detail">
+        <h4>Detalle de la reserva</h4>
+        <div *ngFor="let booking of detailsOfTheBooking">
+          <h4>Teléfono de contacto: {{ booking.phone }}</h4>
+          <div class="booking-data" *ngFor="let person of booking.people">
+            <p>Nombre: {{ person.name }}</p>
+            <p>Alergias: {{ person.allergies }}</p>
+
+            <div class="menu-details">
+              <p>Elecciones:</p>
+              <div class="menu-selection">
+                <p>{{ person.selections.first }}</p>
+                <p>{{ person.selections.second }}</p>
+                <p>{{ person.selections.dessert }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

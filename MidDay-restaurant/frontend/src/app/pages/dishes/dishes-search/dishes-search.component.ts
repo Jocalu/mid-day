@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Inject } from '@angular/core'
 import { StoreService } from '../../../core/services/store.service'
-import { FormControl } from '@angular/forms'
-import { debounce, debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators'
-import { of, Subject } from 'rxjs'
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
+import { Subject } from 'rxjs'
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { FormBuilder } from '@angular/forms'
 
 @Component({
   selector: 'app-dishes-search',
@@ -10,51 +11,53 @@ import { of, Subject } from 'rxjs'
   styleUrls: ['./dishes-search.component.scss']
 })
 export class DishesSearchComponent implements OnInit {
-  constructor (private StoreService: StoreService) {}
+  constructor (
+    public StoreService: StoreService,
+    private dialog: MatDialog,
+    private fb: FormBuilder
+  ) {}
 
-      types:any=[
-        { name: 'ENTRANTES' },
-        { name: 'ENSALADAS' },
-        { name: 'SOPAS' },
-        { name: 'SEGUNDOS' },
-        { name: 'POSTRES' }
-      ];
+  openPopUp () {
+    this.dialog.open(Popup, {})
+  }
 
-  ingredients = new FormControl();
+  searchDishes = this.fb.group({
+    searchDish: ''
+  })
 
-  ingredientsList: any = [
-    { name: 'ternera', category: 'carne' },
-    { name: 'parmesano', category: 'lácteos' },
-    { name: 'aceite de oliva', category: 'aceites' },
-    { name: 'comino', category: 'especias' },
-    { name: 'tomate', category: 'hortalizas' },
-    { name: 'piñones', category: 'frutos secos' },
-    { name: 'cebolla', category: 'hortalizas' },
-    { name: 'salmón', category: 'pescados' },
-    { name: 'calabacín', category: 'hortalizas' },
-    { name: 'sandía', category: 'frutas' },
-    { name: 'huevos', category: 'huevos' },
-    { name: 'garbanzos', category: 'legumbres' },
-    { name: 'espinacas', category: 'hortalizas' }
-  ];
-
-  text = new FormControl(null)
-
-  dishes$ = this.StoreService.dishesAPI$
+  dishes$: any
 
   searchTerms: Subject<string> = new Subject()
 
   ngOnInit (): void {
     this.StoreService.getDishes()
-    /*     this.dishes$ = this.searchTerms
+
+    this.dishes$ = this.searchTerms
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
         switchMap(term => this.StoreService.searchDish(term))
-      ) */
+      )
+  }
+
+  deleteClick (id: string) {
+    this.StoreService.deleteDish(id)
+    this.searchDishes.patchValue({ searchDish: '' })
+    this.search('')
   }
 
   search (searchValue: string) {
     this.searchTerms.next(searchValue)
   }
+}
+
+export interface DialogData {
+  message: 'message';
+}
+@Component({
+  selector: 'popup',
+  templateUrl: 'popup.html'
+})
+export class Popup {
+  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }

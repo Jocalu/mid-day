@@ -7,6 +7,7 @@ import { MenusComponent } from './pages/menus/menus.component'
 import { DishesComponent } from './pages/dishes/dishes.component'
 import { RegisterComponent } from './pages/register/register.component'
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/landing', pathMatch: 'full' },
   { path: 'landing', component: LandingComponent },

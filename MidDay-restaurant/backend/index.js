@@ -22,7 +22,7 @@ connect(process.env.DDBB_URL, { useNewUrlParser: true, useUnifiedTopology: true 
 
 app.use('/api/v1/midday/restaurant', restaurantRouter);
 app.use('/api/v1/midday/user-restaurant', userRestaurantRouter);
-app.use('/api/v1/midday/dishes', dishesRouter);
+app.use('/api/v1/midday/dish', dishesRouter);
 
 app.listen(port, () => {
   debug(`${chalk.italic.bgBlue('Server running in')} ${chalk.yellow(`http://localhost:${port}`)}`);

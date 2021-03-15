@@ -13,7 +13,9 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId)
-        .populate('category');
+        .populate('userRestaurant')
+        .populate('category')
+        .populate('menu');
 
       res.json(restaurant);
     } catch (error) {
@@ -25,7 +27,11 @@ const restaurantController = () => {
   const getAllRestaurants = async (req, res) => {
     try {
       const allRestaurants = await Restaurant
-        .find({}).populate('category');
+        .find({})
+        .populate('userRestaurant')
+        .populate('category')
+        .populate('menu');
+
       res.json(allRestaurants);
     } catch (error) {
       res.status(500);
@@ -41,7 +47,9 @@ const restaurantController = () => {
     try {
       const updated = await Restaurant
         .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true })
-        .populate('category');
+        .populate('userRestaurant')
+        .populate('category')
+        .populate('menu');
 
       res.json(updated);
     } catch (error) {
