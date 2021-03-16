@@ -1,8 +1,18 @@
 const Restaurant = require('../models/restaurantModel.js');
-require('../models/categoryModel');
+const Category = require('../models/categoryModel');
 require('../models/menuModel');
 
 const restaurantController = () => {
+  const getCategories = async (req, res) => {
+    try {
+      const categories = await Category.find({});
+      res.json(categories);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
 
@@ -76,6 +86,7 @@ const restaurantController = () => {
     createRestaurant,
     updateRestaurant,
     deleteRestaurant,
+    getCategories,
   };
 };
 

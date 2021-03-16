@@ -3,6 +3,9 @@ const restController = require('../controller/restaurantController');
 
 function RestaurantRouter() {
   const router = Router();
+  router
+    .route('/categories')
+    .get(restController.getCategories);
 
   router
     .route('/')
