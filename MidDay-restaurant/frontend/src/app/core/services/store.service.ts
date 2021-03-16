@@ -3,8 +3,9 @@ import { BehaviorSubject, of } from 'rxjs'
 import { Dish } from '../model/Dish'
 import { Menu } from '../model/Menu'
 import { UserRestaurant } from '../model/UserRestaurant'
-import { DishService } from '../services/dish.service'
 import { MenuService } from '../services/menu.service'
+import { CategoryService } from '../services/category.service'
+import { DishService } from '../services/dish.service'
 import { UserRestaurantService } from '../services/user-restaurant.service'
 
 @Injectable({
@@ -15,6 +16,10 @@ export class StoreService {
   dishesAPI$ = new BehaviorSubject<Dish[]>([])
   menuAPI$ = new BehaviorSubject<Menu[]>([])
   userRestaurantAPI$ = new BehaviorSubject<UserRestaurant[]>([])
+
+  getCategories () {
+    return this.CategoryService.getCategoriesService()
+  }
 
   getDishes () {
     return this.DishService.getDishesService()
@@ -61,6 +66,7 @@ export class StoreService {
   constructor (
     public DishService : DishService,
      public MenuService : MenuService,
-     public UserRestaurantService : UserRestaurantService
+     public UserRestaurantService : UserRestaurantService,
+     public CategoryService : CategoryService
   ) {}
 }

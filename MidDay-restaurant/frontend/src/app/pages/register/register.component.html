@@ -133,7 +133,7 @@
                   matInput
                   placeholder="Código postal"
                   formControlName="zipcode"
-                  type="number"
+                  type="text"
                   required
                 />
               </mat-form-field>
@@ -189,9 +189,9 @@
               <mat-select formControlName="category">
                 <mat-option
                   required
-                  *ngFor="let option of options"
-                  value="{{ option.value }}"
-                  >{{ option.name }}
+                  *ngFor="let category of category$ | async"
+                  value="{{ category._id }}"
+                  >{{ category.name }}
                 </mat-option>
               </mat-select>
             </mat-form-field>

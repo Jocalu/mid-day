@@ -1,10 +1,11 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
-import { options } from '../../constants/options'
 import { StoreService } from '../../core/services/store.service'
 import { MatDialog } from '@angular/material/dialog'
 import { PopupRegisterComponent } from './popup-register/popup-register.component'
+import { BehaviorSubject } from 'rxjs'
+import { Category } from 'src/app/core/model/Category'
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { PopupRegisterComponent } from './popup-register/popup-register.componen
   }]
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   constructor (
       public StoreService: StoreService,
     private fb: FormBuilder,
@@ -55,7 +56,14 @@ export class RegisterComponent {
         this.dialog.open(PopupRegisterComponent)
       }
 
-  options = options
+    hide = true;
 
-  hide = true;
+    category$ = new BehaviorSubject<Category[]>([])
+
+    ngOnInit (): void {
+      this.StoreService.getCategories()
+        .subscribe((category) => {
+          this.category$.next(category)
+        })
+    }
 }

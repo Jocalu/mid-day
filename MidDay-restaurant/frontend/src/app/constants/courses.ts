@@ -1,8 +1,8 @@
 
-interface Categories{
+interface Courses{
   name: string
 }
-export const categories:Categories[] = [
+export const courses:Courses[] = [
   { name: 'PRIMEROS' },
   { name: 'SEGUNDOS' },
   { name: 'POSTRES' }]

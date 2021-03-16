@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
-import { categories } from '../../../constants/categories'
+import { courses } from '../../../constants/courses'
 import { ingredientsList } from '../../../constants/ingredients'
 import { MatDialog } from '@angular/material/dialog'
 import { PopupDishesaddComponent } from '../dishes-add/popup-dishesadd/popup-dishesadd.component'
@@ -18,7 +18,7 @@ export class DishesAddComponent {
     private fb: FormBuilder
   ) { }
 
-  categories = categories
+  courses = courses
 
   openPopUp () {
     this.dialog.open(PopupDishesaddComponent)

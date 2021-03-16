@@ -3,11 +3,9 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Tipo del plato</mat-label>
       <mat-select formControlName="type">
-        <mat-option
-          *ngFor="let category of categories"
-          value="{{ category.name }}"
-          >{{ category.name | titlecase }}</mat-option
-        >
+        <mat-option *ngFor="let course of courses" value="{{ course.name }}">{{
+          course.name | titlecase
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
