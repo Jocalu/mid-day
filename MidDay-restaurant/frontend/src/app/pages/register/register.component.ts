@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+
      emailFormControl = new FormControl('', [
        Validators.required,
        Validators.email
@@ -32,9 +32,6 @@ export class RegisterComponent implements OnInit {
       firstCtrl: ['', Validators.required]
     })
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    })
-    this.thirdFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     })
   }

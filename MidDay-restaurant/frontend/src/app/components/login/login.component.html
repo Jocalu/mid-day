@@ -1,0 +1,56 @@
+<section class="login">
+  <form [formGroup]="login">
+    <ng-template matStepLabel>Tu perfil</ng-template>
+    <div class="form">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Dirección de email"
+          [formControl]="emailFormControl"
+          required
+        />
+        <mat-error
+          *ngIf="
+            emailFormControl.hasError('email') &&
+            !emailFormControl.hasError('required')
+          "
+        >
+          Introduce una dirección de email válida porfavor
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          El email es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Contraseña</mat-label>
+        <input
+          [type]="hide ? 'password' : 'text'"
+          matInput
+          placeholder="Contraseña"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div>
+        <button
+          type="button"
+          mat-raised-button
+          routerLink="/landing"
+          color="primary"
+        >
+          ENTRAR
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

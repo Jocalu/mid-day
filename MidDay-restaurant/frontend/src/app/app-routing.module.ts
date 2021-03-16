@@ -6,10 +6,11 @@ import { LandingComponent } from './pages/landing/landing.component'
 import { MenusComponent } from './pages/menus/menus.component'
 import { DishesComponent } from './pages/dishes/dishes.component'
 import { RegisterComponent } from './pages/register/register.component'
-
+import { HomeComponent } from './pages/home/home.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/landing', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'landing', component: LandingComponent },
   { path: 'bookings', component: BookingsComponent },
   { path: 'dishes', component: DishesComponent },

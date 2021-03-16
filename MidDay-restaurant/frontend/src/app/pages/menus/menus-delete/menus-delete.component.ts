@@ -1,7 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core'
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Component, OnInit } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 import { StoreService } from '../../../core/services/store.service'
 import { BehaviorSubject } from 'rxjs'
+import { PopupMenusdeleteComponent } from './popup-menusdelete/popup-menusdelete.component'
 
 @Component({
   selector: 'app-menus-delete',
@@ -17,7 +18,7 @@ export class MenusDeleteComponent implements OnInit {
     menu$ = new BehaviorSubject([])
 
     openPopUp () {
-      this.dialog.open(Popup, {})
+      this.dialog.open(PopupMenusdeleteComponent, {})
     }
 
     deleteClick (id: string) {
@@ -27,14 +28,4 @@ export class MenusDeleteComponent implements OnInit {
     ngOnInit () {
       this.StoreService.getMenu().subscribe((menu) => { this.menu$.next(menu) })
     }
-}
-export interface DialogData {
-  message: 'message';
-}
-@Component({
-  selector: 'popup',
-  templateUrl: 'popup.html'
-})
-export class Popup {
-  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }

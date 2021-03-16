@@ -26,9 +26,15 @@ import { DishesSearchComponent } from './pages/dishes/dishes-search/dishes-searc
 import { DishesAddComponent } from './pages/dishes/dishes-add/dishes-add.component'
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatDatepickerModule } from '@angular/material/datepicker'
-import { MatNativeDateModule } from '@angular/material/core';
-import { MenusAddComponent } from './pages/menus/menus-add/menus-add.component';
+import { MatNativeDateModule } from '@angular/material/core'
+import { MenusAddComponent } from './pages/menus/menus-add/menus-add.component'
 import { MenusDeleteComponent } from './pages/menus/menus-delete/menus-delete.component'
+import { LoginComponent } from './components/login/login.component'
+import { HomeComponent } from './pages/home/home.component'
+import { PopupDishesaddComponent } from './pages/dishes/dishes-add/popup-dishesadd/popup-dishesadd.component'
+import { PopupDishessearchComponent } from './pages/dishes/dishes-search/popup-dishessearch/popup-dishessearch.component';
+import { PopupMenusaddComponent } from './pages/menus/menus-add/popup-menusadd/popup-menusadd.component';
+import { PopupMenusdeleteComponent } from './pages/menus/menus-delete/popup-menusdelete/popup-menusdelete.component'
 
 @NgModule({
   declarations: [
@@ -44,7 +50,13 @@ import { MenusDeleteComponent } from './pages/menus/menus-delete/menus-delete.co
     DishesSearchComponent,
     DishesAddComponent,
     MenusAddComponent,
-    MenusDeleteComponent
+    MenusDeleteComponent,
+    LoginComponent,
+    HomeComponent,
+    PopupDishesaddComponent,
+    PopupDishessearchComponent,
+    PopupMenusaddComponent,
+    PopupMenusdeleteComponent
   ],
   imports: [
     FormsModule,

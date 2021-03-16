@@ -90,3 +90,24 @@ $MidDay-restaurant-theme: mat-light-theme(
 .mat-typography p {
   margin: 0 0 0px;
 }
+
+.mat-button.mat-primary {
+  color: $color-primary;
+}
+
+mat-raised-button {
+  box-shadow: none;
+
+  &:hover {
+    background-color: $color-primary-hard;
+    box-shadow: none;
+  }
+}
+
+.mat-raised-button:not([class*="mat-elevation-z"]) {
+  box-shadow: none;
+}
+
+.mat-raised-button:not(.mat-button-disabled):active:not([class*="mat-elevation-z"]) {
+  box-shadow: none;
+}

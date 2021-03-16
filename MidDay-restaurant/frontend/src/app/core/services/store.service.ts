@@ -17,6 +17,11 @@ export class StoreService {
     return this.DishService.getDishesService()
   }
 
+  getDishesForSearch () {
+    this.DishService.getDishesService()
+      .subscribe((element) => this.dishesAPI$.next(element))
+  }
+
   postDish (dish: Dish) {
     this.DishService.postDishService(dish)
       .subscribe((element) => this.dishesAPI$.next(element))

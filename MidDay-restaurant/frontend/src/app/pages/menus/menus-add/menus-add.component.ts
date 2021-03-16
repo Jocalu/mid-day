@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog'
 import { BehaviorSubject } from 'rxjs'
 import { StoreService } from '../../../core/services/store.service'
+import { PopupMenusaddComponent } from '../menus-add/popup-menusadd/popup-menusadd.component'
 
 @Component({
   selector: 'app-menus-add',
@@ -17,7 +18,7 @@ export class MenusAddComponent implements OnInit {
   ) { }
 
   openPopUp () {
-    this.dialog.open(PopUp, {})
+    this.dialog.open(PopupMenusaddComponent, {})
   }
 
   firstCourses$ = new BehaviorSubject([])
@@ -44,15 +45,4 @@ export class MenusAddComponent implements OnInit {
             this.desserts$.next(dish.filter((option) => option.type === 'POSTRES'))
           })
       }
-}
-
-export interface DialogData {
-  menssage: 'message';
-}
-@Component({
-  selector: 'popup',
-  templateUrl: 'popup.html'
-})
-export class PopUp {
-  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }
