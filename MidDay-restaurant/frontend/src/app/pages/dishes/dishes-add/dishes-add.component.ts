@@ -21,7 +21,7 @@ export class DishesAddComponent implements OnInit {
   categories = categories
 
   openPopUp () {
-    this.dialog.open(PopupDishesaddComponent, {})
+    this.dialog.open(PopupDishesaddComponent)
   }
 
   ingredientsList=ingredientsList

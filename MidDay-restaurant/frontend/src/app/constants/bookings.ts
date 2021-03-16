@@ -8,28 +8,28 @@ export const bookings:any[] = [
     pax: 3,
     people: [{
       name: 'Gerard',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'sopa',
-        second: 'carne',
+        firstCourse: 'sopa',
+        secondCouse: 'carne',
         dessert: 'yogurt'
       }
     },
     {
       name: 'Nil',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'ensalada',
-        second: 'pato',
+        firstCourse: 'ensalada',
+        secondCouse: 'pato',
         dessert: 'crema'
       }
     },
     {
       name: 'Ignasi',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'ensalada',
-        second: 'pato',
+        firstCourse: 'ensalada',
+        secondCouse: 'pato',
         dessert: 'crema'
       }
     }]
@@ -42,28 +42,28 @@ export const bookings:any[] = [
     pax: 3,
     people: [{
       name: 'Andrea',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'sopa',
-        second: 'carne',
+        firstCourse: 'sopa',
+        secondCouse: 'carne',
         dessert: 'yogurt'
       }
     },
     {
       name: 'Paula',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'ensalada',
-        second: 'pato',
+        firstCourse: 'ensalada',
+        secondCouse: 'pato',
         dessert: 'crema'
       }
     },
     {
       name: 'Maria',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'ensalada',
-        second: 'pato',
+        firstCourse: 'ensalada',
+        secondCouse: 'pato',
         dessert: 'crema'
       }
     }]
@@ -76,10 +76,10 @@ export const bookings:any[] = [
     pax: 1,
     people: [{
       name: 'Jose',
-      allergies: 'altramuces, frutos secos',
+      allergies: ['altramuces, frutos secos'],
       selections: {
-        first: 'sopa',
-        second: 'carne',
+        firstCourse: 'sopa',
+        secondCouse: 'carne',
         dessert: 'yogurt'
       }
     }]

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { Component } from '@angular/core'
+import { FormBuilder, Validators, FormControl } from '@angular/forms'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
 import { options } from '../../constants/options'
 
@@ -11,28 +11,45 @@ import { options } from '../../constants/options'
     provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
-export class RegisterComponent implements OnInit {
+
+export class RegisterComponent {
+  constructor (
+    private fb: FormBuilder
+  ) {}
+
   isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+
+    registerFormGroup = this.fb.group({
+      userName: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      secondPassword: ['', Validators.required]
+    })
+
+      restaurantDataFormGroup = this.fb.group({
+        name: ['', Validators.required],
+        address: ['', Validators.required],
+        number: ['', Validators.required],
+        zipcode: ['', Validators.required],
+        city: ['', Validators.required],
+        phone: ['', Validators.required],
+        category: ['', Validators.required],
+        capacity: ['', Validators.required],
+        menuprice: ['', Validators.required],
+        image: ['', Validators.required]
+      })
 
      emailFormControl = new FormControl('', [
        Validators.required,
        Validators.email
      ]);
 
+     passwordFormControl = new FormControl('', [
+       Validators.required,
+       Validators.minLength(8)
+     ]);
+
   options = options
 
   hide = true;
-
-  constructor (private _formBuilder: FormBuilder) {}
-
-  ngOnInit () {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    })
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    })
-  }
 }

@@ -12,10 +12,6 @@ export class HeaderComponent {
   constructor (public dialog: MatDialog) {}
 
   openLogin () {
-    const dialogRef = this.dialog.open(LoginComponent)
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`)
-    })
+    this.dialog.open(LoginComponent)
   }
 }

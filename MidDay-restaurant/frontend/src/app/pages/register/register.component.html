@@ -1,33 +1,36 @@
 <section class="register-container">
   <div class="register">
     <mat-horizontal-stepper [linear]="!isLinear" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+      <mat-step [stepControl]="registerFormGroup">
+        <form [formGroup]="registerFormGroup">
           <ng-template matStepLabel>Tu perfil</ng-template>
+
           <div class="form">
             <mat-form-field
-              hintLabel="Max 10 carácteres"
-              appearance="fill"
+              hintLabel="Max 12 carácteres"
               class="input"
+              appearance="fill"
             >
               <mat-label>Nombre usuario</mat-label>
               <input
                 matInput
                 #input
-                maxlength="10"
+                type="text"
+                maxlength="12"
                 placeholder="Nombre usuario"
-                formControlName="firstCtrl"
+                formControlName="userName"
                 required
               />
-              <mat-hint align="end">{{ input.value?.length || 0 }}/10</mat-hint>
+              <mat-hint align="end">{{ input.value?.length || 0 }}/12</mat-hint>
             </mat-form-field>
 
             <mat-form-field class="input" appearance="fill">
               <mat-label>Email</mat-label>
               <input
                 matInput
+                type="email"
                 placeholder="Dirección de email"
-                formControlName="firstCtrl"
+                formControlName="email"
                 [formControl]="emailFormControl"
                 required
               />
@@ -50,9 +53,18 @@
                 [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Contraseña"
-                formControlName="firstCtrl"
+                formControlName="password"
+                [formControl]="passwordFormControl"
                 required
               />
+              <mat-error
+                *ngIf="
+                  passwordFormControl.hasError('minlength') &&
+                  !passwordFormControl.hasError('required')
+                "
+              >
+                Se requieren 8 carácteres o más
+              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="input">
@@ -61,7 +73,8 @@
                 [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Repetir contraseña"
-                formControlName="firstCtrl"
+                formControlName="secondPassword"
+                [formControl]="passwordFormControl"
                 required
               />
               <button
@@ -77,20 +90,22 @@
               </button>
             </mat-form-field>
           </div>
+
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperNext
               type="button"
               color="primary"
+              [disabled]="registerFormGroup.invalid"
             >
               SIGUIENTE
             </button>
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+      <mat-step [stepControl]="restaurantDataFormGroup">
+        <form [formGroup]="restaurantDataFormGroup">
           <ng-template matStepLabel>Tu restaurante</ng-template>
           <div class="form">
             <mat-form-field class="input">
@@ -98,7 +113,8 @@
               <input
                 matInput
                 placeholder="Nombre restaurante"
-                formControlName="secondCtrl"
+                formControlName="name"
+                type="text"
                 required
               />
             </mat-form-field>
@@ -107,7 +123,8 @@
               <input
                 matInput
                 placeholder="Dirección"
-                formControlName="secondCtrl"
+                formControlName="address"
+                type="text"
                 required
               />
             </mat-form-field>
@@ -117,7 +134,8 @@
                 <input
                   matInput
                   placeholder="Número"
-                  formControlName="secondCtrl"
+                  formControlName="number"
+                  type="number"
                   required
                 />
               </mat-form-field>
@@ -126,7 +144,8 @@
                 <input
                   matInput
                   placeholder="Código postal"
-                  formControlName="secondCtrl"
+                  formControlName="zipcode"
+                  type="number"
                   required
                 />
               </mat-form-field>
@@ -136,7 +155,8 @@
               <input
                 matInput
                 placeholder="Ciudad"
-                formControlName="secondCtrl"
+                formControlName="city"
+                type="text"
                 required
               />
             </mat-form-field>
@@ -145,14 +165,15 @@
               <input
                 matInput
                 placeholder="Teléfono de contacto"
-                formControlName="secondCtrl"
+                formControlName="phone"
+                type="number"
                 required
               />
             </mat-form-field>
           </div>
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperPrevious
               type="button"
               color="primary"
@@ -160,7 +181,7 @@
               VOLVER
             </button>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperNext
               type="button"
               color="primary"
@@ -170,40 +191,67 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+      <mat-step [stepControl]="restaurantDataFormGroup">
+        <form [formGroup]="restaurantDataFormGroup">
           <ng-template matStepLabel>Casi estamos</ng-template>
+
           <div class="form">
             <mat-form-field class="input">
               <mat-label>Tipo de cocina</mat-label>
-              <mat-select>
+              <mat-select formControlName="category">
                 <mat-option
+                  required
                   *ngFor="let option of options"
                   value="{{ option.value }}"
-                  >{{ option.name }}</mat-option
-                >
+                  >{{ option.name }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+
+            <div class="input__cont">
+              <mat-form-field class="input--half">
+                <mat-label>Aforo</mat-label>
+                <input
+                  matInput
+                  placeholder="Aforo"
+                  formControlName="capacity"
+                  type="number"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field class="input--half">
+                <mat-label>Precio medio del menú</mat-label>
+                <input
+                  matInput
+                  placeholder="Precio medio del menú"
+                  formControlName="menuprice"
+                  type="number"
+                  required
+                />
+                <mat-icon matSuffix>euro</mat-icon>
+              </mat-form-field>
+            </div>
             <mat-form-field class="input">
-              <mat-label>Aforo</mat-label>
+              <mat-label>URL de imagen</mat-label>
               <input
                 matInput
-                placeholder="Aforo"
-                formControlName="secondCtrl"
+                placeholder="URL de imagen"
+                formControlName="image"
+                type="text"
                 required
               />
             </mat-form-field>
           </div>
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperPrevious
               type="button"
               color="primary"
             >
               VOLVER
             </button>
-            <button mat-stroked-button type="button" color="primary">
+            <button mat-raised-button type="button" color="primary">
               FINALIZAR
             </button>
           </div>
