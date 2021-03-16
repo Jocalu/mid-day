@@ -8,7 +8,6 @@ const session = require('express-session');
 require('dotenv').config();
 
 const restaurantRouter = require('./src/router/restaurantRouter');
-const userRestaurantRouter = require('./src/router/userRestaurantRouter');
 const dishRouter = require('./src/router/dishRouter');
 const menuRouter = require('./src/router/menuRouter');
 const authRouter = require('./src/router/authRouter');
@@ -31,9 +30,8 @@ app.use(session({
 
 require('./src/passport')(app);
 
-app.use('/api/v1/midday/restaurant', restaurantRouter);
+app.use('/api/v1/midday/restaurant', restaurantRouter, authRouter);
 app.use('/api/v1/midday/menu', menuRouter);
-app.use('/api/v1/midday/userrestaurant', userRestaurantRouter, authRouter);
 app.use('/api/v1/midday/dish', dishRouter);
 
 app.listen(port, () => {

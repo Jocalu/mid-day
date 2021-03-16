@@ -1,11 +1,26 @@
 const md5 = require('md5');
-const UserRestaurant = require('../models/userRestaurantModel');
+const UserRestaurant = require('../models/restaurantModel');
 
 function register(req, res) {
-  const { email, password, name } = req.body;
+  const {
+    email, password, userName, name,
+    category, capacity, phone, street,
+    number, city, zipcode, image, menuprice, bookings,
+  } = req.body;
   const user = new UserRestaurant({
-    name,
     email,
+    userName,
+    name,
+    category,
+    capacity,
+    phone,
+    street,
+    number,
+    city,
+    zipcode,
+    image,
+    menuprice,
+    bookings,
     password: md5(password),
   });
 

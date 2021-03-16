@@ -1,11 +1,11 @@
 const Restaurant = require('../models/restaurantModel.js');
 require('../models/categoryModel');
 require('../models/menuModel');
-require('../models/userRestaurantModel');
 
 const restaurantController = () => {
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
+
     newRestaurant
       .save(res.json(newRestaurant));
   };
@@ -15,7 +15,6 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId)
-        .populate('userRestaurant')
         .populate('category')
         .populate('menu');
 
@@ -30,7 +29,6 @@ const restaurantController = () => {
     try {
       const allRestaurants = await Restaurant
         .find({})
-        .populate('userRestaurant')
         .populate('category')
         .populate('menu');
 
@@ -49,7 +47,6 @@ const restaurantController = () => {
     try {
       const updated = await Restaurant
         .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true })
-        .populate('userRestaurant')
         .populate('category')
         .populate('menu');
 
