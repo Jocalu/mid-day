@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core'
 import { BehaviorSubject, of } from 'rxjs'
 import { Dish } from '../model/Dish'
 import { Menu } from '../model/Menu'
+import { UserRestaurant } from '../model/UserRestaurant'
 import { DishService } from '../services/dish.service'
 import { MenuService } from '../services/menu.service'
+import { UserRestaurantService } from '../services/user-restaurant.service'
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,7 @@ import { MenuService } from '../services/menu.service'
 export class StoreService {
   dishesAPI$ = new BehaviorSubject<Dish[]>([])
   menuAPI$ = new BehaviorSubject<Menu[]>([])
+  userRestaurantAPI$ = new BehaviorSubject<UserRestaurant[]>([])
 
   getDishes () {
     return this.DishService.getDishesService()
@@ -51,10 +54,13 @@ export class StoreService {
       .subscribe((element) => this.menuAPI$.next(this.menuAPI$.getValue()))
   }
 
+  postUserRestaurant (user, restaurant) {
+    this.UserRestaurantService.postUserRestaurantService({ ...user, ...restaurant }).subscribe((element) => this.userRestaurantAPI$.next(element))
+  }
+
   constructor (
     public DishService : DishService,
-     public MenuService : MenuService
-  ) {
-
-  }
+     public MenuService : MenuService,
+     public UserRestaurantService : UserRestaurantService
+  ) {}
 }

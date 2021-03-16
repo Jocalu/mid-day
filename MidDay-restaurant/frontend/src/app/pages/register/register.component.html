@@ -1,16 +1,12 @@
 <section class="register-container">
   <div class="register">
-    <mat-horizontal-stepper [linear]="!isLinear" #stepper>
+    <mat-horizontal-stepper #stepper>
       <mat-step [stepControl]="registerFormGroup">
         <form [formGroup]="registerFormGroup">
           <ng-template matStepLabel>Tu perfil</ng-template>
 
           <div class="form">
-            <mat-form-field
-              hintLabel="Max 12 carácteres"
-              class="input"
-              appearance="fill"
-            >
+            <mat-form-field hintLabel="Max 12 carácteres" class="input">
               <mat-label>Nombre usuario</mat-label>
               <input
                 matInput
@@ -21,6 +17,9 @@
                 formControlName="userName"
                 required
               />
+              <mat-error *ngIf="registerFormGroup.controls['userName'].invalid"
+                >El nombre de usuario ya existe</mat-error
+              >
               <mat-hint align="end">{{ input.value?.length || 0 }}/12</mat-hint>
             </mat-form-field>
 
@@ -31,20 +30,11 @@
                 type="email"
                 placeholder="Dirección de email"
                 formControlName="email"
-                [formControl]="emailFormControl"
                 required
               />
-              <mat-error
-                *ngIf="
-                  emailFormControl.hasError('email') &&
-                  !emailFormControl.hasError('required')
-                "
+              <mat-error *ngIf="registerFormGroup.controls['email'].invalid"
+                >Introduce un email válido</mat-error
               >
-                Introduce una dirección de email válida porfavor
-              </mat-error>
-              <mat-error *ngIf="emailFormControl.hasError('required')">
-                El email es <strong>requerido</strong>
-              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="input">
@@ -54,17 +44,12 @@
                 matInput
                 placeholder="Contraseña"
                 formControlName="password"
-                [formControl]="passwordFormControl"
                 required
               />
-              <mat-error
-                *ngIf="
-                  passwordFormControl.hasError('minlength') &&
-                  !passwordFormControl.hasError('required')
-                "
+              <mat-error *ngIf="registerFormGroup.controls['password'].invalid"
+                >La contraseña debe contener un mínimo de 8 carácteres y un
+                máximo de 12</mat-error
               >
-                Se requieren 8 carácteres o más
-              </mat-error>
             </mat-form-field>
 
             <mat-form-field class="input">
@@ -74,9 +59,12 @@
                 matInput
                 placeholder="Repetir contraseña"
                 formControlName="secondPassword"
-                [formControl]="passwordFormControl"
                 required
               />
+              <mat-error
+                *ngIf="registerFormGroup.controls['secondPassword'].invalid"
+                >Ambos campos deben ser iguales</mat-error
+              >
               <button
                 mat-icon-button
                 matSuffix
@@ -251,7 +239,13 @@
             >
               VOLVER
             </button>
-            <button mat-raised-button type="button" color="primary">
+            <button
+              (click)="postClick(); openConfirm()"
+              mat-raised-button
+              type="button"
+              color="primary"
+              routerLink="/home"
+            >
               FINALIZAR
             </button>
           </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
 import { categories } from '../../../constants/categories'
@@ -11,7 +11,7 @@ import { PopupDishesaddComponent } from '../dishes-add/popup-dishesadd/popup-dis
   templateUrl: './dishes-add.component.html',
   styleUrls: ['./dishes-add.component.scss']
 })
-export class DishesAddComponent implements OnInit {
+export class DishesAddComponent {
   constructor (
     public StoreService: StoreService,
         private dialog: MatDialog,
@@ -36,9 +36,5 @@ export class DishesAddComponent implements OnInit {
   postClick () {
     this.StoreService.postDish(this.dish.value)
     this.dish.reset()
-  }
-
-  ngOnInit (): void {
-
   }
 }

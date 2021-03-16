@@ -1,7 +1,10 @@
 import { Component } from '@angular/core'
-import { FormBuilder, Validators, FormControl } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
 import { options } from '../../constants/options'
+import { StoreService } from '../../core/services/store.service'
+import { MatDialog } from '@angular/material/dialog'
+import { PopupRegisterComponent } from './popup-register/popup-register.component'
 
 @Component({
   selector: 'app-register',
@@ -14,16 +17,16 @@ import { options } from '../../constants/options'
 
 export class RegisterComponent {
   constructor (
-    private fb: FormBuilder
+      public StoreService: StoreService,
+    private fb: FormBuilder,
+    public dialog: MatDialog
   ) {}
 
-  isLinear = false;
-
     registerFormGroup = this.fb.group({
-      userName: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      secondPassword: ['', Validators.required]
+      userName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
+      secondPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
     })
 
       restaurantDataFormGroup = this.fb.group({
@@ -39,15 +42,18 @@ export class RegisterComponent {
         image: ['', Validators.required]
       })
 
-     emailFormControl = new FormControl('', [
-       Validators.required,
-       Validators.email
-     ]);
+      postClick () {
+        this.StoreService.postUserRestaurant(
+          this.registerFormGroup.value,
+          this.restaurantDataFormGroup.value)
 
-     passwordFormControl = new FormControl('', [
-       Validators.required,
-       Validators.minLength(8)
-     ]);
+        this.registerFormGroup.reset()
+        this.restaurantDataFormGroup.reset()
+      }
+
+      openConfirm () {
+        this.dialog.open(PopupRegisterComponent)
+      }
 
   options = options
 
