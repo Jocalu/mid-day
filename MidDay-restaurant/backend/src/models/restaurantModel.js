@@ -9,7 +9,7 @@ const restaurantSchema = new Schema({
   street: String,
   number: Number,
   city: String,
-  zip: String,
+  zipcode: String,
   image: String,
   menuprice: Number,
   bookings: Array,
