@@ -33,7 +33,9 @@ export class MenusAddComponent implements OnInit {
   })
 
   postClick ():void {
-    this.StoreService.registerUserRestaurant(this.menu.value, '')
+    this.StoreService.postMenu(this.menu.value)
+      .subscribe(answer => this.StoreService.updateUserRestaurant(localStorage.getItem(''), { menu: answer._id }).subscribe())
+
     this.menu.reset()
   }
 

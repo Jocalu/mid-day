@@ -1,6 +1,7 @@
 export interface Menu {
- firstCourse: object[],
-  secondCourse: object[],
-  dessert: object[],
-  price: number
+_id:string,
+firstCourse: object[],
+secondCourse: object[],
+dessert: object[],
+price: number
 }

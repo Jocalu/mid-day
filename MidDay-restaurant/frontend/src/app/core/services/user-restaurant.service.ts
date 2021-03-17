@@ -29,7 +29,7 @@ export class UserRestaurantService {
     return this.httpClient.get<UserRestaurant>(`${this.restaurantURL}${id}`)
   }
 
-  updateRestaurantService (id : string): Observable<UserRestaurant> {
-    return this.httpClient.get<UserRestaurant>(`${this.restaurantURL}${id}`)
+  updateRestaurantService (id : string, data: object): Observable<UserRestaurant> {
+    return this.httpClient.put<UserRestaurant>(`${this.restaurantURL}${id}`, data)
   }
 }

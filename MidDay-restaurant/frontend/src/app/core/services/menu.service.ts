@@ -18,8 +18,8 @@ export class MenuService {
       return this.httpClient.get<Menu[]>(this.menuURL)
     }
 
-    postMenuService (menu): Observable<Menu[]> {
-      return this.httpClient.post<Menu[]>(this.menuURL, menu)
+    postMenuService (menu): Observable<Menu> {
+      return this.httpClient.post<Menu>(this.menuURL, menu)
     }
 
     deleteMenuService (id): Observable<Menu> {
