@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
+import { categoriesURL } from 'src/app/constants/urls'
 import { Category } from '../model/Category'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-    categoriesURL = 'http://localhost:5000/api/v1/midday/restaurant/categories'
+    categoriesURL = categoriesURL
 
     constructor (
       private httpClient: HttpClient

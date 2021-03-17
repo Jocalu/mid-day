@@ -3,28 +3,29 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { UserRestaurant } from '../model/UserRestaurant'
+import { loginURL, registerURL, restaurantURL } from '../../constants/urls'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserRestaurantService {
-  registerURL = 'http://localhost:5000/api/v1/midday/restaurant/register'
-  loginURL = 'http://localhost:5000/api/v1/midday/restaurant/login'
-  restaurantURL = 'http://localhost:5000/api/v1/midday/restaurant/'
+  registerURL = registerURL
+  loginURL = loginURL
+  restaurantURL = restaurantURL
 
   constructor (
        private httpClient: HttpClient
   ) { }
 
-  RegisterRestaurantService (userRestaurant): Observable<UserRestaurant> {
+  RegisterRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {
     return this.httpClient.post<UserRestaurant>(this.registerURL, userRestaurant)
   }
 
-  LoginRestaurantService (userRestaurant): Observable<UserRestaurant> {
+  LoginRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {
     return this.httpClient.post<UserRestaurant>(this.loginURL, userRestaurant)
   }
 
-  getRestaurantService (id): Observable<UserRestaurant[]> {
-    return this.httpClient.get<UserRestaurant[]>(`${this.restaurantURL}${id}`)
+  getRestaurantService (id : string): Observable<UserRestaurant> {
+    return this.httpClient.get<UserRestaurant>(`${this.restaurantURL}${id}`)
   }
 }

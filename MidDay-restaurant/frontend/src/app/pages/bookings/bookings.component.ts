@@ -50,16 +50,10 @@ export class BookingsComponent implements OnInit {
     this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info) => info.bookingName === selectedName)
   }
 
-  userLogged
-
   ngOnInit (): void {
     this.StoreService.getUserRestaurant(localStorage.getItem(''))
-      .subscribe((user) => this.userLogged.next(user))
-    console.log(this.userLogged)
-
-    /*     this.StoreService.userLogged.subscribe((user) => {
-      console.log(user)
-      this.bookings$ = user.bookings
-    }) */
+      .subscribe((user) => {
+        this.bookings$ = user.bookings
+      })
   }
 }

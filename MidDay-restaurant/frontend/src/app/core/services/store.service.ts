@@ -78,13 +78,6 @@ export class StoreService {
     return this.UserRestaurantService.getRestaurantService(id)
   }
 
-  /*   userLogged = new BehaviorSubject(<UserRestaurant>{})
-
-  LoginUserRestaurant (userRestaurant) {
-    this.UserRestaurantService.LoginRestaurantService(userRestaurant)
-      .subscribe((user) => this.userLogged.next(user))
-  } */
-
   constructor (
     public DishService : DishService,
      public MenuService : MenuService,
