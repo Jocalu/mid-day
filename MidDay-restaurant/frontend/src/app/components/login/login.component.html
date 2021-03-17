@@ -1,26 +1,15 @@
 <section class="login">
-  <form [formGroup]="login">
+  <form [formGroup]="loginPopUp">
     <ng-template matStepLabel>Tu perfil</ng-template>
     <div class="form">
       <mat-form-field class="input" appearance="fill">
-        <mat-label>Email</mat-label>
+        <mat-label>Nombre de usuario</mat-label>
         <input
           matInput
-          placeholder="Dirección de email"
-          [formControl]="emailFormControl"
+          placeholder="Nombre de usuario"
+          formControlName="userName"
           required
         />
-        <mat-error
-          *ngIf="
-            emailFormControl.hasError('email') &&
-            !emailFormControl.hasError('required')
-          "
-        >
-          Introduce una dirección de email válida porfavor
-        </mat-error>
-        <mat-error *ngIf="emailFormControl.hasError('required')">
-          El email es <strong>requerido</strong>
-        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="input">
@@ -29,6 +18,7 @@
           [type]="hide ? 'password' : 'text'"
           matInput
           placeholder="Contraseña"
+          formControlName="password"
           required
         />
         <button
@@ -43,7 +33,7 @@
       </mat-form-field>
       <div>
         <button
-          (click)="closeDialog()"
+          (click)="submitLogin()"
           type="button"
           mat-raised-button
           routerLink="/landing"

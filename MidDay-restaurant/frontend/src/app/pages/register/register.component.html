@@ -240,11 +240,12 @@
               VOLVER
             </button>
             <button
-              (click)="postClick(); openConfirm()"
+              (click)="registerUser(); openConfirm()"
               mat-raised-button
               type="button"
               color="primary"
               routerLink="/home"
+              [disabled]="restaurantDataFormGroup.invalid"
             >
               FINALIZAR
             </button>

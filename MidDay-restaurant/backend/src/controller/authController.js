@@ -2,25 +2,9 @@ const md5 = require('md5');
 const UserRestaurant = require('../models/restaurantModel');
 
 function register(req, res) {
-  const {
-    email, password, userName, name,
-    category, capacity, phone, street,
-    number, city, zipcode, image, menuprice, bookings,
-  } = req.body;
+  const { password } = req.body;
   const user = new UserRestaurant({
-    email,
-    userName,
-    name,
-    category,
-    capacity,
-    phone,
-    street,
-    number,
-    city,
-    zipcode,
-    image,
-    menuprice,
-    bookings,
+    ...req.body,
     password: md5(password),
   });
 
@@ -38,12 +22,7 @@ function register(req, res) {
 
 function login(req, res) {
   res.status(200);
-  res.json(req.body);
+  res.json(req.user);
 }
 
-function logout(req, res) {
-  res.status(200);
-  req.logout();
-}
-
-module.exports = { register, login, logout };
+module.exports = { register, login };

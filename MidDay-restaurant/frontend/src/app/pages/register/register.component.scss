@@ -41,13 +41,13 @@
       }
 
       .input__cont {
-        @include flex(row, flex-start, center);
+        @include flex(row, space-between, center);
         background-color: rgba(0, 0, 0, 0);
         font-family: $font-primary;
         width: 100%;
 
         .input--half {
-          width: 50%;
+          width: 45%;
         }
       }
     }

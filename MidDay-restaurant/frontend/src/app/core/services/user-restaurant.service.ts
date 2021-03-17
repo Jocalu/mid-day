@@ -8,12 +8,18 @@ import { UserRestaurant } from '../model/UserRestaurant'
   providedIn: 'root'
 })
 export class UserRestaurantService {
-  userRestaurantURL = 'http://localhost:5000/api/v1/midday/restaurant/register'
+  registerURL = 'http://localhost:5000/api/v1/midday/restaurant/register'
+  loginURL = 'http://localhost:5000/api/v1/midday/restaurant/login'
+
   constructor (
        private httpClient: HttpClient
   ) { }
 
-  postUserRestaurantService (userRestaurant): Observable<UserRestaurant[]> {
-    return this.httpClient.post<UserRestaurant[]>(this.userRestaurantURL, userRestaurant)
+  RegisterRestaurantService (userRestaurant): Observable<UserRestaurant> {
+    return this.httpClient.post<UserRestaurant>(this.registerURL, userRestaurant)
+  }
+
+  LoginRestaurantService (userRestaurant): Observable<UserRestaurant[]> {
+    return this.httpClient.post<UserRestaurant[]>(this.loginURL, userRestaurant)
   }
 }

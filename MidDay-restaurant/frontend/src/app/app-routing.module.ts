@@ -7,11 +7,14 @@ import { MenusComponent } from './pages/menus/menus.component'
 import { DishesComponent } from './pages/dishes/dishes.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { HomeComponent } from './pages/home/home.component'
+import { LoginComponent } from './components/login/login.component'
+import { AuthGuardService as AuthGuard } from './core/services/auth-guard.service'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'landing', component: LandingComponent },
+  { path: 'landing', component: LandingComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'bookings', component: BookingsComponent },
   { path: 'dishes', component: DishesComponent },
   { path: 'menus', component: MenusComponent },

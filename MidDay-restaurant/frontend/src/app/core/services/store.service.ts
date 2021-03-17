@@ -7,6 +7,7 @@ import { MenuService } from '../services/menu.service'
 import { CategoryService } from '../services/category.service'
 import { DishService } from '../services/dish.service'
 import { UserRestaurantService } from '../services/user-restaurant.service'
+import { Router } from '@angular/router'
 
 @Injectable({
   providedIn: 'root'
@@ -59,14 +60,21 @@ export class StoreService {
       .subscribe((element) => this.menuAPI$.next(this.menuAPI$.getValue()))
   }
 
-  postUserRestaurant (user, restaurant) {
-    this.UserRestaurantService.postUserRestaurantService({ ...user, ...restaurant }).subscribe((element) => this.userRestaurantAPI$.next(element))
+  error:string = ''
+
+  RegisterUserRestaurant (user, restaurant) {
+    this.UserRestaurantService.RegisterRestaurantService({ ...user, ...restaurant })
+      .subscribe(user => localStorage.setItem('userInfo', user.userName))
+    if (this.error === '') {
+      this.router.navigate(['/home'])
+    }
   }
 
   constructor (
     public DishService : DishService,
      public MenuService : MenuService,
      public UserRestaurantService : UserRestaurantService,
-     public CategoryService : CategoryService
+     public CategoryService : CategoryService,
+     public router: Router
   ) {}
 }

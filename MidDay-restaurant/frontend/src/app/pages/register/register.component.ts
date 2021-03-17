@@ -30,31 +30,31 @@ export class RegisterComponent implements OnInit {
       secondPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
     })
 
-      restaurantDataFormGroup = this.fb.group({
-        name: ['', Validators.required],
-        address: ['', Validators.required],
-        number: ['', Validators.required],
-        zipcode: ['', Validators.required],
-        city: ['', Validators.required],
-        phone: ['', Validators.required],
-        category: ['', Validators.required],
-        capacity: ['', Validators.required],
-        menuprice: ['', Validators.required],
-        image: ['', Validators.required]
-      })
+    restaurantDataFormGroup = this.fb.group({
+      name: ['', Validators.required],
+      address: ['', Validators.required],
+      number: ['', Validators.required],
+      zipcode: ['', Validators.required],
+      city: ['', Validators.required],
+      phone: ['', Validators.required],
+      category: ['', Validators.required],
+      capacity: ['', Validators.required],
+      menuprice: ['', Validators.required],
+      image: ['', Validators.required]
+    })
 
-      postClick () {
-        this.StoreService.postUserRestaurant(
-          this.registerFormGroup.value,
-          this.restaurantDataFormGroup.value)
+    registerUser () {
+      this.StoreService.RegisterUserRestaurant(
+        this.registerFormGroup.value,
+        this.restaurantDataFormGroup.value)
 
-        this.registerFormGroup.reset()
-        this.restaurantDataFormGroup.reset()
-      }
+      this.registerFormGroup.reset()
+      this.restaurantDataFormGroup.reset()
+    }
 
-      openConfirm () {
-        this.dialog.open(PopupRegisterComponent)
-      }
+    openConfirm () {
+      this.dialog.open(PopupRegisterComponent)
+    }
 
     hide = true;
 

@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core'
-import { FormGroup, Validators, FormControl } from '@angular/forms'
+import { Component } from '@angular/core'
+import { FormGroup, Validators, FormBuilder } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  constructor (public dialog: MatDialog) { }
+export class LoginComponent {
+    userName : String;
+  userPassword : String;
+  constructor (
 
-    login: FormGroup;
+    public dialog: MatDialog,
+    private fb: FormBuilder) { }
 
-      hide = true;
+    loginPopUp: FormGroup;
 
-      closeDialog () {
-        this.dialog.closeAll()
-      }
+    hide = true;
 
-     emailFormControl = new FormControl('', [
-       Validators.required,
-       Validators.email
-     ]);
+    submitLogin () {
+      this.dialog.closeAll()
+    }
 
-     ngOnInit (): void {
-     }
+     loginFormGroup = this.fb.group({
+       userName: ['', [Validators.required]],
+       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
+     })
 }

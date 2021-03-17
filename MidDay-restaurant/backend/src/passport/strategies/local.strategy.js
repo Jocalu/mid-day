@@ -6,12 +6,12 @@ function LocalStrategy() {
   passport.use(
     new Strategy(
       {
-        usernameField: 'email',
+        usernameField: 'userName',
         passwordField: 'password',
       },
-      (email, password, done) => {
+      (userName, password, done) => {
         (async () => {
-          UserRestaurant.findOne({ email }, (err, user) => {
+          UserRestaurant.findOne({ userName }, (err, user) => {
             if (err) { return done(err); }
 
             if (!user) {
