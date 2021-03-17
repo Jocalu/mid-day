@@ -19,7 +19,7 @@ export class UserRestaurantService {
     return this.httpClient.post<UserRestaurant>(this.registerURL, userRestaurant)
   }
 
-  LoginRestaurantService (userRestaurant): Observable<UserRestaurant[]> {
-    return this.httpClient.post<UserRestaurant[]>(this.loginURL, userRestaurant)
+  LoginRestaurantService (userRestaurant): Observable<UserRestaurant> {
+    return this.httpClient.post<UserRestaurant>(this.loginURL, userRestaurant)
   }
 }

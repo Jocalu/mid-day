@@ -7,23 +7,22 @@ import { MenusComponent } from './pages/menus/menus.component'
 import { DishesComponent } from './pages/dishes/dishes.component'
 import { RegisterComponent } from './pages/register/register.component'
 import { HomeComponent } from './pages/home/home.component'
-import { LoginComponent } from './components/login/login.component'
 import { AuthGuardService as AuthGuard } from './core/services/auth-guard.service'
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'landing', component: LandingComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'bookings', component: BookingsComponent },
-  { path: 'dishes', component: DishesComponent },
-  { path: 'menus', component: MenusComponent },
+  { path: 'bookings', component: BookingsComponent, canActivate: [AuthGuard] },
+  { path: 'dishes', component: DishesComponent, canActivate: [AuthGuard] },
+  { path: 'menus', component: MenusComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: '**', component: NotFoundComponent }
 ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

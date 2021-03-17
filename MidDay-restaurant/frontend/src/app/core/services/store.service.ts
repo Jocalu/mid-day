@@ -64,7 +64,15 @@ export class StoreService {
 
   RegisterUserRestaurant (user, restaurant) {
     this.UserRestaurantService.RegisterRestaurantService({ ...user, ...restaurant })
-      .subscribe(user => localStorage.setItem('userInfo', user.userName))
+      .subscribe(user => localStorage.setItem('', user._id))
+    if (this.error === '') {
+      this.router.navigate(['/home'])
+    }
+  }
+
+  LoginUserRestaurant (userRestaurant) {
+    this.UserRestaurantService.LoginRestaurantService(userRestaurant)
+      .subscribe(user => localStorage.setItem('', user._id))
     if (this.error === '') {
       this.router.navigate(['/home'])
     }
