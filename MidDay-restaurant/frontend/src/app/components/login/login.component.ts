@@ -14,7 +14,7 @@ export class LoginComponent {
     public StoreService: StoreService,
     public dialog: MatDialog,
     private fb: FormBuilder,
-     private route : Router) { }
+     private router : Router) { }
 
     hide = true;
 
@@ -22,7 +22,18 @@ export class LoginComponent {
       this.dialog.closeAll()
       this.StoreService.LoginUserRestaurant(
         this.loginPopUp.value)
-      this.route.navigate(['/landing'])
+        .subscribe(user => { localStorage.setItem('', user._id) },
+          () => this.router.navigate(['/home']))
+      this.router.navigate(['/landing'])
+
+      /*
+          this.dialog.closeAll()
+      this.StoreService.LoginUserRestaurant(
+        this.loginPopUp.value)
+
+      this.StoreService.userLogged
+        .subscribe(user => { localStorage.setItem('', user._id); this.router.navigate(['/landing']) },
+          () => this.router.navigate(['/home'])) */
     }
 
      loginPopUp = this.fb.group({

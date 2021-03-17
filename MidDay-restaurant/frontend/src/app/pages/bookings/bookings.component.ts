@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core'
 import { FormControl } from '@angular/forms'
 import * as moment from 'moment'
-import { bookings } from '../../constants/bookings'
 import { hours } from '../../constants/hours'
+import { StoreService } from '../../core/services/store.service'
+
 @Component({
   selector: 'app-bookings',
   templateUrl: './bookings.component.html',
   styleUrls: ['./bookings.component.scss']
 })
 export class BookingsComponent implements OnInit {
-  constructor () {
-
-  }
+  constructor (
+     public StoreService: StoreService
+  ) {}
 
   hours = hours
 
-  bookings = bookings
+  bookings$
 
   maxCapacity:number = 100
 
@@ -35,7 +36,7 @@ export class BookingsComponent implements OnInit {
 
   searchBookingsOfTheDay (date) {
     this.selectedDate = moment(date).format('DD/MM/YYYY').replace('/', '-').replace('/', '-')
-    this.bookingsOfTheDay = this.bookings.filter((info) => info.date === this.selectedDate)
+    this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate)
     this.bookingsOfTheHour = []
     this.detailsOfTheBooking = []
   }
@@ -49,7 +50,16 @@ export class BookingsComponent implements OnInit {
     this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info) => info.bookingName === selectedName)
   }
 
-  ngOnInit (): void {
+  userLogged
 
+  ngOnInit (): void {
+    this.StoreService.getUserRestaurant(localStorage.getItem(''))
+      .subscribe((user) => this.userLogged.next(user))
+    console.log(this.userLogged)
+
+    /*     this.StoreService.userLogged.subscribe((user) => {
+      console.log(user)
+      this.bookings$ = user.bookings
+    }) */
   }
 }

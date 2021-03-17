@@ -10,6 +10,7 @@ import { UserRestaurant } from '../model/UserRestaurant'
 export class UserRestaurantService {
   registerURL = 'http://localhost:5000/api/v1/midday/restaurant/register'
   loginURL = 'http://localhost:5000/api/v1/midday/restaurant/login'
+  restaurantURL = 'http://localhost:5000/api/v1/midday/restaurant/'
 
   constructor (
        private httpClient: HttpClient
@@ -21,5 +22,9 @@ export class UserRestaurantService {
 
   LoginRestaurantService (userRestaurant): Observable<UserRestaurant> {
     return this.httpClient.post<UserRestaurant>(this.loginURL, userRestaurant)
+  }
+
+  getRestaurantService (id): Observable<UserRestaurant[]> {
+    return this.httpClient.get<UserRestaurant[]>(`${this.restaurantURL}${id}`)
   }
 }

@@ -12,5 +12,6 @@ export interface UserRestaurant {
   city: string,
   zipcode: string,
   image: string,
-  menuprice: number
+  menuprice: number,
+  bookings: object[]
 }

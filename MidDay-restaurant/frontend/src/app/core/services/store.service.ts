@@ -71,12 +71,19 @@ export class StoreService {
   }
 
   LoginUserRestaurant (userRestaurant) {
-    this.UserRestaurantService.LoginRestaurantService(userRestaurant)
-      .subscribe(user => localStorage.setItem('', user._id))
-    if (this.error === '') {
-      this.router.navigate(['/home'])
-    }
+    return this.UserRestaurantService.LoginRestaurantService(userRestaurant)
   }
+
+  getUserRestaurant (id) {
+    return this.UserRestaurantService.getRestaurantService(id)
+  }
+
+  /*   userLogged = new BehaviorSubject(<UserRestaurant>{})
+
+  LoginUserRestaurant (userRestaurant) {
+    this.UserRestaurantService.LoginRestaurantService(userRestaurant)
+      .subscribe((user) => this.userLogged.next(user))
+  } */
 
   constructor (
     public DishService : DishService,

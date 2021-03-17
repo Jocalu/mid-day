@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
     restaurantDataFormGroup = this.fb.group({
       name: ['', Validators.required],
-      address: ['', Validators.required],
+      street: ['', Validators.required],
       number: ['', Validators.required],
       zipcode: ['', Validators.required],
       city: ['', Validators.required],
