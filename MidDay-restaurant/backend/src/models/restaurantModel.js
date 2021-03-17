@@ -16,7 +16,7 @@ const restaurantSchema = new Schema({
   image: String,
   menuprice: Number,
   bookings: Array,
-  menu: { type: Schema.Types.ObjectId, ref: 'Menu' },
+  menus: [{ type: Schema.Types.ObjectId, ref: 'Menu' }],
   dish: { type: Schema.Types.ObjectId, ref: 'Dish' },
 });
 
