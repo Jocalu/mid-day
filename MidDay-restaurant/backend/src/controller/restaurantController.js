@@ -50,12 +50,10 @@ const restaurantController = () => {
 
   const updateRestaurant = async (req, res) => {
     const { restaurantId } = req.params;
-    const {
-      capacity, phone,
-    } = req.body;
+
     try {
       const updated = await Restaurant
-        .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true })
+        .findByIdAndUpdate(restaurantId, req.body, { new: true })
         .populate('category')
         .populate('menu');
 

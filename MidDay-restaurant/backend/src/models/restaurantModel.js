@@ -17,6 +17,7 @@ const restaurantSchema = new Schema({
   menuprice: Number,
   bookings: Array,
   menu: { type: Schema.Types.ObjectId, ref: 'Menu' },
+  dish: { type: Schema.Types.ObjectId, ref: 'Dish' },
 });
 
 restaurantSchema.methods.validPassword = function validPassword(pwd) {
