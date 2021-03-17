@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms'
 import * as moment from 'moment'
 import { hours } from '../../constants/hours'
 import { StoreService } from '../../core/services/store.service'
+import { Bookings } from '../../core/model/Bookings'
 
 @Component({
   selector: 'app-bookings',
@@ -16,9 +17,9 @@ export class BookingsComponent implements OnInit {
 
   hours = hours
 
-  bookings$
+  bookings$:Bookings[]
 
-  maxCapacity:number = 100
+  maxCapacity$:number
 
   datepicker = new FormControl('');
 
@@ -34,19 +35,19 @@ export class BookingsComponent implements OnInit {
     )
   }
 
-  searchBookingsOfTheDay (date) {
+  searchBookingsOfTheDay (date: string) {
     this.selectedDate = moment(date).format('DD/MM/YYYY').replace('/', '-').replace('/', '-')
     this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate)
     this.bookingsOfTheHour = []
     this.detailsOfTheBooking = []
   }
 
-  searchBookingsOfTheHour (selectedHour) {
+  searchBookingsOfTheHour (selectedHour: string) {
     this.bookingsOfTheHour = this.bookingsOfTheDay.filter((info) => info.hour === selectedHour)
     this.detailsOfTheBooking = []
   }
 
-  showDetailsOfTheBooking (selectedName) {
+  showDetailsOfTheBooking (selectedName : string) {
     this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info) => info.bookingName === selectedName)
   }
 
@@ -54,6 +55,7 @@ export class BookingsComponent implements OnInit {
     this.StoreService.getUserRestaurant(localStorage.getItem(''))
       .subscribe((user) => {
         this.bookings$ = user.bookings
+        this.maxCapacity$ = user.capacity
       })
   }
 }

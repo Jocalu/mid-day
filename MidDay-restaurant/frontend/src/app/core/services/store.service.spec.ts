@@ -33,7 +33,7 @@ describe('StoreService', () => {
     expect(spynext).toHaveBeenCalled()
   })
 
-  it('When postDish is called, next method on dishesAPI$ to have been called', () => {
+  /* it('When postDish is called, next method on dishesAPI$ to have been called', () => {
     const response: Dish[] = [{
       _id: '',
       type: '',
@@ -65,5 +65,5 @@ describe('StoreService', () => {
     service.deleteDish(response)
 
     expect(spynext).toHaveBeenCalled()
-  })
+  }) */
 })

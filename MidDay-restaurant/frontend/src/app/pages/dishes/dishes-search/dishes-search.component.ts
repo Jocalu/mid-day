@@ -17,7 +17,7 @@ export class DishesSearchComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  openPopUp () {
+  openPopUp ():void {
     this.dialog.open(PopupDishessearchComponent, {})
   }
 
@@ -41,13 +41,13 @@ export class DishesSearchComponent implements OnInit {
     console.log(this.searchTerms)
   }
 
-  deleteClick (id: string) {
+  deleteClick (id: string) :void {
     this.StoreService.deleteDish(id)
     this.searchDishes.patchValue({ searchDish: '' })
     this.search('')
   }
 
-  search (searchValue: string) {
+  search (searchValue: string):void {
     this.searchTerms.next(searchValue)
   }
 }

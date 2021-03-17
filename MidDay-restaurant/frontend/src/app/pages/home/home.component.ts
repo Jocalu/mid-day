@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormGroup, Validators, FormControl } from '@angular/forms'
 
 @Component({
@@ -6,18 +6,13 @@ import { FormGroup, Validators, FormControl } from '@angular/forms'
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-    login: FormGroup;
+export class HomeComponent {
+  login: FormGroup;
 
-      hide = true;
+  hide: boolean = true;
 
-     emailFormControl = new FormControl('', [
-       Validators.required,
-       Validators.email
-     ]);
-
-     constructor () { }
-
-     ngOnInit (): void {
-     }
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email
+  ]);
 }

@@ -14,13 +14,13 @@ export class LoginComponent {
     public StoreService: StoreService,
     public dialog: MatDialog,
     private fb: FormBuilder,
-     private router : Router) { }
+    private router : Router) { }
 
-    hide = true;
+    hide : boolean = true;
 
-    submitLogin () {
+    submitLogin ():void {
       this.dialog.closeAll()
-      this.StoreService.LoginUserRestaurant(
+      this.StoreService.loginUserRestaurant(
         this.loginPopUp.value)
         .subscribe(user => { localStorage.setItem('', user._id) },
           () => this.router.navigate(['/home']))

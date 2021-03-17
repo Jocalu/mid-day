@@ -17,7 +17,7 @@ export class MenusAddComponent implements OnInit {
     public StoreService: StoreService
   ) { }
 
-  openPopUp () {
+  openPopUp ():void {
     this.dialog.open(PopupMenusaddComponent, {})
   }
 
@@ -25,24 +25,24 @@ export class MenusAddComponent implements OnInit {
   secondCourses$ = new BehaviorSubject([])
   desserts$ = new BehaviorSubject([])
 
-      menu = this.fb.group({
-        firstCourse: '',
-        secondCourse: '',
-        dessert: '',
-        price: 0
+  menu = this.fb.group({
+    firstCourse: '',
+    secondCourse: '',
+    dessert: '',
+    price: 0
+  })
+
+  postClick ():void {
+    this.StoreService.registerUserRestaurant(this.menu.value, '')
+    this.menu.reset()
+  }
+
+  ngOnInit (): void {
+    this.StoreService.getDishes()
+      .subscribe((dish) => {
+        this.firstCourses$.next(dish.filter((option) => option.type === 'PRIMEROS'))
+        this.secondCourses$.next(dish.filter((option) => option.type === 'SEGUNDOS'))
+        this.desserts$.next(dish.filter((option) => option.type === 'POSTRES'))
       })
-
-      postClick () {
-        this.StoreService.postMenu(this.menu.value)
-        this.menu.reset()
-      }
-
-      ngOnInit (): void {
-        this.StoreService.getDishes()
-          .subscribe((dish) => {
-            this.firstCourses$.next(dish.filter((option) => option.type === 'PRIMEROS'))
-            this.secondCourses$.next(dish.filter((option) => option.type === 'SEGUNDOS'))
-            this.desserts$.next(dish.filter((option) => option.type === 'POSTRES'))
-          })
-      }
+  }
 }

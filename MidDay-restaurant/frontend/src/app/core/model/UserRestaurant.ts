@@ -1,9 +1,11 @@
+import { Bookings } from './Bookings'
+
 export interface UserRestaurant {
-   _id: string,
-   userName: string,
-   email: string,
-   password: string,
- name: string,
+  _id: string,
+  userName: string,
+  email: string,
+  password: string,
+  name: string,
   category: string,
   capacity: number,
   phone: number,
@@ -13,5 +15,5 @@ export interface UserRestaurant {
   zipcode: string,
   image: string,
   menuprice: number,
-  bookings: object[]
+  bookings: Bookings[]
 }

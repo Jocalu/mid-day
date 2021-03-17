@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
+import { menuURL } from 'src/app/constants/urls'
 import { Menu } from '../model/Menu'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-    menuURL = 'http://localhost:5000/api/v1/midday/menu'
+    menuURL = menuURL
 
     constructor (
         private httpClient: HttpClient

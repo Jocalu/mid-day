@@ -17,15 +17,19 @@ export class UserRestaurantService {
        private httpClient: HttpClient
   ) { }
 
-  RegisterRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {
+  registerRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {
     return this.httpClient.post<UserRestaurant>(this.registerURL, userRestaurant)
   }
 
-  LoginRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {
+  loginRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {
     return this.httpClient.post<UserRestaurant>(this.loginURL, userRestaurant)
   }
 
   getRestaurantService (id : string): Observable<UserRestaurant> {
+    return this.httpClient.get<UserRestaurant>(`${this.restaurantURL}${id}`)
+  }
+
+  updateRestaurantService (id : string): Observable<UserRestaurant> {
     return this.httpClient.get<UserRestaurant>(`${this.restaurantURL}${id}`)
   }
 }

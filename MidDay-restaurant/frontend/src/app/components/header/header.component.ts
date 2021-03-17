@@ -14,15 +14,15 @@ export class HeaderComponent {
     public dialog: MatDialog,
     public authService: AuthService) {}
 
-  openLogin () {
+  openLogin ():void {
     this.dialog.open(LoginComponent)
   }
 
-  logOut () {
+  logOut ():void {
     localStorage.removeItem('')
   }
 
-  isAuth () {
+  isAuth ():Boolean {
     return this.authService.isAuthenticated()
   }
 }

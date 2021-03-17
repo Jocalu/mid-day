@@ -5,6 +5,4 @@ import { Component } from '@angular/core'
   templateUrl: './popup-register.component.html',
   styleUrls: ['./popup-register.component.scss']
 })
-export class PopupRegisterComponent {
-  constructor () { }
-}
+export class PopupRegisterComponent {}

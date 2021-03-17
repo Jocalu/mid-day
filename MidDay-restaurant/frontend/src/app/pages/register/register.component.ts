@@ -18,45 +18,45 @@ import { Category } from 'src/app/core/model/Category'
 
 export class RegisterComponent implements OnInit {
   constructor (
-      public StoreService: StoreService,
+    public StoreService: StoreService,
     private fb: FormBuilder,
     public dialog: MatDialog
   ) {}
 
-    registerFormGroup = this.fb.group({
-      userName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
-      secondPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
-    })
+  registerFormGroup = this.fb.group({
+    userName: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
+    secondPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
+  })
 
-    restaurantDataFormGroup = this.fb.group({
-      name: ['', Validators.required],
-      street: ['', Validators.required],
-      number: ['', Validators.required],
-      zipcode: ['', Validators.required],
-      city: ['', Validators.required],
-      phone: ['', Validators.required],
-      category: ['', Validators.required],
-      capacity: ['', Validators.required],
-      menuprice: ['', Validators.required],
-      image: ['', Validators.required]
-    })
+  restaurantDataFormGroup = this.fb.group({
+    name: ['', Validators.required],
+    street: ['', Validators.required],
+    number: ['', Validators.required],
+    zipcode: ['', Validators.required],
+    city: ['', Validators.required],
+    phone: ['', Validators.required],
+    category: ['', Validators.required],
+    capacity: ['', Validators.required],
+    menuprice: ['', Validators.required],
+    image: ['', Validators.required]
+  })
 
-    registerUser () {
-      this.StoreService.RegisterUserRestaurant(
-        this.registerFormGroup.value,
-        this.restaurantDataFormGroup.value)
+  registerUser () {
+    this.StoreService.registerUserRestaurant(
+      this.registerFormGroup.value,
+      this.restaurantDataFormGroup.value)
 
-      this.registerFormGroup.reset()
-      this.restaurantDataFormGroup.reset()
-    }
+    this.registerFormGroup.reset()
+    this.restaurantDataFormGroup.reset()
+  }
 
-    openConfirm () {
-      this.dialog.open(PopupRegisterComponent)
-    }
+  openConfirm ():void {
+    this.dialog.open(PopupRegisterComponent)
+  }
 
-    hide = true;
+    hide:boolean= true;
 
     category$ = new BehaviorSubject<Category[]>([])
 

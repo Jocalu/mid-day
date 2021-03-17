@@ -6,20 +6,17 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./menus.component.scss']
 })
 export class MenusComponent implements OnInit {
-    switch: boolean = true
-    constructor (
+  switch: boolean = true
 
-    ) { }
+  buttonAdd: any
 
-     buttonAdd: any
+  deleteClass ():void {
+    this.buttonAdd = document.querySelector('.add')
+    this.buttonAdd.classList.remove('btn--active')
+  }
 
-     deleteClass () {
-       this.buttonAdd = document.querySelector('.add')
-       this.buttonAdd.classList.remove('btn--active')
-     }
-
-     ngOnInit (): void {
-       this.buttonAdd = document.querySelector('.add')
-       this.buttonAdd.classList.add('btn--active')
-     }
+  ngOnInit (): void {
+    this.buttonAdd = document.querySelector('.add')
+    this.buttonAdd.classList.add('btn--active')
+  }
 }

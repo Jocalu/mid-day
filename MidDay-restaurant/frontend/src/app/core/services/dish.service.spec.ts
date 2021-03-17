@@ -76,7 +76,7 @@ describe('Given a deleteDish function', () => {
       name: 'Paella'
     }]
 
-    service.deleteDishService(1)
+    service.deleteDishService('1')
       .subscribe(dishData => {
         expect(dishData[0].name).toEqual('Paella')
       })

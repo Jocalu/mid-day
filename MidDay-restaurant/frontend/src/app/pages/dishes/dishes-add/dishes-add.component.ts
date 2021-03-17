@@ -20,7 +20,7 @@ export class DishesAddComponent {
 
   courses = courses
 
-  openPopUp () {
+  openPopUp ():void {
     this.dialog.open(PopupDishesaddComponent)
   }
 
@@ -33,7 +33,7 @@ export class DishesAddComponent {
     ingredients: ''
   })
 
-  postClick () {
+  postClick ():void {
     this.StoreService.postDish(this.dish.value)
     this.dish.reset()
   }
