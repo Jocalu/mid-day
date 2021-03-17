@@ -15,7 +15,6 @@ const restaurantController = () => {
 
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
-
     newRestaurant
       .save(res.json(newRestaurant));
   };
