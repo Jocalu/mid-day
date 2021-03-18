@@ -18,7 +18,7 @@ export class MenusAddComponent implements OnInit {
   ) { }
 
   openPopUp ():void {
-    this.dialog.open(PopupMenusaddComponent, {})
+    this.dialog.open(PopupMenusaddComponent)
   }
 
   firstCourses$ = new BehaviorSubject([])

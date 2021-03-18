@@ -22,6 +22,10 @@ function RestaurantRouter() {
     .route('/menus/:restaurantId/')
     .post(restController.addMenusRestaurant);
 
+  router
+    .route('/dishes/:restaurantId/')
+    .post(restController.addDishesRestaurant);
+
   return router;
 }
 

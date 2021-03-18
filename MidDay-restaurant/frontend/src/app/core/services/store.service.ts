@@ -40,7 +40,7 @@ export class StoreService {
       .subscribe((element) => this.dishesAPI$.next(element))
   }
 
-  postDish (dish: Dish) :Observable<Dish[]> {
+  postDish (dish: Dish) :Observable<Dish> {
     return this.DishService.postDishService(dish)
   }
 
@@ -53,7 +53,7 @@ export class StoreService {
   }
 
   addDishRestaurant (id:string, data: object):Observable<UserRestaurant> {
-    return this.UserRestaurantService.addMenuService(id, data)
+    return this.UserRestaurantService.addDishService(id, data)
   }
 
   deleteDish (id: string):void {

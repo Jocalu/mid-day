@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { UserRestaurant } from '../model/UserRestaurant'
-import { loginURL, registerURL, restaurantURL, restaurantMenusURL } from '../../constants/urls'
+import { loginURL, registerURL, restaurantURL, restaurantMenusURL, restaurantDishesURL } from '../../constants/urls'
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class UserRestaurantService {
   loginURL = loginURL
   restaurantURL = restaurantURL
   restaurantMenusURL = restaurantMenusURL
+  restaurantDishesURL =restaurantDishesURL
 
   constructor (
        private httpClient: HttpClient
@@ -36,5 +37,9 @@ export class UserRestaurantService {
 
   addMenuService (id : string, data: object): Observable<UserRestaurant> {
     return this.httpClient.post<UserRestaurant>(`${this.restaurantMenusURL}${id}`, data)
+  }
+
+  addDishService (id : string, data: object): Observable<UserRestaurant> {
+    return this.httpClient.post<UserRestaurant>(`${this.restaurantDishesURL}${id}`, data)
   }
 }

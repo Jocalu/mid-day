@@ -14,7 +14,7 @@ import { PopupDishesaddComponent } from '../dishes-add/popup-dishesadd/popup-dis
 export class DishesAddComponent {
   constructor (
     public StoreService: StoreService,
-        private dialog: MatDialog,
+    private dialog: MatDialog,
     private fb: FormBuilder
   ) { }
 
@@ -34,7 +34,7 @@ export class DishesAddComponent {
   })
 
   postClick ():void {
-    this.StoreService.postDish(this.dish.value).subscribe()
+    this.StoreService.postDish(this.dish.value).subscribe(answer => this.StoreService.addDishRestaurant(localStorage.getItem(''), { dish: answer._id }).subscribe())
     this.dish.reset()
   }
 }
