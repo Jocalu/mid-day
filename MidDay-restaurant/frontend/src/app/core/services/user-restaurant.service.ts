@@ -32,4 +32,8 @@ export class UserRestaurantService {
   updateRestaurantService (id : string, data: object): Observable<UserRestaurant> {
     return this.httpClient.put<UserRestaurant>(`${this.restaurantURL}${id}`, data)
   }
+
+  addMenuService (id : string, data: object): Observable<UserRestaurant> {
+    return this.httpClient.post<UserRestaurant>(`${this.restaurantURL}${id}`, data)
+  }
 }

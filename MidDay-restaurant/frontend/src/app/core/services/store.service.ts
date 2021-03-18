@@ -90,4 +90,8 @@ export class StoreService {
   updateUserRestaurant (id:string, data: object):Observable<UserRestaurant> {
     return this.UserRestaurantService.updateRestaurantService(id, data)
   }
+
+  addMenu (id:string, data: object):Observable<UserRestaurant> {
+    return this.UserRestaurantService.addMenuService(id, data)
+  }
 }

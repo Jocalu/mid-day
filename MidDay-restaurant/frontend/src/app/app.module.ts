@@ -35,7 +35,8 @@ import { PopupDishesaddComponent } from './pages/dishes/dishes-add/popup-dishesa
 import { PopupDishessearchComponent } from './pages/dishes/dishes-search/popup-dishessearch/popup-dishessearch.component'
 import { PopupMenusaddComponent } from './pages/menus/menus-add/popup-menusadd/popup-menusadd.component'
 import { PopupMenusdeleteComponent } from './pages/menus/menus-delete/popup-menusdelete/popup-menusdelete.component';
-import { PopupRegisterComponent } from './pages/register/popup-register/popup-register.component'
+import { PopupRegisterComponent } from './pages/register/popup-register/popup-register.component';
+import { PopupLoginfailComponent } from './components/popup-loginfail/popup-loginfail.component'
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { PopupRegisterComponent } from './pages/register/popup-register/popup-re
     PopupDishessearchComponent,
     PopupMenusaddComponent,
     PopupMenusdeleteComponent,
-    PopupRegisterComponent
+    PopupRegisterComponent,
+    PopupLoginfailComponent
   ],
   imports: [
     FormsModule,
