@@ -13,6 +13,23 @@ const restaurantController = () => {
     }
   };
 
+  /*   const addMenusRestaurant = async (req, res) => {
+    const { restaurantId } = req.params;
+
+    try {
+      const restaurant = await Restaurant
+        .findById(restaurantId);
+      let { menus } = restaurant;
+      if (!menus) { menus = []; }
+      menus.push(req.body.menu);
+      const updatedRestaurant = await Restaurant.findByIdAndUpdate(restaurantId, { menus });
+      res.json(updatedRestaurant);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error searching');
+    }
+  }; */
+
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
     newRestaurant
@@ -84,6 +101,7 @@ const restaurantController = () => {
     updateRestaurant,
     deleteRestaurant,
     getCategories,
+    /*     addMenusRestaurant, */
   };
 };
 

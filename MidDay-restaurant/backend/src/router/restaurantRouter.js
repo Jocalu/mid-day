@@ -17,6 +17,7 @@ function RestaurantRouter() {
     .get(restController.getRestaurant)
     .delete(restController.deleteRestaurant)
     .put(restController.updateRestaurant);
+  /*    .post(restController.addMenusRestaurant); */
 
   return router;
 }
