@@ -15,9 +15,6 @@ function AuthRouter() {
       controller.login,
     );
 
-  router
-    .route('/logout', controller.logout);
-
   return router;
 }
 

@@ -13,7 +13,7 @@ const restaurantController = () => {
     }
   };
 
-  /*   const addMenusRestaurant = async (req, res) => {
+  const addMenusRestaurant = async (req, res) => {
     const { restaurantId } = req.params;
 
     try {
@@ -28,7 +28,7 @@ const restaurantController = () => {
       res.status(500);
       res.send('There was an error searching');
     }
-  }; */
+  };
 
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
@@ -101,7 +101,7 @@ const restaurantController = () => {
     updateRestaurant,
     deleteRestaurant,
     getCategories,
-    /*     addMenusRestaurant, */
+    addMenusRestaurant,
   };
 };
 
