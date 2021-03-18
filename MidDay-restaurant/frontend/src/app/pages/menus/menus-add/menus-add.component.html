@@ -1,0 +1,62 @@
+<form [formGroup]="menu" class="menus-add">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label> Primeros platos</mat-label>
+    <mat-select formControlName="firstCourse" multiple>
+      <mat-optgroup label="Primeros">
+        <mat-option
+          *ngFor="let dish of firstCourses$ | async"
+          [value]="dish._id"
+          >{{ dish.name }}</mat-option
+        >
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Segundos platos</mat-label>
+    <mat-select formControlName="secondCourse" multiple>
+      <mat-optgroup label="Segundos">
+        <mat-option
+          *ngFor="let dish of secondCourses$ | async"
+          [value]="dish._id"
+          >{{ dish.name }}</mat-option
+        >
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Postres</mat-label>
+    <mat-select formControlName="dessert" multiple>
+      <mat-optgroup label="Postres">
+        <mat-option *ngFor="let dish of desserts$ | async" [value]="dish._id">{{
+          dish.name
+        }}</mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Precio</mat-label>
+    <input
+      formControlName="price"
+      type="number"
+      value="price"
+      min="0"
+      matInput
+      placeholder="0"
+    />
+
+    <mat-icon matSuffix>euro</mat-icon>
+  </mat-form-field>
+
+  <div class="btns">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openPopUp(); postClick()"
+    >
+      AÑADIR
+    </button>
+  </div>
+</form>

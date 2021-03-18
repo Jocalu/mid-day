@@ -1,10 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { StoreService } from '../../../core/services/store.service'
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 import { Subject } from 'rxjs'
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { MatDialog } from '@angular/material/dialog'
 import { FormBuilder } from '@angular/forms'
-
+import { PopupDishessearchComponent } from '../dishes-search/popup-dishessearch/popup-dishessearch.component'
 @Component({
   selector: 'app-dishes-search',
   templateUrl: './dishes-search.component.html',
@@ -17,8 +17,8 @@ export class DishesSearchComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  openPopUp () {
-    this.dialog.open(Popup, {})
+  openPopUp ():void {
+    this.dialog.open(PopupDishessearchComponent, {})
   }
 
   searchDishes = this.fb.group({
@@ -30,7 +30,7 @@ export class DishesSearchComponent implements OnInit {
   searchTerms: Subject<string> = new Subject()
 
   ngOnInit (): void {
-    this.StoreService.getDishes()
+    this.StoreService.getDishesForSearch()
 
     this.dishes$ = this.searchTerms
       .pipe(
@@ -38,26 +38,16 @@ export class DishesSearchComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(term => this.StoreService.searchDish(term))
       )
+    console.log(this.searchTerms)
   }
 
-  deleteClick (id: string) {
+  deleteClick (id: string) :void {
     this.StoreService.deleteDish(id)
     this.searchDishes.patchValue({ searchDish: '' })
     this.search('')
   }
 
-  search (searchValue: string) {
+  search (searchValue: string):void {
     this.searchTerms.next(searchValue)
   }
-}
-
-export interface DialogData {
-  message: 'message';
-}
-@Component({
-  selector: 'popup',
-  templateUrl: 'popup.html'
-})
-export class Popup {
-  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
 }

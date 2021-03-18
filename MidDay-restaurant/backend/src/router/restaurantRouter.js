@@ -3,6 +3,9 @@ const restController = require('../controller/restaurantController');
 
 function RestaurantRouter() {
   const router = Router();
+  router
+    .route('/categories')
+    .get(restController.getCategories);
 
   router
     .route('/')
@@ -14,6 +17,7 @@ function RestaurantRouter() {
     .get(restController.getRestaurant)
     .delete(restController.deleteRestaurant)
     .put(restController.updateRestaurant);
+  /*    .post(restController.addMenusRestaurant); */
 
   return router;
 }

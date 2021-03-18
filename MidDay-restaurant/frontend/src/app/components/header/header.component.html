@@ -32,18 +32,54 @@
       alt="logo"
     />
     <div>
-      <button routerLink="/menus" mat-button color="primary">
-        MENUS<a></a>
+      <button
+        [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
+        routerLink="/menus"
+        mat-button
+        color="primary"
+      >
+        MENUS
       </button>
-      <button routerLink="/dishes" mat-button color="primary">PLATOS</button>
-      <button routerLink="/bookings" mat-button color="primary">
+      <button
+        [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
+        routerLink="/dishes"
+        mat-button
+        color="primary"
+      >
+        PLATOS
+      </button>
+      <button
+        [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
+        routerLink="/bookings"
+        mat-button
+        color="primary"
+      >
         RESERVAS
       </button>
-      <button routerLink="/landing" mat-raised-button color="primary">
+      <button
+        [ngStyle]="{ display: isAuth() ? 'none' : '' }"
+        (click)="openLogin()"
+        mat-raised-button
+        color="primary"
+      >
         ENTRAR
       </button>
-      <button routerLink="/register" mat-stroked-button color="primary">
+      <button
+        [ngStyle]="{ display: isAuth() ? 'none' : '' }"
+        routerLink="/register"
+        mat-stroked-button
+        color="primary"
+      >
         REGISTRAR
+      </button>
+      <button
+        [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
+        routerLink="/home"
+        mat-raised-button
+        (click)="logOut()"
+        color="primary"
+      >
+        SALIR
       </button>
     </div>
   </nav>

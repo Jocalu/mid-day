@@ -7,59 +7,28 @@
   </div>
 
   <div class="components">
-    <h4 class="title">CREACIÓN DE MENÚS</h4>
-    <form [formGroup]="menu">
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label> Primeros platos</mat-label>
-        <mat-select formControlName="first" multiple>
-          <mat-optgroup
-            *ngFor="let group of dishesList"
-            [label]="group.category"
-            [disabled]="group.disabled"
-          >
-            <mat-option *ngFor="let dish of group.dish" [value]="dish.name">{{
-              dish.name
-            }}</mat-option>
-          </mat-optgroup>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Segundos platos</mat-label>
-        <mat-select formControlName="second" multiple>
-          <mat-optgroup
-            *ngFor="let group of dishesList"
-            [label]="group.category"
-            [disabled]="group.disabled"
-          >
-            <mat-option *ngFor="let dish of group.dish" [value]="dish.name">{{
-              dish.name
-            }}</mat-option>
-          </mat-optgroup>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class="full-width">
-        <mat-label>Postres</mat-label>
-        <mat-select formControlName="dessert" multiple>
-          <mat-optgroup
-            *ngFor="let group of dishesList"
-            [label]="group.category"
-            [disabled]="group.disabled"
-          >
-            <mat-option *ngFor="let dish of group.dish" [value]="dish.name">{{
-              dish.name
-            }}</mat-option>
-          </mat-optgroup>
-        </mat-select>
-      </mat-form-field>
-
-      <div class="btns">
-        <button mat-raised-button color="primary" (click)="openPopUp()">
-          AÑADIR
-        </button>
-      </div>
-    </form>
+    <div class="switch">
+      <button
+        class="add"
+        (click)="switch = true"
+        mat-stroked-button
+        type="button"
+        color="primary"
+      >
+        AÑADIR
+      </button>
+      /
+      <button
+        (click)="deleteClass(); switch = false"
+        mat-stroked-button
+        type="button"
+        color="primary"
+      >
+        BORRAR
+      </button>
+    </div>
+    <app-menus-add *ngIf="switch"></app-menus-add>
+    <app-menus-delete *ngIf="!switch"></app-menus-delete>
   </div>
 
   <div class="image-right">

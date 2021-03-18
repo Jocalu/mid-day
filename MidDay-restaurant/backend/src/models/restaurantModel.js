@@ -1,7 +1,10 @@
 const { Schema, model } = require('mongoose');
+const md5 = require('md5');
 
 const restaurantSchema = new Schema({
-  admin: { type: Schema.Types.ObjectId, ref: 'UserRestaurant' },
+  userName: String,
+  email: String,
+  password: String,
   name: String,
   category: { type: Schema.Types.ObjectId, ref: 'Category' },
   capacity: Number,
@@ -9,11 +12,16 @@ const restaurantSchema = new Schema({
   street: String,
   number: Number,
   city: String,
-  zip: String,
+  zipcode: String,
   image: String,
   menuprice: Number,
   bookings: Array,
-  menu: { type: Schema.Types.ObjectId, ref: 'Menu' },
+  menus: [{ type: Schema.Types.ObjectId, ref: 'Menu' }],
+  dish: { type: Schema.Types.ObjectId, ref: 'Dish' },
 });
+
+restaurantSchema.methods.validPassword = function validPassword(pwd) {
+  return this.password === md5(pwd);
+};
 
 module.exports = model('Restaurant', restaurantSchema);

@@ -43,34 +43,32 @@
       margin-right: 0;
     }
 
-    .title {
+    .switch {
       @include flex(row, center, center);
       color: $color-primary;
-
+      margin-left: -10px;
       margin-bottom: 20px;
 
       @media only screen and (max-width: 500px) {
         padding: 0 20px;
       }
-    }
-    .btns {
-      @include flex(row, flex-end, center);
-      width: 550px;
 
-      .mat-raised-button {
-        box-shadow: none;
-
-        &:hover {
-          background-color: $color-primary-hard;
-          box-shadow: none;
-        }
-        @media only screen and (max-width: 500px) {
-          width: 200px;
-        }
+      .mat-stroked-button.mat-primary {
+        color: $color-primary;
+        border: none;
+        margin: 0 10px;
       }
 
-      @media only screen and (max-width: 500px) {
-        margin-bottom: 20px;
+      .btn--active {
+        background-color: $color-primary;
+        color: white !important;
+        border: none;
+        margin: 0 10px;
+      }
+
+      button:focus {
+        background-color: $color-primary;
+        color: white !important;
       }
     }
   }

@@ -1,0 +1,46 @@
+<section class="login">
+  <form [formGroup]="loginPopUp">
+    <ng-template matStepLabel>Tu perfil</ng-template>
+    <div class="form">
+      <mat-form-field class="input" appearance="fill">
+        <mat-label>Nombre de usuario</mat-label>
+        <input
+          matInput
+          placeholder="Nombre de usuario"
+          formControlName="userName"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field class="input">
+        <mat-label>Contraseña</mat-label>
+        <input
+          [type]="hide ? 'password' : 'text'"
+          matInput
+          placeholder="Contraseña"
+          formControlName="password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <div>
+        <button
+          (click)="submitLogin()"
+          type="button"
+          mat-raised-button
+          color="primary"
+        >
+          ENTRAR
+        </button>
+      </div>
+    </div>
+  </form>
+</section>

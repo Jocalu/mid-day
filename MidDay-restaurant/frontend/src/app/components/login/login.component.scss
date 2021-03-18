@@ -1,0 +1,18 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+.login {
+  @include flex(column, flex-start, center);
+  height: 400px;
+  margin-top: 40px;
+
+  .form {
+    @include flex(column, center, center);
+    height: 400px;
+    width: 550px;
+    background-color: $color-primary-soft;
+    border-radius: 6px;
+    border: 2px solid $color-primary;
+  }
+}

@@ -1,7 +1,35 @@
 const Restaurant = require('../models/restaurantModel.js');
-require('../models/categoryModel');
+const Category = require('../models/categoryModel');
+require('../models/menuModel');
 
 const restaurantController = () => {
+  const getCategories = async (req, res) => {
+    try {
+      const categories = await Category.find({});
+      res.json(categories);
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
+  /*   const addMenusRestaurant = async (req, res) => {
+    const { restaurantId } = req.params;
+
+    try {
+      const restaurant = await Restaurant
+        .findById(restaurantId);
+      let { menus } = restaurant;
+      if (!menus) { menus = []; }
+      menus.push(req.body.menu);
+      const updatedRestaurant = await Restaurant.findByIdAndUpdate(restaurantId, { menus });
+      res.json(updatedRestaurant);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error searching');
+    }
+  }; */
+
   const createRestaurant = (req, res) => {
     const newRestaurant = new Restaurant(req.body);
     newRestaurant
@@ -13,7 +41,6 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId)
-        .populate('userRestaurant')
         .populate('category')
         .populate('menu');
 
@@ -28,7 +55,6 @@ const restaurantController = () => {
     try {
       const allRestaurants = await Restaurant
         .find({})
-        .populate('userRestaurant')
         .populate('category')
         .populate('menu');
 
@@ -41,13 +67,10 @@ const restaurantController = () => {
 
   const updateRestaurant = async (req, res) => {
     const { restaurantId } = req.params;
-    const {
-      capacity, phone,
-    } = req.body;
+
     try {
       const updated = await Restaurant
-        .findByIdAndUpdate(restaurantId, { capacity, phone }, { new: true })
-        .populate('userRestaurant')
+        .findByIdAndUpdate(restaurantId, req.body, { new: true })
         .populate('category')
         .populate('menu');
 
@@ -77,6 +100,8 @@ const restaurantController = () => {
     createRestaurant,
     updateRestaurant,
     deleteRestaurant,
+    getCategories,
+    /*     addMenusRestaurant, */
   };
 };
 

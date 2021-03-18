@@ -1,35 +1,40 @@
 <section class="register-container">
   <div class="register">
-    <mat-horizontal-stepper [linear]="!isLinear" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+    <mat-horizontal-stepper #stepper>
+      <mat-step [stepControl]="registerFormGroup">
+        <form [formGroup]="registerFormGroup">
           <ng-template matStepLabel>Tu perfil</ng-template>
+
           <div class="form">
-            <mat-form-field
-              hintLabel="Max 10 carácteres"
-              appearance="fill"
-              class="input"
-            >
+            <mat-form-field hintLabel="Max 12 carácteres" class="input">
               <mat-label>Nombre usuario</mat-label>
               <input
                 matInput
                 #input
-                maxlength="10"
+                type="text"
+                maxlength="12"
                 placeholder="Nombre usuario"
-                formControlName="firstCtrl"
+                formControlName="userName"
                 required
               />
-              <mat-hint align="end">{{ input.value?.length || 0 }}/10</mat-hint>
+              <mat-error *ngIf="registerFormGroup.controls['userName'].invalid"
+                >El nombre de usuario ya existe</mat-error
+              >
+              <mat-hint align="end">{{ input.value?.length || 0 }}/12</mat-hint>
             </mat-form-field>
 
-            <mat-form-field class="input">
+            <mat-form-field class="input" appearance="fill">
               <mat-label>Email</mat-label>
               <input
                 matInput
+                type="email"
                 placeholder="Dirección de email"
-                formControlName="firstCtrl"
+                formControlName="email"
                 required
               />
+              <mat-error *ngIf="registerFormGroup.controls['email'].invalid"
+                >Introduce un email válido</mat-error
+              >
             </mat-form-field>
 
             <mat-form-field class="input">
@@ -38,9 +43,13 @@
                 [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Contraseña"
-                formControlName="firstCtrl"
+                formControlName="password"
                 required
               />
+              <mat-error *ngIf="registerFormGroup.controls['password'].invalid"
+                >La contraseña debe contener un mínimo de 8 carácteres y un
+                máximo de 12</mat-error
+              >
             </mat-form-field>
 
             <mat-form-field class="input">
@@ -49,9 +58,13 @@
                 [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Repetir contraseña"
-                formControlName="firstCtrl"
+                formControlName="secondPassword"
                 required
               />
+              <mat-error
+                *ngIf="registerFormGroup.controls['secondPassword'].invalid"
+                >Ambos campos deben ser iguales</mat-error
+              >
               <button
                 mat-icon-button
                 matSuffix
@@ -65,20 +78,22 @@
               </button>
             </mat-form-field>
           </div>
+
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperNext
               type="button"
               color="primary"
+              [disabled]="registerFormGroup.invalid"
             >
               SIGUIENTE
             </button>
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+      <mat-step [stepControl]="restaurantDataFormGroup">
+        <form [formGroup]="restaurantDataFormGroup">
           <ng-template matStepLabel>Tu restaurante</ng-template>
           <div class="form">
             <mat-form-field class="input">
@@ -86,7 +101,8 @@
               <input
                 matInput
                 placeholder="Nombre restaurante"
-                formControlName="secondCtrl"
+                formControlName="name"
+                type="text"
                 required
               />
             </mat-form-field>
@@ -95,7 +111,8 @@
               <input
                 matInput
                 placeholder="Dirección"
-                formControlName="secondCtrl"
+                formControlName="street"
+                type="text"
                 required
               />
             </mat-form-field>
@@ -105,7 +122,8 @@
                 <input
                   matInput
                   placeholder="Número"
-                  formControlName="secondCtrl"
+                  formControlName="number"
+                  type="number"
                   required
                 />
               </mat-form-field>
@@ -114,7 +132,8 @@
                 <input
                   matInput
                   placeholder="Código postal"
-                  formControlName="secondCtrl"
+                  formControlName="zipcode"
+                  type="text"
                   required
                 />
               </mat-form-field>
@@ -124,7 +143,8 @@
               <input
                 matInput
                 placeholder="Ciudad"
-                formControlName="secondCtrl"
+                formControlName="city"
+                type="text"
                 required
               />
             </mat-form-field>
@@ -133,14 +153,15 @@
               <input
                 matInput
                 placeholder="Teléfono de contacto"
-                formControlName="secondCtrl"
+                formControlName="phone"
+                type="number"
                 required
               />
             </mat-form-field>
           </div>
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperPrevious
               type="button"
               color="primary"
@@ -148,7 +169,7 @@
               VOLVER
             </button>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperNext
               type="button"
               color="primary"
@@ -158,40 +179,74 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="thirdFormGroup">
-        <form [formGroup]="thirdFormGroup">
+      <mat-step [stepControl]="restaurantDataFormGroup">
+        <form [formGroup]="restaurantDataFormGroup">
           <ng-template matStepLabel>Casi estamos</ng-template>
+
           <div class="form">
             <mat-form-field class="input">
               <mat-label>Tipo de cocina</mat-label>
-              <mat-select>
+              <mat-select formControlName="category">
                 <mat-option
-                  *ngFor="let option of options"
-                  value="{{ option.value }}"
-                  >{{ option.name }}</mat-option
-                >
+                  required
+                  *ngFor="let category of category$ | async"
+                  value="{{ category._id }}"
+                  >{{ category.name }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+
+            <div class="input__cont">
+              <mat-form-field class="input--half">
+                <mat-label>Aforo</mat-label>
+                <input
+                  matInput
+                  placeholder="Aforo"
+                  formControlName="capacity"
+                  type="number"
+                  required
+                />
+              </mat-form-field>
+              <mat-form-field class="input--half">
+                <mat-label>Precio medio del menú</mat-label>
+                <input
+                  matInput
+                  placeholder="Precio medio del menú"
+                  formControlName="menuprice"
+                  type="number"
+                  required
+                />
+                <mat-icon matSuffix>euro</mat-icon>
+              </mat-form-field>
+            </div>
             <mat-form-field class="input">
-              <mat-label>Aforo</mat-label>
+              <mat-label>URL de imagen</mat-label>
               <input
                 matInput
-                placeholder="Aforo"
-                formControlName="secondCtrl"
+                placeholder="URL de imagen"
+                formControlName="image"
+                type="text"
                 required
               />
             </mat-form-field>
           </div>
           <div>
             <button
-              mat-stroked-button
+              mat-raised-button
               matStepperPrevious
               type="button"
               color="primary"
             >
               VOLVER
             </button>
-            <button mat-stroked-button type="button" color="primary">
+            <button
+              (click)="registerUser(); openConfirm()"
+              mat-raised-button
+              type="button"
+              color="primary"
+              routerLink="/home"
+              [disabled]="restaurantDataFormGroup.invalid"
+            >
               FINALIZAR
             </button>
           </div>

@@ -1,20 +1,28 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormBuilder } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
-import { categories, ingredientsList } from '../../../constants/index'
+import { courses } from '../../../constants/courses'
+import { ingredientsList } from '../../../constants/ingredients'
+import { MatDialog } from '@angular/material/dialog'
+import { PopupDishesaddComponent } from '../dishes-add/popup-dishesadd/popup-dishesadd.component'
 
 @Component({
   selector: 'app-dishes-add',
   templateUrl: './dishes-add.component.html',
   styleUrls: ['./dishes-add.component.scss']
 })
-export class DishesAddComponent implements OnInit {
+export class DishesAddComponent {
   constructor (
     public StoreService: StoreService,
+        private dialog: MatDialog,
     private fb: FormBuilder
   ) { }
 
-  categories = categories
+  courses = courses
+
+  openPopUp ():void {
+    this.dialog.open(PopupDishesaddComponent)
+  }
 
   ingredientsList=ingredientsList
 
@@ -25,12 +33,8 @@ export class DishesAddComponent implements OnInit {
     ingredients: ''
   })
 
-  postClick () {
+  postClick ():void {
     this.StoreService.postDish(this.dish.value)
     this.dish.reset()
-  }
-
-  ngOnInit (): void {
-
   }
 }

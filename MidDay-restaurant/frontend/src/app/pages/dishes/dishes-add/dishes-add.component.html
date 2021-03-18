@@ -3,11 +3,9 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Tipo del plato</mat-label>
       <mat-select formControlName="type">
-        <mat-option
-          *ngFor="let category of categories"
-          value="{{ category.name }}"
-          >{{ category.name | titlecase }}</mat-option
-        >
+        <mat-option *ngFor="let course of courses" value="{{ course.name }}">{{
+          course.name | titlecase
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -28,7 +26,6 @@
         <mat-optgroup
           *ngFor="let group of ingredientsList"
           [label]="group.category | titlecase"
-          [disabled]="group.disabled"
         >
           <mat-option
             *ngFor="let ingredient of group.ingredient"
@@ -48,11 +45,17 @@
         min="0"
         matInput
         placeholder="0"
-      /><mat-icon>euro</mat-icon>
+      />
+
+      <mat-icon matSuffix>euro</mat-icon>
     </mat-form-field>
 
     <div class="btns">
-      <button (click)="postClick()" mat-raised-button color="primary">
+      <button
+        (click)="openPopUp(); postClick()"
+        mat-raised-button
+        color="primary"
+      >
         AÑADIR
       </button>
     </div>

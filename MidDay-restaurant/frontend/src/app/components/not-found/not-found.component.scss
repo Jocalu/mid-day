@@ -1,0 +1,20 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+.notfound {
+  @include flex(column, center, center);
+  height: 550px;
+
+  img {
+    width: 20%;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+}

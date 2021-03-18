@@ -1,9 +1,51 @@
 const {
-  getRestaurant, getAllRestaurants, createRestaurant, updateRestaurant, deleteRestaurant,
+  getRestaurant,
+  getAllRestaurants,
+  createRestaurant,
+  updateRestaurant,
+  deleteRestaurant,
+  getCategories,
 } = require('./restaurantController');
+
 const Restaurant = require('../models/restaurantModel');
+const Category = require('../models/categoryModel');
 
 jest.mock('../models/restaurantModel');
+jest.mock('../models/categoryModel');
+
+describe('Given a getCategories function', () => {
+  describe('When is invoked', () => {
+    test('Then should call json', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {};
+
+      Category.find.mockReturnValue({});
+
+      await getCategories(req, res);
+
+      expect(res.json).toHaveBeenCalled();
+    });
+
+    test('Then should call status with value 500', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {};
+
+      Category.find.mockImplementationOnce(() => { throw new Error('Error'); });
+
+      await getCategories(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(500);
+    });
+  });
+});
 
 describe('Given a createRestaurant function', () => {
   describe('When is invoked with body name', () => {
@@ -31,10 +73,7 @@ describe('Given a getAllRestaurants function', () => {
       Restaurant.find
         .mockImplementationOnce(() => ({
           populate: jest.fn()
-            .mockImplementationOnce(() => ({
-              populate: jest.fn()
-                .mockImplementationOnce(() => ({ populate: jest.fn() })),
-            })),
+            .mockImplementationOnce(() => ({ populate: jest.fn() })),
         }));
 
       await getAllRestaurants(req, res);
@@ -97,10 +136,7 @@ describe('Given a getRestaurant function', () => {
       Restaurant.findById
         .mockImplementationOnce(() => ({
           populate: jest.fn()
-            .mockImplementationOnce(() => ({
-              populate: jest.fn()
-                .mockImplementationOnce(() => ({ populate: jest.fn() })),
-            })),
+            .mockImplementationOnce(() => ({ populate: jest.fn() })),
         }));
 
       await getRestaurant(req, res);
@@ -130,10 +166,7 @@ describe('Given a updateRestaurant function', () => {
       Restaurant.findByIdAndUpdate
         .mockImplementationOnce(() => ({
           populate: jest.fn()
-            .mockImplementationOnce(() => ({
-              populate: jest.fn()
-                .mockImplementationOnce(() => ({ populate: jest.fn() })),
-            })),
+            .mockImplementationOnce(() => ({ populate: jest.fn() })),
         }));
 
       await updateRestaurant(req, res);

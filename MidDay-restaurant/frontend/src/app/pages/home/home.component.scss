@@ -1,0 +1,8 @@
+@import "../../../styles/mixins";
+@import "../../../styles/colors";
+@import "../../../styles/fonts";
+
+.home {
+  @include flex(column, center, center);
+  height: 550px;
+}

@@ -1,7 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core'
-import { dishesList } from '../../constants/index'
-import { FormBuilder } from '@angular/forms'
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-menus',
@@ -9,34 +6,17 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog'
   styleUrls: ['./menus.component.scss']
 })
 export class MenusComponent implements OnInit {
-  constructor (
-private fb: FormBuilder,
-    private dialog: MatDialog
-  ) { }
+  switch: boolean = true
 
-  openPopUp () {
-    this.dialog.open(PopUp, {})
+  buttonAdd: any
+
+  deleteClass ():void {
+    this.buttonAdd = document.querySelector('.add')
+    this.buttonAdd.classList.remove('btn--active')
   }
 
-  dishesList=dishesList
-
-    menu = this.fb.group({
-      first: '',
-      second: '',
-      dessert: ''
-    })
-
-    ngOnInit (): void {
-    }
-}
-
-export interface DialogData {
-  menssage: 'message';
-}
-@Component({
-  selector: 'popup',
-  templateUrl: 'popup.html'
-})
-export class PopUp {
-  constructor (@Inject(MAT_DIALOG_DATA) private data: DialogData) {}
+  ngOnInit (): void {
+    this.buttonAdd = document.querySelector('.add')
+    this.buttonAdd.classList.add('btn--active')
+  }
 }

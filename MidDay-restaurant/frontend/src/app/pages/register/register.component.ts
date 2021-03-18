@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper'
-import { options } from '../../constants/index'
+import { StoreService } from '../../core/services/store.service'
+import { MatDialog } from '@angular/material/dialog'
+import { PopupRegisterComponent } from './popup-register/popup-register.component'
+import { BehaviorSubject } from 'rxjs'
+import { Category } from 'src/app/core/model/Category'
 
 @Component({
   selector: 'app-register',
@@ -11,27 +15,55 @@ import { options } from '../../constants/index'
     provide: STEPPER_GLOBAL_OPTIONS, useValue: { displayDefaultIndicatorType: false }
   }]
 })
+
 export class RegisterComponent implements OnInit {
-  isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  constructor (
+    public StoreService: StoreService,
+    private fb: FormBuilder,
+    public dialog: MatDialog
+  ) {}
 
-  options = options
+  registerFormGroup = this.fb.group({
+    userName: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
+    secondPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
+  })
 
-  hide = true;
+  restaurantDataFormGroup = this.fb.group({
+    name: ['', Validators.required],
+    street: ['', Validators.required],
+    number: ['', Validators.required],
+    zipcode: ['', Validators.required],
+    city: ['', Validators.required],
+    phone: ['', Validators.required],
+    category: ['', Validators.required],
+    capacity: ['', Validators.required],
+    menuprice: ['', Validators.required],
+    image: ['', Validators.required]
+  })
 
-  constructor (private _formBuilder: FormBuilder) {}
+  registerUser () {
+    this.StoreService.registerUserRestaurant(
+      this.registerFormGroup.value,
+      this.restaurantDataFormGroup.value)
 
-  ngOnInit () {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    })
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    })
-    this.thirdFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    })
+    this.registerFormGroup.reset()
+    this.restaurantDataFormGroup.reset()
   }
+
+  openConfirm ():void {
+    this.dialog.open(PopupRegisterComponent)
+  }
+
+    hide:boolean= true;
+
+    category$ = new BehaviorSubject<Category[]>([])
+
+    ngOnInit (): void {
+      this.StoreService.getCategories()
+        .subscribe((category) => {
+          this.category$.next(category)
+        })
+    }
 }
