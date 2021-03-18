@@ -10,6 +10,10 @@
         >
       </mat-optgroup>
     </mat-select>
+    <mat-error *ngIf="menu.controls['firstCourse'].invalid"
+      >Necesitas seleccionar un plato, si no hay ninguno debes
+      crearlo</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
@@ -23,6 +27,10 @@
         >
       </mat-optgroup>
     </mat-select>
+    <mat-error *ngIf="menu.controls['secondCourse'].invalid"
+      >Necesitas seleccionar un plato, si no hay ninguno debes
+      crearlo</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field appearance="fill" class="full-width">
@@ -34,6 +42,10 @@
         }}</mat-option>
       </mat-optgroup>
     </mat-select>
+    <mat-error *ngIf="menu.controls['dessert'].invalid"
+      >Necesitas seleccionar un plato, si no hay ninguno debes
+      crearlo</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field>

@@ -30,10 +30,9 @@ export class DishesSearchComponent implements OnInit {
   searchTerms: Subject<string> = new Subject()
 
   deleteClick (id: string) :void {
-    this.StoreService.deleteDish(id)
+    this.StoreService.deleteDish(id).subscribe(rest => this.dishes$.next)
 
     this.searchDishes.patchValue({ searchDish: '' })
-    this.search('')
   }
 
   search (searchValue: string):void {

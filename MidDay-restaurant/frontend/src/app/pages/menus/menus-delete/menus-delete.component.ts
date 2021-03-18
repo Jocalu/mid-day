@@ -23,7 +23,7 @@ export class MenusDeleteComponent implements OnInit {
     }
 
     deleteClick (id: string) {
-      this.StoreService.deleteMenu(id)
+      this.StoreService.deleteMenu(id).subscribe()
       this.StoreService.getUserRestaurant(localStorage.getItem(''))
         .subscribe((answer) => { this.menu$.next(answer.menus) })
     }

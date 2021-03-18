@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, Observable, of } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { Dish } from '../model/Dish'
 import { Menu } from '../model/Menu'
 import { UserRestaurant } from '../model/UserRestaurant'
@@ -9,6 +9,7 @@ import { DishService } from '../services/dish.service'
 import { UserRestaurantService } from '../services/user-restaurant.service'
 import { Router } from '@angular/router'
 import { Category } from '../model/Category'
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -31,17 +32,16 @@ export class StoreService {
     return this.CategoryService.getCategoriesService()
   }
 
-  getDishes ():Observable<Dish[]> {
-    return this.DishService.getDishesService()
-  }
-
   getDishesForSearch ():void {
     this.UserRestaurantService.getRestaurantService(localStorage.getItem(''))
       .subscribe((element) => this.dishesAPI$.next(element.dishes))
   }
 
   searchDish (term):Observable<Dish[]> {
-    return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
+    return this.dishesAPI$.pipe(
+      map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
+      )
+    )
   }
 
   postDish (dish: Dish) :Observable<Dish> {
@@ -60,30 +60,16 @@ export class StoreService {
     return this.UserRestaurantService.addDishService(id, data)
   }
 
-  deleteDish (id: string):void {
-    this.DishService
-      .deleteDishService(id)
-      .subscribe((element) => this.dishesAPI$.next(this.dishesAPI$.getValue().filter((dish) => dish._id !== element._id)))
+  deleteDish (id: string) {
+    return this.DishService.deleteDishService(id)
   }
 
-  getMenu ():Observable<Menu[]> {
-    return this.MenuService.getMenuService()
+  deleteMenu (id:string) {
+    return this.MenuService.deleteMenuService(id)
   }
 
-  deleteMenu (id:string):void {
-    this.MenuService
-      .deleteMenuService(id)
-      .subscribe((element) => this.menuAPI$.next(this.menuAPI$.getValue()))
-  }
-
-  error:string = ''
-
-  registerUserRestaurant (user, restaurant) :void {
-    this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant })
-      .subscribe(user => localStorage.setItem('', user._id))
-    if (this.error === '') {
-      this.router.navigate(['/home'])
-    }
+  registerUserRestaurant (user, restaurant) {
+    return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant })
   }
 
   loginUserRestaurant (userRestaurant):Observable<UserRestaurant> {

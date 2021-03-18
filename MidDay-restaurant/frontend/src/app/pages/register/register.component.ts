@@ -7,6 +7,7 @@ import { PopupRegisterComponent } from './popup-register/popup-register.componen
 import { BehaviorSubject } from 'rxjs'
 import { Category } from 'src/app/core/model/Category'
 import { Router } from '@angular/router'
+import { CustomValidators } from './custom-validator'
 
 @Component({
   selector: 'app-register',
@@ -29,15 +30,15 @@ export class RegisterComponent implements OnInit {
     userName: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
-    secondPassword: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]
-  })
+    confirmPassword: ['', Validators.required]
+  }, { validator: CustomValidators.match('password', 'confirmPassword', 'password-validatematch') })
 
   restaurantDataFormGroup = this.fb.group({
     name: ['', Validators.required],
     street: ['', Validators.required],
     number: ['', Validators.required],
     zipcode: ['', Validators.required],
-    city: ['', Validators.required],
+    city: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(9)]],
     phone: ['', Validators.required],
     category: ['', Validators.required],
     capacity: ['', Validators.required],
@@ -49,7 +50,10 @@ export class RegisterComponent implements OnInit {
     this.StoreService.registerUserRestaurant(
       this.registerFormGroup.value,
       this.restaurantDataFormGroup.value)
-    this.router.navigate(['/landing'])
+      .subscribe(user => {
+        localStorage.setItem('', user._id)
+        this.router.navigate(['/landing'])
+      })
 
     this.registerFormGroup.reset()
     this.restaurantDataFormGroup.reset()

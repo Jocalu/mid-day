@@ -14,10 +14,6 @@ export class MenuService {
         private httpClient: HttpClient
     ) { }
 
-    getMenuService (): Observable<Menu[]> {
-      return this.httpClient.get<Menu[]>(this.menuURL)
-    }
-
     postMenuService (menu : Menu): Observable<Menu> {
       return this.httpClient.post<Menu>(this.menuURL, menu)
     }
