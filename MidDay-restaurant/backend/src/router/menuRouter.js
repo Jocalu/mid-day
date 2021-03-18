@@ -7,7 +7,7 @@ function MenuRouter() {
   router
     .route('/')
     .post(menuController.createMenu)
-    .get(menuController.getMenu);
+    .get(menuController.getMenus);
 
   router
     .route('/:menuId')

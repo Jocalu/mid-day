@@ -8,7 +8,7 @@ const menuController = () => {
       .save(res.json(newMenu));
   };
 
-  const getMenu = async (req, res) => {
+  const getMenus = async (req, res) => {
     try {
       const menus = await Menu
         .find({})
@@ -39,7 +39,7 @@ const menuController = () => {
   return {
     createMenu,
     deleteMenu,
-    getMenu,
+    getMenus,
   };
 };
 
