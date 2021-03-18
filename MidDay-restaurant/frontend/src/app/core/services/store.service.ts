@@ -40,7 +40,7 @@ export class StoreService {
       .subscribe((element) => this.dishesAPI$.next(element))
   }
 
-  postDish (dish: Dish) :void {
+  postDish (dish: Dish) :Observable<Dish[]> {
     return this.DishService.postDishService(dish)
   }
 

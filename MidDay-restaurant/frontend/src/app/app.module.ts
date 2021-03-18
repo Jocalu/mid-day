@@ -34,9 +34,12 @@ import { HomeComponent } from './pages/home/home.component'
 import { PopupDishesaddComponent } from './pages/dishes/dishes-add/popup-dishesadd/popup-dishesadd.component'
 import { PopupDishessearchComponent } from './pages/dishes/dishes-search/popup-dishessearch/popup-dishessearch.component'
 import { PopupMenusaddComponent } from './pages/menus/menus-add/popup-menusadd/popup-menusadd.component'
-import { PopupMenusdeleteComponent } from './pages/menus/menus-delete/popup-menusdelete/popup-menusdelete.component';
-import { PopupRegisterComponent } from './pages/register/popup-register/popup-register.component';
+import { PopupMenusdeleteComponent } from './pages/menus/menus-delete/popup-menusdelete/popup-menusdelete.component'
+import { PopupRegisterComponent } from './pages/register/popup-register/popup-register.component'
 import { PopupLoginfailComponent } from './components/popup-loginfail/popup-loginfail.component'
+import localeEs from '@angular/common/locales/es'
+import { registerLocaleData } from '@angular/common'
+registerLocaleData(localeEs, 'es')
 
 @NgModule({
   declarations: [
@@ -86,7 +89,7 @@ import { PopupLoginfailComponent } from './components/popup-loginfail/popup-logi
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: 'fill' }
-    }, { provide: LOCALE_ID, useValue: 'es-ES' }
+    }, { provide: LOCALE_ID, useValue: 'es' }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

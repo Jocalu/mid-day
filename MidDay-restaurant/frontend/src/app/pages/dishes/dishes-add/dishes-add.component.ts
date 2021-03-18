@@ -34,7 +34,7 @@ export class DishesAddComponent {
   })
 
   postClick ():void {
-    this.StoreService.postDish(this.dish.value)
+    this.StoreService.postDish(this.dish.value).subscribe()
     this.dish.reset()
   }
 }

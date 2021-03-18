@@ -38,7 +38,6 @@ export class DishesSearchComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(term => this.StoreService.searchDish(term))
       )
-    console.log(this.searchTerms)
   }
 
   deleteClick (id: string) :void {
