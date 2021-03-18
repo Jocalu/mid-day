@@ -29,6 +29,17 @@ export class DishesSearchComponent implements OnInit {
 
   searchTerms: Subject<string> = new Subject()
 
+  deleteClick (id: string) :void {
+    this.StoreService.deleteDish(id)
+
+    this.searchDishes.patchValue({ searchDish: '' })
+    this.search('')
+  }
+
+  search (searchValue: string):void {
+    this.searchTerms.next(searchValue)
+  }
+
   ngOnInit (): void {
     this.StoreService.getDishesForSearch()
 
@@ -38,15 +49,5 @@ export class DishesSearchComponent implements OnInit {
         distinctUntilChanged(),
         switchMap(term => this.StoreService.searchDish(term))
       )
-  }
-
-  deleteClick (id: string) :void {
-    this.StoreService.deleteDish(id)
-    this.searchDishes.patchValue({ searchDish: '' })
-    this.search('')
-  }
-
-  search (searchValue: string):void {
-    this.searchTerms.next(searchValue)
   }
 }

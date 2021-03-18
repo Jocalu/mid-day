@@ -16,7 +16,7 @@ export class MenusDeleteComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
-    menu$= new BehaviorSubject([])
+    menu$ = new BehaviorSubject([])
 
     openPopUp () {
       this.dialog.open(PopupMenusdeleteComponent)
