@@ -41,8 +41,19 @@ export class StoreService {
   }
 
   postDish (dish: Dish) :void {
-    this.DishService.postDishService(dish)
-      .subscribe((element) => this.dishesAPI$.next(element))
+    return this.DishService.postDishService(dish)
+  }
+
+  postMenu (menu):Observable<Menu> {
+    return this.MenuService.postMenuService(menu)
+  }
+
+  addMenuRestaurant (id:string, data: object):Observable<UserRestaurant> {
+    return this.UserRestaurantService.addMenuService(id, data)
+  }
+
+  addDishRestaurant (id:string, data: object):Observable<UserRestaurant> {
+    return this.UserRestaurantService.addMenuService(id, data)
   }
 
   deleteDish (id: string):void {
@@ -57,10 +68,6 @@ export class StoreService {
 
   getMenu ():Observable<Menu[]> {
     return this.MenuService.getMenuService()
-  }
-
-  postMenu (menu):Observable<Menu> {
-    return this.MenuService.postMenuService(menu)
   }
 
   deleteMenu (id:string):void {
@@ -89,9 +96,5 @@ export class StoreService {
 
   updateUserRestaurant (id:string, data: object):Observable<UserRestaurant> {
     return this.UserRestaurantService.updateRestaurantService(id, data)
-  }
-
-  addMenu (id:string, data: object):Observable<UserRestaurant> {
-    return this.UserRestaurantService.addMenuService(id, data)
   }
 }

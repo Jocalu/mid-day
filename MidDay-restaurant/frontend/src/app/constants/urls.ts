@@ -7,3 +7,4 @@ export const categoriesURL = `${proxyUrl}restaurant/categories`
 export const dishesURL = `${proxyUrl}dish`
 export const menuURL = `${proxyUrl}menu`
 export const restaurantMenusURL = `${proxyUrl}restaurant/menus/`
+export const restaurantDishesURL = `${proxyUrl}restaurant/dishes/`

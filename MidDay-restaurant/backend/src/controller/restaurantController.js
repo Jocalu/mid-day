@@ -42,7 +42,19 @@ const restaurantController = () => {
       const restaurant = await Restaurant
         .findById(restaurantId)
         .populate('category')
-        .populate('menu');
+        .populate('menus')
+        .populate({
+          path: 'menus',
+          populate: { path: 'firstCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'secondCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'dessert' },
+        });
 
       res.json(restaurant);
     } catch (error) {
@@ -56,7 +68,19 @@ const restaurantController = () => {
       const allRestaurants = await Restaurant
         .find({})
         .populate('category')
-        .populate('menu');
+        .populate('menus')
+        .populate({
+          path: 'menus',
+          populate: { path: 'firstCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'secondCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'dessert' },
+        });
 
       res.json(allRestaurants);
     } catch (error) {
