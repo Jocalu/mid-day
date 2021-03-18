@@ -63,6 +63,7 @@ export class StoreService {
   }
 
   searchDish (term):Observable<Dish[]> {
+    console.log(this.dishesAPI$)
     return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
   }
 

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog'
 import { PopupRegisterComponent } from './popup-register/popup-register.component'
 import { BehaviorSubject } from 'rxjs'
 import { Category } from 'src/app/core/model/Category'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
   constructor (
     public StoreService: StoreService,
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router : Router
   ) {}
 
   registerFormGroup = this.fb.group({
@@ -47,6 +49,7 @@ export class RegisterComponent implements OnInit {
     this.StoreService.registerUserRestaurant(
       this.registerFormGroup.value,
       this.restaurantDataFormGroup.value)
+    this.router.navigate(['/landing'])
 
     this.registerFormGroup.reset()
     this.restaurantDataFormGroup.reset()

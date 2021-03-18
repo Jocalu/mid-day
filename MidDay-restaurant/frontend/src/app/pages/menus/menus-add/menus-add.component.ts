@@ -40,11 +40,11 @@ export class MenusAddComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.StoreService.getDishes()
-      .subscribe((dish) => {
-        this.firstCourses$.next(dish.filter((option) => option.type === 'PRIMEROS'))
-        this.secondCourses$.next(dish.filter((option) => option.type === 'SEGUNDOS'))
-        this.desserts$.next(dish.filter((option) => option.type === 'POSTRES'))
+    this.StoreService.getUserRestaurant(localStorage.getItem(''))
+      .subscribe((answer) => {
+        this.firstCourses$.next(answer.dishes.filter((option) => option.type === 'PRIMEROS'))
+        this.secondCourses$.next(answer.dishes.filter((option) => option.type === 'SEGUNDOS'))
+        this.desserts$.next(answer.dishes.filter((option) => option.type === 'POSTRES'))
       })
   }
 }
