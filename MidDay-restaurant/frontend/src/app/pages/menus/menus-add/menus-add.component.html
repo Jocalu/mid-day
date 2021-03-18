@@ -55,6 +55,7 @@
       mat-raised-button
       color="primary"
       (click)="openPopUp(); postClick()"
+      [disabled]="menu.invalid"
     >
       AÑADIR
     </button>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { BehaviorSubject } from 'rxjs'
 import { StoreService } from '../../../core/services/store.service'
@@ -26,10 +26,10 @@ export class MenusAddComponent implements OnInit {
   desserts$ = new BehaviorSubject([])
 
   menu = this.fb.group({
-    firstCourse: '',
-    secondCourse: '',
-    dessert: '',
-    price: 0
+    firstCourse: ['', [Validators.required]],
+    secondCourse: ['', [Validators.required]],
+    dessert: ['', [Validators.required]],
+    price: [0, [Validators.required]]
   })
 
   postClick ():void {

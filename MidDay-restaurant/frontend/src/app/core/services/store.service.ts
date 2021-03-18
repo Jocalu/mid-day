@@ -36,8 +36,12 @@ export class StoreService {
   }
 
   getDishesForSearch ():void {
-    this.DishService.getDishesService()
-      .subscribe((element) => this.dishesAPI$.next(element))
+    this.UserRestaurantService.getRestaurantService(localStorage.getItem(''))
+      .subscribe((element) => this.dishesAPI$.next(element.dishes))
+  }
+
+  searchDish (term):Observable<Dish[]> {
+    return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
   }
 
   postDish (dish: Dish) :Observable<Dish> {
@@ -60,11 +64,6 @@ export class StoreService {
     this.DishService
       .deleteDishService(id)
       .subscribe((element) => this.dishesAPI$.next(this.dishesAPI$.getValue().filter((dish) => dish._id !== element._id)))
-  }
-
-  searchDish (term):Observable<Dish[]> {
-    console.log(this.dishesAPI$)
-    return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
   }
 
   getMenu ():Observable<Menu[]> {

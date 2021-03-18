@@ -30,8 +30,7 @@ export class DishesSearchComponent implements OnInit {
   searchTerms: Subject<string> = new Subject()
 
   ngOnInit (): void {
-    /*    this.StoreService.getDishesForSearch() */
-    this.StoreService.getUserRestaurant(localStorage.getItem('')).subscribe()
+    this.StoreService.getDishesForSearch()
 
     this.dishes$ = this.searchTerms
       .pipe(
