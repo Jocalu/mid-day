@@ -21,10 +21,10 @@ export class LoginComponent {
 
     submitLogin ():void {
       this.dialog.closeAll()
-      this.StoreService.loginUserRestaurant(this.loginPopUp.value)
-        .subscribe(user => { localStorage.setItem('', user._id); this.router.navigate(['/landing']) })
-      this.router.navigate(['/home'])
-      this.dialog.open(PopupLoginfailComponent)
+      this.StoreService.loginUserRestaurant(
+        this.loginPopUp.value)
+        .subscribe(user => { localStorage.setItem('', user._id); this.router.navigate(['/landing']) },
+          () => this.dialog.open(PopupLoginfailComponent))
     }
 
      loginPopUp = this.fb.group({
