@@ -83,15 +83,15 @@ This app is actually under construction.
 
 * **Jose Cárcamo** - *Initial work* - [JoseCárcamo](https://github.com/Jocalu)
 * **Gerard Mangues** - *Initial work* - [GerardMangues](https://github.com/GerardMB97)
-* **Marc Lucas** - *Original idea and documentation* - 
+* **Marc Lucas** - *Original idea and documentation* - [MarcLucas](https://www.linkedin.com/in/marclucasbueno/)
 
 ## Thanks to 🎁
 
 * SkylabCoders Academy 📢
 * Gilberto Cao 🤓.
-* All the partners of the bootcamp
+* All the partners of the bootcamp.
 
 
 
 ---
-With ❤️ por [JoseCárcamo](https://github.com/Jocalu) 😊
+With ❤️ [JoseCárcamo](https://github.com/Jocalu) 😊
