@@ -50,7 +50,7 @@ _In the folder environments in your frontend_
 frontend/src/enviromnents
 ```
 
-## Build eith 🛠️
+## Build with 🛠️
 
 _You can create your build with _
 ```
@@ -71,8 +71,6 @@ npm firebase init hosting
 npm deploy
 ```
 
-
-_Menciona las herramientas que utilizaste para crear tu proyecto_
 
 * [Angular](https://angular.io/) - The web framework used
 * [Firebase](https://firebase.google.com/?hl=en) - For hosting and storage

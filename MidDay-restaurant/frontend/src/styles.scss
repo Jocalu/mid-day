@@ -59,6 +59,7 @@ $MidDay-restaurant-theme: mat-light-theme(
 }
 
 .mat-raised-button.mat-primary {
+  cursor: pointer !important;
   margin: 0 5px;
   color: $color-white;
   background-color: $color-primary;
@@ -69,11 +70,13 @@ $MidDay-restaurant-theme: mat-light-theme(
 }
 
 .mat-button.mat-primary {
+  cursor: pointer !important;
   color: $color-white;
   margin: 0 5px;
 }
 
 .mat-stroked-button.mat-primary {
+  cursor: pointer !important;
   margin: 0 5px;
   color: $color-primary;
   &:hover {
