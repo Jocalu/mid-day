@@ -9,8 +9,7 @@ function RestaurantRouter() {
 
   router
     .route('/')
-    .get(restController.getAllRestaurants)
-    .post(restController.createRestaurant);
+    .get(restController.getAllRestaurants);
 
   router
     .route('/:restaurantId')

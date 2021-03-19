@@ -32,12 +32,11 @@ export class StoreService {
     return this.CategoryService.getCategoriesService()
   }
 
-  getDishesForSearch ():void {
-    this.UserRestaurantService.getRestaurantService(localStorage.getItem(''))
-      .subscribe((element) => this.dishesAPI$.next(element.dishes))
+  getDishesForSearch ():Observable<UserRestaurant> {
+    return this.UserRestaurantService.getRestaurantService(localStorage.getItem(''))
   }
 
-  searchDish (term):Observable<Dish[]> {
+  searchDish (term: string):Observable<Dish[]> {
     return this.dishesAPI$.pipe(
       map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
       )
@@ -60,7 +59,7 @@ export class StoreService {
     return this.UserRestaurantService.addDishService(id, data)
   }
 
-  deleteDish (id: string) {
+  deleteDish (id: string) :Observable<Dish> {
     return this.DishService.deleteDishService(id)
   }
 

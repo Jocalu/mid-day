@@ -1,7 +1,6 @@
 const {
   getRestaurant,
   getAllRestaurants,
-  createRestaurant,
   updateRestaurant,
   deleteRestaurant,
   getCategories,
@@ -43,19 +42,6 @@ describe('Given a getCategories function', () => {
       await getCategories(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
-    });
-  });
-});
-
-describe('Given a createRestaurant function', () => {
-  describe('When is invoked with body name', () => {
-    test('Then should call json', () => {
-      const req = { body: { name: 'Tagliatella' } };
-      const res = { json: jest.fn() };
-
-      createRestaurant(req, res);
-
-      expect(res.json).toHaveBeenCalled();
     });
   });
 });

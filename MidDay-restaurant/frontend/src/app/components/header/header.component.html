@@ -35,7 +35,7 @@
       <button
         [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
         routerLink="/menus"
-        routerLinkActive="mat-raised-button"
+        routerLinkActive="mat-stroked-button"
         mat-button
         color="primary"
       >
@@ -44,7 +44,7 @@
       <button
         [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
         routerLink="/dishes"
-        routerLinkActive="mat-raised-button"
+        routerLinkActive="mat-stroked-button"
         mat-button
         color="primary"
       >
@@ -53,7 +53,7 @@
       <button
         [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
         routerLink="/bookings"
-        routerLinkActive="mat-raised-button"
+        routerLinkActive="mat-stroked-button"
         mat-button
         color="primary"
       >
@@ -62,7 +62,7 @@
       <button
         [ngStyle]="{ display: isAuth() ? 'none' : '' }"
         (click)="openLogin()"
-        routerLinkActive="mat-raised-button"
+        routerLinkActive="mat-stroked-button"
         mat-raised-button
         color="primary"
       >
@@ -71,7 +71,7 @@
       <button
         [ngStyle]="{ display: isAuth() ? 'none' : '' }"
         routerLink="/register"
-        routerLinkActive="mat-raised-button"
+        routerLinkActive="mat-stroked-button"
         mat-raised-button
         color="primary"
       >

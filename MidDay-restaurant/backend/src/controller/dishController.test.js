@@ -1,8 +1,6 @@
 const {
-  getDish,
   getAllDishes,
   createDish,
-  updateDish,
   deleteDish,
 } = require('./dishController');
 const Dish = require('../models/dishModel');
@@ -53,98 +51,6 @@ describe('Given a getAllDishes function', () => {
     await getAllDishes(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
-  });
-});
-
-describe('Given a getDish function', () => {
-  describe('When is invoked with a first argument truthy', () => {
-    test('Then should call status', async () => {
-      const res = {
-        json: jest.fn(),
-        send: jest.fn(),
-        status: jest.fn(),
-      };
-      const req = {
-        params: {
-          id: 1,
-        },
-      };
-
-      Dish.findById
-        .mockImplementationOnce((query, callback) => callback(true));
-
-      await getDish(req, res);
-
-      expect(res.status).toHaveBeenCalledWith(500);
-    });
-  });
-  describe('When is invoked with a first argument falsy', () => {
-    test('Then should call json', async () => {
-      const res = {
-        json: jest.fn(),
-        send: jest.fn(),
-        status: jest.fn(),
-      };
-      const req = {
-        params: {
-          id: 1,
-        },
-      };
-
-      Dish.findById.mockImplementationOnce(() => ({ populate: jest.fn() }));
-
-      await getDish(req, res);
-
-      expect(res.json).toHaveBeenCalled();
-    });
-  });
-});
-
-describe('Given a updateDish function', () => {
-  describe('When is invoked', () => {
-    test('Then should call json with body', async () => {
-      const res = {
-        json: jest.fn(),
-        send: jest.fn(),
-        status: jest.fn(),
-      };
-      const req = {
-        params: {
-          id: 1,
-        },
-        body: {
-          name: 'Ensalada',
-        },
-      };
-
-      Dish.findByIdAndUpdate.mockImplementationOnce(() => ({ populate: jest.fn() }));
-
-      await updateDish(req, res);
-
-      expect(res.json).toHaveBeenCalled();
-    });
-
-    test('Then should call status with value 500', async () => {
-      const res = {
-        json: jest.fn(),
-        send: jest.fn(),
-        status: jest.fn(),
-      };
-      const req = {
-        params: {
-          id: 1,
-        },
-        body: {
-          name: 'Ensalada',
-        },
-      };
-
-      Dish.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
-
-      await updateDish(req, res);
-
-      expect(res.status).toHaveBeenCalledWith(500);
-    });
   });
 });
 
