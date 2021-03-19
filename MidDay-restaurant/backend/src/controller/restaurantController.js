@@ -1,6 +1,7 @@
 const Restaurant = require('../models/restaurantModel.js');
 const Category = require('../models/categoryModel');
 require('../models/menuModel');
+require('../models/dishModel');
 
 const restaurantController = () => {
   const getCategories = async (req, res) => {
@@ -13,7 +14,7 @@ const restaurantController = () => {
     }
   };
 
-  /*   const addMenusRestaurant = async (req, res) => {
+  const addMenusRestaurant = async (req, res) => {
     const { restaurantId } = req.params;
 
     try {
@@ -22,18 +23,31 @@ const restaurantController = () => {
       let { menus } = restaurant;
       if (!menus) { menus = []; }
       menus.push(req.body.menu);
-      const updatedRestaurant = await Restaurant.findByIdAndUpdate(restaurantId, { menus });
+      const updatedRestaurant = await Restaurant
+        .findByIdAndUpdate(restaurantId, { menus });
       res.json(updatedRestaurant);
     } catch (error) {
       res.status(500);
       res.send('There was an error searching');
     }
-  }; */
+  };
 
-  const createRestaurant = (req, res) => {
-    const newRestaurant = new Restaurant(req.body);
-    newRestaurant
-      .save(res.json(newRestaurant));
+  const addDishesRestaurant = async (req, res) => {
+    const { restaurantId } = req.params;
+
+    try {
+      const restaurant = await Restaurant
+        .findById(restaurantId);
+      let { dishes } = restaurant;
+      if (!dishes) { dishes = []; }
+      dishes.push(req.body.dish);
+      const updatedRestaurant = await Restaurant
+        .findByIdAndUpdate(restaurantId, { dishes });
+      res.json(updatedRestaurant);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error searching');
+    }
   };
 
   const getRestaurant = async (req, res) => {
@@ -42,7 +56,20 @@ const restaurantController = () => {
       const restaurant = await Restaurant
         .findById(restaurantId)
         .populate('category')
-        .populate('menu');
+        .populate('menus')
+        .populate({
+          path: 'menus',
+          populate: { path: 'firstCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'secondCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'dessert' },
+        })
+        .populate('dishes');
 
       res.json(restaurant);
     } catch (error) {
@@ -56,7 +83,20 @@ const restaurantController = () => {
       const allRestaurants = await Restaurant
         .find({})
         .populate('category')
-        .populate('menu');
+        .populate('menus')
+        .populate({
+          path: 'menus',
+          populate: { path: 'firstCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'secondCourse' },
+        })
+        .populate({
+          path: 'menus',
+          populate: { path: 'dessert' },
+        })
+        .populate('dishes');
 
       res.json(allRestaurants);
     } catch (error) {
@@ -97,11 +137,11 @@ const restaurantController = () => {
   return {
     getRestaurant,
     getAllRestaurants,
-    createRestaurant,
     updateRestaurant,
     deleteRestaurant,
     getCategories,
-    /*     addMenusRestaurant, */
+    addMenusRestaurant,
+    addDishesRestaurant,
   };
 };
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, Observable, of } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { Dish } from '../model/Dish'
 import { Menu } from '../model/Menu'
 import { UserRestaurant } from '../model/UserRestaurant'
@@ -9,6 +9,7 @@ import { DishService } from '../services/dish.service'
 import { UserRestaurantService } from '../services/user-restaurant.service'
 import { Router } from '@angular/router'
 import { Category } from '../model/Category'
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -31,52 +32,43 @@ export class StoreService {
     return this.CategoryService.getCategoriesService()
   }
 
-  getDishes ():Observable<Dish[]> {
-    return this.DishService.getDishesService()
+  getDishesForSearch ():Observable<UserRestaurant> {
+    return this.UserRestaurantService.getRestaurantService(localStorage.getItem(''))
   }
 
-  getDishesForSearch ():void {
-    this.DishService.getDishesService()
-      .subscribe((element) => this.dishesAPI$.next(element))
+  searchDish (term: string):Observable<Dish[]> {
+    return this.dishesAPI$.pipe(
+      map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
+      )
+    )
   }
 
-  postDish (dish: Dish) :void {
-    this.DishService.postDishService(dish)
-      .subscribe((element) => this.dishesAPI$.next(element))
-  }
-
-  deleteDish (id: string):void {
-    this.DishService
-      .deleteDishService(id)
-      .subscribe((element) => this.dishesAPI$.next(this.dishesAPI$.getValue().filter((dish) => dish._id !== element._id)))
-  }
-
-  searchDish (term):Observable<Dish[]> {
-    return of(term ? this.dishesAPI$.getValue().filter(dish => dish.name.toLowerCase().includes(term.toLowerCase())) : [])
-  }
-
-  getMenu ():Observable<Menu[]> {
-    return this.MenuService.getMenuService()
+  postDish (dish: Dish) :Observable<Dish> {
+    return this.DishService.postDishService(dish)
   }
 
   postMenu (menu):Observable<Menu> {
     return this.MenuService.postMenuService(menu)
   }
 
-  deleteMenu (id:string):void {
-    this.MenuService
-      .deleteMenuService(id)
-      .subscribe((element) => this.menuAPI$.next(this.menuAPI$.getValue()))
+  addMenuRestaurant (id:string, data: object):Observable<UserRestaurant> {
+    return this.UserRestaurantService.addMenuService(id, data)
   }
 
-  error:string = ''
+  addDishRestaurant (id:string, data: object):Observable<UserRestaurant> {
+    return this.UserRestaurantService.addDishService(id, data)
+  }
 
-  registerUserRestaurant (user, restaurant) :void {
-    this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant })
-      .subscribe(user => localStorage.setItem('', user._id))
-    if (this.error === '') {
-      this.router.navigate(['/home'])
-    }
+  deleteDish (id: string) :Observable<Dish> {
+    return this.DishService.deleteDishService(id)
+  }
+
+  deleteMenu (id:string) {
+    return this.MenuService.deleteMenuService(id)
+  }
+
+  registerUserRestaurant (user, restaurant) {
+    return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant })
   }
 
   loginUserRestaurant (userRestaurant):Observable<UserRestaurant> {
@@ -89,9 +81,5 @@ export class StoreService {
 
   updateUserRestaurant (id:string, data: object):Observable<UserRestaurant> {
     return this.UserRestaurantService.updateRestaurantService(id, data)
-  }
-
-  addMenu (id:string, data: object):Observable<UserRestaurant> {
-    return this.UserRestaurantService.addMenuService(id, data)
   }
 }

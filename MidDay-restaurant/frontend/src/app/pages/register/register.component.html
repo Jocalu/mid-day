@@ -15,7 +15,6 @@
                 maxlength="12"
                 placeholder="Nombre usuario"
                 formControlName="userName"
-                required
               />
               <mat-error *ngIf="registerFormGroup.controls['userName'].invalid"
                 >El nombre de usuario ya existe</mat-error
@@ -30,7 +29,6 @@
                 type="email"
                 placeholder="Dirección de email"
                 formControlName="email"
-                required
               />
               <mat-error *ngIf="registerFormGroup.controls['email'].invalid"
                 >Introduce un email válido</mat-error
@@ -44,7 +42,6 @@
                 matInput
                 placeholder="Contraseña"
                 formControlName="password"
-                required
               />
               <mat-error *ngIf="registerFormGroup.controls['password'].invalid"
                 >La contraseña debe contener un mínimo de 8 carácteres y un
@@ -58,13 +55,9 @@
                 [type]="hide ? 'password' : 'text'"
                 matInput
                 placeholder="Repetir contraseña"
-                formControlName="secondPassword"
-                required
+                formControlName="confirmPassword"
               />
-              <mat-error
-                *ngIf="registerFormGroup.controls['secondPassword'].invalid"
-                >Ambos campos deben ser iguales</mat-error
-              >
+
               <button
                 mat-icon-button
                 matSuffix
@@ -77,6 +70,14 @@
                 }}</mat-icon>
               </button>
             </mat-form-field>
+            <div *ngIf="registerFormGroup.errors">
+              <small
+                class="text-danger"
+                *ngIf="registerFormGroup.errors['password-validatematch']"
+              >
+                Las contraseñas no coinciden.
+              </small>
+            </div>
           </div>
 
           <div>
@@ -103,8 +104,11 @@
                 placeholder="Nombre restaurante"
                 formControlName="name"
                 type="text"
-                required
               />
+              <mat-error
+                *ngIf="restaurantDataFormGroup.controls['name'].invalid"
+                >Introduce el nombre de tu restaurante</mat-error
+              >
             </mat-form-field>
             <mat-form-field class="input">
               <mat-label>Dirección</mat-label>
@@ -113,8 +117,11 @@
                 placeholder="Dirección"
                 formControlName="street"
                 type="text"
-                required
               />
+              <mat-error
+                *ngIf="restaurantDataFormGroup.controls['street'].invalid"
+                >Introduce una dirección</mat-error
+              >
             </mat-form-field>
             <div class="input__cont">
               <mat-form-field class="input--half">
@@ -124,8 +131,11 @@
                   placeholder="Número"
                   formControlName="number"
                   type="number"
-                  required
                 />
+                <mat-error
+                  *ngIf="restaurantDataFormGroup.controls['number'].invalid"
+                  >Introduce el número de la calle</mat-error
+                >
               </mat-form-field>
               <mat-form-field class="input--half">
                 <mat-label>Código postal</mat-label>
@@ -134,8 +144,11 @@
                   placeholder="Código postal"
                   formControlName="zipcode"
                   type="text"
-                  required
                 />
+                <mat-error
+                  *ngIf="restaurantDataFormGroup.controls['zipcode'].invalid"
+                  >Introduce el código postal</mat-error
+                >
               </mat-form-field>
             </div>
             <mat-form-field class="input">
@@ -145,8 +158,11 @@
                 placeholder="Ciudad"
                 formControlName="city"
                 type="text"
-                required
               />
+              <mat-error
+                *ngIf="restaurantDataFormGroup.controls['city'].invalid"
+                >Introduce la ciudad</mat-error
+              >
             </mat-form-field>
             <mat-form-field class="input">
               <mat-label>Teléfono de contacto</mat-label>
@@ -155,8 +171,12 @@
                 placeholder="Teléfono de contacto"
                 formControlName="phone"
                 type="number"
-                required
               />
+              <mat-icon matSuffix>phone</mat-icon>
+              <mat-error
+                *ngIf="restaurantDataFormGroup.controls['phone'].invalid"
+                >Número de teléfono incorrecto</mat-error
+              >
             </mat-form-field>
           </div>
           <div>
@@ -188,12 +208,15 @@
               <mat-label>Tipo de cocina</mat-label>
               <mat-select formControlName="category">
                 <mat-option
-                  required
                   *ngFor="let category of category$ | async"
                   value="{{ category._id }}"
                   >{{ category.name }}
                 </mat-option>
               </mat-select>
+              <mat-error
+                *ngIf="restaurantDataFormGroup.controls['category'].invalid"
+                >Selecciona un tipo de cocina</mat-error
+              >
             </mat-form-field>
 
             <div class="input__cont">
@@ -204,8 +227,11 @@
                   placeholder="Aforo"
                   formControlName="capacity"
                   type="number"
-                  required
                 />
+                <mat-error
+                  *ngIf="restaurantDataFormGroup.controls['capacity'].invalid"
+                  >Introduce el aforo de tu restaurante</mat-error
+                >
               </mat-form-field>
               <mat-form-field class="input--half">
                 <mat-label>Precio medio del menú</mat-label>
@@ -214,8 +240,11 @@
                   placeholder="Precio medio del menú"
                   formControlName="menuprice"
                   type="number"
-                  required
                 />
+                <mat-error
+                  *ngIf="restaurantDataFormGroup.controls['menuprice'].invalid"
+                  >Introduce un precio medio de menú</mat-error
+                >
                 <mat-icon matSuffix>euro</mat-icon>
               </mat-form-field>
             </div>
@@ -226,8 +255,11 @@
                 placeholder="URL de imagen"
                 formControlName="image"
                 type="text"
-                required
               />
+              <mat-error
+                *ngIf="restaurantDataFormGroup.controls['image'].invalid"
+                >Introduce la URL de tu imagen</mat-error
+              >
             </mat-form-field>
           </div>
           <div>

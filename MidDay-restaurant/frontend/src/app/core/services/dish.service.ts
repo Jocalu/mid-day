@@ -14,12 +14,8 @@ export class DishService {
     private httpClient: HttpClient
   ) { }
 
-  getDishesService (): Observable<Dish[]> {
-    return this.httpClient.get<Dish[]>(this.dishesURL)
-  }
-
-  postDishService (dish : object): Observable<Dish[]> {
-    return this.httpClient.post<Dish[]>(this.dishesURL, dish)
+  postDishService (dish : object): Observable<Dish> {
+    return this.httpClient.post<Dish>(this.dishesURL, dish)
   }
 
   deleteDishService (id: string): Observable<Dish> {

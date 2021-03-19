@@ -55,6 +55,7 @@
         (click)="openPopUp(); postClick()"
         mat-raised-button
         color="primary"
+        [disabled]="dish.invalid"
       >
         AÑADIR
       </button>

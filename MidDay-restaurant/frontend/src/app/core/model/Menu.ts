@@ -3,5 +3,6 @@ _id:string,
 firstCourse: object[],
 secondCourse: object[],
 dessert: object[],
-price: number
+price: number,
+date: string
 }

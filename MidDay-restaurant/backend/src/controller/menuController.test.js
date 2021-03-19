@@ -1,6 +1,6 @@
 const {
   createMenu,
-  getMenu,
+  getMenus,
   deleteMenu,
 
 } = require('./menuController');
@@ -43,7 +43,7 @@ describe('Given a getMenu function', () => {
             })),
         }));
 
-      await getMenu(req, res);
+      await getMenus(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
@@ -59,7 +59,7 @@ describe('Given a getMenu function', () => {
 
       Menu.find.mockImplementationOnce(() => { throw new Error('Error'); });
 
-      await getMenu(req, res);
+      await getMenus(req, res);
 
       expect(res.send).toHaveBeenCalled();
     });

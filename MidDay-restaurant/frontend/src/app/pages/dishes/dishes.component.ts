@@ -14,7 +14,7 @@ export class DishesComponent implements OnInit {
 
   buttonDelete: any
 
-  dishes$ = this.StoreService.dishesAPI$
+  /*   dishes$ = this.StoreService.dishesAPI$ */
 
   deleteClass () {
     this.buttonDelete = document.querySelector('.delete')
@@ -22,7 +22,7 @@ export class DishesComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.StoreService.getDishes()
+    /*    this.StoreService.getDishes() */
 
     this.buttonDelete = document.querySelector('.delete')
     this.buttonDelete.classList.add('btn--active')

@@ -9,15 +9,21 @@ function RestaurantRouter() {
 
   router
     .route('/')
-    .get(restController.getAllRestaurants)
-    .post(restController.createRestaurant);
+    .get(restController.getAllRestaurants);
 
   router
     .route('/:restaurantId')
     .get(restController.getRestaurant)
     .delete(restController.deleteRestaurant)
     .put(restController.updateRestaurant);
-  /*    .post(restController.addMenusRestaurant); */
+
+  router
+    .route('/menus/:restaurantId/')
+    .post(restController.addMenusRestaurant);
+
+  router
+    .route('/dishes/:restaurantId/')
+    .post(restController.addDishesRestaurant);
 
   return router;
 }

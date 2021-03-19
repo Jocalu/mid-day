@@ -8,20 +8,6 @@ const dishController = () => {
       .save(res.json(newDish));
   };
 
-  const getDish = async (req, res) => {
-    const { dishId } = req.params;
-    try {
-      const dish = await Dish
-        .findById(dishId)
-        .populate('ingredient');
-
-      res.json(dish);
-    } catch (error) {
-      res.status(500);
-      res.send('There was an error searching');
-    }
-  };
-
   const getAllDishes = async (req, res) => {
     try {
       const allDishes = await Dish
@@ -30,23 +16,6 @@ const dishController = () => {
     } catch (error) {
       res.status(500);
       res.send('There was an error searching');
-    }
-  };
-
-  const updateDish = async (req, res) => {
-    const { dishId } = req.params;
-    const {
-      name, type, extra,
-    } = req.body;
-    try {
-      const updated = await Dish
-        .findByIdAndUpdate(dishId, { name, type, extra }, { new: true })
-        .populate('ingredient');
-
-      res.json(updated);
-    } catch (error) {
-      res.status(500);
-      res.send('There was an error updating');
     }
   };
 
@@ -64,10 +33,8 @@ const dishController = () => {
   };
 
   return {
-    getDish,
     getAllDishes,
     createDish,
-    updateDish,
     deleteDish,
   };
 };

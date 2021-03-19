@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog } from '@angular/material/dialog'
-import { StoreService } from '../../../core/services/store.service'
 import { BehaviorSubject } from 'rxjs'
+import { StoreService } from '../../../core/services/store.service'
+
 import { PopupMenusdeleteComponent } from './popup-menusdelete/popup-menusdelete.component'
 
 @Component({
@@ -18,14 +19,17 @@ export class MenusDeleteComponent implements OnInit {
     menu$ = new BehaviorSubject([])
 
     openPopUp () {
-      this.dialog.open(PopupMenusdeleteComponent, {})
+      this.dialog.open(PopupMenusdeleteComponent)
     }
 
     deleteClick (id: string) {
-      this.StoreService.deleteMenu(id)
+      this.StoreService.deleteMenu(id).subscribe()
+      this.StoreService.getUserRestaurant(localStorage.getItem(''))
+        .subscribe((answer) => { this.menu$.next(answer.menus) })
     }
 
     ngOnInit () {
-      this.StoreService.getMenu().subscribe((menu) => { this.menu$.next(menu) })
+      this.StoreService.getUserRestaurant(localStorage.getItem(''))
+        .subscribe((answer) => { this.menu$.next(answer.menus) })
     }
 }

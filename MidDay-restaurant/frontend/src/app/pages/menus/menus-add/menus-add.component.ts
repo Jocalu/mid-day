@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog'
 import { BehaviorSubject } from 'rxjs'
 import { StoreService } from '../../../core/services/store.service'
@@ -18,7 +18,7 @@ export class MenusAddComponent implements OnInit {
   ) { }
 
   openPopUp ():void {
-    this.dialog.open(PopupMenusaddComponent, {})
+    this.dialog.open(PopupMenusaddComponent)
   }
 
   firstCourses$ = new BehaviorSubject([])
@@ -26,25 +26,25 @@ export class MenusAddComponent implements OnInit {
   desserts$ = new BehaviorSubject([])
 
   menu = this.fb.group({
-    firstCourse: '',
-    secondCourse: '',
-    dessert: '',
-    price: 0
+    firstCourse: ['', [Validators.required]],
+    secondCourse: ['', [Validators.required]],
+    dessert: ['', [Validators.required]],
+    price: [0, [Validators.required]]
   })
 
   postClick ():void {
     this.StoreService.postMenu(this.menu.value)
-      .subscribe(answer => this.StoreService.addMenu(localStorage.getItem(''), { menu: answer._id }).subscribe())
+      .subscribe(answer => this.StoreService.addMenuRestaurant(localStorage.getItem(''), { menu: answer._id }).subscribe())
 
     this.menu.reset()
   }
 
   ngOnInit (): void {
-    this.StoreService.getDishes()
-      .subscribe((dish) => {
-        this.firstCourses$.next(dish.filter((option) => option.type === 'PRIMEROS'))
-        this.secondCourses$.next(dish.filter((option) => option.type === 'SEGUNDOS'))
-        this.desserts$.next(dish.filter((option) => option.type === 'POSTRES'))
+    this.StoreService.getUserRestaurant(localStorage.getItem(''))
+      .subscribe((answer) => {
+        this.firstCourses$.next(answer.dishes.filter((option) => option.type === 'PRIMEROS'))
+        this.secondCourses$.next(answer.dishes.filter((option) => option.type === 'SEGUNDOS'))
+        this.desserts$.next(answer.dishes.filter((option) => option.type === 'POSTRES'))
       })
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, Validators } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
 import { courses } from '../../../constants/courses'
 import { ingredientsList } from '../../../constants/ingredients'
@@ -14,7 +14,7 @@ import { PopupDishesaddComponent } from '../dishes-add/popup-dishesadd/popup-dis
 export class DishesAddComponent {
   constructor (
     public StoreService: StoreService,
-        private dialog: MatDialog,
+    private dialog: MatDialog,
     private fb: FormBuilder
   ) { }
 
@@ -27,14 +27,14 @@ export class DishesAddComponent {
   ingredientsList=ingredientsList
 
   dish = this.fb.group({
-    type: '',
-    name: '',
+    type: ['', [Validators.required]],
+    name: ['', [Validators.required]],
     extra: 0,
     ingredients: ''
   })
 
   postClick ():void {
-    this.StoreService.postDish(this.dish.value)
+    this.StoreService.postDish(this.dish.value).subscribe(answer => this.StoreService.addDishRestaurant(localStorage.getItem(''), { dish: answer._id }).subscribe())
     this.dish.reset()
   }
 }

@@ -11,9 +11,7 @@ function DishRouter() {
 
   router
     .route('/:dishId')
-    .get(dishController.getDish)
-    .delete(dishController.deleteDish)
-    .put(dishController.updateDish);
+    .delete(dishController.deleteDish);
 
   return router;
 }

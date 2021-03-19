@@ -50,19 +50,6 @@
         padding: 0 20px;
       }
 
-      .mat-stroked-button.mat-primary {
-        color: $color-primary;
-        border: none;
-        margin: 0 10px;
-      }
-
-      .btn--active {
-        background-color: $color-primary;
-        color: white !important;
-        border: none;
-        margin: 0 10px;
-      }
-
       button:focus {
         background-color: $color-primary;
         color: white !important;

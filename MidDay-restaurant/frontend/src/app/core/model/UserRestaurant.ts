@@ -1,4 +1,6 @@
 import { Bookings } from './Bookings'
+import { Menu } from './Menu'
+import { Dish } from './Dish'
 
 export interface UserRestaurant {
   _id: string,
@@ -15,5 +17,7 @@ export interface UserRestaurant {
   zipcode: string,
   image: string,
   menuprice: number,
-  bookings: Bookings[]
+  bookings: Bookings[],
+  menus: Menu[],
+  dishes: Dish[]
 }
