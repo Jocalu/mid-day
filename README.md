@@ -72,8 +72,6 @@ npm deploy
 ```
 
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
 * [Angular](https://angular.io/) - The web framework used
 * [Firebase](https://firebase.google.com/?hl=en) - For hosting and storage
 
