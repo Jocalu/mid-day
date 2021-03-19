@@ -1,105 +1,99 @@
-# Título del Proyecto
+# MidDay Restaurant project
 
-_Acá va un párrafo que describa lo que es el proyecto_
+_Midday is a restaurant reservation management app. Allows you to book the lunch menu at the restaurant of your choice_
 
-## Comenzando 🚀
+### Pre-requirements 📋
 
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
+_Have installed a code editor_
+_Install nodejs in https://nodejs.org/es/_
+_Intall npm and start it_
+```
+npm install global
+```
+```
+npm init --yes
+```
+## Starting 🚀
 
-Mira **Deployment** para conocer como desplegar el proyecto.
+_Open a code editor and clone the project._
 
+For example you can use  **VSCODE**.
 
-### Pre-requisitos 📋
-
-_Que cosas necesitas para instalar el software y como instalarlas_
+Write the following in the terminal
 
 ```
-Da un ejemplo
+git clone https://github.com/SkylabCoders/jose-final-project.git
 ```
 
-### Instalación 🔧
+### Instalation 🔧
 
-_Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
-
-_Dí cómo será ese paso_
+_Open the backend folder and run_
 
 ```
-Da un ejemplo
+npm install
 ```
 
-_Y repite_
+_Open the backend folder and run the same_
 
 ```
-hasta finalizar
+npm install
 ```
 
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
+### Replace the environment variables with yours⌨️
 
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
+_In the files .env in your backend (you can see the env.example)_
 ```
-Da un ejemplo
+backend/.env-example
+```
+_In the folder environments in your frontend_
+```
+frontend/src/enviromnents
 ```
 
-### Y las pruebas de estilo de codificación ⌨️
+## Build eith 🛠️
 
-_Explica que verifican estas pruebas y por qué_
-
+_You can create your build with _
 ```
-Da un ejemplo
+npm build
+```
+## Deployment 📦
+
+_Use a firebase-like hosting service_
+_Follow the steps in https://firebase.google.com/?hl=en_
+_When you have the configuration you can do the deploy_
+```
+npm i firebase
+```
+```
+npm firebase init hosting
+```
+```
+npm deploy
 ```
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
-## Construido con 🛠️
 
 _Menciona las herramientas que utilizaste para crear tu proyecto_
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Angular](https://angular.io/) - The web framework used
+* [Firebase](https://firebase.google.com/?hl=en) - For hosting and storage
 
-## Contribuyendo 🖇️
+## Under contruction 🖇️
 
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+This app is actually under construction.
 
-## Wiki 📖
+## Authors ✒️
 
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+* **Jose Cárcamo** - *Initial work* - [JoseCárcamo](https://github.com/Jocalu)
+* **Gerard Mangues** - *Initial work* - [GerardMangues](https://github.com/GerardMB97)
+* **Marc Lucas** - *Original idea and documentation* - 
 
-## Versionado 📌
+## Thanks to 🎁
 
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
-## Autores ✒️
-
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Andrés Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Fulanito Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-## Licencia 📄
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
+* SkylabCoders Academy 📢
+* Gilberto Cao 🤓.
+* All the partners of the bootcamp
 
 
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+With ❤️ por [JoseCárcamo](https://github.com/Jocalu) 😊
