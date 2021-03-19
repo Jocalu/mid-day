@@ -37,6 +37,7 @@ export class MenusAddComponent implements OnInit {
       .subscribe(answer => this.StoreService.addMenuRestaurant(localStorage.getItem(''), { menu: answer._id }).subscribe())
 
     this.menu.reset()
+    this.menu.patchValue({ price: 0 })
   }
 
   ngOnInit (): void {

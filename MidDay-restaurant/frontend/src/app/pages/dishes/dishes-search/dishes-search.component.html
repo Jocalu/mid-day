@@ -14,26 +14,31 @@
   </div>
 </form>
 
-<div class="dish-text" *ngFor="let dish of dishesFiltered | async">
-  <span class="category">
-    <mat-icon>restaurant_menu</mat-icon>
-    <h3>{{ dish.name }}</h3>
-    <button class="delete-btn" (click)="openPopUp(); deleteClick(dish._id)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </span>
+<div *ngFor="let dish of dishesFiltered | async; let i = index">
+  <div [class]="'dish-' + i" class="dish-text">
+    <span class="category">
+      <mat-icon>restaurant_menu</mat-icon>
+      <h3>{{ dish.name }}</h3>
+      <button
+        class="delete-btn"
+        (click)="openPopUp(); deleteHandleClick(dish._id); displayNone(i)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </span>
 
-  <span>
-    <p>{{ dish.type }}</p></span
-  >
+    <span>
+      <p>{{ dish.type }}</p></span
+    >
 
-  <span>
-    <p>Ingredientes:</p>
-    <p>{{ dish.ingredients }}</p></span
-  >
+    <span>
+      <p>Ingredientes:</p>
+      <p>{{ dish.ingredients }}</p></span
+    >
 
-  <span>
-    <p>Suplemento:</p>
-    <p>{{ dish.extra }}€</p>
-  </span>
+    <span>
+      <p>Suplemento:</p>
+      <p>{{ dish.extra }}€</p>
+    </span>
+  </div>
 </div>

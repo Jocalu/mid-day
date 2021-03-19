@@ -23,9 +23,22 @@ export class LoginComponent {
       this.dialog.closeAll()
       this.StoreService.loginUserRestaurant(
         this.loginPopUp.value)
-        .subscribe(user => { localStorage.setItem('', user._id); this.router.navigate(['/landing']) },
-          () => this.dialog.open(PopupLoginfailComponent))
+        .subscribe(user => {
+          localStorage.setItem('', user._id)
+          this.router.navigate(['/landing'])
+        },
+        () => this.dialog.open(PopupLoginfailComponent))
     }
+
+    /*   timeLogged () {
+      setTimeout(function () {
+        localStorage.removeItem('')
+        const select = confirm('Se va a cerrar la sesión, ¿quieres continuar?')
+        if (select === true) {
+          console.log('hola')
+        }
+      }, 1000 * 5)
+    } */
 
      loginPopUp = this.fb.group({
        userName: ['', [Validators.required]],

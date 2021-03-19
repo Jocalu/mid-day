@@ -29,12 +29,13 @@ export class DishesAddComponent {
   dish = this.fb.group({
     type: ['', [Validators.required]],
     name: ['', [Validators.required]],
-    extra: 0,
+    extra: [0, [Validators.required]],
     ingredients: ''
   })
 
   postClick ():void {
     this.StoreService.postDish(this.dish.value).subscribe(answer => this.StoreService.addDishRestaurant(localStorage.getItem(''), { dish: answer._id }).subscribe())
     this.dish.reset()
+    this.dish.patchValue({ extra: 0 })
   }
 }

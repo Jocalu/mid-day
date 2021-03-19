@@ -20,21 +20,27 @@ export class DishesSearchComponent implements OnInit {
   ) {}
 
   openPopUp ():void {
-    this.dialog.open(PopupDishessearchComponent, {})
+    this.dialog.open(PopupDishessearchComponent)
   }
+
+  dishes$= new BehaviorSubject<any>([])
+
+  dishesFiltered
+
+  searchTerms: Subject<string> = new Subject()
 
   searchDishes = this.fb.group({
     searchDish: ''
   })
 
-  dishes$= new BehaviorSubject<any>([])
-  dishesFiltered
-  searchTerms: Subject<string> = new Subject()
-
-  deleteClick (id: string) :void {
-    this.StoreService.deleteDish(id).subscribe(rest => this.dishes$.next)
-
+  deleteHandleClick (id: string) :void {
+    this.StoreService.deleteDish(id).subscribe(rest => this.dishes$.next(rest))
     this.searchDishes.patchValue({ searchDish: '' })
+  }
+
+  displayNone (i) :void {
+    const dishSelected = document.querySelector(`.dish-${i}`)
+    dishSelected.setAttribute('style', 'display: none')
   }
 
   search (searchValue: string):void {
@@ -43,13 +49,12 @@ export class DishesSearchComponent implements OnInit {
 
   searchDish (term: string):Observable<Dish[]> {
     return this.dishes$.pipe(
-      map(value => value.filter(dish => dish ? dish.name.toLowerCase().includes(term.toLowerCase()) : [])
+      map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
       )
     )
   }
 
   ngOnInit (): void {
-    // eslint-disable-next-line no-debugger
     this.StoreService.getDishesForSearch().subscribe((answer) => { this.dishes$.next(answer.dishes) })
 
     this.dishesFiltered = this.searchTerms
@@ -60,5 +65,3 @@ export class DishesSearchComponent implements OnInit {
       )
   }
 }
-
-/* (input)="search(searchBox.value)" */

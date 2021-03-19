@@ -50,7 +50,7 @@ _In the folder environments in your frontend_
 frontend/src/enviromnents
 ```
 
-## Build eith 🛠️
+## Build with 🛠️
 
 _You can create your build with _
 ```
