@@ -9,7 +9,6 @@ import { DishService } from '../services/dish.service'
 import { UserRestaurantService } from '../services/user-restaurant.service'
 import { Router } from '@angular/router'
 import { Category } from '../model/Category'
-import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +23,6 @@ export class StoreService {
      public router: Router
   ) {}
 
-  dishesAPI$ = new BehaviorSubject<Dish[]>([])
   menuAPI$ = new BehaviorSubject<Menu[]>([])
   userRestaurantAPI$ = new BehaviorSubject<UserRestaurant[]>([])
 
@@ -34,13 +32,6 @@ export class StoreService {
 
   getDishesForSearch ():Observable<UserRestaurant> {
     return this.UserRestaurantService.getRestaurantService(localStorage.getItem(''))
-  }
-
-  searchDish (term: string):Observable<Dish[]> {
-    return this.dishesAPI$.pipe(
-      map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
-      )
-    )
   }
 
   postDish (dish: Dish) :Observable<Dish> {

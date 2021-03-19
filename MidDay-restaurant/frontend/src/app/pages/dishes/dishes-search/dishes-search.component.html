@@ -14,7 +14,7 @@
   </div>
 </form>
 
-<div class="dish-text" *ngFor="let dish of dishes$ | async">
+<div class="dish-text" *ngFor="let dish of dishesFiltered | async">
   <span class="category">
     <mat-icon>restaurant_menu</mat-icon>
     <h3>{{ dish.name }}</h3>
