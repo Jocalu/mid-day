@@ -1,4 +1,3 @@
-
 interface Selections{
   firstCourse: string,
   secondCourse: string,

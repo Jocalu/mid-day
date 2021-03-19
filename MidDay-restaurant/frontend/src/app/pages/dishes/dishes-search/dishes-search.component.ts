@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs'
 import { MatDialog } from '@angular/material/dialog'
 import { FormBuilder } from '@angular/forms'
 import { PopupDishessearchComponent } from '../dishes-search/popup-dishessearch/popup-dishessearch.component'
-import { Dish } from 'src/app/core/model/Dish'
 
 @Component({
   selector: 'app-dishes-search',
@@ -34,7 +33,7 @@ export class DishesSearchComponent implements OnInit {
   })
 
   deleteHandleClick (id: string) :void {
-    this.StoreService.deleteDish(id).subscribe(rest => this.dishes$.next(rest))
+    this.StoreService.deleteDish(id).subscribe()
     this.searchDishes.patchValue({ searchDish: '' })
   }
 
@@ -47,11 +46,14 @@ export class DishesSearchComponent implements OnInit {
     this.searchTerms.next(searchValue)
   }
 
-  searchDish (term: string):Observable<Dish[]> {
-    return this.dishes$.pipe(
-      map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
+  searchDish (term: string):Observable<void> {
+    return this.dishes$
+      .pipe(
+        map(value => (
+          value.filter(dish => dish.name.toLowerCase()
+            .includes(term.toLowerCase())))
+        )
       )
-    )
   }
 
   ngOnInit (): void {
@@ -62,6 +64,7 @@ export class DishesSearchComponent implements OnInit {
         debounceTime(300),
         distinctUntilChanged(),
         switchMap(term => this.searchDish(term))
+
       )
   }
 }

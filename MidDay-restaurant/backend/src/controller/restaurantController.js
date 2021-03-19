@@ -57,19 +57,11 @@ const restaurantController = () => {
         .findById(restaurantId)
         .populate('category')
         .populate('menus')
+        .populate('dishes')
         .populate({
           path: 'menus',
-          populate: { path: 'firstCourse' },
-        })
-        .populate({
-          path: 'menus',
-          populate: { path: 'secondCourse' },
-        })
-        .populate({
-          path: 'menus',
-          populate: { path: 'dessert' },
-        })
-        .populate('dishes');
+          populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }],
+        });
 
       res.json(restaurant);
     } catch (error) {
@@ -84,19 +76,11 @@ const restaurantController = () => {
         .find({})
         .populate('category')
         .populate('menus')
+        .populate('dishes')
         .populate({
           path: 'menus',
-          populate: { path: 'firstCourse' },
-        })
-        .populate({
-          path: 'menus',
-          populate: { path: 'secondCourse' },
-        })
-        .populate({
-          path: 'menus',
-          populate: { path: 'dessert' },
-        })
-        .populate('dishes');
+          populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }],
+        });
 
       res.json(allRestaurants);
     } catch (error) {
