@@ -88,7 +88,7 @@ This app is actually under construction.
 ## Thanks to 🎁
 
 * SkylabCoders Academy 📢
-* Gilberto Cao 🤓.
+* Iván Dobry 🤓
 * All the partners of the bootcamp.
 
 

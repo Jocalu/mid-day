@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs'
 import { MatDialog } from '@angular/material/dialog'
 import { FormBuilder } from '@angular/forms'
 import { PopupDishessearchComponent } from '../dishes-search/popup-dishessearch/popup-dishessearch.component'
+import { Dish } from 'src/app/core/model/Dish'
 
 @Component({
   selector: 'app-dishes-search',
@@ -22,7 +23,16 @@ export class DishesSearchComponent implements OnInit {
     this.dialog.open(PopupDishessearchComponent)
   }
 
-  dishes$= new BehaviorSubject<any>([])
+  deleteHandleClick (id: string) :void {
+    this.StoreService.deleteDish(id).subscribe()
+  }
+
+  displayNone (i: number) :void {
+    const dishSelected = document.querySelector(`.dish-${i}`)
+    dishSelected.setAttribute('style', 'display: none')
+  }
+
+  dishes$= new BehaviorSubject<Dish[]>([])
 
   dishesFiltered
 
@@ -32,27 +42,17 @@ export class DishesSearchComponent implements OnInit {
     searchDish: ''
   })
 
-  deleteHandleClick (id: string) :void {
-    this.StoreService.deleteDish(id).subscribe()
-    this.searchDishes.patchValue({ searchDish: '' })
-  }
-
-  displayNone (i) :void {
-    const dishSelected = document.querySelector(`.dish-${i}`)
-    dishSelected.setAttribute('style', 'display: none')
-  }
-
   search (searchValue: string):void {
+    console.log(searchValue)
     this.searchTerms.next(searchValue)
   }
 
-  searchDish (term: string):Observable<void> {
+  searchDish (term: string):Observable<Dish[]> {
     return this.dishes$
       .pipe(
-        map(value => (
+        map(value =>
           value.filter(dish => dish.name.toLowerCase()
             .includes(term.toLowerCase())))
-        )
       )
   }
 

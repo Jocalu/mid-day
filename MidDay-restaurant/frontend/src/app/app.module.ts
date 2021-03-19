@@ -39,6 +39,7 @@ import { PopupRegisterComponent } from './pages/register/popup-register/popup-re
 import { PopupLoginfailComponent } from './components/popup-loginfail/popup-loginfail.component'
 import localeEs from '@angular/common/locales/es'
 import { registerLocaleData } from '@angular/common'
+
 registerLocaleData(localeEs, 'es')
 
 @NgModule({
