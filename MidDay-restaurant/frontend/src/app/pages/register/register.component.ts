@@ -39,7 +39,10 @@ export class RegisterComponent implements OnInit {
     number: ['', Validators.required],
     zipcode: ['', Validators.required],
     city: ['', Validators.required],
-    phone: ['', Validators.required, Validators.maxLength(10), Validators.minLength(9)],
+    phone: ['', Validators.required]
+  })
+
+  secondRestaurantDataFormGroup = this.fb.group({
     category: ['', Validators.required],
     capacity: ['', Validators.required],
     menuprice: ['', Validators.required],
@@ -47,12 +50,14 @@ export class RegisterComponent implements OnInit {
   })
 
   registerUser ():void {
-    if (this.restaurantDataFormGroup.value.image === '') {
-      this.restaurantDataFormGroup.patchValue({ image: 'https://mardamorosa.com/169-large_default/calamar.jpg' })
+    if (this.secondRestaurantDataFormGroup.value.image === '') {
+      this.secondRestaurantDataFormGroup.patchValue({ image: 'https://www.ecestaticos.com/image/clipping/0ba77a083b572d339abbec48b4eed2a8/estos-son-los-120-mejores-restaurantes-del-mundo-busca-cuantos-hay-en-cada-pais.jpg' })
     }
     this.StoreService.registerUserRestaurant(
       this.registerFormGroup.value,
-      this.restaurantDataFormGroup.value)
+      this.restaurantDataFormGroup.value,
+      this.secondRestaurantDataFormGroup.value
+    )
       .subscribe(user => {
         localStorage.setItem('', user._id)
         this.router.navigate(['/landing'])
@@ -60,6 +65,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerFormGroup.reset()
     this.restaurantDataFormGroup.reset()
+    this.secondRestaurantDataFormGroup.reset()
   }
 
   openConfirm ():void {

@@ -60,8 +60,8 @@ export class StoreService {
     return this.MenuService.deleteMenuService(id)
   }
 
-  registerUserRestaurant (user, restaurant) {
-    return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant })
+  registerUserRestaurant (user, restaurant, moreDataRestaurant) {
+    return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant, ...moreDataRestaurant })
   }
 
   loginUserRestaurant (userRestaurant):Observable<UserRestaurant> {

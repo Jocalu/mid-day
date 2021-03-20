@@ -143,7 +143,7 @@
                   matInput
                   placeholder="Código postal"
                   formControlName="zipcode"
-                  type="text"
+                  type="number"
                 />
                 <mat-error
                   *ngIf="restaurantDataFormGroup.controls['zipcode'].invalid"
@@ -199,8 +199,8 @@
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="restaurantDataFormGroup">
-        <form [formGroup]="restaurantDataFormGroup">
+      <mat-step [stepControl]="secondRestaurantDataFormGroup">
+        <form [formGroup]="secondRestaurantDataFormGroup">
           <ng-template matStepLabel>Casi estamos</ng-template>
 
           <div class="form">
@@ -214,7 +214,9 @@
                 </mat-option>
               </mat-select>
               <mat-error
-                *ngIf="restaurantDataFormGroup.controls['category'].invalid"
+                *ngIf="
+                  secondRestaurantDataFormGroup.controls['category'].invalid
+                "
                 >Selecciona un tipo de cocina</mat-error
               >
             </mat-form-field>
@@ -229,7 +231,9 @@
                   type="number"
                 />
                 <mat-error
-                  *ngIf="restaurantDataFormGroup.controls['capacity'].invalid"
+                  *ngIf="
+                    secondRestaurantDataFormGroup.controls['capacity'].invalid
+                  "
                   >Introduce el aforo de tu restaurante</mat-error
                 >
               </mat-form-field>
@@ -242,7 +246,9 @@
                   type="number"
                 />
                 <mat-error
-                  *ngIf="restaurantDataFormGroup.controls['menuprice'].invalid"
+                  *ngIf="
+                    secondRestaurantDataFormGroup.controls['menuprice'].invalid
+                  "
                   >Introduce un precio medio de menú</mat-error
                 >
                 <mat-icon matSuffix>euro</mat-icon>
@@ -257,7 +263,7 @@
                 type="text"
               />
               <mat-error
-                *ngIf="restaurantDataFormGroup.controls['image'].invalid"
+                *ngIf="secondRestaurantDataFormGroup.controls['image'].invalid"
                 >Introduce la URL de tu imagen</mat-error
               >
             </mat-form-field>
@@ -277,7 +283,7 @@
               type="button"
               color="primary"
               routerLink="/home"
-              [disabled]="restaurantDataFormGroup.invalid"
+              [disabled]="secondRestaurantDataFormGroup.invalid"
             >
               FINALIZAR
             </button>
