@@ -2,10 +2,13 @@ const {
   getAllDishes,
   createDish,
   deleteDish,
+  getIngredients,
 } = require('./dishController');
 const Dish = require('../models/dishModel');
+const Ingredient = require('../models/ingredientModel');
 
 jest.mock('../models/dishModel');
+jest.mock('../models/ingredientModel');
 
 describe('Given a createDish function', () => {
   describe('When is invoked with body name', () => {
@@ -49,6 +52,40 @@ describe('Given a getAllDishes function', () => {
     Dish.find.mockImplementationOnce(() => { throw new Error('Error'); });
 
     await getAllDishes(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
+  });
+});
+
+describe('Given a getIngredients function', () => {
+  describe('When is invoked', () => {
+    test('Then should call json', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {};
+
+      Ingredient.find.mockReturnValue({});
+
+      await getIngredients(req, res);
+
+      expect(res.json).toHaveBeenCalled();
+    });
+  });
+
+  test('Then should call status with value 500', async () => {
+    const res = {
+      json: jest.fn(),
+      send: jest.fn(),
+      status: jest.fn(),
+    };
+    const req = {};
+
+    Ingredient.find.mockImplementationOnce(() => { throw new Error('Error'); });
+
+    await getIngredients(req, res);
 
     expect(res.status).toHaveBeenCalledWith(500);
   });

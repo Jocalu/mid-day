@@ -1,5 +1,5 @@
 const Dish = require('../models/dishModel.js');
-require('../models/ingredientModel');
+const Ingredient = require('../models/ingredientModel');
 
 const dishController = () => {
   const createDish = (req, res) => {
@@ -11,8 +11,20 @@ const dishController = () => {
   const getAllDishes = async (req, res) => {
     try {
       const allDishes = await Dish
-        .find({}).populate('ingredient');
+        .find({})
+        .populate('ingredient');
       res.json(allDishes);
+    } catch (error) {
+      res.status(500);
+      res.send('There was an error searching');
+    }
+  };
+
+  const getIngredients = async (req, res) => {
+    try {
+      const ingredients = await Ingredient
+        .find({});
+      res.json(ingredients);
     } catch (error) {
       res.status(500);
       res.send('There was an error searching');
@@ -36,6 +48,7 @@ const dishController = () => {
     getAllDishes,
     createDish,
     deleteDish,
+    getIngredients,
   };
 };
 
