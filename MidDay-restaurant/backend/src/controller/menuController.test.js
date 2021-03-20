@@ -39,7 +39,12 @@ describe('Given a getMenu function', () => {
           populate: jest.fn()
             .mockImplementationOnce(() => ({
               populate: jest.fn()
-                .mockImplementationOnce(() => ({ populate: jest.fn() })),
+                .mockImplementationOnce(() => ({
+                  populate: jest.fn()
+                    .mockImplementationOnce(() => ({
+                      exec: jest.fn(),
+                    })),
+                })),
             })),
         }));
 
@@ -81,7 +86,7 @@ describe('Given a deleteMenu function', () => {
       };
 
       Menu.findByIdAndDelete
-        .mockImplementationOnce(() => ({ populate: jest.fn() }));
+        .mockImplementationOnce(() => ({ exec: jest.fn() }));
 
       await deleteMenu(req, res);
 

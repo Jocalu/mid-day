@@ -6,7 +6,10 @@ require('../models/dishModel');
 const restaurantController = () => {
   const getCategories = async (req, res) => {
     try {
-      const categories = await Category.find({});
+      const categories = await Category
+        .find({})
+        .exec();
+
       res.json(categories);
     } catch (error) {
       res.status(500);
@@ -20,11 +23,13 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId);
+
       let { menus } = restaurant;
       if (!menus) { menus = []; }
       menus.push(req.body.menu);
       const updatedRestaurant = await Restaurant
         .findByIdAndUpdate(restaurantId, { menus });
+
       res.json(updatedRestaurant);
     } catch (error) {
       res.status(500);
@@ -38,11 +43,13 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId);
+
       let { dishes } = restaurant;
       if (!dishes) { dishes = []; }
       dishes.push(req.body.dish);
       const updatedRestaurant = await Restaurant
         .findByIdAndUpdate(restaurantId, { dishes });
+
       res.json(updatedRestaurant);
     } catch (error) {
       res.status(500);
@@ -55,13 +62,11 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId)
-        .populate('category')
-        .populate('menus')
-        .populate('dishes')
-        .populate({
+        .populate(['category', 'menus', 'dishes', {
           path: 'menus',
           populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }],
-        });
+        }])
+        .exec();
 
       res.json(restaurant);
     } catch (error) {
@@ -74,13 +79,11 @@ const restaurantController = () => {
     try {
       const allRestaurants = await Restaurant
         .find({})
-        .populate('category')
-        .populate('menus')
-        .populate('dishes')
-        .populate({
+        .populate(['category', 'menus', 'dishes', {
           path: 'menus',
           populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }],
-        });
+        }])
+        .exec();
 
       res.json(allRestaurants);
     } catch (error) {
@@ -95,8 +98,8 @@ const restaurantController = () => {
     try {
       const updated = await Restaurant
         .findByIdAndUpdate(restaurantId, req.body, { new: true })
-        .populate('category')
-        .populate('menu');
+        .populate(['category', 'menu'])
+        .exec();
 
       res.json(updated);
     } catch (error) {
@@ -109,7 +112,8 @@ const restaurantController = () => {
     const { restaurantId } = req.params;
     try {
       const restaurant = await Restaurant
-        .findByIdAndDelete(restaurantId);
+        .findByIdAndDelete(restaurantId)
+        .exec();
 
       res.json(restaurant);
     } catch (error) {

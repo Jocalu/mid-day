@@ -37,7 +37,7 @@ describe('Given a register function', () => {
         email: 'user@user.com',
         firstName: 'Full Name',
         lastName: 'Last Name',
-        password: 'pass11',
+        password: '',
       });
       const req = {
         body: {},

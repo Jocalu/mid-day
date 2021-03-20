@@ -28,7 +28,9 @@ describe('Given a getCategories function', () => {
       };
       const req = {};
 
-      Category.find.mockReturnValue({});
+      Category.find.mockImplementationOnce(() => ({
+        exec: jest.fn(),
+      }));
 
       await getCategories(req, res);
 
@@ -68,6 +70,7 @@ describe('Given a addMenusRestaurant function', () => {
       };
 
       Restaurant.findById.mockReturnValue({});
+
       Restaurant.findByIdAndUpdate.mockReturnValue({});
 
       await addMenusRestaurant(req, res);
@@ -90,7 +93,7 @@ describe('Given a addMenusRestaurant function', () => {
         };
 
         Restaurant.findById.mockReturnValue({ menus: [] });
-        Restaurant.findByIdAndUpdate.mockReturnValue({});
+        Restaurant.findByIdAndUpdate.mockReturnValue({ exec: jest.fn() });
 
         await addMenusRestaurant(req, res);
 
@@ -227,11 +230,7 @@ describe('Given a getRestaurant function', () => {
         .mockImplementationOnce(() => ({
           populate: jest.fn()
             .mockImplementationOnce(() => ({
-              populate: jest.fn()
-                .mockImplementationOnce(() => ({
-                  populate: jest.fn()
-                    .mockImplementationOnce(() => ({ populate: jest.fn() })),
-                })),
+              exec: jest.fn(),
             })),
         }));
 
@@ -256,11 +255,7 @@ describe('Given a getAllRestaurants function', () => {
         .mockImplementationOnce(() => ({
           populate: jest.fn()
             .mockImplementationOnce(() => ({
-              populate: jest.fn()
-                .mockImplementationOnce(() => ({
-                  populate: jest.fn()
-                    .mockImplementationOnce(() => ({ populate: jest.fn() })),
-                })),
+              exec: jest.fn(),
             })),
         }));
 
@@ -306,7 +301,9 @@ describe('Given a updateRestaurant function', () => {
       Restaurant.findByIdAndUpdate
         .mockImplementationOnce(() => ({
           populate: jest.fn()
-            .mockImplementationOnce(() => ({ populate: jest.fn() })),
+            .mockImplementationOnce(() => ({
+              exec: jest.fn(),
+            })),
         }));
 
       await updateRestaurant(req, res);
@@ -330,7 +327,6 @@ describe('Given a updateRestaurant function', () => {
       };
 
       Restaurant.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
-
       await updateRestaurant(req, res);
 
       expect(res.status).toHaveBeenCalledWith(500);
@@ -353,7 +349,7 @@ describe('Given a deleteRestaurant function', () => {
       };
 
       Restaurant.findByIdAndDelete
-        .mockImplementationOnce(() => ({ populate: jest.fn() }));
+        .mockImplementationOnce(() => ({ exec: jest.fn() }));
 
       await deleteRestaurant(req, res);
 

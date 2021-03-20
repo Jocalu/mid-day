@@ -33,7 +33,13 @@ describe('Given a getAllDishes function', () => {
       };
       const req = {};
 
-      Dish.find.mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Dish.find
+        .mockImplementationOnce(() => ({
+          populate: jest.fn()
+            .mockImplementationOnce(() => ({
+              exec: jest.fn(),
+            })),
+        }));
 
       await getAllDishes(req, res);
 
@@ -67,7 +73,7 @@ describe('Given a getIngredients function', () => {
       };
       const req = {};
 
-      Ingredient.find.mockReturnValue({});
+      Ingredient.find.mockReturnValue({ exec: jest.fn() });
 
       await getIngredients(req, res);
 
@@ -105,8 +111,7 @@ describe('Given a deleteDish function', () => {
         },
       };
 
-      Dish.findByIdAndDelete
-        .mockImplementationOnce(() => ({ populate: jest.fn() }));
+      Dish.findByIdAndDelete.mockReturnValue({ exec: jest.fn() });
 
       await deleteDish(req, res);
 
