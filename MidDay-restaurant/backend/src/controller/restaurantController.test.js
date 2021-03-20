@@ -4,13 +4,19 @@ const {
   updateRestaurant,
   deleteRestaurant,
   getCategories,
+  addMenusRestaurant,
+  addDishesRestaurant,
 } = require('./restaurantController');
 
 const Restaurant = require('../models/restaurantModel');
 const Category = require('../models/categoryModel');
+require('../models/menuModel');
+require('../models/dishModel');
 
 jest.mock('../models/restaurantModel');
 jest.mock('../models/categoryModel');
+jest.mock('../models/menuModel');
+jest.mock('../models/dishModel');
 
 describe('Given a getCategories function', () => {
   describe('When is invoked', () => {
@@ -46,7 +52,7 @@ describe('Given a getCategories function', () => {
   });
 });
 
-describe('Given a getAllRestaurants function', () => {
+describe('Given a addMenusRestaurant function', () => {
   describe('When is invoked', () => {
     test('Then should call json', async () => {
       const res = {
@@ -54,33 +60,85 @@ describe('Given a getAllRestaurants function', () => {
         send: jest.fn(),
         status: jest.fn(),
       };
-      const req = {};
+      const req = {
+        params: {
+          restaurantParam: 1,
+        },
+        body: {},
+      };
 
-      Restaurant.find
-        .mockImplementationOnce(() => ({
-          populate: jest.fn()
-            .mockImplementationOnce(() => ({ populate: jest.fn() })),
-        }));
+      Restaurant.findById.mockReturnValue({});
+      Restaurant.findByIdAndUpdate.mockReturnValue({});
 
-      await getAllRestaurants(req, res);
+      await addMenusRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
+
+    test('Then should call status with value 500', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {
+        params: {
+          restaurantParam: 1,
+        },
+        body: {},
+      };
+
+      Restaurant.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
+
+      await addMenusRestaurant(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(500);
+    });
   });
+});
 
-  test('Then should call status with value 500', async () => {
-    const res = {
-      json: jest.fn(),
-      send: jest.fn(),
-      status: jest.fn(),
-    };
-    const req = {};
+describe('Given a addDishesRestaurant function', () => {
+  describe('When is invoked', () => {
+    test('Then should call json', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {
+        params: {
+          restaurantParam: 1,
+        },
+        body: {},
+      };
 
-    Restaurant.find.mockImplementationOnce(() => { throw new Error('Error'); });
+      Restaurant.find.mockReturnValue({});
+      Restaurant.findByIdAndUpdate.mockReturnValue({});
 
-    await getAllRestaurants(req, res);
+      await addDishesRestaurant(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(500);
+      expect(res.json).toHaveBeenCalled();
+    });
+
+    test('Then should call status with value 500', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {
+        params: {
+          restaurantParam: 1,
+        },
+        body: {},
+      };
+
+      Restaurant.findByIdAndUpdate.mockImplementationOnce(() => { throw new Error('Error'); });
+
+      await addDishesRestaurant(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(500);
+    });
   });
 });
 
@@ -122,13 +180,63 @@ describe('Given a getRestaurant function', () => {
       Restaurant.findById
         .mockImplementationOnce(() => ({
           populate: jest.fn()
-            .mockImplementationOnce(() => ({ populate: jest.fn() })),
+            .mockImplementationOnce(() => ({
+              populate: jest.fn()
+                .mockImplementationOnce(() => ({
+                  populate: jest.fn()
+                    .mockImplementationOnce(() => ({ populate: jest.fn() })),
+                })),
+            })),
         }));
 
       await getRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
     });
+  });
+});
+
+describe('Given a getAllRestaurants function', () => {
+  describe('When is invoked', () => {
+    test('Then should call json', async () => {
+      const res = {
+        json: jest.fn(),
+        send: jest.fn(),
+        status: jest.fn(),
+      };
+      const req = {};
+
+      Restaurant.find
+        .mockImplementationOnce(() => ({
+          populate: jest.fn()
+            .mockImplementationOnce(() => ({
+              populate: jest.fn()
+                .mockImplementationOnce(() => ({
+                  populate: jest.fn()
+                    .mockImplementationOnce(() => ({ populate: jest.fn() })),
+                })),
+            })),
+        }));
+
+      await getAllRestaurants(req, res);
+
+      expect(res.json).toHaveBeenCalled();
+    });
+  });
+
+  test('Then should call status with value 500', async () => {
+    const res = {
+      json: jest.fn(),
+      send: jest.fn(),
+      status: jest.fn(),
+    };
+    const req = {};
+
+    Restaurant.find.mockImplementationOnce(() => { throw new Error('Error'); });
+
+    await getAllRestaurants(req, res);
+
+    expect(res.status).toHaveBeenCalledWith(500);
   });
 });
 
