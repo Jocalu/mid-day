@@ -43,10 +43,13 @@ export class RegisterComponent implements OnInit {
     category: ['', Validators.required],
     capacity: ['', Validators.required],
     menuprice: ['', Validators.required],
-    image: ['', Validators.required]
+    image: ''
   })
 
   registerUser ():void {
+    if (this.restaurantDataFormGroup.value.image === '') {
+      this.restaurantDataFormGroup.patchValue({ image: 'https://mardamorosa.com/169-large_default/calamar.jpg' })
+    }
     this.StoreService.registerUserRestaurant(
       this.registerFormGroup.value,
       this.restaurantDataFormGroup.value)
