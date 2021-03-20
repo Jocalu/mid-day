@@ -1,4 +1,3 @@
-
 interface Courses{
   name: string
 }

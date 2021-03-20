@@ -34,7 +34,7 @@
 
   .components {
     @include flex(column, center, flex-start);
-    width: 600px;
+    min-width: 600px;
     margin-top: 20px;
     background-color: white;
     z-index: 1;

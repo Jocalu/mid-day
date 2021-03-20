@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
     image: ['', Validators.required]
   })
 
-  registerUser () {
+  registerUser ():void {
     this.StoreService.registerUserRestaurant(
       this.registerFormGroup.value,
       this.restaurantDataFormGroup.value)

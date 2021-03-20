@@ -26,8 +26,7 @@ export class LoginComponent {
         .subscribe(user => {
           localStorage.setItem('', user._id)
           this.router.navigate(['/landing'])
-        },
-        () => this.dialog.open(PopupLoginfailComponent))
+        }, () => this.dialog.open(PopupLoginfailComponent))
     }
 
      loginPopUp = this.fb.group({

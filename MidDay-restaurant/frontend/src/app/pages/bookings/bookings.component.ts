@@ -25,30 +25,30 @@ export class BookingsComponent implements OnInit {
 
   selectedDate:string; selectedHour:string; selectedName:string
 
-  bookingsOfTheDay; bookingsOfTheHour; detailsOfTheBooking
+  bookingsOfTheDay: Bookings[]; bookingsOfTheHour: Bookings[]; detailsOfTheBooking : Bookings[]
 
-  searchCapacity () {
+  searchCapacity ():void {
     hours.forEach((hour) => {
-      const bookingsForHour = hour.numOfbookings = this.bookingsOfTheDay.filter((booking) => booking.hour === hour.hour)
-      hour.numOfbookings = bookingsForHour.reduce((accumulator, value) => accumulator + value.pax, 0)
+      const bookingsForHour = this.bookingsOfTheDay.filter((booking: Bookings) => booking.hour === hour.hour)
+      hour.numOfbookings = bookingsForHour.reduce((accumulator: number, value: Bookings) => accumulator + value.pax, 0)
     }
     )
   }
 
-  searchBookingsOfTheDay (date: string) {
+  searchBookingsOfTheDay (date: string) :void {
     this.selectedDate = moment(date).format('DD/MM/YYYY').replace('/', '-').replace('/', '-')
     this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate)
     this.bookingsOfTheHour = []
     this.detailsOfTheBooking = []
   }
 
-  searchBookingsOfTheHour (selectedHour: string) {
-    this.bookingsOfTheHour = this.bookingsOfTheDay.filter((info) => info.hour === selectedHour)
+  searchBookingsOfTheHour (selectedHour: string):void {
+    this.bookingsOfTheHour = this.bookingsOfTheDay.filter((info: Bookings) => info.hour === selectedHour)
     this.detailsOfTheBooking = []
   }
 
-  showDetailsOfTheBooking (selectedName : string) {
-    this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info) => info.bookingName === selectedName)
+  showDetailsOfTheBooking (selectedName : string):void {
+    this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info: Bookings) => info.bookingName === selectedName)
   }
 
   ngOnInit (): void {

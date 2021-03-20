@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PopupDishessearchComponent } from './popup-dishessearch.component';
+import { PopupDishessearchComponent } from './popup-dishessearch.component'
 
 describe('PopupDishessearchComponent', () => {
-  let component: PopupDishessearchComponent;
-  let fixture: ComponentFixture<PopupDishessearchComponent>;
+  let component: PopupDishessearchComponent
+  let fixture: ComponentFixture<PopupDishessearchComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupDishessearchComponent ]
+      declarations: [PopupDishessearchComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupDishessearchComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PopupDishessearchComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

@@ -2,9 +2,10 @@ import { Component } from '@angular/core'
 import { FormBuilder, Validators } from '@angular/forms'
 import { StoreService } from '../../../core/services/store.service'
 import { courses } from '../../../constants/courses'
-import { ingredientsList } from '../../../constants/ingredients'
 import { MatDialog } from '@angular/material/dialog'
 import { PopupDishesaddComponent } from '../dishes-add/popup-dishesadd/popup-dishesadd.component'
+import { BehaviorSubject } from 'rxjs'
+import { IngredientList } from '../../../core/model/Ingredient'
 
 @Component({
   selector: 'app-dishes-add',
@@ -24,7 +25,7 @@ export class DishesAddComponent {
     this.dialog.open(PopupDishesaddComponent)
   }
 
-  ingredientsList=ingredientsList
+  ingredientsList$ = new BehaviorSubject<IngredientList[]>([])
 
   dish = this.fb.group({
     type: ['', [Validators.required]],
@@ -34,8 +35,17 @@ export class DishesAddComponent {
   })
 
   postClick ():void {
-    this.StoreService.postDish(this.dish.value).subscribe(answer => this.StoreService.addDishRestaurant(localStorage.getItem(''), { dish: answer._id }).subscribe())
+    this.StoreService.postDish(this.dish.value)
+      .subscribe(answer => this.StoreService.addDishRestaurant(localStorage.getItem(''), { dish: answer._id })
+        .subscribe())
     this.dish.reset()
     this.dish.patchValue({ extra: 0 })
+  }
+
+  ngOnInit (): void {
+    this.StoreService.getIngredients()
+      .subscribe((ingredients) => {
+        this.ingredientsList$.next(ingredients)
+      })
   }
 }

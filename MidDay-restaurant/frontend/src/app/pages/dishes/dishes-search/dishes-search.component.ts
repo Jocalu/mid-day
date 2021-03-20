@@ -34,7 +34,7 @@ export class DishesSearchComponent implements OnInit {
 
   dishes$= new BehaviorSubject<Dish[]>([])
 
-  dishesFiltered
+  dishesFiltered : Observable<Dish[]>
 
   searchTerms: Subject<string> = new Subject()
 
@@ -43,7 +43,6 @@ export class DishesSearchComponent implements OnInit {
   })
 
   search (searchValue: string):void {
-    console.log(searchValue)
     this.searchTerms.next(searchValue)
   }
 

@@ -24,7 +24,7 @@
       <mat-label>Ingredientes</mat-label>
       <mat-select formControlName="ingredients" multiple>
         <mat-optgroup
-          *ngFor="let group of ingredientsList"
+          *ngFor="let group of ingredientsList$ | async"
           [label]="group.category | titlecase"
         >
           <mat-option
