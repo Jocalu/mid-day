@@ -45,7 +45,7 @@ describe('Given a postDish function', () => {
         expect(dishData[0].name).toEqual('Paella')
       })
 
-    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/courses')
+    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/dish')
 
     expect(req.request.method).toEqual('POST')
 
@@ -81,7 +81,7 @@ describe('Given a deleteDish function', () => {
         expect(dishData[0].name).toEqual('Paella')
       })
 
-    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/dishes/1')
+    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/dish/1')
 
     expect(req.request.method).toEqual('DELETE')
 

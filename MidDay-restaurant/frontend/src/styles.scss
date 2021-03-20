@@ -13,10 +13,10 @@
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
+}
 
-  &:horizontal {
-    display: none;
-  }
+*::-webkit-scrollbar:horizontal {
+  display: none;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -71,7 +71,7 @@ $MidDay-restaurant-theme: mat-light-theme(
 
 .mat-button.mat-primary {
   cursor: pointer !important;
-  color: $color-white;
+  color: $color-primary;
   margin: 0 5px;
 }
 
@@ -102,10 +102,6 @@ $MidDay-restaurant-theme: mat-light-theme(
 .mat-body-1 p,
 .mat-typography p {
   margin: 0 0 0px;
-}
-
-.mat-button.mat-primary {
-  color: $color-primary;
 }
 
 mat-raised-button {

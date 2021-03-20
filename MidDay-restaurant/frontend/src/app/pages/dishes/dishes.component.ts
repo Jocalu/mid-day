@@ -10,9 +10,11 @@ import { StoreService } from '../../core/services/store.service'
 export class DishesComponent implements OnInit {
   switch: boolean = false
 
-  constructor (private StoreService: StoreService) {}
+  constructor (
+    private StoreService: StoreService
+  ) {}
 
-  buttonDelete: any
+  buttonDelete: HTMLElement
 
   deleteClass (): void {
     this.buttonDelete = document.querySelector('.delete')

@@ -12,9 +12,7 @@ const menuController = () => {
     try {
       const menus = await Menu
         .find({})
-        .populate('firstCourse')
-        .populate('secondCourse')
-        .populate('dessert')
+        .populate(['firstCourse', 'secondCourse', 'dessert'])
         .exec();
 
       res.json(menus);

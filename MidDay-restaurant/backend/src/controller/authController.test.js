@@ -27,7 +27,7 @@ describe('Given a register function', () => {
     });
   });
   describe('When is invoked with a valid user', () => {
-    test('Then should call json', () => {
+    test('Then should call send', () => {
       const res = {
         json: jest.fn(),
         send: jest.fn(),
@@ -49,7 +49,7 @@ describe('Given a register function', () => {
 
       register(req, res);
 
-      expect(res.json).toHaveBeenCalled();
+      expect(res.send).toHaveBeenCalled();
     });
   });
 });

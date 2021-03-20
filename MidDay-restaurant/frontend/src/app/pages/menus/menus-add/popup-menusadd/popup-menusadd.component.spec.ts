@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PopupMenusaddComponent } from './popup-menusadd.component';
+import { PopupMenusaddComponent } from './popup-menusadd.component'
 
 describe('PopupMenusaddComponent', () => {
-  let component: PopupMenusaddComponent;
-  let fixture: ComponentFixture<PopupMenusaddComponent>;
+  let component: PopupMenusaddComponent
+  let fixture: ComponentFixture<PopupMenusaddComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupMenusaddComponent ]
+      declarations: [PopupMenusaddComponent]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupMenusaddComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PopupMenusaddComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

@@ -1,5 +1,6 @@
 import { NgModule, LOCALE_ID, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
+import { CommonModule, registerLocaleData } from '@angular/common'
 
 import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -38,7 +39,6 @@ import { PopupMenusdeleteComponent } from './pages/menus/menus-delete/popup-menu
 import { PopupRegisterComponent } from './pages/register/popup-register/popup-register.component'
 import { PopupLoginfailComponent } from './components/popup-loginfail/popup-loginfail.component'
 import localeEs from '@angular/common/locales/es'
-import { registerLocaleData } from '@angular/common'
 
 registerLocaleData(localeEs, 'es')
 
@@ -84,7 +84,8 @@ registerLocaleData(localeEs, 'es')
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    CommonModule
   ],
   providers: [
     {
@@ -94,6 +95,5 @@ registerLocaleData(localeEs, 'es')
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
-
 })
 export class AppModule { }

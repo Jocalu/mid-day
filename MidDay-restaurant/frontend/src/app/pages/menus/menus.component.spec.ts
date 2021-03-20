@@ -28,20 +28,14 @@ describe('MenusComponent', () => {
   })
 
   it('should return a button with text añadir', () => {
-    button = fixture.nativeElement.querySelectorAll('button')[0]
+    button = fixture.nativeElement.querySelector('.add')
     expect(button.textContent).toEqual(' AÑADIR ')
   })
 
-  it('openPoPup', () => {
-    const matDialog = new MatDialogMock()
-
-    const openModal = spyOn(matDialog, 'open')
-    component.openPopUp()
-    expect(openModal).toHaveBeenCalled()
+  it('should call a deleteClass function', () => {
+    const spyFn = spyOn(component, 'deleteClass').and.callThrough()
+    button = fixture.nativeElement.querySelector('.btn-delete')
+    button.click()
+    expect(spyFn).toHaveBeenCalled()
   })
 })
-
-export class MatDialogMock {
-  open () {
-  }
-}

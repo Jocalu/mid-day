@@ -40,7 +40,7 @@ export class StoreService {
     return this.DishService.postDishService(dish)
   }
 
-  postMenu (menu):Observable<Menu> {
+  postMenu (menu: Menu):Observable<Menu> {
     return this.MenuService.postMenuService(menu)
   }
 
@@ -56,15 +56,15 @@ export class StoreService {
     return this.DishService.deleteDishService(id)
   }
 
-  deleteMenu (id:string) {
+  deleteMenu (id:string) :Observable<Menu> {
     return this.MenuService.deleteMenuService(id)
   }
 
-  registerUserRestaurant (user, restaurant, moreDataRestaurant) {
+  registerUserRestaurant (user:UserRestaurant, restaurant:UserRestaurant, moreDataRestaurant:UserRestaurant):Observable<UserRestaurant> {
     return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant, ...moreDataRestaurant })
   }
 
-  loginUserRestaurant (userRestaurant):Observable<UserRestaurant> {
+  loginUserRestaurant (userRestaurant:UserRestaurant):Observable<UserRestaurant> {
     return this.UserRestaurantService.loginRestaurantService(userRestaurant)
   }
 

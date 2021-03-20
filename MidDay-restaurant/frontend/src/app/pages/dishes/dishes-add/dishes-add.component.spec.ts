@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishesAddComponent } from './dishes-add.component'
 import { FormBuilder } from '@angular/forms'
+import { RouterTestingModule } from '@angular/router/testing'
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 
 describe('DishesAddComponent', () => {
   let component: DishesAddComponent
@@ -9,9 +11,12 @@ describe('DishesAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule],
       declarations: [DishesAddComponent],
-      providers: [FormBuilder]
+      providers: [FormBuilder, {
+        provide: MatDialogRef,
+        useValue: {}
+      }]
     })
       .compileComponents()
   })
@@ -24,13 +29,5 @@ describe('DishesAddComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
-  })
-
-  it('call postClick method', () => {
-    const post = spyOn(component.StoreService, 'postDish')
-
-    component.postClick()
-
-    expect(post).toHaveBeenCalled()
   })
 })

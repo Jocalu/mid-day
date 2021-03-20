@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishesComponent } from './dishes.component'
 import { FormBuilder } from '@angular/forms'
+import { RouterTestingModule } from '@angular/router/testing'
 
 describe('DishesComponent', () => {
   let component: DishesComponent
@@ -10,7 +11,7 @@ describe('DishesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DishesComponent],
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule, RouterTestingModule],
       providers: [FormBuilder]
     })
       .compileComponents()

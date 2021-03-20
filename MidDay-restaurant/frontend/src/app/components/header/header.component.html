@@ -60,6 +60,7 @@
         RESERVAS
       </button>
       <button
+        class="btn-login"
         [ngStyle]="{ display: isAuth() ? 'none' : '' }"
         (click)="openLogin()"
         routerLinkActive="mat-stroked-button"
@@ -84,6 +85,7 @@
         mat-raised-button
         (click)="logOut()"
         color="primary"
+        class="btn-logOut"
       >
         SALIR
       </button>
