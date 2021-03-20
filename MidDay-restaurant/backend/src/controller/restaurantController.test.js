@@ -53,8 +53,8 @@ describe('Given a getCategories function', () => {
 });
 
 describe('Given a addMenusRestaurant function', () => {
-  describe('When is invoked', () => {
-    test('Then should call json', async () => {
+  describe('When is invoked without a menu', () => {
+    test('Then should call json without a menu', async () => {
       const res = {
         json: jest.fn(),
         send: jest.fn(),
@@ -73,6 +73,29 @@ describe('Given a addMenusRestaurant function', () => {
       await addMenusRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
+    });
+
+    describe('When is invoked with a menu', () => {
+      test('Then should call json with a menu', async () => {
+        const res = {
+          json: jest.fn(),
+          send: jest.fn(),
+          status: jest.fn(),
+        };
+        const req = {
+          params: {
+            restaurantParam: 1,
+          },
+          body: { },
+        };
+
+        Restaurant.findById.mockReturnValue({ menus: [] });
+        Restaurant.findByIdAndUpdate.mockReturnValue({});
+
+        await addMenusRestaurant(req, res);
+
+        expect(res.json).toHaveBeenCalled();
+      });
     });
 
     test('Then should call status with value 500', async () => {
@@ -98,8 +121,8 @@ describe('Given a addMenusRestaurant function', () => {
 });
 
 describe('Given a addDishesRestaurant function', () => {
-  describe('When is invoked', () => {
-    test('Then should call json', async () => {
+  describe('When is invoked without dishes', () => {
+    test('Then should call json without dishes', async () => {
       const res = {
         json: jest.fn(),
         send: jest.fn(),
@@ -118,6 +141,29 @@ describe('Given a addDishesRestaurant function', () => {
       await addDishesRestaurant(req, res);
 
       expect(res.json).toHaveBeenCalled();
+    });
+
+    describe('When is invoked with dishes', () => {
+      test('Then should call json with dishes', async () => {
+        const res = {
+          json: jest.fn(),
+          send: jest.fn(),
+          status: jest.fn(),
+        };
+        const req = {
+          params: {
+            restaurantParam: 1,
+          },
+          body: {},
+        };
+
+        Restaurant.findById.mockReturnValue({ dishes: [] });
+        Restaurant.findByIdAndUpdate.mockReturnValue({});
+
+        await addDishesRestaurant(req, res);
+
+        expect(res.json).toHaveBeenCalled();
+      });
     });
 
     test('Then should call status with value 500', async () => {
