@@ -22,7 +22,7 @@
         <h3>{{ dish.name }}</h3>
         <button
           class="delete-btn"
-          (click)="openPopUp(); deleteHandleClick(dish._id); displayNone(i)"
+          (click)="openPopUp(dish._id); displayNone(i)"
         >
           <mat-icon>delete</mat-icon>
         </button>

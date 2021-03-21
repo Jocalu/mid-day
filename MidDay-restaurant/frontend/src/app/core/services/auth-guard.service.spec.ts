@@ -13,4 +13,20 @@ describe('AuthGuardService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
+
+  it('should authenticate user', () => {
+    const spyFn = spyOn(service.authService, 'isAuthenticated').and.returnValue(true)
+
+    service.canActivate()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should navigate to home', () => {
+    const spyFn = spyOn(service.authService, 'isAuthenticated')
+
+    service.canActivate()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
 })

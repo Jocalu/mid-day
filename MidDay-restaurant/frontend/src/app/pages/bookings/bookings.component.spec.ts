@@ -25,4 +25,41 @@ describe('BookingsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should call searchCapacity', () => {
+    const spyFn = spyOn(component, 'searchCapacity').and.callThrough()
+
+    component.searchCapacity()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call searchBookingsOfTheDay', () => {
+    const spyFn = spyOn(component, 'searchBookingsOfTheDay').and.callThrough()
+    const selectedDay = ('12-12-2022')
+
+    component.searchBookingsOfTheDay(selectedDay)
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call searchBookingsOfTheHour', () => {
+    const spyFn = spyOn(component, 'searchBookingsOfTheHour').and.callThrough()
+
+    const selectedHour = ('12:00')
+
+    component.searchBookingsOfTheHour(selectedHour)
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call showDetailsOfTheBooking', () => {
+    const spyFn = spyOn(component, 'showDetailsOfTheBooking').and.callThrough()
+
+    const selectedName = ('Marc')
+
+    component.showDetailsOfTheBooking(selectedName)
+
+    expect(spyFn).toHaveBeenCalled()
+  })
 })

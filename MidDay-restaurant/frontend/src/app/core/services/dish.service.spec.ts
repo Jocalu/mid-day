@@ -8,8 +8,6 @@ describe('DishService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({ imports: [HttpClientTestingModule] })
     service = TestBed.inject(DishService)
-
-    service = TestBed.inject(DishService)
   })
 
   it('should be created', () => {
@@ -35,7 +33,7 @@ describe('Given a postDish function', () => {
     httpTestingController.verify()
   })
 
-  it('returned Observable should match the right data', () => {
+  it('return Observable should match the right data', () => {
     const mockDish = [{
       name: 'Paella'
     }]

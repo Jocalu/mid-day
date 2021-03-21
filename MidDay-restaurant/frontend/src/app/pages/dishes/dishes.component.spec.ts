@@ -11,7 +11,8 @@ describe('DishesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DishesComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule],
+      imports: [HttpClientTestingModule,
+        RouterTestingModule],
       providers: [FormBuilder]
     })
       .compileComponents()

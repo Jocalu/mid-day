@@ -19,17 +19,16 @@ export class DishesSearchComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  openPopUp ():void {
-    this.dialog.open(PopupDishessearchComponent)
+  openPopUp (id:string):void {
+    const dialog = this.dialog.open(PopupDishessearchComponent)
+    dialog.componentInstance.dishId = id
   }
 
-  deleteHandleClick (id: string) :void {
-    this.StoreService.deleteDish(id).subscribe()
-  }
+  dishSelected: HTMLElement
 
   displayNone (i: number) :void {
-    const dishSelected = document.querySelector(`.dish-${i}`)
-    dishSelected.setAttribute('style', 'display: none')
+    this.dishSelected = document.querySelector(`.dish-${i}`)
+    this.dishSelected.setAttribute('style', 'display: none')
   }
 
   dishes$= new BehaviorSubject<Dish[]>([])

@@ -4,8 +4,9 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { LoginComponent } from './login.component'
 import { FormBuilder } from '@angular/forms'
-import { Observable, of, throwError } from 'rxjs'
+import { of, throwError } from 'rxjs'
 import { Router } from '@angular/router'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('LoginComponent', () => {
   let component: LoginComponent
@@ -14,7 +15,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule],
+      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule, BrowserAnimationsModule],
       declarations: [LoginComponent],
       providers: [FormBuilder,
         {
@@ -66,9 +67,9 @@ describe('LoginComponent', () => {
     expect(navigateSpy).toHaveBeenCalledWith(['/landing'])
   })
 
-  it('should navigate to landing', () => {
+  it('should return a 500 error', () => {
     spyOn(component.StoreService, 'loginUserRestaurant')
-      .and.returnValue(throwError({ status: 404 }))
+      .and.returnValue(throwError({ status: 500 }))
 
     const spyFn = spyOn(component, 'submitLogin').and.callThrough()
 

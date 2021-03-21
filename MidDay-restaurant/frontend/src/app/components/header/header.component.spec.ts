@@ -11,7 +11,8 @@ describe('HeaderComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [MatMenuModule, MatDialogModule],
+      imports: [MatMenuModule,
+        MatDialogModule],
       providers: [
         {
           provide: MatDialogRef,

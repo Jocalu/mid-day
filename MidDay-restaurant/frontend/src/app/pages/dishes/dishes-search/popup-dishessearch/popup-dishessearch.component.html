@@ -1,2 +1,20 @@
-<h1 mat-dialog-title>Borrado</h1>
-<div mat-dialog-content>Tu plato ha sido eliminado correctamente</div>
+<h1 mat-dialog-title>Cuidado!</h1>
+<div mat-dialog-content>¿Estás seguro de que quieres borrar el plato?</div>
+<div>
+  <button
+    (click)="deleteHandleClick(dishId)"
+    mat-raised-button
+    type="button"
+    color="primary"
+  >
+    <mat-icon>ACEPTAR</mat-icon>
+  </button>
+  <button
+    (click)="deleteCanceled()"
+    mat-raised-button
+    type="button"
+    color="primary"
+  >
+    <mat-icon>CANCELAR</mat-icon>
+  </button>
+</div>
