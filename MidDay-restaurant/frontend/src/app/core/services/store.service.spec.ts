@@ -3,13 +3,21 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { StoreService } from './store.service'
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs'
+import { RouterModule } from '@angular/router'
+import { HomeComponent } from '../../pages/home/home.component'
 
 describe('StoreService', () => {
   let service: StoreService
   let httpClientSpy: { post: jasmine.Spy }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule, RouterTestingModule] })
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([{ path: 'home', component: HomeComponent }]),
+        RouterModule.forRoot([])
+      ]
+    })
     service = TestBed.inject(StoreService)
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['post'])
   })
@@ -150,7 +158,14 @@ describe('StoreService', () => {
   let httpClientSpy: { delete: jasmine.Spy }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule, RouterTestingModule] })
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([{ path: 'home', component: HomeComponent }]),
+        RouterModule.forRoot([])
+      ]
+    })
+
     service = TestBed.inject(StoreService)
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['delete'])
   })

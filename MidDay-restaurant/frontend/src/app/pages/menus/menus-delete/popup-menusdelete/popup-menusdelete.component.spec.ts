@@ -1,25 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { MatDialogModule } from '@angular/material/dialog'
 
-import { PopupMenusdeleteComponent } from './popup-menusdelete.component';
+import { PopupMenusdeleteComponent } from './popup-menusdelete.component'
 
 describe('PopupMenusdeleteComponent', () => {
-  let component: PopupMenusdeleteComponent;
-  let fixture: ComponentFixture<PopupMenusdeleteComponent>;
+  let component: PopupMenusdeleteComponent
+  let fixture: ComponentFixture<PopupMenusdeleteComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupMenusdeleteComponent ]
+      declarations: [PopupMenusdeleteComponent],
+      providers: [MatDialogModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupMenusdeleteComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PopupMenusdeleteComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

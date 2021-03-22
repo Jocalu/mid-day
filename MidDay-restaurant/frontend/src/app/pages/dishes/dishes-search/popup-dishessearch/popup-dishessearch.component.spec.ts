@@ -3,6 +3,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { PopupDishessearchComponent } from './popup-dishessearch.component'
 import { RouterTestingModule } from '@angular/router/testing'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('PopupDishessearchComponent', () => {
   let component: PopupDishessearchComponent
@@ -11,13 +14,18 @@ describe('PopupDishessearchComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [PopupDishessearchComponent],
-      imports: [HttpClientTestingModule,
+      imports: [
+        HttpClientTestingModule,
         RouterTestingModule,
-        MatDialogModule],
+        MatDialogModule,
+        MatButtonModule,
+        MatIconModule
+      ],
       providers: [{
         provide: MatDialogRef,
         useValue: {}
-      }]
+      }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })

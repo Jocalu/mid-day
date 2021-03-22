@@ -1,12 +1,21 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { TestBed } from '@angular/core/testing'
+import { RouterModule } from '@angular/router'
 import { RouterTestingModule } from '@angular/router/testing'
+import { HomeComponent } from 'src/app/pages/home/home.component'
 import { AuthGuardService } from './auth-guard.service'
 
 describe('AuthGuardService', () => {
   let service: AuthGuardService
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [RouterTestingModule] })
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes([{ path: 'home', component: HomeComponent }]),
+        HttpClientTestingModule,
+        RouterModule.forRoot([])
+      ]
+    })
     service = TestBed.inject(AuthGuardService)
   })
 

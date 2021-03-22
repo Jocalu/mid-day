@@ -12,7 +12,7 @@ import { PopupLoginfailComponent } from '../popup-loginfail/popup-loginfail.comp
 })
 export class LoginComponent {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     public dialog: MatDialog,
     private fb: FormBuilder,
     private router : Router) { }
@@ -21,7 +21,7 @@ export class LoginComponent {
 
     submitLogin ():void {
       this.dialog.closeAll()
-      this.StoreService.loginUserRestaurant(
+      this.StoreSRV.loginUserRestaurant(
         this.loginPopUp.value)
         .subscribe(user => {
           localStorage.setItem('', user._id)

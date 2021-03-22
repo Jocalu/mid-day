@@ -14,7 +14,7 @@ import { IngredientList } from '../../../core/model/Ingredient'
 })
 export class DishesAddComponent {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     private dialog: MatDialog,
     private fb: FormBuilder
   ) { }
@@ -35,15 +35,15 @@ export class DishesAddComponent {
   })
 
   postClick ():void {
-    this.StoreService.postDish(this.dish.value)
-      .subscribe(answer => this.StoreService.addDishRestaurant(localStorage.getItem(''), { dish: answer._id })
+    this.StoreSRV.postDish(this.dish.value)
+      .subscribe(answer => this.StoreSRV.addDishRestaurant(localStorage.getItem(''), { dish: answer._id })
         .subscribe())
     this.dish.reset()
     this.dish.patchValue({ extra: 0 })
   }
 
   ngOnInit (): void {
-    this.StoreService.getIngredients()
+    this.StoreSRV.getIngredients()
       .subscribe((ingredients) => {
         this.ingredientsList$.next(ingredients)
       })

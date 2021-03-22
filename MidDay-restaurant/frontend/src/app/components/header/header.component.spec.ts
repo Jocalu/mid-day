@@ -2,23 +2,32 @@ import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { MatMenuModule } from '@angular/material/menu'
 import { HeaderComponent } from './header.component'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent
   let fixture: ComponentFixture<HeaderComponent>
-  let button: HTMLElement
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [HeaderComponent],
-      imports: [MatMenuModule,
-        MatDialogModule],
+      imports: [
+        MatMenuModule,
+        MatDialogModule,
+        MatIconModule,
+        MatButtonModule,
+        BrowserAnimationsModule
+      ],
       providers: [
         {
           provide: MatDialogRef,
           useValue: {}
         }
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })
@@ -31,11 +40,6 @@ describe('HeaderComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
-  })
-
-  it('should return a button with text menu', () => {
-    button = fixture.nativeElement.querySelectorAll('button')[0]
-    expect(button.textContent).toEqual('menu')
   })
 
   it('should call openLogin', () => {

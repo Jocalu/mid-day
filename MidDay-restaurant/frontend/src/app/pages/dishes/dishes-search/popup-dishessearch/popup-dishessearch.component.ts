@@ -9,14 +9,14 @@ import { StoreService } from '../../../../core/services/store.service'
 })
 export class PopupDishessearchComponent {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     public dialog: MatDialog
   ) {}
 
   @Input() dishId: string
 
   deleteHandleClick (dishId: string) :void {
-    this.StoreService.deleteDish(dishId).subscribe()
+    this.StoreSRV.deleteDish(dishId).subscribe()
     this.dialog.closeAll()
   }
 

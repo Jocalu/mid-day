@@ -14,6 +14,7 @@ describe('UserRestaurantService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [{ provide: HttpClient, useValue: httpClientSpy }]
+
     })
 
     service = TestBed.inject(UserRestaurantService)

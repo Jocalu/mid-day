@@ -3,10 +3,15 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { LoginComponent } from './login.component'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { of, throwError } from 'rxjs'
 import { Router } from '@angular/router'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatInputModule } from '@angular/material/input'
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatButtonModule } from '@angular/material/button'
+import { MatIconModule } from '@angular/material/icon'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('LoginComponent', () => {
   let component: LoginComponent
@@ -15,14 +20,25 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, RouterTestingModule, MatDialogModule, BrowserAnimationsModule],
+      imports: [
+        HttpClientTestingModule, RouterTestingModule,
+        MatDialogModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatIconModule
+      ],
       declarations: [LoginComponent],
       providers: [FormBuilder,
         {
           provide: MatDialogRef,
           useValue: {}
         }
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })
@@ -59,7 +75,7 @@ describe('LoginComponent', () => {
       dishes: []
     }
 
-    spyOn(component.StoreService, 'loginUserRestaurant').and.returnValue(of(user))
+    spyOn(component.StoreSRV, 'loginUserRestaurant').and.returnValue(of(user))
 
     const navigateSpy = spyOn(router, 'navigate')
 
@@ -68,7 +84,7 @@ describe('LoginComponent', () => {
   })
 
   it('should return a 500 error', () => {
-    spyOn(component.StoreService, 'loginUserRestaurant')
+    spyOn(component.StoreSRV, 'loginUserRestaurant')
       .and.returnValue(throwError({ status: 500 }))
 
     const spyFn = spyOn(component, 'submitLogin').and.callThrough()

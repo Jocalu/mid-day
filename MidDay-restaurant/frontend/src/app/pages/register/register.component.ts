@@ -20,7 +20,7 @@ import { CustomValidators } from './custom-validator'
 
 export class RegisterComponent implements OnInit {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     private fb: FormBuilder,
     public dialog: MatDialog,
     private router : Router
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
     if (this.secondRestaurantDataFormGroup.value.image === '') {
       this.secondRestaurantDataFormGroup.patchValue({ image: 'https://www.ecestaticos.com/image/clipping/0ba77a083b572d339abbec48b4eed2a8/estos-son-los-120-mejores-restaurantes-del-mundo-busca-cuantos-hay-en-cada-pais.jpg' })
     }
-    this.StoreService.registerUserRestaurant(
+    this.StoreSRV.registerUserRestaurant(
       this.registerFormGroup.value,
       this.restaurantDataFormGroup.value,
       this.secondRestaurantDataFormGroup.value
@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
     category$ = new BehaviorSubject<Category[]>([])
 
     ngOnInit (): void {
-      this.StoreService.getCategories()
+      this.StoreSRV.getCategories()
         .subscribe((category) => {
           this.category$.next(category)
         })

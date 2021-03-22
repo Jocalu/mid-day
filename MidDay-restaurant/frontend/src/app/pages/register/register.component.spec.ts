@@ -1,11 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RegisterComponent } from './register.component'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { of } from 'rxjs'
+import { MatStepperModule } from '@angular/material/stepper'
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
+import { MatSelectModule } from '@angular/material/select'
+import { RouterModule } from '@angular/router'
+import { LandingComponent } from '../landing/landing.component'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent
@@ -13,14 +22,27 @@ describe('RegisterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule,
-        RouterTestingModule,
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([{ path: 'landing', component: LandingComponent }]),
         MatDialogModule,
-        BrowserAnimationsModule],
+        BrowserAnimationsModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatButtonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        RouterModule.forRoot([])
+      ],
       declarations: [RegisterComponent],
       providers: [FormBuilder, {
         provide: MatDialogRef,
-        useValue: {}
+        MAT_FORM_FIELD_DEFAULT_OPTIONS,
+        useValue: { appearance: 'fill' }
       }]
     })
       .compileComponents()
@@ -73,7 +95,7 @@ describe('RegisterComponent', () => {
       dishes: []
     }
 
-    const spyFn = spyOn(component.StoreService, 'registerUserRestaurant').and.returnValue(of(dataUser))
+    const spyFn = spyOn(component.StoreSRV, 'registerUserRestaurant').and.returnValue(of(dataUser))
 
     component.registerUser()
 
@@ -86,7 +108,7 @@ describe('RegisterComponent', () => {
       name: 'string',
       image: 'string'
     }]
-    const spyFn = spyOn(component.StoreService, 'getCategories').and.returnValue(of(category))
+    const spyFn = spyOn(component.StoreSRV, 'getCategories').and.returnValue(of(category))
 
     component.ngOnInit()
 

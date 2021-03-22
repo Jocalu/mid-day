@@ -5,6 +5,8 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MenusDeleteComponent } from './menus-delete.component'
 import { of } from 'rxjs'
+import { MatIconModule } from '@angular/material/icon'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('MenusDeleteComponent', () => {
   let component: MenusDeleteComponent
@@ -13,14 +15,18 @@ describe('MenusDeleteComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MenusDeleteComponent],
-      imports: [HttpClientTestingModule,
+      imports: [
+        HttpClientTestingModule,
         RouterTestingModule,
         MatDialogModule,
-        BrowserAnimationsModule],
+        BrowserAnimationsModule,
+        MatIconModule
+      ],
       providers: [{
         provide: MatDialogRef,
         useValue: {}
-      }]
+      }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
     })
       .compileComponents()
@@ -75,7 +81,7 @@ describe('MenusDeleteComponent', () => {
       dishes: []
     }
 
-    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+    const spyFn = spyOn(component.StoreSRV, 'getUserRestaurant').and.returnValue(of(userRestaurant))
 
     component.deleteClick(id)
 
@@ -103,7 +109,7 @@ describe('MenusDeleteComponent', () => {
       dishes: []
     }
 
-    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+    const spyFn = spyOn(component.StoreSRV, 'getUserRestaurant').and.returnValue(of(userRestaurant))
 
     component.ngOnInit()
 

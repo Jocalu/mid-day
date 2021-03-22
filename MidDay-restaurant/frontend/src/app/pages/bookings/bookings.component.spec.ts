@@ -1,9 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from '@angular/router/testing'
-
 import { BookingsComponent } from './bookings.component'
 import { of } from 'rxjs'
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 describe('BookingsComponent', () => {
   let component: BookingsComponent
@@ -12,7 +18,23 @@ describe('BookingsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [BookingsComponent],
-      imports: [HttpClientTestingModule, RouterTestingModule]
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [
+        {
+          provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+          useValue: { appearance: 'fill' }
+        }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })
@@ -85,7 +107,7 @@ describe('BookingsComponent', () => {
       dishes: []
     }
 
-    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+    const spyFn = spyOn(component.StoreSRV, 'getUserRestaurant').and.returnValue(of(userRestaurant))
 
     component.ngOnInit()
 

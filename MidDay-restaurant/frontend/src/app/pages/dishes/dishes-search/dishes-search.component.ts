@@ -14,7 +14,7 @@ import { Dish } from 'src/app/core/model/Dish'
 })
 export class DishesSearchComponent implements OnInit {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     private dialog: MatDialog,
     private fb: FormBuilder
   ) {}
@@ -55,7 +55,7 @@ export class DishesSearchComponent implements OnInit {
   }
 
   ngOnInit (): void {
-    this.StoreService.getDishesForSearch().subscribe((answer) => { this.dishes$.next(answer.dishes) })
+    this.StoreSRV.getDishesForSearch().subscribe((answer) => { this.dishes$.next(answer.dishes) })
 
     this.dishesFiltered = this.searchTerms
       .pipe(

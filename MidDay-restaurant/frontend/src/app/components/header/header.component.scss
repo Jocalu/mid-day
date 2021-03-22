@@ -9,6 +9,7 @@ header {
     height: 80px;
     padding: 0 100px;
     position: sticky;
+    z-index: 1;
     background: $color-grey-soft;
     border-bottom: $color-grey 1px solid;
 

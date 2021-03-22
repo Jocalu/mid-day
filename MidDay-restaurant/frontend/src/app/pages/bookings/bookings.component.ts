@@ -12,7 +12,7 @@ import { Bookings } from '../../core/model/Bookings'
 })
 export class BookingsComponent implements OnInit {
   constructor (
-     public StoreService: StoreService
+     public StoreSRV: StoreService
   ) {}
 
   hours = hours
@@ -23,7 +23,7 @@ export class BookingsComponent implements OnInit {
 
   datepicker = new FormControl('');
 
-  selectedDate:string; selectedHour:string; selectedID:string
+  selectedDateFormat:string; selectedDate:string; selectedHour:string; selectedID:string
 
   bookingsOfTheDay: Bookings[]; bookingsOfTheHour: Bookings[]; detailsOfTheBooking : Bookings[]
 
@@ -35,28 +35,32 @@ export class BookingsComponent implements OnInit {
     )
   }
 
-  searchBookingsOfTheDay (date: string) :void {
+  searchBookingsOfTheDay (date: string) {
     this.selectedDate = moment(date)
-      .format('DD/M/YYYY')
-      .replace('/', '-')
-      .replace('/', '-')
+      .format('DD/MM/YYYY')
+      .replace(/\//g, '-')
 
-    this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate)
+    this.selectedDateFormat = moment(date)
+      .format('DD/M/YYYY')
+      .replace(/\//g, '-')
+
+    this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate || info.date === this.selectedDateFormat)
+
     this.bookingsOfTheHour = []
     this.detailsOfTheBooking = []
   }
 
-  searchBookingsOfTheHour (selectedHour: string):void {
+  searchBookingsOfTheHour (selectedHour: string) {
     this.bookingsOfTheHour = this.bookingsOfTheDay.filter((info: Bookings) => info.hour === selectedHour)
     this.detailsOfTheBooking = []
   }
 
-  showDetailsOfTheBooking (selectedID : string):void {
+  showDetailsOfTheBooking (selectedID : string) {
     this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info: Bookings) => info._id === selectedID)
   }
 
   ngOnInit (): void {
-    this.StoreService.getUserRestaurant(localStorage.getItem(''))
+    this.StoreSRV.getUserRestaurant(localStorage.getItem(''))
       .subscribe((user) => {
         this.bookings$ = user.bookings
         this.maxCapacity$ = user.capacity

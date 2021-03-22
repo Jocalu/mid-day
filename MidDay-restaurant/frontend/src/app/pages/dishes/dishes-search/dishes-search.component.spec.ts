@@ -3,9 +3,13 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishesSearchComponent } from './dishes-search.component'
 import { MatDialogModule } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
 import { of } from 'rxjs'
+import { MatInputModule } from '@angular/material/input'
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
+import { MatIconModule } from '@angular/material/icon'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('DishesSearchComponent', () => {
   let component: DishesSearchComponent
@@ -15,11 +19,22 @@ describe('DishesSearchComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DishesSearchComponent],
-      imports: [HttpClientTestingModule,
+      imports: [
+        HttpClientTestingModule,
         MatDialogModule,
         BrowserAnimationsModule,
-        RouterTestingModule],
-      providers: [FormBuilder]
+        RouterTestingModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      providers: [FormBuilder, {
+        provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+        useValue: { appearance: 'fill' }
+      }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })
@@ -94,7 +109,7 @@ describe('DishesSearchComponent', () => {
       dishes: []
     }
 
-    const spyFn = spyOn(component.StoreService, 'getDishesForSearch').and.returnValue(of(userRestaurant))
+    const spyFn = spyOn(component.StoreSRV, 'getDishesForSearch').and.returnValue(of(userRestaurant))
 
     component.ngOnInit()
 

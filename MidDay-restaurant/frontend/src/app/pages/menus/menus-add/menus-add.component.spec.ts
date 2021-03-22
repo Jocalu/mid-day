@@ -1,11 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { FormBuilder } from '@angular/forms'
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MenusAddComponent } from './menus-add.component'
 import { of } from 'rxjs'
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatSelectModule } from '@angular/material/select'
+import { MatIconModule } from '@angular/material/icon'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 describe('MenusAddComponent', () => {
   let component: MenusAddComponent
@@ -13,15 +18,25 @@ describe('MenusAddComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MatDialogModule,
+      imports: [
+        MatDialogModule,
         HttpClientTestingModule,
         RouterTestingModule,
-        BrowserAnimationsModule],
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatIconModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
       declarations: [MenusAddComponent],
       providers: [FormBuilder, {
         provide: MatDialogRef,
-        useValue: {}
-      }]
+        MAT_FORM_FIELD_DEFAULT_OPTIONS,
+        useValue: { appearance: 'fill' }
+      }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })
@@ -62,7 +77,7 @@ describe('MenusAddComponent', () => {
       date: 'string'
     }
 
-    const spyFn = spyOn(component.StoreService, 'postMenu').and.returnValue(of(menu))
+    const spyFn = spyOn(component.StoreSRV, 'postMenu').and.returnValue(of(menu))
 
     component.postClick()
 
@@ -90,7 +105,7 @@ describe('MenusAddComponent', () => {
       dishes: []
     }
 
-    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+    const spyFn = spyOn(component.StoreSRV, 'getUserRestaurant').and.returnValue(of(userRestaurant))
 
     component.ngOnInit()
 
@@ -101,7 +116,7 @@ describe('MenusAddComponent', () => {
     let filterSpy: {filter: jasmine.Spy}
 
     filterSpy.filter.and.returnValue(of([]))
-    component.StoreService.getUserRestaurant('').subscribe(() => {
+    component.StoreSRV.getUserRestaurant('').subscribe(() => {
       expect(filterSpy.filter.calls.count()).toBe(1)
     })
   })

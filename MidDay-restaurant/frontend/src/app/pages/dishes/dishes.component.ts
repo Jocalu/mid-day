@@ -11,7 +11,7 @@ export class DishesComponent implements OnInit {
   switch: boolean = false
 
   constructor (
-    private StoreService: StoreService
+    private StoreSRV: StoreService
   ) {}
 
   buttonDelete: HTMLElement
