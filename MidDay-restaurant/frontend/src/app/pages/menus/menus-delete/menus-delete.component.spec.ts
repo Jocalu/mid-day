@@ -51,4 +51,13 @@ describe('MenusDeleteComponent', () => {
 
     expect(spyFn).toHaveBeenCalled()
   })
+
+  it('should call getUserRestaurant', () => {
+    const id = '123'
+    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.callThrough()
+
+    component.deleteClick(id)
+
+    expect(spyFn).toHaveBeenCalled()
+  })
 })

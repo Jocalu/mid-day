@@ -5,6 +5,7 @@ import { FormBuilder } from '@angular/forms'
 import { RouterTestingModule } from '@angular/router/testing'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { of } from 'rxjs'
 
 describe('DishesAddComponent', () => {
   let component: DishesAddComponent
@@ -47,6 +48,35 @@ describe('DishesAddComponent', () => {
     const spyFn = spyOn(component, 'postClick').and.callThrough()
 
     component.postClick()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call postDish', () => {
+    const dishValue = {
+      _id: 'string',
+      type: 'string',
+      name: 'string',
+      ingredients: [],
+      extra: 1
+    }
+
+    const spyFn = spyOn(component.StoreService, 'postDish').and.returnValue(of(dishValue))
+
+    component.postClick()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call getIngredients', () => {
+    const ingredients = [{
+      category: 'string',
+      ingredient: []
+    }]
+
+    const spyFn = spyOn(component.StoreService, 'getIngredients').and.returnValue(of(ingredients))
+
+    component.ngOnInit()
 
     expect(spyFn).toHaveBeenCalled()
   })

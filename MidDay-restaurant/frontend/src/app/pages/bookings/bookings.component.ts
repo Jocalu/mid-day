@@ -23,7 +23,7 @@ export class BookingsComponent implements OnInit {
 
   datepicker = new FormControl('');
 
-  selectedDate:string; selectedHour:string; selectedName:string
+  selectedDate:string; selectedHour:string; selectedID:string
 
   bookingsOfTheDay: Bookings[]; bookingsOfTheHour: Bookings[]; detailsOfTheBooking : Bookings[]
 
@@ -36,7 +36,11 @@ export class BookingsComponent implements OnInit {
   }
 
   searchBookingsOfTheDay (date: string) :void {
-    this.selectedDate = moment(date).format('DD/MM/YYYY').replace('/', '-').replace('/', '-')
+    this.selectedDate = moment(date)
+      .format('DD/M/YYYY')
+      .replace('/', '-')
+      .replace('/', '-')
+
     this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate)
     this.bookingsOfTheHour = []
     this.detailsOfTheBooking = []
@@ -47,8 +51,8 @@ export class BookingsComponent implements OnInit {
     this.detailsOfTheBooking = []
   }
 
-  showDetailsOfTheBooking (selectedName : string):void {
-    this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info: Bookings) => info.bookingName === selectedName)
+  showDetailsOfTheBooking (selectedID : string):void {
+    this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info: Bookings) => info._id === selectedID)
   }
 
   ngOnInit (): void {

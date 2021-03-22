@@ -1,20 +1,22 @@
-interface Selections{
-  firstCourse: string,
-  secondCourse: string,
-  dessert: string
+interface User{
+  allergies: string[],
+  foodtastes: string[],
+  name: string,
+  email : string
+  phone: number
+  _id: string
 }
 
 interface People{
-  name: string,
-  allergies:string[],
-  selections: Selections
+  selections: string[],
+  user: User
 }
 
 export interface Bookings {
+  bookingAdmin: User,
   date: string
   hour: string,
-  bookingName: string,
-  phone: number,
   pax: number,
   people: People[]
+  _id:string
 }

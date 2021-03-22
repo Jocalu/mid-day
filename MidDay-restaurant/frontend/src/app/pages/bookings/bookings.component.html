@@ -28,27 +28,27 @@
         <h4>Reservas</h4>
         <button
           *ngFor="let booking of bookingsOfTheHour"
-          (click)="showDetailsOfTheBooking(booking.bookingName)"
+          (click)="showDetailsOfTheBooking(booking._id)"
         >
           {{ booking.pax }}pax
-          <p>{{ booking.bookingName }}</p>
+          <p>{{ booking.bookingAdmin.name }}</p>
         </button>
       </div>
 
       <div class="detail">
         <h4>Detalle de la reserva</h4>
         <div *ngFor="let booking of detailsOfTheBooking">
-          <h4>Teléfono de contacto: {{ booking.phone }}</h4>
+          <h4>Email de contacto: {{ booking.bookingAdmin.email }}</h4>
           <div class="booking-data" *ngFor="let person of booking.people">
-            <p>Nombre: {{ person.name }}</p>
-            <p>Alergias: {{ person.allergies }}</p>
+            <p>Nombre: {{ person.user.name }}</p>
+            <p>Alergias: {{ person.user.allergies }}</p>
 
             <div class="menu-details">
               <p>Elecciones:</p>
               <div class="menu-selection">
-                <p>{{ person.selections.firstCourse }}</p>
-                <p>{{ person.selections.secondCourse }}</p>
-                <p>{{ person.selections.dessert }}</p>
+                <p>{{ person.selections[0] }}</p>
+                <p>{{ person.selections[1] }}</p>
+                <p>{{ person.selections[2] }}</p>
               </div>
             </div>
           </div>

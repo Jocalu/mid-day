@@ -2,6 +2,8 @@ const Restaurant = require('../models/restaurantModel.js');
 const Category = require('../models/categoryModel');
 require('../models/menuModel');
 require('../models/dishModel');
+require('../models/bookingModel');
+require('../models/userModel');
 
 const restaurantController = () => {
   const getCategories = async (req, res) => {
@@ -62,10 +64,15 @@ const restaurantController = () => {
     try {
       const restaurant = await Restaurant
         .findById(restaurantId)
-        .populate(['category', 'menus', 'dishes', {
+        .populate(['category', 'menus', 'dishes', 'bookings', {
           path: 'menus',
           populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }],
-        }])
+        },
+        {
+          path: 'bookings',
+          populate: [{ path: 'bookingAdmin' }, { path: 'people', populate: [{ path: 'user' }] }],
+        },
+        ])
         .exec();
 
       res.json(restaurant);

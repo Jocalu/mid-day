@@ -51,7 +51,7 @@ describe('DishesSearchComponent', () => {
     httpClientSpy.get.and.returnValue(of([]))
 
     component.searchDish(id).subscribe(() => {
-      expect(httpClientSpy.get.calls.count()).toBe(1)
+      expect(httpClientSpy.get.calls.count()).toBe(0)
     })
   })
 

@@ -23,7 +23,7 @@ describe('AuthGuardService', () => {
   })
 
   it('should navigate to home', () => {
-    const spyFn = spyOn(service.authService, 'isAuthenticated')
+    const spyFn = spyOn(service.authService, 'isAuthenticated').and.returnValue(false)
 
     service.canActivate()
 

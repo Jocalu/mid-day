@@ -33,19 +33,14 @@ describe('Given a register function', () => {
         send: jest.fn(),
         status: jest.fn(),
       };
-      const user = new User({
-        email: 'user@user.com',
-        firstName: 'Full Name',
-        lastName: 'Last Name',
-        password: '',
-      });
+
       const req = {
         body: {},
         password: jest.fn(),
-        login: (user, () => { res.json(user); }),
+
       };
 
-      jest.spyOn(User.prototype, 'save').mockReturnValue(req.login);
+      jest.spyOn(User.prototype, 'save').mockReturnValue({});
 
       register(req, res);
 
