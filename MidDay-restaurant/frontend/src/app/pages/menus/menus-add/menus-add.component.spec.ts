@@ -5,6 +5,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MenusAddComponent } from './menus-add.component'
+import { of } from 'rxjs'
 
 describe('MenusAddComponent', () => {
   let component: MenusAddComponent
@@ -49,5 +50,59 @@ describe('MenusAddComponent', () => {
     component.postClick()
 
     expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call postMenu', () => {
+    const menu = {
+      _id: 'string',
+      firstCourse: [],
+      secondCourse: [],
+      dessert: [],
+      price: 1,
+      date: 'string'
+    }
+
+    const spyFn = spyOn(component.StoreService, 'postMenu').and.returnValue(of(menu))
+
+    component.postClick()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call getUserRestaurant', () => {
+    const userRestaurant = {
+      _id: 'string',
+      userName: 'string',
+      email: 'string',
+      password: 'string',
+      name: 'string',
+      category: 'string',
+      capacity: 1,
+      phone: 1,
+      street: 'string',
+      number: 1,
+      city: 'string',
+      zipcode: 'string',
+      image: 'string',
+      menuprice: 1,
+      bookings: [],
+      menus: [],
+      dishes: []
+    }
+
+    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+
+    component.ngOnInit()
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('getUserRestaurant should be called', () => {
+    let filterSpy: {filter: jasmine.Spy}
+
+    filterSpy.filter.and.returnValue(of([]))
+    component.StoreService.getUserRestaurant('').subscribe(() => {
+      expect(filterSpy.filter.calls.count()).toBe(1)
+    })
   })
 })

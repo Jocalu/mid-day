@@ -4,6 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing'
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MenusDeleteComponent } from './menus-delete.component'
+import { of } from 'rxjs'
 
 describe('MenusDeleteComponent', () => {
   let component: MenusDeleteComponent
@@ -54,9 +55,57 @@ describe('MenusDeleteComponent', () => {
 
   it('should call getUserRestaurant', () => {
     const id = '123'
-    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.callThrough()
+    const userRestaurant = {
+      _id: 'string',
+      userName: 'string',
+      email: 'string',
+      password: 'string',
+      name: 'string',
+      category: 'string',
+      capacity: 1,
+      phone: 1,
+      street: 'string',
+      number: 1,
+      city: 'string',
+      zipcode: 'string',
+      image: 'string',
+      menuprice: 1,
+      bookings: [],
+      menus: [],
+      dishes: []
+    }
+
+    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
 
     component.deleteClick(id)
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call getUserRestaurant at the OnInit', () => {
+    const userRestaurant = {
+      _id: 'string',
+      userName: 'string',
+      email: 'string',
+      password: 'string',
+      name: 'string',
+      category: 'string',
+      capacity: 1,
+      phone: 1,
+      street: 'string',
+      number: 1,
+      city: 'string',
+      zipcode: 'string',
+      image: 'string',
+      menuprice: 1,
+      bookings: [],
+      menus: [],
+      dishes: []
+    }
+
+    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+
+    component.ngOnInit()
 
     expect(spyFn).toHaveBeenCalled()
   })

@@ -86,10 +86,15 @@ const restaurantController = () => {
     try {
       const allRestaurants = await Restaurant
         .find({})
-        .populate(['category', 'menus', 'dishes', {
+        .populate(['category', 'menus', 'dishes', 'bookings', {
           path: 'menus',
           populate: [{ path: 'firstCourse' }, { path: 'secondCourse' }, { path: 'dessert' }],
-        }])
+        },
+        {
+          path: 'bookings',
+          populate: [{ path: 'bookingAdmin' }, { path: 'people', populate: [{ path: 'user' }] }],
+        },
+        ])
         .exec();
 
       res.json(allRestaurants);

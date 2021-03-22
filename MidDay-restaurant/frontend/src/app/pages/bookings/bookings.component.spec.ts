@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { RouterTestingModule } from '@angular/router/testing'
 
 import { BookingsComponent } from './bookings.component'
+import { of } from 'rxjs'
 
 describe('BookingsComponent', () => {
   let component: BookingsComponent
@@ -59,6 +60,34 @@ describe('BookingsComponent', () => {
     const selectedName = ('Marc')
 
     component.showDetailsOfTheBooking(selectedName)
+
+    expect(spyFn).toHaveBeenCalled()
+  })
+
+  it('should call getUserRestaurant at the OnInit', () => {
+    const userRestaurant = {
+      _id: 'string',
+      userName: 'string',
+      email: 'string',
+      password: 'string',
+      name: 'string',
+      category: 'string',
+      capacity: 1,
+      phone: 1,
+      street: 'string',
+      number: 1,
+      city: 'string',
+      zipcode: 'string',
+      image: 'string',
+      menuprice: 1,
+      bookings: [],
+      menus: [],
+      dishes: []
+    }
+
+    const spyFn = spyOn(component.StoreService, 'getUserRestaurant').and.returnValue(of(userRestaurant))
+
+    component.ngOnInit()
 
     expect(spyFn).toHaveBeenCalled()
   })
