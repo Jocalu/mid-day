@@ -5,6 +5,7 @@
 footer {
   width: 100vw;
   font-family: $font-secondary-thin;
+  z-index: 5;
 
   .footer {
     @include flex(column, flex-start, flex-start);

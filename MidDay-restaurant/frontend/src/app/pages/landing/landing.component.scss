@@ -23,6 +23,7 @@
     line-height: 1.4;
     font-size: 18px;
   }
+
   .info-data {
     @include flex(row, space-between, center);
     width: 100%;

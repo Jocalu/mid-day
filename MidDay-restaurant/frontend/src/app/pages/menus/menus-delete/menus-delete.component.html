@@ -1,31 +1,31 @@
-<div class="menu-text" *ngFor="let menu of menu$ | async">
-  <span class="category">
-    <mat-icon>restaurant_menu</mat-icon>
-    <h3>Menú del día</h3>
-    <button class="delete-btn" (click)="openPopUp(); deleteClick(menu._id)">
-      <mat-icon>delete</mat-icon>
-    </button>
-  </span>
-  <span>
-    <p>Fecha de creación:{{ menu.date | date: " d MMMM, y" }}</p>
-  </span>
+<div class="info-card" *ngFor="let menu of menu$ | async">
+  <div class="meta">
+    <div
+      class="photo"
+      style="
+        background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fmenus-detail.jpg?alt=media&token=9b5137e6-cfa4-4e54-b8fb-7b62578fb8cf);
+      "
+    ></div>
+  </div>
+  <div class="description">
+    <div class="data">
+      <h2>Fecha de creación:{{ menu.date | date: " d MMMM, y" }}</h2>
+      <button class="delete-btn" (click)="openPopUp(); deleteClick(menu._id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
 
-  <span
-    >Primeros:
+    <h3>Primeros:</h3>
     <p *ngFor="let dish of menu.firstCourse">{{ dish.name }}</p>
-  </span>
 
-  <span
-    >Segundos:
-    <p *ngFor="let dish of menu.secondCourse">{{ dish.name }}</p></span
-  >
+    <h3>Segundos:</h3>
+    <p *ngFor="let dish of menu.secondCourse">{{ dish.name }}</p>
 
-  <span>
-    Postres:
+    <h3>Postres:</h3>
     <p *ngFor="let dish of menu.dessert">{{ dish.name }}</p>
-  </span>
 
-  <span>
-    <p>Precio:{{ menu.price }} €</p>
-  </span>
+    <div class="price">
+      <p>Precio: {{ menu.price }} €</p>
+    </div>
+  </div>
 </div>

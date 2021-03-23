@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-popup-menusdelete',
   templateUrl: './popup-menusdelete.component.html',
   styleUrls: ['./popup-menusdelete.component.scss']
 })
-export class PopupMenusdeleteComponent implements OnInit {
-  constructor () { }
+export class PopupMenusdeleteComponent {
+  constructor (
+    public dialog: MatDialog
+  ) {}
 
-  ngOnInit (): void {
+  closeDialog ():void {
+    this.dialog.closeAll()
   }
 }

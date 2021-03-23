@@ -5,7 +5,7 @@
 .menus {
   @include flex(row, center, flex-start);
   width: 100%;
-  padding: 0 100px;
+  padding: 0 100px 50px 100px;
   font-family: $font-primary;
 
   @media only screen and (max-width: 500px) {
@@ -30,7 +30,6 @@
   .components {
     @include flex(column, center, center);
     width: 60%;
-    margin-top: 20px;
     z-index: 1;
     background-color: $color-white;
 
@@ -42,7 +41,7 @@
       align-self: flex-start;
       padding-top: 80px;
       color: $color-primary;
-      margin: 50px 0px 30px 50px;
+      margin: 30px 0px 30px 50px;
 
       @media only screen and (max-width: 500px) {
         padding: 0 20px;
@@ -61,6 +60,12 @@
 
     @media only screen and (max-width: 500px) {
       display: none;
+    }
+
+    img {
+      position: absolute;
+      right: 0px;
+      top: 80px;
     }
   }
 }
