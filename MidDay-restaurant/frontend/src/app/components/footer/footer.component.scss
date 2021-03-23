@@ -8,10 +8,13 @@ footer {
 
   .footer {
     @include flex(column, flex-start, flex-start);
-    padding: 30px 100px;
-    border-top: 2px solid $color-grey-soft;
-    background-color: $color-grey;
+    padding: 80px 100px 0 100px;
+    background-color: $color-primary-soft;
+    border-top-left-radius: 80% 50%;
+    border-top-right-radius: 80% 50%;
     align-items: stretch;
+    height: 300px;
+    margin-top: 50px;
 
     @media only screen and (max-width: 500px) {
       padding: 0 30px;
