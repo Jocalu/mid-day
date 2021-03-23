@@ -27,12 +27,11 @@ export class BookingsComponent implements OnInit {
 
   bookingsOfTheDay: Bookings[]; bookingsOfTheHour: Bookings[]; detailsOfTheBooking : Bookings[]
 
-  searchCapacity ():void {
+  searchCapacity () {
     hours.forEach((hour) => {
       const bookingsForHour = this.bookingsOfTheDay.filter((booking: Bookings) => booking.hour === hour.hour)
       hour.numOfbookings = bookingsForHour.reduce((accumulator: number, value: Bookings) => accumulator + value.pax, 0)
-    }
-    )
+    })
   }
 
   searchBookingsOfTheDay (date: string) {

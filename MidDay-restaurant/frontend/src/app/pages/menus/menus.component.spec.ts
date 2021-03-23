@@ -21,7 +21,11 @@ describe('MenusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MenusComponent, MenusAddComponent, MenusDeleteComponent],
+      declarations: [
+        MenusComponent,
+        MenusAddComponent,
+        MenusDeleteComponent
+      ],
       providers: [FormBuilder, {
         provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
         useValue: { appearance: 'fill' }

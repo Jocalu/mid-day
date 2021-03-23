@@ -1,37 +1,102 @@
 <section class="landing">
-  <div class="info">
-    <h1>Bienvenido a MidDay restaurant</h1>
-    <p class="paragraph">
-      Éste es tu espacio personal. <br />Desde aquí puedes gestionar tus
-      reservas, menús y añadir o visualizar recetas.
-    </p>
-    <div class="target">
-      <h3>Reservas</h3>
-      <p>Gestiona las reservas</p>
-      <button routerLink="/bookings" mat-raised-button color="primary">
-        IR<span class="material-icons"> keyboard_arrow_right </span>
-      </button>
+  <h1>Bienvenido a MidDay restaurant</h1>
+  <p class="paragraph">
+    Éste es tu espacio personal. <br />Desde aquí puedes gestionar tus reservas,
+    menús y añadir o visualizar recetas.
+  </p>
+  <div class="info-data">
+    <div class="info-card">
+      <div class="meta">
+        <div
+          class="photo"
+          style="
+            background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fcalendar.jpg?alt=media&token=71608f43-70ec-4eea-a3b6-e0b53751d6ec);
+          "
+        ></div>
+      </div>
+      <div class="description">
+        <h2>Reservas</h2>
+        <h3>Consulta y modifica las reservas</h3>
+        <p>
+          Puedes consultar las reservas de cada día, seleccionar la hora, el
+          número de comensales y los detalles de cada uno. Revisa las elecciones
+          y los alérgenos de cada uno de los alérgenos. Modifica o borra
+          reservas enviando una notificación a los usuarios.
+        </p>
+        <p class="read-more">
+          <button routerLink="/bookings" mat-raised-button color="primary">
+            Más información
+          </button>
+        </p>
+      </div>
     </div>
-    <div class="target">
-      <h3>Menús</h3>
-      <p>Gestiona los menús</p>
-      <button routerLink="/menus" mat-raised-button color="primary">
-        IR<span class="material-icons"> keyboard_arrow_right </span>
-      </button>
-    </div>
-    <div class="target">
-      <h3>Platos</h3>
-      <p>Gestiona tus platos</p>
-      <button routerLink="/dishes" mat-raised-button color="primary">
-        IR<span class="material-icons"> keyboard_arrow_right </span>
-      </button>
+    <img
+      class="icon"
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-calendar-64.png?alt=media&token=66ca9a23-677f-48d5-a7d2-6c1ae78abfb1"
+      alt="icono calendario"
+    />
+  </div>
+  <div class="info-data">
+    <img
+      class="icon reverse"
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-restaurant-menu-64.png?alt=media&token=d9014934-d191-4830-8d83-28b3ce24505f"
+      alt="icono menu"
+    />
+    <div class="info-card alt">
+      <div class="meta">
+        <div
+          class="photo"
+          style="
+            background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fmenu.jpg?alt=media&token=2cb45093-8deb-47d9-b615-54c8fcf3e090);
+          "
+        ></div>
+      </div>
+      <div class="description">
+        <h2>Menús</h2>
+        <h3>Revisa los menús que has guardado</h3>
+        <p>
+          Añade menús con los platos que tienes guardados, modifícalos, bórralos
+          o seleccionalos como menú del día. Verás la fecha en que lo guardaste
+          y podrás volver a utilizarlo para ponerlo como menú actual.
+        </p>
+        <p class="read-more">
+          <button routerLink="/menus" mat-raised-button color="primary">
+            Más información
+          </button>
+        </p>
+      </div>
     </div>
   </div>
-
-  <div class="image">
+  <div class="info-data">
+    <div class="info-card">
+      <div class="meta">
+        <div
+          class="photo"
+          style="
+            background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fdishes.jpg?alt=media&token=2ef4e311-5266-4d05-b7f2-15241dcaf77c);
+          "
+        ></div>
+      </div>
+      <div class="description">
+        <h2>Platos</h2>
+        <h3>Añade platos para tus menús</h3>
+        <p>
+          Revisa los platos que tienes guardados. Crea platos nuevos, selecciona
+          sus ingredientes y añade suplemento a su precio si lo crees
+          conveniente. Después utilizalos para crear tus menús. Añade todos los
+          platos que necesites y vuelve a consultarlos siempre que quieras.
+        </p>
+        <p class="read-more">
+          <button routerLink="/dishes" mat-raised-button color="primary">
+            Más información
+          </button>
+        </p>
+      </div>
+    </div>
     <img
-      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Frestaurant.jpeg?alt=media&token=7983b4d2-c748-4d44-8903-bf175a57782b"
-      alt="Restaurante"
+      class="icon"
+      src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-tableware-64%20(1).png?alt=media&token=b77c91ef-3414-4a30-9e15-152adbb5c9fe"
+      alt="icono plato"
     />
   </div>
 </section>

@@ -1,1 +1,12 @@
-//UC
+@import "../../../../../styles/mixins";
+@import "../../../../../styles/colors";
+@import "../../../../../styles/fonts";
+
+.modal {
+  @include flex(column, center, center);
+  height: 200px;
+
+  mat-stroked-button {
+    border-radius: 9999px;
+  }
+}

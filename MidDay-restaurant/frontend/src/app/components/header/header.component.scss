@@ -8,8 +8,8 @@ header {
     width: 100vw;
     height: 80px;
     padding: 0 100px;
-    position: sticky;
-    z-index: 1;
+    position: fixed;
+    z-index: 5;
     background: $color-grey-soft;
     border-bottom: $color-grey 1px solid;
 

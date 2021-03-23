@@ -63,6 +63,7 @@ $MidDay-restaurant-theme: mat-light-theme(
   margin: 0 5px;
   color: $color-white;
   background-color: $color-primary;
+  border-radius: 9999px;
   &:hover {
     background-color: $color-primary-hard;
     box-shadow: none;
@@ -73,12 +74,14 @@ $MidDay-restaurant-theme: mat-light-theme(
   cursor: pointer !important;
   color: $color-primary;
   margin: 0 5px;
+  border-radius: 9999px;
 }
 
 .mat-stroked-button.mat-primary {
   cursor: pointer !important;
   margin: 0 5px;
   color: $color-primary;
+  border-radius: 9999px;
   &:hover {
     border: 1px solid $color-primary;
   }
@@ -130,8 +133,9 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-/* 
-section:first-of-type {
-  padding-top: 80px;
+
+.mat-dialog-container {
+  padding: 0px;
+  background: $color-grey-soft;
+  font-family: $font-primary;
 }
- */
