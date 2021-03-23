@@ -42,31 +42,6 @@ header {
     }
 
     div {
-      .mat-button.mat-primary {
-        color: $color-primary;
-      }
-
-      .mat-stroked-button.mat-primary {
-        color: $color-primary;
-        border: 1px solid $color-primary;
-
-        &:hover {
-          border: 1px solid $color-primary;
-        }
-      }
-      .mat-raised-button {
-        box-shadow: none;
-      }
-      .mat-raised-button.mat-primary {
-        color: $color-white;
-        background-color: $color-primary;
-
-        &:hover {
-          background-color: $color-primary-hard;
-          box-shadow: none;
-        }
-      }
-
       @media only screen and (max-width: 500px) {
         display: none;
       }

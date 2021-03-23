@@ -13,16 +13,9 @@
     padding: 0 20px;
   }
 
-  h1 {
-    letter-spacing: 0.8px;
+  .title {
+    @include title();
     margin-top: 50px;
-    font-weight: bold;
-    color: $color-primary;
-    font-size: 30px;
-
-    @media only screen and (max-width: 500px) {
-      text-align: center;
-    }
   }
 
   .paragraph {
@@ -37,7 +30,7 @@
     .info-card {
       display: flex;
       flex-direction: column;
-      box-shadow: 0 3px 7px -1px rgba(#000, 0.2);
+      @include box-shadow;
       margin-bottom: 30px;
       background: $color-grey-soft;
       line-height: 1.4;
@@ -145,7 +138,7 @@
           &:before {
             transform: skewX(-3deg);
             content: "";
-            background: #fff;
+            background: $color-white;
             width: 30px;
             position: absolute;
             left: -10px;

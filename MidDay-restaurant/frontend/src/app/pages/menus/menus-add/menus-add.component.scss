@@ -33,20 +33,12 @@
     @include flex(row, flex-end, center);
     width: 550px;
 
-    .mat-raised-button {
-      box-shadow: none;
-
-      &:hover {
-        background-color: $color-primary-hard;
-        box-shadow: none;
-      }
-      @media only screen and (max-width: 500px) {
-        width: 200px;
-      }
-    }
-
     @media only screen and (max-width: 500px) {
-      margin-bottom: 20px;
+      width: 200px;
     }
+  }
+
+  @media only screen and (max-width: 500px) {
+    margin-bottom: 20px;
   }
 }
