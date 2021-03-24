@@ -4,5 +4,194 @@
 
 .home {
   @include flex(column, center, center);
-  height: 550px;
+  font-family: $font-primary;
+  .welcome {
+    @include flex(row, center, flex-start);
+    padding: 130px 100px 0px 100px;
+    .welcome__icon {
+      padding: 30px;
+      width: 150px;
+      opacity: 0.3;
+      transform: rotate(30deg) scale(2);
+      align-self: center;
+    }
+    .welcome__info {
+      padding: 30px;
+      .welcome__title {
+        font-family: $font-primary;
+        font-size: 48px;
+        line-height: 1.2;
+      }
+      p {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 1.4;
+        &:last-of-type {
+          margin: 30px 0;
+          font-weight: 600;
+        }
+      }
+    }
+    .welcome__image {
+      width: 500px;
+      border-radius: 6px;
+      opacity: 0.8;
+      align-self: center;
+    }
+  }
+  .business {
+    width: 100%;
+    margin-top: 50px;
+    background: rgb(179, 208, 189, 0.1);
+    padding-bottom: 50px;
+
+    .business__info {
+      @include flex(column, center, center);
+      font-family: $font-primary;
+      padding: 0 100px;
+      width: 100%;
+
+      .business__up {
+        @include flex(row, ceter, flex-end);
+        width: 100%;
+        position: relative;
+
+        img {
+          width: 500px;
+        }
+        div {
+          position: absolute;
+          right: 250px;
+          top: 120px;
+          border: 2px $color-primary-hard solid;
+          border-radius: 50px;
+          padding: 50px;
+          width: 500px;
+          text-align: center;
+          z-index: -1;
+          h2 {
+            font-size: 30px;
+          }
+        }
+        p {
+          max-width: 300px;
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 1.2;
+          background-color: $color-primary-soft;
+          padding: 30px;
+          z-index: 1;
+          margin-left: 440px;
+        }
+      }
+      .business__down {
+        @include flex(row, center, flex-start);
+        width: 100%;
+
+        img {
+          padding: 30px;
+          width: 150px;
+          opacity: 0.3;
+          transform: rotate(-30deg) scale(2);
+          align-self: center;
+        }
+
+        div {
+          min-height: 300px;
+          max-width: 500px;
+          font-size: 20px;
+          font-weight: 300;
+          line-height: 1.2;
+          background-color: $color-primary;
+          padding: 30px;
+          z-index: 1;
+          color: $color-white;
+          h3 {
+            font-size: 24px;
+            letter-spacing: 1.3px;
+            margin-bottom: 20px;
+          }
+
+          &:first-of-type {
+            margin-left: 100px;
+          }
+        }
+
+        .bg--hard {
+          background-color: $color-primary-hard;
+        }
+
+        .img--rotate {
+          padding: 30px;
+          width: 150px;
+          opacity: 0.3;
+          transform: rotate(30deg) scale(2);
+          align-self: center;
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+
+  .advantages {
+    margin: 100px 0;
+    @include flex(row, center, center);
+    width: 100%;
+    padding: 0 100px;
+    background-color: $color-grey-soft;
+
+    .advantages-info {
+      @include flex(column, flex-start, center);
+      margin: 50px 10px;
+      background-color: $color-primary-soft;
+      align-items: stretch;
+      min-width: 240px;
+      min-height: 500px;
+      border-radius: 10px;
+      padding: 20px;
+
+      .img {
+        @include flexcenter();
+        min-width: 100px;
+        margin: 20px 0;
+
+        img {
+          transform: scale(2);
+        }
+      }
+
+      h3 {
+        margin: 20px 0;
+        font-size: 24px;
+        letter-spacing: 1.3px;
+        text-align: center;
+      }
+
+      p {
+        font-family: $font-primary;
+        font-weight: 300;
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+  }
+
+  hr {
+    height: 3px;
+    background-color: $color-primary;
+    width: 90%;
+    margin-bottom: 50px;
+  }
+  h2 {
+    font-size: 30px;
+    font-family: $font-primary;
+  }
+  .contact-info {
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.4;
+    max-width: 900px;
+    font-size: 20px;
+    font-family: $font-primary;
+  }
 }
