@@ -5,8 +5,9 @@
 .menus-add {
   @include flex(column, center, flex-start);
   width: 600px;
-  background-color: white;
+  background-color: $color-white;
   z-index: 1;
+
   .full-width {
     width: 600px;
   }
@@ -29,6 +30,7 @@
     font-size: 20px;
     color: $color-primary;
   }
+
   .btns {
     @include flex(row, flex-end, center);
     width: 600px;

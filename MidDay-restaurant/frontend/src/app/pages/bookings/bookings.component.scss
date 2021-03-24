@@ -2,112 +2,192 @@
 @import "../../../styles/colors";
 @import "../../../styles/fonts";
 
+.probando {
+  width: 500px !important;
+  font-size: 500px !important;
+}
+
 main {
-  @include flex(column, flex-start, center);
+  @include flex(column, center, center);
   width: 100vw;
-  padding: 0 300px;
-  margin: 20px 0;
+  padding: 130px 100px 80px 100px;
   font-family: $font-primary;
   min-height: 500px;
 
-  h3 {
-    align-self: flex-start;
-    font-family: $font-primary;
-    font-weight: bold;
-  }
-
-  h4 {
-    background-color: $color-primary;
-    color: $color-white;
-  }
-
-  .bookings__container {
-    @include flex(row, flex-start, flex-start);
-    background-color: $color-grey-soft;
-    border-radius: 6px;
-    border: 2px solid $color-primary;
+  .booking__container {
+    @include box-shadow();
     width: 850px;
-    align-items: stretch;
+    @include flex(column, center, center);
+    border-radius: 6px;
+    border: 1px solid $color-primary;
+    overflow: hidden;
 
-    h4 {
+    .booking__header {
+      @include flex(row, flex-start, center);
+      min-height: 80px;
       border-bottom: 1px solid $color-primary;
-      width: 100%;
-      text-indent: 20px;
-    }
+      background-color: $color-grey-soft;
 
-    .hours {
-      @include flex(column, flex-start, center);
-      width: 150px;
-      border-right: 1px solid $color-primary;
-
-      button {
-        cursor: pointer;
-        outline: none;
-        border: none;
-        height: 30px;
-        @include flex(row, space-between, center);
-        background-color: $color-primary-soft;
-        width: 130px;
-        border-radius: 6px;
-        margin-bottom: 10px;
+      .date {
+        @include flex(column, center, center);
+        text-align: center;
+        min-width: 150px;
+        max-width: 150px;
         padding: 10px;
-        &:focus {
-          background-color: black;
-          color: $color-white;
+        border-right: 1px solid $color-primary;
+        span {
+          font-size: 20px;
+          line-height: 1.5;
         }
-        p {
-          margin-left: 10px;
+      }
+
+      .pax {
+        @include flexcenter();
+        min-width: 150px;
+        max-width: 150px;
+        min-height: 80px;
+        border-right: 1px solid $color-primary;
+      }
+      .contact {
+        min-width: 550px;
+        padding-left: 20px;
+
+        .contact__details {
+          @include flex(row, flex-start, center);
+          margin: 10px 0px;
+
+          p {
+            margin-left: 5px;
+          }
         }
       }
     }
-    .bookings {
-      @include flex(column, flex-start, center);
-      width: 150px;
-      border-right: 1px solid $color-primary;
+    .booking__selection {
+      @include flex(row, flex-start, center);
+      min-height: 610px;
+      align-items: stretch;
 
-      button {
-        cursor: pointer;
-        outline: none;
-        border: none;
-        height: 30px;
-        @include flex(row, space-between, center);
-        background-color: $color-primary-soft;
-        width: 130px;
-        border-radius: 6px;
-        margin-bottom: 10px;
+      .hours {
+        @include flex(column, flex-start, center);
+        text-align: center;
+        min-width: 150px;
+        min-height: 610px;
         padding: 10px;
-        &:focus {
-          background-color: black;
-          color: white;
-        }
+        border-right: 1px solid $color-primary;
+        align-items: stretch;
 
-        p {
-          margin-left: 10px;
+        button {
+          all: unset;
+          @include flex(column, center, space-between);
+          cursor: pointer;
+          width: 100%;
+          background-color: $color-grey-soft;
+          font-size: 18px;
+          margin-bottom: 5px;
+          padding-top: 5px;
+          border-radius: 6px;
+          border: 2px solid transparent;
+
+          .mat-icon {
+            color: $color-primary-hard;
+          }
+          div {
+            @include flex(row, space-around, center);
+            font-size: 14px;
+            padding: 5px 0;
+          }
+
+          &:focus {
+            background-color: $color-primary;
+            border: 2px solid $color-primary-hard;
+          }
         }
       }
-    }
-    .detail {
-      @include flex(column, flex-start, flex-start);
-      width: 550px;
 
-      h4 {
-        width: 550px;
-      }
-
-      .booking-data {
+      .bookings {
         @include flex(column, flex-start, flex-start);
-        margin-left: 10px;
-        background-color: $color-primary-soft;
-        width: 525px;
-        border-radius: 6px;
-        margin-bottom: 10px;
+        width: 150px;
+        min-height: 610px;
+        align-items: stretch;
+        border-right: 1px solid $color-primary;
+        padding-top: 10px;
 
-        p {
-          margin: 5px;
+        button {
+          all: unset;
+          cursor: pointer;
+          @include flex(column, flex-start, center);
+          max-width: 150px;
+          background-color: $color-grey-soft;
+          font-size: 18px;
+          margin: 0px 5px 5px 5px;
+          padding-top: 5px;
+          border-radius: 6px;
+          border: 2px solid transparent;
+
+          .mat-icon {
+            color: $color-primary-hard;
+          }
+
+          div {
+            @include flexcenter();
+            padding-bottom: 5px;
+          }
+          p {
+            @include flexcenter();
+            font-size: 14px;
+          }
+
+          &:focus {
+            background-color: $color-primary;
+            border: 2px solid $color-primary-hard;
+          }
         }
+      }
 
-        .menu-details {
+      .detail {
+        @include flex(column, flex-start, center);
+        min-width: 550px;
+
+        .detail__data {
+          &:first-of-type {
+            margin-top: 10px;
+          }
+          width: 540px;
+          margin: 5px;
+          background-color: $color-grey-soft;
+          border-radius: 6px;
           @include flex(row, flex-start, flex-start);
+
+          .user-data {
+            width: 400px;
+            @include flex(column, flex-start, flex-start);
+            padding: 10px;
+            h3 {
+              font-family: $font-secondary;
+              text-transform: uppercase;
+              font-size: 1rem;
+              font-weight: 300;
+              color: $color-primary-hard;
+            }
+
+            p:first-of-type {
+              text-decoration: underline;
+            }
+          }
+
+          .allergies-data {
+            max-width: 140px;
+            @include flex(column, flex-start, flex-start);
+            padding: 10px;
+
+            h3 {
+              font-family: $font-secondary;
+              text-transform: uppercase;
+              font-size: 1rem;
+              font-weight: 300;
+              color: $color-primary-hard;
+            }
+          }
         }
       }
     }

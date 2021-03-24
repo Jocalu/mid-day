@@ -2,58 +2,98 @@
   <mat-form-field appearance="fill">
     <mat-label>Elige una fecha</mat-label>
     <input
+      class="input"
       [formControl]="datepicker"
       matInput
       [matDatepicker]="picker"
       (dateInput)="searchBookingsOfTheDay(datepicker.value); searchCapacity()"
     />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker-toggle
+      class="probando"
+      matSuffix
+      [for]="picker"
+    ></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
-  <div>
-    <section class="bookings__container">
+  <section class="booking__container">
+    <div class="booking__header">
+      <div class="date" *ngIf="!datepicker.value">
+        <span>Fecha seleccionada</span>
+      </div>
+      <div class="date" *ngIf="datepicker.value">
+        <span>{{ datepicker.value | date: "d MMMM" }}</span>
+        <span>{{ datepicker.value | date: "y" }}</span>
+      </div>
+      <div class="pax">
+        <img
+          class="icon"
+          src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-restaurant-table-64%20(1).png?alt=media&token=ed66df68-6730-46bb-80e2-80960b09f271"
+          alt="icono personas sentadas comiendo"
+        />
+      </div>
+      <div class="contact">
+        <div class="contact__details">
+          <mat-icon>phone_iphone</mat-icon>
+          <p *ngFor="let booking of detailsOfTheBooking">
+            {{ booking.bookingAdmin.phone }}
+          </p>
+        </div>
+        <div class="contact__details">
+          <mat-icon>mail_outline</mat-icon>
+          <p *ngFor="let booking of detailsOfTheBooking">
+            {{ booking.bookingAdmin.email }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="data"></div>
+    <div class="booking__selection">
       <div class="hours">
-        <h4>Horas</h4>
         <button
           *ngFor="let hour of hours"
           (click)="searchBookingsOfTheHour(hour.hour)"
         >
           {{ hour.hour }}
-          <p>{{ hour.numOfbookings }}/{{ maxCapacity$ }}</p>
+
+          <div>
+            <mat-icon>restaurant</mat-icon>
+            <p *ngIf="!datepicker.value">0/{{ maxCapacity$ }}</p>
+            <p *ngIf="datepicker.value">
+              {{ hour.numOfbookings }}/{{ maxCapacity$ }}
+            </p>
+            <mat-icon>person</mat-icon>
+          </div>
         </button>
       </div>
 
       <div class="bookings">
-        <h4>Reservas</h4>
         <button
           *ngFor="let booking of bookingsOfTheHour"
           (click)="showDetailsOfTheBooking(booking._id)"
         >
-          {{ booking.pax }}pax
+          <div><mat-icon>person</mat-icon>x{{ booking.pax }}</div>
           <p>{{ booking.bookingAdmin.name }}</p>
         </button>
       </div>
 
       <div class="detail">
-        <h4>Detalle de la reserva</h4>
         <div *ngFor="let booking of detailsOfTheBooking">
-          <h4>Email de contacto: {{ booking.bookingAdmin.email }}</h4>
-          <div class="booking-data" *ngFor="let person of booking.people">
-            <p>Nombre: {{ person.user.name }}</p>
-            <p>Alergias: {{ person.user.allergies }}</p>
-
-            <div class="menu-details">
+          <div class="detail__data" *ngFor="let person of booking.people">
+            <div class="user-data">
+              <h3>{{ person.user.name }}</h3>
               <p>Elecciones:</p>
-              <div class="menu-selection">
-                <p>{{ person.selections[0] }}</p>
-                <p>{{ person.selections[1] }}</p>
-                <p>{{ person.selections[2] }}</p>
-              </div>
+              <p>1. {{ person.selections[0] }}</p>
+              <p>2. {{ person.selections[1] }}</p>
+              <p>3. {{ person.selections[2] }}</p>
+            </div>
+            <div class="allergies-data">
+              <h3>Alergias:</h3>
+              <p>{{ person.user.allergies.join(", ") | titlecase }}</p>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </main>

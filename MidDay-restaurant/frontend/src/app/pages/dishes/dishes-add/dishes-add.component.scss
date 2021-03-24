@@ -3,8 +3,11 @@
 @import "../../../../styles/fonts";
 
 form {
+  margin-left: -5px;
+  width: 600px;
+  z-index: 1;
   .full-width {
-    width: 550px;
+    width: 600px;
   }
   @media only screen and (max-width: 500px) {
     width: 100vw;

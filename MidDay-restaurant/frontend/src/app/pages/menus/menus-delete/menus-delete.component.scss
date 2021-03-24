@@ -41,6 +41,9 @@
 
     .data {
       @include flex(row, space-between, center);
+      h2 {
+        font-size: 20px;
+      }
 
       button {
         all: unset;
@@ -49,6 +52,7 @@
         mat-icon {
           @include flexcenter();
           font-size: 30px;
+          cursor: pointer;
         }
       }
     }

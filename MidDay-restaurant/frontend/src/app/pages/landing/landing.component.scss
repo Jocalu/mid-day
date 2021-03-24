@@ -121,11 +121,6 @@
           }
         }
       }
-      &:hover {
-        .details {
-          left: 0%;
-        }
-      }
 
       @media (min-width: 640px) {
         flex-direction: row;

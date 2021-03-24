@@ -107,7 +107,7 @@ $MidDay-restaurant-theme: mat-light-theme(
   margin: 0 0 0px;
 }
 
-mat-raised-button {
+.mat-raised-button {
   box-shadow: none;
 
   &:hover {
@@ -138,4 +138,10 @@ input[type="number"] {
   padding: 0px;
   background: $color-grey-soft;
   font-family: $font-primary;
+}
+
+mat-form-field {
+  mat-datepicker {
+    color: $color-primary !important ;
+  }
 }

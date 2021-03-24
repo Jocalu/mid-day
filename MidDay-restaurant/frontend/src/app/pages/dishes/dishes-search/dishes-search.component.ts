@@ -20,9 +20,13 @@ export class DishesSearchComponent implements OnInit {
   ) {}
 
   openPopUp (id:string):void {
+    this.StoreSRV.deleteDish(id).subscribe()
+    this.dialog.closeAll()
+  }
+  /*   openPopUp (id:string):void {
     const dialog = this.dialog.open(PopupDishessearchComponent)
     dialog.componentInstance.dishId = id
-  }
+  } */
 
   dishSelected: HTMLElement
 

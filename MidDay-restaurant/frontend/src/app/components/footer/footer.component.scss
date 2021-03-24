@@ -15,7 +15,7 @@ footer {
     border-top-right-radius: 80% 50%;
     align-items: stretch;
     height: 300px;
-    margin-top: 50px;
+    margin-top: 70px;
 
     @media only screen and (max-width: 500px) {
       padding: 0 30px;
@@ -24,6 +24,7 @@ footer {
 
     img {
       width: 180px;
+      margin-top: 20px;
 
       @media only screen and (max-width: 500px) {
         margin: 0 auto;
