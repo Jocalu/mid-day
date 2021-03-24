@@ -40,18 +40,10 @@ describe('PopupDishessearchComponent', () => {
     expect(component).toBeTruthy()
   })
 
-  it('should call deleteHandleClick', () => {
-    const spyFn = spyOn(component, 'deleteHandleClick').and.callThrough()
-    const dishId = '123'
-    component.deleteHandleClick(dishId)
+  it('should call closeAll', () => {
+    const spyFn = spyOn(component.dialog, 'closeAll').and.callThrough()
 
-    expect(spyFn).toHaveBeenCalled()
-  })
-
-  it('should call deleteCanceled', () => {
-    const spyFn = spyOn(component, 'deleteCanceled').and.callThrough()
-
-    component.deleteCanceled()
+    component.closeDialog()
 
     expect(spyFn).toHaveBeenCalled()
   })

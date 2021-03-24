@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialog, MatDialogModule } from '@angular/material/dialog'
 
 import { PopupRegisterComponent } from './popup-register.component'
 
@@ -12,7 +12,11 @@ describe('PopupRegisterComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PopupRegisterComponent],
       imports: [MatDialogModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        MatDialog,
+        { provide: MatDialog, useValue: {} }
+      ]
     })
       .compileComponents()
   })
@@ -25,5 +29,13 @@ describe('PopupRegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy()
+  })
+
+  it('should call closeAll', () => {
+    const spyFn = spyOn(component, 'closeDialog').and.callThrough()
+
+    component.closeDialog()
+
+    expect(spyFn).toHaveBeenCalled()
   })
 })
