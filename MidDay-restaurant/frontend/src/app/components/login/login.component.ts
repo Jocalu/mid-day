@@ -29,6 +29,11 @@ export class LoginComponent {
         }, () => this.dialog.open(PopupLoginfailComponent))
     }
 
+    goRegister ():void {
+      this.dialog.closeAll()
+      this.router.navigate(['/register'])
+    }
+
      loginPopUp = this.fb.group({
        userName: ['', [Validators.required]],
        password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]]

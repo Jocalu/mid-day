@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-popup-menusdelete',
-  templateUrl: './popup-menusdelete.component.html',
-  styleUrls: ['./popup-menusdelete.component.scss']
+  templateUrl: './popup-menusdelete.component.html'
+
 })
 export class PopupMenusdeleteComponent {
   constructor (

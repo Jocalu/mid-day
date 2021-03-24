@@ -40,6 +40,7 @@
       overflow: hidden;
       z-index: 0;
       width: 800px;
+      border: 1px solid $color-primary;
 
       &:hover {
         .photo {

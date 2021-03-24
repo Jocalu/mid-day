@@ -1,20 +1,16 @@
-<h1 mat-dialog-title>Cuidado!</h1>
-<div mat-dialog-content>¿Estás seguro de que quieres borrar el plato?</div>
-<div>
+<section class="dialog">
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-ok-80.png?alt=media&token=30b9a6d0-1609-44e0-a76b-2957dd75a2a4"
+    alt="icon"
+  />
+  <h1>¡Hecho!</h1>
+  <p>El plato ha sido borrado</p>
   <button
-    (click)="deleteHandleClick(dishId)"
-    mat-raised-button
+    (click)="closeDialog()"
     type="button"
+    mat-raised-button
     color="primary"
   >
-    <mat-icon>ACEPTAR</mat-icon>
+    CERRAR
   </button>
-  <button
-    (click)="deleteCanceled()"
-    mat-raised-button
-    type="button"
-    color="primary"
-  >
-    <mat-icon>CANCELAR</mat-icon>
-  </button>
-</div>
+</section>

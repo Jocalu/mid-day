@@ -1,2 +1,16 @@
-<h1 mat-dialog-title>¡Error!</h1>
-<div mat-dialog-content>Nombre de usuario o contraseña incorrectos</div>
+<section class="dialog">
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-error-96.png?alt=media&token=1db0113d-b51a-4137-98a6-c5e79f9a567d"
+    alt="icon"
+  />
+  <h1>¡Error!</h1>
+  <p>Nombre de usuario o contraseña incorrectos</p>
+  <button
+    (click)="closeDialog()"
+    type="button"
+    mat-raised-button
+    color="primary"
+  >
+    CERRAR
+  </button>
+</section>

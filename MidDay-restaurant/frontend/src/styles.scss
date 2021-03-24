@@ -169,3 +169,25 @@ input[type="number"] {
   background-color: transparent !important;
 }
 //CLOSE MATERIAL DATEPICKER CUSTOMIZED
+
+.mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.dialog {
+  @include flex(column, center, center);
+  height: 300px;
+  border: 2px solid $color-primary;
+  overflow: hidden;
+  width: 400px;
+  background-color: $color-grey-soft;
+
+  img {
+    width: 100px;
+  }
+  p {
+    margin-bottom: 30px;
+  }
+}

@@ -26,7 +26,7 @@ form {
 
 .info-card {
   @include flex(column, center, flex-start);
-  border: 2px solid $color-primary;
+  border: 1px solid $color-primary;
   @include box-shadow;
   margin-bottom: 30px;
   background: $color-grey-soft;

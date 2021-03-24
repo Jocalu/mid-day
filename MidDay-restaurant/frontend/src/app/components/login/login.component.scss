@@ -3,16 +3,35 @@
 @import "../../../styles/fonts";
 
 .login {
-  @include flex(column, flex-start, center);
-  height: 400px;
-  margin-top: 40px;
+  @include flex(column, center, center);
+  height: 450px;
+  border: 2px solid $color-primary;
+  overflow: hidden;
+  width: 550px;
+  background-color: $color-grey-soft;
 
+  img {
+    width: 200px;
+    margin-bottom: 30px;
+  }
+  p {
+    margin-bottom: 10px;
+  }
   .form {
     @include flex(column, center, center);
-    height: 400px;
-    width: 550px;
-    background-color: $color-primary-soft;
-    border-radius: 6px;
-    border: 2px solid $color-primary;
+
+    .mat-form-field {
+      width: 300px;
+
+      button {
+        color: $color-primary-hard;
+        margin-right: 10px;
+      }
+    }
+
+    a {
+      cursor: pointer;
+      color: $color-primary-hard;
+    }
   }
 }

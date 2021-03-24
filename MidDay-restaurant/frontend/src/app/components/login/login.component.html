@@ -1,8 +1,13 @@
 <section class="login">
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Flogo_negro.png?alt=media&token=4dcb1501-4770-4b7d-b01c-d8528ff85556"
+    alt="logo"
+  />
+  <p>Inicia sesión con tu nombre de usuario y contraseña</p>
   <form [formGroup]="loginPopUp">
     <ng-template matStepLabel>Tu perfil</ng-template>
     <div class="form">
-      <mat-form-field class="input" appearance="fill">
+      <mat-form-field appearance="fill">
         <mat-label>Nombre de usuario</mat-label>
         <input
           matInput
@@ -12,7 +17,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="input">
+      <mat-form-field appearance="fill">
         <mat-label>Contraseña</mat-label>
         <input
           [type]="hide ? 'password' : 'text'"
@@ -31,6 +36,11 @@
           <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
+      <p>
+        ¿Es tu primera vez en Mid Day?<a (click)="goRegister()">
+          Crea una cuenta</a
+        >
+      </p>
       <div>
         <button
           class="btn-submitLogin"
