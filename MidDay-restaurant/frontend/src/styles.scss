@@ -1,5 +1,6 @@
 @import "../../frontend/src/styles/colors";
 @import "../../frontend/src/styles/fonts";
+@import "../../frontend/src/styles/mixins";
 @import "~@angular/material/theming";
 
 *,
@@ -94,7 +95,7 @@ $MidDay-restaurant-theme: mat-light-theme(
 }
 
 .mat-calendar-body-selected {
-  background-color: $color-primary;
+  background-color: $color-primary !important;
 }
 
 .mat-typography h3 {
@@ -139,9 +140,32 @@ input[type="number"] {
   background: $color-grey-soft;
   font-family: $font-primary;
 }
-
-mat-form-field {
-  mat-datepicker {
-    color: $color-primary !important ;
-  }
+//MATERIAL DATEPICKER CUSTOMIZED
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  width: 0px !important;
+  height: 0px !important;
+  font-size: 50px !important;
+  position: absolute !important;
+  top: -60px;
+  left: -500px;
+  background-color: transparent;
 }
+
+.mat-datepicker-toggle-default-icon {
+  position: absolute;
+  top: -100px;
+  background-color: $color-primary;
+  color: $color-black;
+  border-radius: 50%;
+  padding: 10px;
+  @include box-shadow();
+}
+
+.mat-form-field:not(.mat-form-field-appearance-legacy)
+  .mat-form-field-suffix
+  .mat-icon-button {
+  width: 0em !important;
+  height: 0em !important;
+  background-color: transparent !important;
+}
+//CLOSE MATERIAL DATEPICKER CUSTOMIZED

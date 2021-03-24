@@ -2,11 +2,6 @@
 @import "../../../styles/colors";
 @import "../../../styles/fonts";
 
-.probando {
-  width: 500px !important;
-  font-size: 500px !important;
-}
-
 main {
   @include flex(column, center, center);
   width: 100vw;
