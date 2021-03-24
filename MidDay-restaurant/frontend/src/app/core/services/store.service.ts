@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { BehaviorSubject, Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 import { Dish } from '../model/Dish'
 import { Menu } from '../model/Menu'
 import { UserRestaurant } from '../model/UserRestaurant'
@@ -9,6 +9,7 @@ import { DishService } from '../services/dish.service'
 import { UserRestaurantService } from '../services/user-restaurant.service'
 import { Router } from '@angular/router'
 import { Category } from '../model/Category'
+import { IngredientList } from '../model/Ingredient'
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,12 @@ export class StoreService {
      public router: Router
   ) {}
 
-  menuAPI$ = new BehaviorSubject<Menu[]>([])
-  userRestaurantAPI$ = new BehaviorSubject<UserRestaurant[]>([])
-
   getCategories ():Observable<Category[]> {
     return this.CategoryService.getCategoriesService()
+  }
+
+  getIngredients ():Observable<IngredientList[]> {
+    return this.DishService.getIngredientsService()
   }
 
   getDishesForSearch ():Observable<UserRestaurant> {
@@ -38,7 +40,7 @@ export class StoreService {
     return this.DishService.postDishService(dish)
   }
 
-  postMenu (menu):Observable<Menu> {
+  postMenu (menu: Menu):Observable<Menu> {
     return this.MenuService.postMenuService(menu)
   }
 
@@ -54,15 +56,15 @@ export class StoreService {
     return this.DishService.deleteDishService(id)
   }
 
-  deleteMenu (id:string) {
+  deleteMenu (id:string) :Observable<Menu> {
     return this.MenuService.deleteMenuService(id)
   }
 
-  registerUserRestaurant (user, restaurant) {
-    return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant })
+  registerUserRestaurant (user:UserRestaurant, restaurant:UserRestaurant, moreDataRestaurant:UserRestaurant):Observable<UserRestaurant> {
+    return this.UserRestaurantService.registerRestaurantService({ ...user, ...restaurant, ...moreDataRestaurant })
   }
 
-  loginUserRestaurant (userRestaurant):Observable<UserRestaurant> {
+  loginUserRestaurant (userRestaurant:UserRestaurant):Observable<UserRestaurant> {
     return this.UserRestaurantService.loginRestaurantService(userRestaurant)
   }
 

@@ -10,10 +10,7 @@ function register(req, res) {
 
   try {
     user.save();
-
-    req.login(user, () => {
-      res.json(user);
-    });
+    res.send(200);
   } catch (error) {
     res.status(500);
     res.send(error);

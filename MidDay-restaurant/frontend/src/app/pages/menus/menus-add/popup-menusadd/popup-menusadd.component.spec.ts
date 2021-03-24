@@ -1,25 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { MatDialogModule } from '@angular/material/dialog'
 
-import { PopupMenusaddComponent } from './popup-menusadd.component';
+import { PopupMenusaddComponent } from './popup-menusadd.component'
 
 describe('PopupMenusaddComponent', () => {
-  let component: PopupMenusaddComponent;
-  let fixture: ComponentFixture<PopupMenusaddComponent>;
+  let component: PopupMenusaddComponent
+  let fixture: ComponentFixture<PopupMenusaddComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PopupMenusaddComponent ]
+      declarations: [PopupMenusaddComponent],
+      imports: [MatDialogModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
-  });
+      .compileComponents()
+  })
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PopupMenusaddComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PopupMenusaddComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

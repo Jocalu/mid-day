@@ -1,8 +1,18 @@
 import { Component } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
 
 @Component({
   selector: 'app-popup-register',
-  templateUrl: './popup-register.component.html',
-  styleUrls: ['./popup-register.component.scss']
+  templateUrl: './popup-register.component.html'
+
 })
-export class PopupRegisterComponent {}
+export class PopupRegisterComponent {
+  constructor (
+   public dialog: MatDialog
+
+  ) { }
+
+  closeDialog ():void {
+    this.dialog.closeAll()
+  }
+}

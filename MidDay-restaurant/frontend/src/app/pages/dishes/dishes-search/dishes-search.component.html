@@ -1,4 +1,4 @@
-<form [formGroup]="searchDishes">
+<form [formGroup]="searchDishes" class="dishes-add">
   <div class="input">
     <mat-form-field class="full-width">
       <mat-label>Nombre</mat-label>
@@ -7,38 +7,68 @@
         type="text"
         matInput
         placeholder="Nombre"
-        (input)="search(searchBox.value)"
+        (keyup)="search(searchBox.value)"
         formControlName="searchDish"
       />
+
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
 </form>
 
-<div *ngFor="let dish of dishesFiltered | async; let i = index">
-  <div [class]="'dish-' + i" class="dish-text">
-    <span class="category">
-      <mat-icon>restaurant_menu</mat-icon>
-      <h3>{{ dish.name }}</h3>
-      <button
-        class="delete-btn"
-        (click)="openPopUp(); deleteHandleClick(dish._id); displayNone(i)"
-      >
-        <mat-icon>delete</mat-icon>
-      </button>
-    </span>
+<div *ngIf="searchBox.value">
+  <div *ngFor="let dish of dishesFiltered | async; let i = index">
+    <div [class]="'dish-' + i">
+      <div class="info-card">
+        <div class="meta">
+          <div *ngIf="dish.type === 'PRIMEROS'">
+            <div
+              class="photo"
+              style="
+                background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fplatos-primeros.jpg?alt=media&token=40251dcc-31ad-4bf7-84c0-5947bf179f20);
+              "
+            ></div>
+          </div>
+          <div *ngIf="dish.type === 'SEGUNDOS'">
+            <div
+              class="photo"
+              style="
+                background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fplatos-segundos.jpg?alt=media&token=6dc6c633-3c23-45bb-b41b-e9298c61ce2f);
+              "
+            ></div>
+          </div>
+          <div *ngIf="dish.type === 'POSTRES'">
+            <div
+              class="photo"
+              style="
+                background-image: url(https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20images%2Fplatos-postres.jpg?alt=media&token=52206de9-36ba-4ca3-84e0-3170b9d30927);
+              "
+            ></div>
+          </div>
+        </div>
+        <div class="description">
+          <div class="data">
+            <h2>{{ dish.name }}</h2>
+            <button
+              class="delete-btn"
+              (click)="openPopUp(dish._id); displayNone(i)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
 
-    <span>
-      <p>{{ dish.type }}</p></span
-    >
+          <h3>{{ dish.type }}</h3>
 
-    <span>
-      <p>Ingredientes:</p>
-      <p>{{ dish.ingredients }}</p></span
-    >
+          <p class="p--underline">Ingredientes:</p>
+          <p class="ingredients">
+            {{ dish.ingredients.join(", ") | titlecase }}
+          </p>
 
-    <span>
-      <p>Suplemento:</p>
-      <p>{{ dish.extra }}€</p>
-    </span>
+          <div class="price">
+            <p>Suplemento: {{ dish.extra }} €</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

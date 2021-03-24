@@ -12,9 +12,8 @@ const menuController = () => {
     try {
       const menus = await Menu
         .find({})
-        .populate('firstCourse')
-        .populate('secondCourse')
-        .populate('dessert');
+        .populate(['firstCourse', 'secondCourse', 'dessert'])
+        .exec();
 
       res.json(menus);
     } catch (error) {
@@ -27,7 +26,8 @@ const menuController = () => {
     const { menuId } = req.params;
     try {
       const menu = await Menu
-        .findByIdAndDelete(menuId);
+        .findByIdAndDelete(menuId)
+        .exec();
 
       res.json(menu);
     } catch (error) {

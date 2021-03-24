@@ -5,6 +5,10 @@ function DishRouter() {
   const router = Router();
 
   router
+    .route('/ingredients')
+    .get(dishController.getIngredients);
+
+  router
     .route('/')
     .get(dishController.getAllDishes)
     .post(dishController.createDish);

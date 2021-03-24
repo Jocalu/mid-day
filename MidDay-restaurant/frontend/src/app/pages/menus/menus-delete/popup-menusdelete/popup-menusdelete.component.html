@@ -1,2 +1,16 @@
-<h1 mat-dialog-title>Borrado</h1>
-<div mat-dialog-content>Tu menú ha sido eliminado correctamente</div>
+<section class="dialog">
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/midday-restaurant.appspot.com/o/MidDay%20icons%2Ficons8-ok-80.png?alt=media&token=30b9a6d0-1609-44e0-a76b-2957dd75a2a4"
+    alt="icon"
+  />
+  <h1>Borrado</h1>
+  <p>Tu menú ha sido eliminado correctamente</p>
+  <button
+    (click)="closeDialog()"
+    type="button"
+    mat-raised-button
+    color="primary"
+  >
+    CERRAR
+  </button>
+</section>

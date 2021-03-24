@@ -1,90 +1,95 @@
 import { TestBed } from '@angular/core/testing'
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishService } from './dish.service'
+import { HttpClient } from '@angular/common/http'
+import { of } from 'rxjs'
 
 describe('DishService', () => {
   let service: DishService
+  let httpClientSpy: { post: jasmine.Spy }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ imports: [HttpClientTestingModule] })
-    service = TestBed.inject(DishService)
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['post'])
 
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: HttpClient, useValue: httpClientSpy }]
+    })
     service = TestBed.inject(DishService)
   })
 
   it('should be created', () => {
     expect(service).toBeTruthy()
   })
-})
 
-describe('Given a postDish function', () => {
-  let service: DishService
-  let httpTestingController: HttpTestingController
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [DishService]
+  it('postDishService should be called', (done) => {
+    const dish = {
+      _id: 'string',
+      type: 'string',
+      name: 'string',
+      ingredients: [],
+      extra: 1
+    }
+    httpClientSpy.post.and.returnValue(of({}))
+    service.postDishService(dish).subscribe(() => {
+      expect(httpClientSpy.post.calls.count()).toBe(1)
+      done()
     })
-
-    httpTestingController = TestBed.inject(HttpTestingController)
-    service = TestBed.inject(DishService)
-  })
-
-  afterEach(() => {
-    httpTestingController.verify()
-  })
-
-  it('returned Observable should match the right data', () => {
-    const mockDish = [{
-      name: 'Paella'
-    }]
-
-    service.postDishService({ _id: 1 })
-      .subscribe(dishData => {
-        expect(dishData[0].name).toEqual('Paella')
-      })
-
-    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/courses')
-
-    expect(req.request.method).toEqual('POST')
-
-    req.flush(mockDish)
   })
 })
 
-describe('Given a deleteDish function', () => {
+describe('DishService', () => {
   let service: DishService
-  let httpTestingController: HttpTestingController
+  let httpClientSpy: { delete: jasmine.Spy }
 
   beforeEach(() => {
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['delete'])
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [DishService]
+      providers: [{ provide: HttpClient, useValue: httpClientSpy }]
     })
-
-    httpTestingController = TestBed.inject(HttpTestingController)
     service = TestBed.inject(DishService)
   })
 
-  afterEach(() => {
-    httpTestingController.verify()
+  it('should be created', () => {
+    expect(service).toBeTruthy()
   })
 
-  it('returned Observable should match the right data, and delete it', () => {
-    const mockDish = [{
-      name: 'Paella'
-    }]
+  it('deleteDishService should be called', (done) => {
+    const id = 'string'
 
-    service.deleteDishService('1')
-      .subscribe(dishData => {
-        expect(dishData[0].name).toEqual('Paella')
-      })
+    httpClientSpy.delete.and.returnValue(of({}))
+    service.deleteDishService(id).subscribe(() => {
+      expect(httpClientSpy.delete.calls.count()).toBe(1)
+      done()
+    })
+  })
+})
 
-    const req = httpTestingController.expectOne('http://localhost:5000/api/v1/midday/dishes/1')
+describe('DishService', () => {
+  let service: DishService
+  let httpClientSpy: { get: jasmine.Spy }
 
-    expect(req.request.method).toEqual('DELETE')
+  beforeEach(() => {
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get'])
 
-    req.flush(mockDish)
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [{ provide: HttpClient, useValue: httpClientSpy }]
+    })
+    service = TestBed.inject(DishService)
+  })
+
+  it('should be created', () => {
+    expect(service).toBeTruthy()
+  })
+
+  it('getIngredientsService should be called', (done) => {
+    httpClientSpy.get.and.returnValue(of({}))
+    service.getIngredientsService().subscribe(() => {
+      expect(httpClientSpy.get.calls.count()).toBe(1)
+      done()
+    })
   })
 })

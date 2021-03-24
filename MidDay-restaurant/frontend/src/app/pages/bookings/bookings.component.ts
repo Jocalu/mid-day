@@ -12,7 +12,7 @@ import { Bookings } from '../../core/model/Bookings'
 })
 export class BookingsComponent implements OnInit {
   constructor (
-     public StoreService: StoreService
+     public StoreSRV: StoreService
   ) {}
 
   hours = hours
@@ -23,36 +23,43 @@ export class BookingsComponent implements OnInit {
 
   datepicker = new FormControl('');
 
-  selectedDate:string; selectedHour:string; selectedName:string
+  selectedDateFormat:string; selectedDate:string; selectedHour:string; selectedID:string
 
-  bookingsOfTheDay; bookingsOfTheHour; detailsOfTheBooking
+  bookingsOfTheDay: Bookings[]; bookingsOfTheHour: Bookings[]; detailsOfTheBooking : Bookings[]
 
   searchCapacity () {
     hours.forEach((hour) => {
-      const bookingsForHour = hour.numOfbookings = this.bookingsOfTheDay.filter((booking) => booking.hour === hour.hour)
-      hour.numOfbookings = bookingsForHour.reduce((accumulator, value) => accumulator + value.pax, 0)
-    }
-    )
+      const bookingsForHour = this.bookingsOfTheDay.filter((booking: Bookings) => booking.hour === hour.hour)
+      hour.numOfbookings = bookingsForHour.reduce((accumulator: number, value: Bookings) => accumulator + value.pax, 0)
+    })
   }
 
   searchBookingsOfTheDay (date: string) {
-    this.selectedDate = moment(date).format('DD/MM/YYYY').replace('/', '-').replace('/', '-')
-    this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate)
+    this.selectedDate = moment(date)
+      .format('DD/MM/YYYY')
+      .replace(/\//g, '-')
+
+    this.selectedDateFormat = moment(date)
+      .format('DD/M/YYYY')
+      .replace(/\//g, '-')
+
+    this.bookingsOfTheDay = this.bookings$.filter((info) => info.date === this.selectedDate || info.date === this.selectedDateFormat)
+
     this.bookingsOfTheHour = []
     this.detailsOfTheBooking = []
   }
 
   searchBookingsOfTheHour (selectedHour: string) {
-    this.bookingsOfTheHour = this.bookingsOfTheDay.filter((info) => info.hour === selectedHour)
+    this.bookingsOfTheHour = this.bookingsOfTheDay.filter((info: Bookings) => info.hour === selectedHour)
     this.detailsOfTheBooking = []
   }
 
-  showDetailsOfTheBooking (selectedName : string) {
-    this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info) => info.bookingName === selectedName)
+  showDetailsOfTheBooking (selectedID : string) {
+    this.detailsOfTheBooking = this.bookingsOfTheHour.filter((info: Bookings) => info._id === selectedID)
   }
 
   ngOnInit (): void {
-    this.StoreService.getUserRestaurant(localStorage.getItem(''))
+    this.StoreSRV.getUserRestaurant(localStorage.getItem(''))
       .subscribe((user) => {
         this.bookings$ = user.bookings
         this.maxCapacity$ = user.capacity

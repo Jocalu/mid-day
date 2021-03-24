@@ -24,7 +24,7 @@ describe('Given a createMenu function', () => {
   });
 });
 
-describe('Given a getMenu function', () => {
+describe('Given a getMenus function', () => {
   describe('When is invoked with a first argument truthy', () => {
     test('Then should call status', async () => {
       const res = {
@@ -38,8 +38,7 @@ describe('Given a getMenu function', () => {
         .mockImplementationOnce(() => ({
           populate: jest.fn()
             .mockImplementationOnce(() => ({
-              populate: jest.fn()
-                .mockImplementationOnce(() => ({ populate: jest.fn() })),
+              exec: jest.fn(),
             })),
         }));
 
@@ -81,7 +80,7 @@ describe('Given a deleteMenu function', () => {
       };
 
       Menu.findByIdAndDelete
-        .mockImplementationOnce(() => ({ populate: jest.fn() }));
+        .mockImplementationOnce(() => ({ exec: jest.fn() }));
 
       await deleteMenu(req, res);
 

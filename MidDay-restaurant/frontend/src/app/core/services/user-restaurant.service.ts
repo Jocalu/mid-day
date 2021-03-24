@@ -16,7 +16,7 @@ export class UserRestaurantService {
   restaurantDishesURL =restaurantDishesURL
 
   constructor (
-       private httpClient: HttpClient
+       public httpClient: HttpClient
   ) { }
 
   registerRestaurantService (userRestaurant: UserRestaurant): Observable<UserRestaurant> {

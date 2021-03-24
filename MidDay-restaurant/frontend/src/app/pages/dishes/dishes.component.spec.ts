@@ -1,7 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { DishesComponent } from './dishes.component'
-import { FormBuilder } from '@angular/forms'
+import { DishesAddComponent } from './dishes-add/dishes-add.component'
+import { DishesSearchComponent } from './dishes-search/dishes-search.component'
+import { MatDialogModule } from '@angular/material/dialog'
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { RouterTestingModule } from '@angular/router/testing'
+import { MatButtonModule } from '@angular/material/button'
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 describe('DishesComponent', () => {
   let component: DishesComponent
@@ -9,9 +16,23 @@ describe('DishesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [DishesComponent],
-      imports: [HttpClientTestingModule],
-      providers: [FormBuilder]
+      declarations: [
+        DishesComponent,
+        DishesAddComponent,
+        DishesSearchComponent
+      ],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        MatButtonModule,
+        MatDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule
+
+      ],
+      providers: [FormBuilder],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents()
   })

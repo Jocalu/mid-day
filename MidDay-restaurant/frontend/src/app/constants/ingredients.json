@@ -19,7 +19,7 @@
   {
     "category": "hortalizas",
     "ingredient": [
-      { "name": "calabacín" },
+      { "name": "calabacín"  },
       { "name": "tomate" },
       { "name": "espinacas" },
       { "name": "rúcula" },

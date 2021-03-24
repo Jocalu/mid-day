@@ -34,6 +34,15 @@
     <div>
       <button
         [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
+        routerLink="/landing"
+        routerLinkActive="mat-stroked-button"
+        mat-button
+        color="primary"
+      >
+        INICIO
+      </button>
+      <button
+        [ngStyle]="{ display: !isAuth() ? 'none' : '' }"
         routerLink="/menus"
         routerLinkActive="mat-stroked-button"
         mat-button
@@ -60,6 +69,7 @@
         RESERVAS
       </button>
       <button
+        class="btn-login"
         [ngStyle]="{ display: isAuth() ? 'none' : '' }"
         (click)="openLogin()"
         routerLinkActive="mat-stroked-button"
@@ -71,7 +81,6 @@
       <button
         [ngStyle]="{ display: isAuth() ? 'none' : '' }"
         routerLink="/register"
-        routerLinkActive="mat-stroked-button"
         mat-raised-button
         color="primary"
       >
@@ -84,6 +93,7 @@
         mat-raised-button
         (click)="logOut()"
         color="primary"
+        class="btn-logOut"
       >
         SALIR
       </button>

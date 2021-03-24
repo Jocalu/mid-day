@@ -22,7 +22,7 @@ export class HeaderComponent {
     localStorage.removeItem('')
   }
 
-  isAuth ():Boolean {
+  isAuth (): boolean {
     return this.authService.isAuthenticated()
   }
 }

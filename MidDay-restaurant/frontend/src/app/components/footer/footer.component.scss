@@ -5,13 +5,17 @@
 footer {
   width: 100vw;
   font-family: $font-secondary-thin;
+  z-index: 5;
 
   .footer {
     @include flex(column, flex-start, flex-start);
-    padding: 30px 100px;
-    border-top: 2px solid $color-grey-soft;
-    background-color: $color-grey;
+    padding: 80px 100px 0 100px;
+    background-color: $color-primary-soft;
+    border-top-left-radius: 80% 50%;
+    border-top-right-radius: 80% 50%;
     align-items: stretch;
+    height: 300px;
+    margin-top: 70px;
 
     @media only screen and (max-width: 500px) {
       padding: 0 30px;
@@ -20,6 +24,7 @@ footer {
 
     img {
       width: 180px;
+      margin-top: 20px;
 
       @media only screen and (max-width: 500px) {
         margin: 0 auto;
@@ -39,7 +44,7 @@ footer {
       @include flex(row, space-between, flex-start);
       width: 100%;
       color: $color-black-soft;
-      font-size: 12px;
+      font-size: 14px;
 
       @media only screen and (max-width: 500px) {
         @include flex(column, center, center);
@@ -54,7 +59,7 @@ footer {
         }
 
         h6 {
-          font-size: 14px;
+          font-size: 16px;
           margin: 10px 0;
           font-family: $font-secondary;
         }
@@ -76,7 +81,7 @@ footer {
     height: 100px;
     background-color: $color-black-soft;
     color: $color-white;
-    font-size: 12px;
+    font-size: 14px;
     padding: 0 100px;
 
     @media only screen and (max-width: 500px) {

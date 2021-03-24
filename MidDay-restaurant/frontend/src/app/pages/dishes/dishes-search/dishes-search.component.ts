@@ -14,18 +14,26 @@ import { Dish } from 'src/app/core/model/Dish'
 })
 export class DishesSearchComponent implements OnInit {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     private dialog: MatDialog,
     private fb: FormBuilder
   ) {}
 
-  openPopUp ():void {
+  openPopUp (id:string):void {
     this.dialog.open(PopupDishessearchComponent)
+    this.StoreSRV.deleteDish(id).subscribe()
   }
 
-  dishes$= new BehaviorSubject<any>([])
+  dishSelected: HTMLElement
 
-  dishesFiltered
+  displayNone (i: number) :void {
+    this.dishSelected = document.querySelector(`.dish-${i}`)
+    this.dishSelected.setAttribute('style', 'display: none')
+  }
+
+  dishes$= new BehaviorSubject<Dish[]>([])
+
+  dishesFiltered : Observable<Dish[]>
 
   searchTerms: Subject<string> = new Subject()
 
@@ -33,35 +41,28 @@ export class DishesSearchComponent implements OnInit {
     searchDish: ''
   })
 
-  deleteHandleClick (id: string) :void {
-    this.StoreService.deleteDish(id).subscribe(rest => this.dishes$.next(rest))
-    this.searchDishes.patchValue({ searchDish: '' })
-  }
-
-  displayNone (i) :void {
-    const dishSelected = document.querySelector(`.dish-${i}`)
-    dishSelected.setAttribute('style', 'display: none')
-  }
-
   search (searchValue: string):void {
     this.searchTerms.next(searchValue)
   }
 
   searchDish (term: string):Observable<Dish[]> {
-    return this.dishes$.pipe(
-      map(value => value.filter(dish => dish.name.toLowerCase().includes(term.toLowerCase()))
+    return this.dishes$
+      .pipe(
+        map(value =>
+          value.filter(dish => dish.name.toLowerCase()
+            .includes(term.toLowerCase())))
       )
-    )
   }
 
   ngOnInit (): void {
-    this.StoreService.getDishesForSearch().subscribe((answer) => { this.dishes$.next(answer.dishes) })
+    this.StoreSRV.getDishesForSearch().subscribe((answer) => { this.dishes$.next(answer.dishes) })
 
     this.dishesFiltered = this.searchTerms
       .pipe(
         debounceTime(300),
         distinctUntilChanged(),
         switchMap(term => this.searchDish(term))
+
       )
   }
 }

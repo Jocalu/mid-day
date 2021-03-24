@@ -12,7 +12,7 @@ import { PopupMenusdeleteComponent } from './popup-menusdelete/popup-menusdelete
 })
 export class MenusDeleteComponent implements OnInit {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     private dialog: MatDialog
   ) { }
 
@@ -23,13 +23,13 @@ export class MenusDeleteComponent implements OnInit {
     }
 
     deleteClick (id: string) {
-      this.StoreService.deleteMenu(id).subscribe()
-      this.StoreService.getUserRestaurant(localStorage.getItem(''))
+      this.StoreSRV.deleteMenu(id).subscribe()
+      this.StoreSRV.getUserRestaurant(localStorage.getItem(''))
         .subscribe((answer) => { this.menu$.next(answer.menus) })
     }
 
     ngOnInit () {
-      this.StoreService.getUserRestaurant(localStorage.getItem(''))
+      this.StoreSRV.getUserRestaurant(localStorage.getItem(''))
         .subscribe((answer) => { this.menu$.next(answer.menus) })
     }
 }

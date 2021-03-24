@@ -20,7 +20,7 @@ import { CustomValidators } from './custom-validator'
 
 export class RegisterComponent implements OnInit {
   constructor (
-    public StoreService: StoreService,
+    public StoreSRV: StoreService,
     private fb: FormBuilder,
     public dialog: MatDialog,
     private router : Router
@@ -39,17 +39,25 @@ export class RegisterComponent implements OnInit {
     number: ['', Validators.required],
     zipcode: ['', Validators.required],
     city: ['', Validators.required],
-    phone: ['', Validators.required, Validators.maxLength(10), Validators.minLength(9)],
+    phone: ['', Validators.required]
+  })
+
+  secondRestaurantDataFormGroup = this.fb.group({
     category: ['', Validators.required],
     capacity: ['', Validators.required],
     menuprice: ['', Validators.required],
-    image: ['', Validators.required]
+    image: ''
   })
 
-  registerUser () {
-    this.StoreService.registerUserRestaurant(
+  registerUser ():void {
+    if (this.secondRestaurantDataFormGroup.value.image === '') {
+      this.secondRestaurantDataFormGroup.patchValue({ image: 'https://www.ecestaticos.com/image/clipping/0ba77a083b572d339abbec48b4eed2a8/estos-son-los-120-mejores-restaurantes-del-mundo-busca-cuantos-hay-en-cada-pais.jpg' })
+    }
+    this.StoreSRV.registerUserRestaurant(
       this.registerFormGroup.value,
-      this.restaurantDataFormGroup.value)
+      this.restaurantDataFormGroup.value,
+      this.secondRestaurantDataFormGroup.value
+    )
       .subscribe(user => {
         localStorage.setItem('', user._id)
         this.router.navigate(['/landing'])
@@ -57,6 +65,7 @@ export class RegisterComponent implements OnInit {
 
     this.registerFormGroup.reset()
     this.restaurantDataFormGroup.reset()
+    this.secondRestaurantDataFormGroup.reset()
   }
 
   openConfirm ():void {
@@ -68,7 +77,7 @@ export class RegisterComponent implements OnInit {
     category$ = new BehaviorSubject<Category[]>([])
 
     ngOnInit (): void {
-      this.StoreService.getCategories()
+      this.StoreSRV.getCategories()
         .subscribe((category) => {
           this.category$.next(category)
         })

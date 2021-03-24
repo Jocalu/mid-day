@@ -39,7 +39,7 @@ _Open the backend folder and run the same_
 npm install
 ```
 
-### Replace the environment variables with yours⌨️
+### Replace the environment variables with yours ⌨️
 
 _In the files .env in your backend (you can see the env.example)_
 ```
@@ -48,13 +48,6 @@ backend/.env-example
 _In the folder environments in your frontend_
 ```
 frontend/src/enviromnents
-```
-
-## Build with 🛠️
-
-_You can create your build with _
-```
-npm build
 ```
 ## Deployment 📦
 
@@ -68,9 +61,13 @@ npm i firebase
 npm firebase init hosting
 ```
 ```
-npm deploy
+npm build
+```
+```
+fireabase deploy
 ```
 
+## Build with 🛠️
 
 * [Angular](https://angular.io/) - The web framework used
 * [Firebase](https://firebase.google.com/?hl=en) - For hosting and storage
@@ -88,7 +85,7 @@ This app is actually under construction.
 ## Thanks to 🎁
 
 * SkylabCoders Academy 📢
-* Gilberto Cao 🤓.
+* Iván Dobry 🤓
 * All the partners of the bootcamp.
 
 

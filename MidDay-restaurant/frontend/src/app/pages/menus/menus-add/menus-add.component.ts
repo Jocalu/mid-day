@@ -14,7 +14,7 @@ export class MenusAddComponent implements OnInit {
   constructor (
     private fb: FormBuilder,
     private dialog: MatDialog,
-    public StoreService: StoreService
+    public StoreSRV: StoreService
   ) { }
 
   openPopUp ():void {
@@ -33,15 +33,15 @@ export class MenusAddComponent implements OnInit {
   })
 
   postClick ():void {
-    this.StoreService.postMenu(this.menu.value)
-      .subscribe(answer => this.StoreService.addMenuRestaurant(localStorage.getItem(''), { menu: answer._id }).subscribe())
+    this.StoreSRV.postMenu(this.menu.value)
+      .subscribe(answer => this.StoreSRV.addMenuRestaurant(localStorage.getItem(''), { menu: answer._id }).subscribe())
 
     this.menu.reset()
     this.menu.patchValue({ price: 0 })
   }
 
   ngOnInit (): void {
-    this.StoreService.getUserRestaurant(localStorage.getItem(''))
+    this.StoreSRV.getUserRestaurant(localStorage.getItem(''))
       .subscribe((answer) => {
         this.firstCourses$.next(answer.dishes.filter((option) => option.type === 'PRIMEROS'))
         this.secondCourses$.next(answer.dishes.filter((option) => option.type === 'SEGUNDOS'))
