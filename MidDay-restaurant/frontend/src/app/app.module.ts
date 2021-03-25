@@ -42,7 +42,7 @@ import localeEs from '@angular/common/locales/es'
 registerLocaleData(localeEs, 'es')
 
 @NgModule({
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -92,6 +92,7 @@ registerLocaleData(localeEs, 'es')
       useValue: { appearance: 'fill' }
     }, { provide: LOCALE_ID, useValue: 'es' }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

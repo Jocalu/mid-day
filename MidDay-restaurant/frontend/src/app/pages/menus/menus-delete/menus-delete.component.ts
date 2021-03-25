@@ -18,7 +18,7 @@ export class MenusDeleteComponent implements OnInit {
 
     menu$ = new BehaviorSubject([])
 
-    openPopUp () {
+    openPopUp ():void {
       this.dialog.open(PopupMenusdeleteComponent)
     }
 
@@ -28,7 +28,7 @@ export class MenusDeleteComponent implements OnInit {
         .subscribe((answer) => { this.menu$.next(answer.menus) })
     }
 
-    ngOnInit () {
+    ngOnInit ():void {
       this.StoreSRV.getUserRestaurant(localStorage.getItem(''))
         .subscribe((answer) => { this.menu$.next(answer.menus) })
     }
