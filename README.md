@@ -86,7 +86,7 @@ This app is actually under construction.
 
 * SkylabCoders Academy 📢
 * Iván Dobry 🤓
-* All the partners of the bootcamp.
+* All the classmates of the bootcamp.
 
 
 
