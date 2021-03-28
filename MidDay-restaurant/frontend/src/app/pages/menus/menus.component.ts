@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core'
 export class MenusComponent implements OnInit {
   switch: boolean = true
 
-  buttonAdd: any
+  buttonAdd: HTMLElement
 
   deleteClass ():void {
     this.buttonAdd = document.querySelector('.add')

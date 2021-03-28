@@ -8,6 +8,8 @@ import { BehaviorSubject } from 'rxjs'
 import { Category } from 'src/app/core/model/Category'
 import { Router } from '@angular/router'
 import { CustomValidators } from './custom-validator'
+import { imageProfileURL } from '../../constants/urls'
+import { validators } from '../register/custom-validator'
 
 @Component({
   selector: 'app-register',
@@ -31,7 +33,7 @@ export class RegisterComponent implements OnInit {
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(12)]],
     confirmPassword: ['', Validators.required]
-  }, { validator: CustomValidators.match('password', 'confirmPassword', 'password-validatematch') })
+  }, { validator: CustomValidators.match(validators.password, validators.confirmPassword, validators.validate) })
 
   restaurantDataFormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -51,7 +53,7 @@ export class RegisterComponent implements OnInit {
 
   registerUser ():void {
     if (this.secondRestaurantDataFormGroup.value.image === '') {
-      this.secondRestaurantDataFormGroup.patchValue({ image: 'https://www.ecestaticos.com/image/clipping/0ba77a083b572d339abbec48b4eed2a8/estos-son-los-120-mejores-restaurantes-del-mundo-busca-cuantos-hay-en-cada-pais.jpg' })
+      this.secondRestaurantDataFormGroup.patchValue({ image: imageProfileURL })
     }
     this.StoreSRV.registerUserRestaurant(
       this.registerFormGroup.value,

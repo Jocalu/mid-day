@@ -7,3 +7,9 @@ export class CustomValidators {
     }
   }
 }
+
+export const validators = {
+  password: 'password',
+  confirmPassword: 'confirmPassword',
+  validate: 'password-validatematch'
+}
