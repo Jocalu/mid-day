@@ -53,9 +53,9 @@
 
           <div>
             <mat-icon>restaurant</mat-icon>
-            <p *ngIf="!datepicker.value">0/{{ maxCapacity$ }}</p>
+            <p *ngIf="!datepicker.value">0/{{ maxCapacity$ * 0.75 }}</p>
             <p *ngIf="datepicker.value">
-              {{ hour.numOfbookings }}/{{ maxCapacity$ }}
+              {{ hour.numOfbookings }}/{{ maxCapacity$ * 0.75 }}
             </p>
             <mat-icon>person</mat-icon>
           </div>
