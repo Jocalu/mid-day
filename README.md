@@ -77,7 +77,6 @@ This app is actually under construction.
 ## Authors ✒️
 
 * **Jose Cárcamo** - *Initial work* - [JoseCárcamo](https://github.com/Jocalu)
-* **Gerard Mangues** - *Initial work* - [GerardMangues](https://github.com/GerardMB97)
 * **Marc Lucas** - *Original idea and documentation* - [MarcLucas](https://www.linkedin.com/in/marclucasbueno/)
 
 ## Thanks to 🎁
