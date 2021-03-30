@@ -62,7 +62,7 @@ fireabase deploy
 ```
 
 ## Test results at 02/30/2021 📦
-![tests](/Users/Jocalu/Desktop/MidDay/MidDay-restaurant/frontend/src/assets/images/MidDay tests.png)
+![tests](/Users/Jocalu/Desktop/MidDay/MidDay-restaurant/frontend/src/assets/images/tests.png)
 
 
 ## Build with 🛠️
