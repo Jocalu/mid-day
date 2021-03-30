@@ -22,24 +22,18 @@ For example you can use  **VSCODE**.
 Write the following in the terminal
 
 ```
-git clone https://github.com/SkylabCoders/jose-final-project.git
+git clone https://github.com/Jocalu/MidDay-Project.git
 ```
 
 ### Instalation 🔧
 
-_Open the backend folder and run_
+_Open the backend and the frontend folders and run in terminal_
 
 ```
 npm install
 ```
 
-_Open the backend folder and run the same_
-
-```
-npm install
-```
-
-### Replace the environment variables with yours ⌨️
+### Replace the environment variables with yours 
 
 _In the files .env in your backend (you can see the env.example)_
 ```
@@ -66,6 +60,10 @@ npm build
 ```
 fireabase deploy
 ```
+
+## Test results at 02/30/2021 📦
+
+![Screenshot](MidDay-restaurant/frontend/src/assets/images/MidDay tests.png)
 
 ## Build with 🛠️
 
